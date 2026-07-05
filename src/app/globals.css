@@ -1,0 +1,424 @@
+@import "tailwindcss";
+
+/* ================================================================== *
+ *  World of Wood Decoration — Luxury Design System
+ *  Style: Italian Luxury Architecture
+ *  Palette: Dark Walnut · Graphite · Matte Gold · Warm Cream
+ *  Elegant serif + modern sans · large spacing · premium cards ·
+ *  luxury shadows · glass only where necessary.
+ * ================================================================== */
+
+@theme {
+  /* ---- Palette · Graphite (cool architectural base) ------------- */
+  --color-graphite-950: #121316;
+  --color-graphite-900: #17181c;
+  --color-graphite-800: #1e2025;
+  --color-graphite-700: #292b31;
+  --color-graphite-600: #34373e;
+
+  /* ---- Palette · Dark Walnut (warm surfaces & cards) ------------ */
+  --color-walnut-950: #180f09;
+  --color-walnut-900: #21150d;
+  --color-walnut-800: #2c1d12;
+  --color-walnut-700: #3a2718;
+  --color-walnut-600: #4c3421;
+
+  /* ---- Palette · Matte Gold (accent) --------------------------- */
+  --color-gold: #c0a068;
+  --color-gold-soft: #d6bf92;
+  --color-gold-deep: #8c7038;
+
+  /* ---- Palette · Warm Cream (foreground) ----------------------- */
+  --color-cream: #f1ead9;
+  --color-cream-soft: #dad1bc;
+  --color-cream-dim: #9d9484;
+  --color-cream-faint: #6b6459;
+
+  /* ---- Semantic aliases (consumed across components) ----------- */
+  --color-ink: #121316;
+  --color-ink-800: #17181c;
+  --color-ink-700: #1e2025;
+  --color-ink-600: #292b31;
+
+  --color-bone: #f1ead9;
+  --color-bone-soft: #dad1bc;
+  --color-bone-dim: #9d9484;
+  --color-bone-faint: #6b6459;
+
+  /* ---- Lines / hairlines --------------------------------------- */
+  --color-line: rgba(241, 234, 217, 0.1);
+  --color-line-strong: rgba(241, 234, 217, 0.2);
+
+  /* ---- Typography ---------------------------------------------- */
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-elmessiri), serif;
+
+  /* ---- Motion -------------------------------------------------- */
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ---- Layout & radii ------------------------------------------ */
+  --container-max: 88rem;
+  --radius-luxe: 4px;
+  --radius-luxe-lg: 8px;
+
+  /* ---- Large spacing scale (airy, expensive rhythm) ------------ */
+  --space-section: clamp(6rem, 4rem + 7vw, 12rem);
+  --space-gutter: clamp(1.5rem, 0.75rem + 3vw, 5.5rem);
+
+  /* ---- Luxury shadows (layered, warm-tinted, soft) ------------- */
+  --shadow-luxe:
+    0 1px 0 rgba(241, 234, 217, 0.04) inset,
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    0 16px 40px -12px rgba(0, 0, 0, 0.55);
+  --shadow-luxe-lg:
+    0 1px 0 rgba(241, 234, 217, 0.05) inset,
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 40px 80px -24px rgba(0, 0, 0, 0.7);
+  --shadow-gold:
+    0 10px 45px -12px rgba(192, 160, 104, 0.4);
+  --shadow-image:
+    0 30px 80px -30px rgba(0, 0, 0, 0.8);
+
+  /* ---- Fluid type scale (clamp) ------------------------------- */
+  --text-display: clamp(3rem, 1.2rem + 8vw, 9.5rem);
+  --text-h1: clamp(2.5rem, 1.4rem + 5vw, 6rem);
+  --text-h2: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --text-h3: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  --text-lead: clamp(1.05rem, 0.98rem + 0.5vw, 1.375rem);
+}
+
+/* ------------------------------------------------------------------ *
+ *  Base
+ * ------------------------------------------------------------------ */
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    background-color: var(--color-ink);
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-body);
+    font-feature-settings: "kern", "liga", "calt", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    letter-spacing: 0.005em;
+  }
+
+  [dir="rtl"] body {
+    font-family: var(--font-arabic);
+    letter-spacing: normal;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+  }
+
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4,
+  [dir="rtl"] h5 {
+    font-family: var(--font-arabic);
+    line-height: 1.2;
+    letter-spacing: normal;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-walnut-700);
+    border-radius: 999px;
+    border: 3px solid var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-deep);
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Components / design-system primitives
+ * ------------------------------------------------------------------ */
+
+@layer components {
+  .container-luxe {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--space-gutter);
+  }
+
+  /* Generous section rhythm */
+  .section {
+    padding-block: var(--space-section);
+  }
+
+  /* Type scale */
+  .text-display {
+    font-size: var(--text-display);
+    line-height: 0.92;
+  }
+  .text-h1 {
+    font-size: var(--text-h1);
+  }
+  .text-h2 {
+    font-size: var(--text-h2);
+  }
+  .text-h3 {
+    font-size: var(--text-h3);
+  }
+  .text-lead {
+    font-size: var(--text-lead);
+    line-height: 1.6;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gold-soft);
+  }
+  [dir="rtl"] .eyebrow {
+    letter-spacing: 0.1em;
+  }
+
+  /* Matte-gold gradient text (restrained sheen) */
+  .text-brass {
+    background: linear-gradient(
+      100deg,
+      var(--color-gold-deep) 0%,
+      var(--color-gold) 38%,
+      #e6d4a8 52%,
+      var(--color-gold) 66%,
+      var(--color-gold-deep) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Premium walnut card */
+  .card-luxe {
+    position: relative;
+    background-image: linear-gradient(
+      158deg,
+      var(--color-walnut-800) 0%,
+      var(--color-walnut-900) 55%,
+      var(--color-walnut-950) 100%
+    );
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-luxe-lg);
+    box-shadow: var(--shadow-luxe);
+    transition:
+      transform 0.7s var(--ease-luxe),
+      box-shadow 0.7s var(--ease-luxe),
+      border-color 0.7s var(--ease-luxe);
+  }
+  .card-luxe::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      160deg,
+      rgba(214, 191, 146, 0.28),
+      transparent 30%,
+      transparent 70%,
+      rgba(214, 191, 146, 0.12)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.7s var(--ease-luxe);
+    pointer-events: none;
+  }
+  .card-luxe:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-luxe-lg);
+    border-color: rgba(192, 160, 104, 0.35);
+  }
+  .card-luxe:hover::after {
+    opacity: 1;
+  }
+
+  /* Glass — use sparingly (sticky header, floating chrome) */
+  .glass {
+    background: color-mix(in srgb, var(--color-graphite-900) 62%, transparent);
+    backdrop-filter: blur(22px) saturate(140%);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+    border: 1px solid var(--color-line);
+  }
+
+  /* Hairline divider */
+  .hairline {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-line-strong),
+      transparent
+    );
+  }
+
+  /* Luxury form fields */
+  .input-luxe {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--color-line);
+    background: transparent;
+    padding-block: 0.95rem;
+    font-size: 1rem;
+    color: var(--color-bone);
+    transition: border-color 0.35s var(--ease-luxe);
+  }
+  .input-luxe::placeholder {
+    color: var(--color-bone-faint);
+  }
+  .input-luxe:focus {
+    outline: none;
+    border-color: var(--color-gold);
+  }
+  select.input-luxe {
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23c0a068' stroke-width='1.5' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    padding-inline-end: 1.75rem;
+  }
+  [dir="rtl"] select.input-luxe {
+    background-position: left 0.25rem center;
+    padding-inline-end: 0;
+    padding-inline-start: 1.75rem;
+  }
+  select.input-luxe option {
+    color: var(--color-bone);
+    background: var(--color-walnut-900);
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.03;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+  .clip-text {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .will-transform {
+    will-change: transform;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Keyframes
+ * ------------------------------------------------------------------ */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-hint {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 6s linear infinite;
+}
+
+/* Reduced motion — respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

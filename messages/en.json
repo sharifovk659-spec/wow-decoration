@@ -1,0 +1,564 @@
+{
+  "meta": {
+    "home": {
+      "title": "World of Wood Decoration — Architectural Wood Atelier",
+      "description": "An international atelier crafting bespoke architectural woodwork for palaces, villas, mosques, hotels and private residences. Rare timber, master joinery, timeless interiors."
+    },
+    "about": {
+      "title": "The Atelier — World of Wood Decoration",
+      "description": "For three decades we have translated rare timber into architecture. Meet the atelier, the masters and the philosophy behind the finest wooden interiors in the world."
+    },
+    "projects": {
+      "title": "Commissions — World of Wood Decoration",
+      "description": "A private portfolio of palaces, grand mosques, five-star hospitality and estate residences finished in bespoke architectural woodwork."
+    },
+    "services": {
+      "title": "Disciplines — World of Wood Decoration",
+      "description": "Architectural design, master joinery, hand carving, marquetry, restoration and turnkey interior delivery for the world's most demanding commissions."
+    },
+    "contact": {
+      "title": "Commission Us — World of Wood Decoration",
+      "description": "Begin a private commission with our atelier. Share your architecture, your ambitions and your timeline with our design directors."
+    },
+    "gallery": {
+      "title": "Gallery — World of Wood Decoration",
+      "description": "A curated visual gallery of bespoke architectural woodwork — interiors, furniture, sacred spaces and atelier craft."
+    },
+    "privacy": {
+      "title": "Privacy & Legal — World of Wood Decoration",
+      "description": "How the atelier collects, uses and protects your information, and the terms under which this site is offered."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Atelier",
+    "services": "Disciplines",
+    "projects": "Commissions",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "cta": "Begin a Commission",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "hero": {
+    "eyebrow": "International Architectural Wood Atelier",
+    "titleLine1": "The Architecture",
+    "titleLine2": "of Rare Wood",
+    "description": "We conceive, engineer and hand-build monumental wooden interiors for palaces, sacred spaces and the residences of collectors — where every grain is chosen and every joint is signed.",
+    "cta": "Begin a Commission",
+    "secondary": "View Commissions",
+    "scroll": "Scroll to explore",
+    "stat1Value": "30+",
+    "stat1Label": "Years of mastery",
+    "stat2Value": "42",
+    "stat2Label": "Countries served",
+    "stat3Value": "180+",
+    "stat3Label": "Signature commissions"
+  },
+  "philosophy": {
+    "eyebrow": "Philosophy",
+    "title": "Timber, elevated to architecture.",
+    "paragraph1": "World of Wood Decoration is not a furniture house. We are an architectural atelier that treats wood as a structural, sculptural and spiritual material — the way stone was treated in the age of cathedrals.",
+    "paragraph2": "Each commission begins with a single question: what will endure for a hundred years? From that answer we source rare timber, engineer it to outlast generations, and finish it entirely by hand.",
+    "signature": "Est. 1994 — Atelier of Master Joiners",
+    "pillars": {
+      "0": { "title": "Rarity", "text": "Single-origin timber selected board by board from sustainable estates and heritage reserves." },
+      "1": { "title": "Precision", "text": "Micron-level joinery engineered in-house, assembled without visible fastenings." },
+      "2": { "title": "Permanence", "text": "Interiors built to be inherited — restored, never replaced, across generations." }
+    }
+  },
+  "services": {
+    "eyebrow": "Disciplines",
+    "title": "One atelier, every craft under one roof.",
+    "description": "From the first architectural sketch to the final hand-rubbed finish, every discipline lives within our workshops — so nothing is outsourced and nothing is compromised.",
+    "items": {
+      "0": {
+        "title": "Architectural Design",
+        "text": "Bespoke interior architecture in wood — ceilings, screens, staircases and monumental millwork conceived with your architect.",
+        "index": "01"
+      },
+      "1": {
+        "title": "Master Joinery",
+        "text": "Structural cabinetry, panelling and doors engineered to museum tolerances and assembled by hand.",
+        "index": "02"
+      },
+      "2": {
+        "title": "Hand Carving & Marquetry",
+        "text": "Relief carving, mashrabiya and inlaid marquetry executed by carvers trained over decades.",
+        "index": "03"
+      },
+      "3": {
+        "title": "Sacred & Ceremonial",
+        "text": "Mihrabs, minbars, doors and ceilings for mosques and ceremonial spaces of national significance.",
+        "index": "04"
+      },
+      "4": {
+        "title": "Heritage Restoration",
+        "text": "Conservation and revival of historic interiors, matching timber, tooling and technique to the original hand.",
+        "index": "05"
+      },
+      "5": {
+        "title": "Turnkey Delivery",
+        "text": "Global project management, logistics and on-site installation by our own master teams.",
+        "index": "06"
+      }
+    }
+  },
+  "serviceCards": {
+    "eyebrow": "What we create",
+    "title": "A craft for every space.",
+    "description": "From complete interiors to a single signature piece — every discipline is led by one atelier, under one roof.",
+    "cta": "Discuss a project",
+    "items": {
+      "0": {
+        "tag": "01",
+        "title": "Luxury Interiors",
+        "text": "Complete interior architecture in timber — ceilings, panelling, staircases and screens for palaces and residences."
+      },
+      "1": {
+        "tag": "02",
+        "title": "Furniture",
+        "text": "Bespoke statement pieces and cabinetry, built to museum tolerances and finished entirely by hand."
+      },
+      "2": {
+        "tag": "03",
+        "title": "Gazebos",
+        "text": "Garden gazebos and pavilions in noble timber, engineered to stand for decades in the open air."
+      },
+      "3": {
+        "tag": "04",
+        "title": "Doors",
+        "text": "Monumental entrance and interior doors — hand carving, bronze and concealed engineering, made to order."
+      },
+      "4": {
+        "tag": "05",
+        "title": "Islamic Decoration",
+        "text": "Mihrabs, minbars, mashrabiya and calligraphy panels carved from historic geometry."
+      },
+      "5": {
+        "tag": "06",
+        "title": "Commercial Projects",
+        "text": "Hotels, boutiques and executive spaces — timber architecture that sets the tone of a brand."
+      }
+    }
+  },
+  "projects": {
+    "eyebrow": "Selected Commissions",
+    "title": "Interiors that become landmarks.",
+    "description": "A private selection from our portfolio of palaces, grand mosques, hospitality and estate residences.",
+    "cta": "View all commissions",
+    "viewProject": "View commission",
+    "detail": {
+      "overview": "Overview",
+      "scope": "Scope of work",
+      "location": "Location",
+      "year": "Year",
+      "category": "Typology",
+      "materials": "Timber & materials",
+      "next": "Next commission",
+      "back": "All commissions",
+      "gallery": "Gallery",
+      "viewFull": "Tap any image for fullscreen",
+      "cta": "Commission a project like this"
+    },
+    "filters": {
+      "all": "All",
+      "palace": "Palaces",
+      "sacred": "Sacred",
+      "hospitality": "Hospitality",
+      "residence": "Residences"
+    }
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "A wall of rare woodwork.",
+    "description": "A curated wall of details, interiors and craft drawn from three decades of private commissions.",
+    "categories": {
+      "all": "All",
+      "interiors": "Interiors",
+      "furniture": "Furniture",
+      "sacred": "Sacred",
+      "craft": "Atelier"
+    }
+  },
+  "worldMap": {
+    "eyebrow": "Global Presence",
+    "title": "Commissions across forty-two countries.",
+    "description": "From the Gulf to the Alps, our work stands in the world's most demanding interiors.",
+    "atelierLabel": "Atelier",
+    "presenceLabel": "Commission",
+    "locations": {
+      "dubai": { "city": "Dubai", "country": "United Arab Emirates" },
+      "milan": { "city": "Milan", "country": "Italy" },
+      "istanbul": { "city": "Istanbul", "country": "Türkiye" },
+      "london": { "city": "London", "country": "United Kingdom" },
+      "paris": { "city": "Paris", "country": "France" },
+      "geneva": { "city": "Geneva", "country": "Switzerland" },
+      "moscow": { "city": "Moscow", "country": "Russia" },
+      "riyadh": { "city": "Riyadh", "country": "Saudi Arabia" },
+      "doha": { "city": "Doha", "country": "Qatar" },
+      "casablanca": { "city": "Casablanca", "country": "Morocco" },
+      "singapore": { "city": "Singapore", "country": "Singapore" }
+    }
+  },
+  "videoTestimonials": {
+    "eyebrow": "Client Films",
+    "title": "In their own words.",
+    "description": "Patrons, architects and operators on what it means to build with our atelier.",
+    "watch": "Watch film",
+    "items": {
+      "0": {
+        "author": "H.E. Khalid Al-Mansoori",
+        "role": "Director, Royal Court",
+        "project": "Royal Palace Majlis",
+        "quote": "They turned a vision we could barely describe into a room that silences everyone who enters."
+      },
+      "1": {
+        "author": "Isabelle Laurent",
+        "role": "Principal, Laurent Architects",
+        "project": "Alpine Chalet Residence",
+        "quote": "Every joint and every grain was considered — the finest joinery we have specified in twenty years."
+      },
+      "2": {
+        "author": "Markus Feld",
+        "role": "Group Design Director",
+        "project": "Five-Star Hotel Lobby",
+        "quote": "Guests stop at the door. The reception wall has become the signature of the whole property."
+      },
+      "3": {
+        "author": "Dr. Amina Cherif",
+        "role": "Endowment Committee",
+        "project": "Grand Mosque Mihrab",
+        "quote": "The craftsmanship honours tradition yet feels entirely alive. It moved our whole community."
+      },
+      "4": {
+        "author": "Private Client",
+        "role": "Coastal Estate",
+        "project": "Coastal Villa Library",
+        "quote": "From the first sketch to installation, the process felt effortless and deeply personal."
+      }
+    }
+  },
+  "timeline": {
+    "eyebrow": "The Journey",
+    "title": "From first conversation to final installation.",
+    "description": "Seven stages that carry a commission from idea to a finished, installed interior.",
+    "steps": {
+      "0": { "number": "01", "title": "Client Request", "text": "We listen to your architecture, intent and vision." },
+      "1": { "number": "02", "title": "Concept", "text": "Our directors shape a concept and material palette." },
+      "2": { "number": "03", "title": "3D Design", "text": "Photoreal 3D models make every detail tangible." },
+      "3": { "number": "04", "title": "Production", "text": "Master joiners build the commission in our workshops." },
+      "4": { "number": "05", "title": "Quality", "text": "Every surface is inspected against exacting standards." },
+      "5": { "number": "06", "title": "Delivery", "text": "White-glove logistics carry it safely to site." },
+      "6": { "number": "07", "title": "Installation", "text": "Our own crews install and finish on site." }
+    }
+  },
+  "production": {
+    "eyebrow": "Production",
+    "title": "From timber to finished interior.",
+    "description": "Six stages where industrial precision meets the hand of the master — all under one roof.",
+    "steps": {
+      "0": {
+        "number": "01",
+        "title": "Machines",
+        "text": "Calibrated machines cut and mill the timber to micron tolerances, setting a flawless geometry."
+      },
+      "1": {
+        "number": "02",
+        "title": "Hand Carving",
+        "text": "Master carvers bring reliefs, muqarnas and ornament to life by hand — cut by cut."
+      },
+      "2": {
+        "number": "03",
+        "title": "Painting",
+        "text": "Oils, stains and lacquer are laid on by hand, layer upon layer, for depth of colour and decades of protection."
+      },
+      "3": {
+        "number": "04",
+        "title": "Packaging",
+        "text": "Every element is secured in bespoke, climate-controlled crating for a safe journey."
+      },
+      "4": {
+        "number": "05",
+        "title": "Delivery",
+        "text": "White-glove logistics carry the commission to the site — anywhere in the world."
+      },
+      "5": {
+        "number": "06",
+        "title": "Installation",
+        "text": "Our own crews assemble and finish the interior on site — down to the last detail."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "The Commission",
+    "title": "A process as considered as the result.",
+    "description": "Every commission moves through five deliberate movements — a rhythm refined over three decades.",
+    "steps": {
+      "0": { "number": "01", "title": "Dialogue", "text": "We listen to your architecture, your intent and the life the space will hold." },
+      "1": { "number": "02", "title": "Design", "text": "Our directors develop drawings, material palettes and full-scale prototypes." },
+      "2": { "number": "03", "title": "Selection", "text": "Rare timber is sourced and matched board by board for grain and colour." },
+      "3": { "number": "04", "title": "Craft", "text": "Master joiners and carvers build the commission entirely within our workshops." },
+      "4": { "number": "05", "title": "Installation", "text": "Our own teams install and finish on site, anywhere in the world." }
+    }
+  },
+  "woods": {
+    "eyebrow": "Wood Species",
+    "title": "Seven timbers for timeless architecture.",
+    "description": "We work only with timber whose provenance, grain and stability withstand the most exacting selection.",
+    "cta": "Request samples",
+    "items": {
+      "0": { "name": "Walnut", "origin": "North America", "note": "Chocolate depth, ribbon grain." },
+      "1": { "name": "Oak", "origin": "Europe", "note": "Structural strength and expressive medullary rays." },
+      "2": { "name": "Ash", "origin": "Europe", "note": "Pale tone, elasticity and bold grain." },
+      "3": { "name": "Beech", "origin": "Central Europe", "note": "Fine, even grain and a warm, uniform tone." },
+      "4": { "name": "Cedar", "origin": "Mediterranean", "note": "Aromatic, light and warm in texture." },
+      "5": { "name": "Pine", "origin": "Northern Europe", "note": "Bright, resinous, with a lively character." },
+      "6": { "name": "Abachi", "origin": "West Africa", "note": "Pale, lightweight and heat-safe — ideal for hammams." }
+    }
+  },
+  "materials": {
+    "eyebrow": "The Material",
+    "title": "Wood chosen the way jewellers choose stones.",
+    "description": "We work only with timber whose provenance, grain and stability meet standards most houses never see. A selection from our reserve.",
+    "cta": "Discuss materials",
+    "items": {
+      "0": { "name": "American Black Walnut", "origin": "North America", "note": "Chocolate depth, ribboned grain." },
+      "1": { "name": "European Oak", "origin": "France & Slavonia", "note": "Structural strength, quarter-sawn ray." },
+      "2": { "name": "Macassar Ebony", "origin": "Indonesia", "note": "Dramatic streak, mirror polish." },
+      "3": { "name": "Burmese Teak", "origin": "Southeast Asia", "note": "Golden warmth, weather-defiant." }
+    }
+  },
+  "stats": {
+    "eyebrow": "The Atelier in Numbers",
+    "title": "Three decades measured in mastery.",
+    "items": {
+      "0": { "value": 30, "suffix": "+", "label": "Years of mastery" },
+      "1": { "value": 42, "suffix": "", "label": "Countries served" },
+      "2": { "value": 180, "suffix": "+", "label": "Signature commissions" },
+      "3": { "value": 120, "suffix": "", "label": "Master craftspeople" }
+    }
+  },
+  "whyChooseUs": {
+    "eyebrow": "Why World of Wood Decoration",
+    "title": "Reasons the most demanding clients choose us.",
+    "description": "Six commitments that separate an atelier from a supplier — and a commission from a purchase.",
+    "reasons": {
+      "0": { "title": "Heritage & mastery", "text": "Three decades of architectural woodwork for the world's most demanding palaces, mosques and residences." },
+      "1": { "title": "Bespoke by design", "text": "Every commission is drawn from a blank page — nothing is templated, nothing is repeated." },
+      "2": { "title": "Rare, traceable timber", "text": "We source and match rare timber board by board, with full provenance behind every grain." },
+      "3": { "title": "Master craftsmanship", "text": "Machines set the geometry to the micron; our masters finish every surface by hand." },
+      "4": { "title": "Turnkey worldwide", "text": "From first drawing to on-site installation, delivered white-glove anywhere on earth." },
+      "5": { "title": "Built to endure", "text": "Restoration-grade joinery, engineered to stand for a hundred years without movement." }
+    },
+    "stats": {
+      "0": { "label": "In-house masters" },
+      "1": { "label": "Delivered on time" },
+      "2": { "label": "Bespoke, never repeated" }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "In Confidence",
+    "title": "The trust of those who commission rarely.",
+    "items": {
+      "0": {
+        "quote": "They did not deliver joinery. They delivered an heirloom our family will protect for a century.",
+        "author": "H.E. The Chief of Royal Court",
+        "role": "Royal Palace Commission, The Gulf"
+      },
+      "1": {
+        "quote": "The mihrab they carved has become the soul of the mosque. Craft of this order is almost lost to the world.",
+        "author": "Grand Mosque Endowment Board",
+        "role": "Sacred Commission, North Africa"
+      },
+      "2": {
+        "quote": "Our guests touch the walls. In luxury hospitality, that is the highest compliment a material can earn.",
+        "author": "Managing Director",
+        "role": "Five-Star Hospitality Group, Europe"
+      }
+    }
+  },
+  "cta": {
+    "eyebrow": "Begin",
+    "title": "Commission an interior that outlives its owner.",
+    "description": "We accept a limited number of commissions each year to protect the standard of our craft. Begin the conversation with our design directors.",
+    "button": "Begin a Commission",
+    "note": "Private consultations worldwide."
+  },
+  "footer": {
+    "tagline": "The architecture of rare wood.",
+    "navTitle": "Atelier",
+    "contactTitle": "Contact",
+    "socialTitle": "Follow",
+    "newsletterTitle": "The Grain Journal",
+    "newsletterText": "Occasional letters on material, craft and completed commissions.",
+    "newsletterPlaceholder": "Your email address",
+    "newsletterButton": "Subscribe",
+    "rights": "All rights reserved.",
+    "credit": "Architectural Wood Atelier",
+    "legal": {
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "cookies": "Cookies"
+    }
+  },
+  "about": {
+    "since": "Atelier since",
+    "sectionEyebrow": "About the atelier",
+    "sectionCta": "Discover the atelier",
+    "hero": {
+      "eyebrow": "The Atelier",
+      "title": "A house of masters, not machines.",
+      "description": "Since 1994 we have gathered the world's finest joiners, carvers and finishers under one roof — and given them the time that mastery demands."
+    },
+    "story": {
+      "eyebrow": "Our Story",
+      "title": "Founded on a refusal to compromise.",
+      "paragraph1": "World of Wood Decoration began in a single workshop with a conviction that has never changed: that wood, in the right hands, can rival marble and gold as the material of great architecture.",
+      "paragraph2": "Three decades later, our commissions stand in royal palaces, grand mosques and landmark hotels across forty-two countries — each one built by hand, each one signed by the masters who made it.",
+      "paragraph3": "We remain, by choice, a small house. We accept only the commissions we can perfect, and we protect the time our craft requires."
+    },
+    "values": {
+      "eyebrow": "What We Protect",
+      "title": "The principles beneath every commission.",
+      "items": {
+        "0": { "title": "Mastery", "text": "We hire for a lifetime of craft, then give our masters the time to reach perfection." },
+        "1": { "title": "Provenance", "text": "Every board is traceable to a sustainable, responsibly managed source." },
+        "2": { "title": "Discretion", "text": "Our clients value privacy above all. Most commissions are never publicly named." },
+        "3": { "title": "Permanence", "text": "We build to be restored and inherited — never discarded." }
+      }
+    },
+    "team": {
+      "eyebrow": "The Masters",
+      "title": "The hands behind the house.",
+      "members": {
+        "0": { "name": "Karim Haddad", "role": "Founder & Design Director" },
+        "1": { "name": "Elena Moreau", "role": "Head of Architectural Design" },
+        "2": { "name": "Tomás Ribeiro", "role": "Master of Carving" },
+        "3": { "name": "Aya Nakamura", "role": "Head of Finishing" }
+      }
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Begin a Commission",
+      "title": "Let us build something that endures.",
+      "description": "Share your architecture and your ambitions. A design director will respond personally within two working days."
+    },
+    "channels": {
+      "eyebrow": "Direct Lines",
+      "title": "Speak with the atelier.",
+      "description": "Reach a design director on the channel that suits you. We reply, personally, within hours.",
+      "open": "Open",
+      "call": "Call",
+      "write": "Write",
+      "whatsapp": { "label": "WhatsApp", "hint": "Chat with a design director" },
+      "telegram": { "label": "Telegram", "hint": "Message us instantly" },
+      "email": { "label": "Email", "hint": "Write to the atelier" },
+      "phone": { "label": "Telephone", "hint": "Call our Dubai studio" }
+    },
+    "map": {
+      "eyebrow": "The Studio",
+      "title": "Our design house in Dubai.",
+      "description": "The heart of the atelier — where every commission begins.",
+      "openMap": "Open in Google Maps"
+    },
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+00 000 000 0000",
+      "projectType": "Type of commission",
+      "projectTypePlaceholder": "Select a typology",
+      "budget": "Indicative budget",
+      "budgetPlaceholder": "Select a range",
+      "message": "Tell us about your project",
+      "messagePlaceholder": "Location, scope, timeline and vision…",
+      "submit": "Send enquiry",
+      "submitting": "Sending…",
+      "successTitle": "Thank you.",
+      "successMessage": "Your enquiry has reached our atelier. A design director will contact you within two working days.",
+      "errorTitle": "Something went wrong.",
+      "errorMessage": "Your enquiry could not be sent. Please try again or email us directly.",
+      "sendAnother": "Send another enquiry",
+      "types": {
+        "palace": "Palace",
+        "residence": "Private residence",
+        "sacred": "Mosque / sacred space",
+        "hospitality": "Hotel / hospitality",
+        "yacht": "Yacht / aviation",
+        "other": "Other"
+      },
+      "budgets": {
+        "0": "Under $500k",
+        "1": "$500k – $2M",
+        "2": "$2M – $10M",
+        "3": "$10M+"
+      },
+      "errors": {
+        "nameMin": "Please enter your full name.",
+        "emailInvalid": "Please enter a valid email address.",
+        "projectType": "Please select a type of commission.",
+        "messageMin": "Please tell us a little more about your project."
+      }
+    },
+    "details": {
+      "eyebrow": "Ateliers",
+      "title": "Where to find us.",
+      "studios": {
+        "0": { "city": "Dubai", "role": "Design Studio", "address": "DIFC, Gate Precinct, Dubai, UAE" },
+        "1": { "city": "Milan", "role": "European Atelier", "address": "Brera District, Milan, Italy" },
+        "2": { "city": "Istanbul", "role": "Master Workshop", "address": "Karaköy, Istanbul, Türkiye" }
+      },
+      "emailLabel": "Email",
+      "phoneLabel": "Telephone",
+      "email": "atelier@worldofwooddecoration.com",
+      "phone": "+971 4 000 0000"
+    }
+  },
+  "marquee": {
+    "items": [
+      "Palaces",
+      "Villas",
+      "Grand Mosques",
+      "Hotels",
+      "Private Residences",
+      "Yachts"
+    ]
+  },
+  "notFound": {
+    "title": "This page has not been carved.",
+    "description": "The page you are looking for does not exist — but our commissions do.",
+    "cta": "Return home"
+  },
+  "privacy": {
+    "eyebrow": "Legal",
+    "title": "Privacy & Terms.",
+    "description": "We treat our clients' information with the same discretion we bring to their commissions.",
+    "updated": "Last updated — July 2026",
+    "sections": {
+      "privacy": {
+        "heading": "Privacy Policy",
+        "body": "World of Wood Decoration collects only the information you choose to share with us — your name, contact details and the particulars of your commission. We use it solely to respond to your enquiry, to plan and deliver your project, and to keep you informed about its progress. Your details are never sold, rented or shared with third parties, save for the trusted partners strictly required to complete your commission. Most of our work is confidential, and we protect it accordingly."
+      },
+      "terms": {
+        "heading": "Terms of Use",
+        "body": "All content on this site — imagery, text, designs and the marks of World of Wood Decoration — is the property of the atelier and is offered for your personal reference only. Nothing here constitutes a binding offer; every commission is governed by a separate written agreement. The site is provided in good faith and may be updated at any time as our work evolves."
+      },
+      "cookies": {
+        "heading": "Cookies",
+        "body": "This site uses only the essential cookies required for it to function and to understand, in aggregate, how it is used. We do not use advertising trackers. You may disable cookies in your browser at any time; the site will continue to work, though some preferences may not be remembered."
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading",
+    "skipToContent": "Skip to content",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "fullscreen": "Fullscreen"
+  }
+}
