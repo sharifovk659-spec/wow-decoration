@@ -16,6 +16,7 @@ import { easeLuxe } from "@/lib/motion";
 import { useGSAP } from "@/hooks/useGSAP";
 import { useLenis } from "@/components/layout/SmoothScroll";
 import { Logo } from "./Logo";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ButtonLink } from "@/components/ui/Button";
 
 type NavItem = { key: string; href: string };
@@ -148,7 +149,8 @@ export function Header() {
             })}
           </nav>
 
-          <div className="header-anim hidden shrink-0 xl:block">
+          <div className="header-anim hidden shrink-0 items-center gap-4 xl:flex">
+            <LanguageSwitcher />
             <ButtonLink
               href="/contact"
               variant="outline"
@@ -260,6 +262,7 @@ function MobileMenu({
             transition={{ delay: 0.55, duration: 0.6 }}
             className="container-luxe border-t border-line py-8"
           >
+            <LanguageSwitcher variant="compact" className="mb-8 justify-center" />
             <ButtonLink
               href="/contact"
               variant="primary"

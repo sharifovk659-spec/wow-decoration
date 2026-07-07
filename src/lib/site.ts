@@ -48,5 +48,6 @@ export const legalLinks = [
 export const ogLocales: Record<Locale, string> = {
   ru: "ru_RU",
   en: "en_US",
+  tg: "tg_TJ",
   ar: "ar_AE",
 };

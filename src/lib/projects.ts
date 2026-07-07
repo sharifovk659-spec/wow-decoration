@@ -1,5 +1,6 @@
 import type { Locale } from "@/i18n/routing";
 import type { CountryKey } from "@/lib/countries";
+import projectI18n from "../../messages/projects.i18n.json";
 
 export type ProjectCategory =
   | "gazebo"
@@ -97,8 +98,58 @@ function buildGallery(slug: string, count = 42): string[] {
   });
 }
 
-const loc = (ru: string): Record<Locale, string> => ({ ru, en: ru, ar: ru });
-const locList = (ru: string[]): Record<Locale, string[]> => ({ ru, en: ru, ar: ru });
+const locList = (
+  ru: string[],
+  en: string[],
+  tg: string[],
+  ar: string[],
+): Record<Locale, string[]> => ({ ru, en, tg, ar });
+
+type ProjectI18nEntry = {
+  title?: Partial<Record<Locale, string>>;
+  location?: Partial<Record<Locale, string>>;
+  country?: Partial<Record<Locale, string>>;
+  area?: Partial<Record<Locale, string>>;
+  duration?: Partial<Record<Locale, string>>;
+  summary?: Partial<Record<Locale, string>>;
+  overview?: Partial<Record<Locale, string>>;
+  result?: Partial<Record<Locale, string>>;
+  scope?: Partial<Record<Locale, string[]>>;
+  completedWorks?: Partial<Record<Locale, string[]>>;
+  productionSteps?: Partial<Record<Locale, string[]>>;
+  installationSteps?: Partial<Record<Locale, string[]>>;
+  materials?: Partial<Record<Locale, string[]>>;
+};
+
+function pickL10n(
+  slug: string,
+  field: keyof ProjectI18nEntry,
+  ru: string,
+): Record<Locale, string> {
+  const entry = (projectI18n as Record<string, ProjectI18nEntry>)[slug];
+  const map = entry?.[field] as Partial<Record<Locale, string>> | undefined;
+  return {
+    ru,
+    en: map?.en ?? ru,
+    tg: map?.tg ?? ru,
+    ar: map?.ar ?? ru,
+  };
+}
+
+function pickL10nList(
+  slug: string,
+  field: keyof ProjectI18nEntry,
+  ru: string[],
+): Record<Locale, string[]> {
+  const entry = (projectI18n as Record<string, ProjectI18nEntry>)[slug];
+  const map = entry?.[field] as Partial<Record<Locale, string[]>> | undefined;
+  return {
+    ru,
+    en: map?.en ?? ru,
+    tg: map?.tg ?? ru,
+    ar: map?.ar ?? ru,
+  };
+}
 
 type ProjectInput = {
   slug: string;
@@ -134,19 +185,23 @@ function project(data: ProjectInput): Project {
     video: data.video,
     processVideo: PROCESS_VIDEO,
     gallery: buildGallery(data.slug),
-    title: loc(data.title),
-    location: loc(data.location),
-    country: loc(data.country),
-    area: loc(data.area),
-    duration: loc(data.duration),
-    summary: loc(data.summary),
-    overview: loc(data.overview),
-    result: loc(data.result),
-    scope: locList(data.scope),
-    completedWorks: locList(data.completedWorks),
-    productionSteps: locList(data.productionSteps),
-    installationSteps: locList(data.installationSteps),
-    materials: locList(data.materials),
+    title: pickL10n(data.slug, "title", data.title),
+    location: pickL10n(data.slug, "location", data.location),
+    country: pickL10n(data.slug, "country", data.country),
+    area: pickL10n(data.slug, "area", data.area),
+    duration: pickL10n(data.slug, "duration", data.duration),
+    summary: pickL10n(data.slug, "summary", data.summary),
+    overview: pickL10n(data.slug, "overview", data.overview),
+    result: pickL10n(data.slug, "result", data.result),
+    scope: pickL10nList(data.slug, "scope", data.scope),
+    completedWorks: pickL10nList(data.slug, "completedWorks", data.completedWorks),
+    productionSteps: pickL10nList(data.slug, "productionSteps", data.productionSteps),
+    installationSteps: pickL10nList(
+      data.slug,
+      "installationSteps",
+      data.installationSteps,
+    ),
+    materials: pickL10nList(data.slug, "materials", data.materials),
   };
 }
 

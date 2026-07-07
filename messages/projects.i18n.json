@@ -1,0 +1,942 @@
+{
+  "kohi-navruz": {
+    "title": {
+      "en": "Kohi Navruz",
+      "tg": "Коҳи Наврӯз",
+      "ar": "قصر نوروز"
+    },
+    "location": {
+      "en": "Dushanbe, Tajikistan",
+      "tg": "Душанбе, Тоҷикистон",
+      "ar": "دوشانبي، طاجيكستان"
+    },
+    "country": {
+      "en": "Tajikistan",
+      "tg": "Тоҷикистон",
+      "ar": "طاجيكستان"
+    },
+    "area": {
+      "en": "12,000 m²",
+      "tg": "12 000 м²",
+      "ar": "12,000 م²"
+    },
+    "duration": {
+      "en": "18 months",
+      "tg": "18 моҳ",
+      "ar": "18 شهراً"
+    },
+    "summary": {
+      "en": "A monumental wooden complex featuring Eastern architectural forms and masterful artistic carving.",
+      "tg": "Комплекси монументалии чӯбӣ бо элементҳои меъмориии шарқӣ ва резьбаи ҳунармандонаи санъатӣ.",
+      "ar": "مجمّع خشبي ضخم بعناصر معمارية شرقية ونحت فني متقن."
+    },
+    "overview": {
+      "en": "The Kohi Navruz project is a large-scale state landmark where natural timber serves as the primary architectural medium. World of Wood Decoration delivered the full cycle — design, manufacturing, logistics, and installation.",
+      "tg": "Лоиҳаи Коҳи Наврӯз — объектҳои давлатии бузург аст, ки дар он чӯби табиӣ асосии асосии ифодаи меъморӣ мегардад. World of Wood Decoration тамоми давраро иҷро кард: тарҳрезӣ, истеҳсол, расонидан ва насб.",
+      "ar": "مشروع قصر نوروز معلم حكومي واسع النطاق، حيث يصبح الخشب الطبيعي الوسيط المعماري الرئيسي. نفّذت World of Wood Decoration الدورة الكاملة: التصميم والإنتاج والتوصيل والتركيب."
+    },
+    "result": {
+      "en": "The outcome is a monumental space where wood performs as a world-class architectural material. The building has become a signature of contemporary Eastern architecture.",
+      "tg": "Натиҷа — фазои монументалӣ аст, ки дар он чӯб ҳамчун маводи меъмориии сатҳи ҷаҳонӣ кор мекунад. Объект ба визиткаи меъмориии муосири шарқӣ табдил ёфт.",
+      "ar": "النتيجة فضاء ضخم يعمل فيه الخشب كمادة معمارية عالمية المستوى. أصبح المبنى بطاقة تعريف للعمارة الشرقية المعاصرة."
+    },
+    "scope": {
+      "en": ["Architectural timber elements", "Artistic carving", "Manufacturing and installation"],
+      "tg": ["Элементҳои меъмориии чӯбӣ", "Резьбаи ҳунармандона", "Истеҳсол ва насб"],
+      "ar": ["عناصر خشبية معمارية", "نحت فني", "الإنتاج والتركيب"]
+    },
+    "completedWorks": {
+      "en": [
+        "Decorative panels and columns",
+        "Carved Eastern ornamental elements",
+        "Solid-wood ceiling structures",
+        "Turnkey on-site installation"
+      ],
+      "tg": [
+        "Панелҳо ва сутунҳои ороишӣ",
+        "Элементҳои резьбашудаи орнаменти шарқӣ",
+        "Конструксияҳои сақф аз массив",
+        "Насби «под калид» дар объект"
+      ],
+      "ar": [
+        "ألواح وأعمدة زخرفية",
+        "عناصر منحوتة بزخارف شرقية",
+        "هياكل أسقف من الخشب الصلب",
+        "تركيب جاهز في الموقع"
+      ]
+    },
+    "productionSteps": {
+      "en": [
+        "Sawing and machining of solid timber",
+        "Hand-carved artistic detailing",
+        "Sanding and lacquering",
+        "Quality control before packing"
+      ],
+      "tg": [
+        "Буриш ва омодасозии массив дар станокҳо",
+        "Резьбаи дастии ҳунармандона",
+        "Сафкунӣ ва лаккунӣ",
+        "Назорати сифат пеш аз бастабандӣ"
+      ],
+      "ar": [
+        "نشر وتجهيز الخشب الصلب على الماكينات",
+        "نحت يدوي فني",
+        "صنفرة وطلاء لاكي",
+        "مراقبة الجودة قبل التعبئة"
+      ]
+    },
+    "installationSteps": {
+      "en": [
+        "Delivery in specialized packaging",
+        "On-site assembly of structures",
+        "Final fitting and installation",
+        "Handover to the client"
+      ],
+      "tg": [
+        "Расонидан дар бастабандии махсус",
+        "Ҷамъоварии конструксияҳо дар объект",
+        "Танзими ниҳоӣ ва насб",
+        "Супориши объект ба муштарӣ"
+      ],
+      "ar": [
+        "التوصيل في تغليف متخصص",
+        "تجميع الهياكل في الموقع",
+        "الضبط النهائي والتركيب",
+        "التسليم للعميل"
+      ]
+    },
+    "materials": {
+      "en": ["Walnut", "Oak", "Cedar"],
+      "tg": ["Грецка", "Балут", "Арча"],
+      "ar": ["الجوز", "البلوط", "الأرز"]
+    }
+  },
+  "parliament-tajikistan": {
+    "title": {
+      "en": "Parliament of the Republic of Tajikistan",
+      "tg": "Парламенти Ҷумҳурии Тоҷикистон",
+      "ar": "برلمان جمهورية طاجيكستان"
+    },
+    "location": {
+      "en": "Dushanbe, Tajikistan",
+      "tg": "Душанбе, Тоҷикистон",
+      "ar": "دوشانبي، طاجيكستان"
+    },
+    "country": {
+      "en": "Tajikistan",
+      "tg": "Тоҷикистон",
+      "ar": "طاجيكستان"
+    },
+    "area": {
+      "en": "8,500 m²",
+      "tg": "8 500 м²",
+      "ar": "8,500 م²"
+    },
+    "duration": {
+      "en": "14 months",
+      "tg": "14 моҳ",
+      "ar": "14 شهراً"
+    },
+    "summary": {
+      "en": "Premium interior and architectural timber solutions for a state government building.",
+      "tg": "Ҳалли интерьерӣ ва меъмориии чӯбии премиум барои бинои давлатӣ.",
+      "ar": "حلول خشبية داخلية ومعمارية فاخرة لمبنى حكومي."
+    },
+    "overview": {
+      "en": "For the Parliament of the Republic of Tajikistan, we manufactured a comprehensive range of interior and architectural timber elements — from panels and ceilings to finely detailed finishes in public areas.",
+      "tg": "Барои Парламенти Ҷумҳурии Тоҷикистон комплекси элементҳои интерьерӣ ва меъмориии чӯбӣ сохта шуд — аз панелҳо ва сақфҳо то ороиши дақиқи фазоҳои ҷамъиятӣ.",
+      "ar": "لبرلمان جمهورية طاجيكستان صُنع مجموعة شاملة من العناصر الخشبية الداخلية والمعمارية — من الألواح والأسقف إلى التشطيبات التفصيلية في المناطق العامة."
+    },
+    "result": {
+      "en": "The result is a dignified interior that reflects the stature of a state institution and the highest standard of joinery craftsmanship.",
+      "tg": "Натиҷа — интерьери намояндагӣ аст, ки мақоми муассисаи давлатӣ ва сифати баландтарини кори наҷҷориро инъикос мекунад.",
+      "ar": "النتيجة تشطيب داخلي رسمي يعكس مكانة المؤسسة الحكومية وأعلى مستوى من حرفة النجارة."
+    },
+    "scope": {
+      "en": ["Panels and ceilings", "Doors and portals", "Decorative finishes"],
+      "tg": ["Панелҳо ва сақфҳо", "Дарҳо ва порталҳо", "Ороиши декоративӣ"],
+      "ar": ["ألواح وأسقف", "أبواب وبوابات", "تشطيبات زخرفية"]
+    },
+    "completedWorks": {
+      "en": [
+        "Solid-wood wall panels",
+        "Coffered ceilings",
+        "Monumental doors",
+        "Decorative columns"
+      ],
+      "tg": [
+        "Панелҳои деворӣ аз массив",
+        "Кассонҳои сақфӣ",
+        "Дарҳои монументалӣ",
+        "Сутунҳои ороишӣ"
+      ],
+      "ar": [
+        "ألواح جدارية من الخشب الصلب",
+        "أسقف كاسيت",
+        "أبواب ضخمة",
+        "أعمدة زخرفية"
+      ]
+    },
+    "productionSteps": {
+      "en": ["Panel production", "Carving and finishing", "Lacquering", "Packing"],
+      "tg": ["Истеҳсоли панелҳо", "Резьба ва ороиш", "Лаккунӣ", "Бастабандӣ"],
+      "ar": ["إنتاج الألواح", "النحت والتشطيب", "الطلاء اللاكي", "التعبئة"]
+    },
+    "installationSteps": {
+      "en": ["Site logistics", "Panel installation", "Door fitting", "Final handover"],
+      "tg": ["Логистика ба объект", "Насби панелҳо", "Насбкунии дарҳо", "Супориши ниҳоӣ"],
+      "ar": ["اللوجستيات إلى الموقع", "تركيب الألواح", "تركيب الأبواب", "التسليم النهائي"]
+    },
+    "materials": {
+      "en": ["Walnut", "Oak", "Ash"],
+      "tg": ["Грецка", "Балут", "Олча"],
+      "ar": ["الجوز", "البلوط", "الرماد"]
+    }
+  },
+  "palace-nation": {
+    "title": {
+      "en": "Palace of the Nation",
+      "tg": "Қасри Миллат",
+      "ar": "قصر الأمة"
+    },
+    "location": {
+      "en": "Astana, Kazakhstan",
+      "tg": "Астана, Қазоқистон",
+      "ar": "أستانا، كازاخستان"
+    },
+    "country": {
+      "en": "Kazakhstan",
+      "tg": "Қазоқистон",
+      "ar": "كازاخستان"
+    },
+    "area": {
+      "en": "6,200 m²",
+      "tg": "6 200 м²",
+      "ar": "6,200 م²"
+    },
+    "duration": {
+      "en": "16 months",
+      "tg": "16 моҳ",
+      "ar": "16 شهراً"
+    },
+    "summary": {
+      "en": "Luxurious wooden interiors and architectural elements for a state representative palace.",
+      "tg": "Интерьерҳо ва элементҳои меъмориии чӯбии фахур барои қасри намояндагии давлатӣ.",
+      "ar": "تشطيبات خشبية فاخرة وعناصر معمارية لقصر تمثيلي حكومي."
+    },
+    "overview": {
+      "en": "The Palace of the Nation project includes the fabrication of monumental wooden interiors, panels, columns, and decorative elements with hand-finished artistic detailing.",
+      "tg": "Лоиҳаи Қасри Миллат истеҳсоли интерьерҳои монументалии чӯбӣ, панелҳо, сутунҳо ва элементҳои ороиширо бо анҷоми дастии ҳунармандона дар бар мегирад.",
+      "ar": "يشمل مشروع قصر الأمة تصنيع التشطيبات الخشبية الضخمة والألواح والأعمدة والعناصر الزخرفية بتفاصيل فنية يدوية."
+    },
+    "result": {
+      "en": "The palace received a cohesive premium-class wooden interior — from entrance portals to the finest hall finishes.",
+      "tg": "Қаср интерьери якпарчагии чӯбии синфи премиум гирифт — аз порталҳои вуруд то ҷузъиёти ороиши толорҳо.",
+      "ar": "حصل القصر على تشطيب خشبي متكامل من الفئة الفاخرة — من بوابات المدخل إلى تفاصيل تشطيب القاعات."
+    },
+    "scope": {
+      "en": ["Interior panels", "Columns and portals", "Hand carving"],
+      "tg": ["Панелҳои интерьерӣ", "Сутунҳо ва порталҳо", "Резьбаи дастӣ"],
+      "ar": ["ألواح داخلية", "أعمدة وبوابات", "نحت يدوي"]
+    },
+    "completedWorks": {
+      "en": ["Hall panels", "Columns", "Portals", "Carved cornices"],
+      "tg": ["Панелҳои толорҳо", "Сутунҳо", "Порталҳо", "Карнизҳои резьбашуда"],
+      "ar": ["ألواح القاعات", "أعمدة", "بوابات", "كورنيشات منحوتة"]
+    },
+    "productionSteps": {
+      "en": ["CNC machining", "Hand carving", "Module assembly", "Lacquering"],
+      "tg": ["Коркарди станокӣ", "Резьбаи дастӣ", "Ҷамъоварии модулҳо", "Лаккунӣ"],
+      "ar": ["التشغيل الآلي", "النحت اليدوي", "تجميع الوحدات", "الطلاء اللاكي"]
+    },
+    "installationSteps": {
+      "en": ["Delivery", "Panel installation", "Column erection", "Final finishing"],
+      "tg": ["Расонидан", "Насби панелҳо", "Насби сутунҳо", "Ороиши ниҳоӣ"],
+      "ar": ["التوصيل", "تركيب الألواح", "تركيب الأعمدة", "التشطيب النهائي"]
+    },
+    "materials": {
+      "en": ["Walnut", "Oak", "Cedar"],
+      "tg": ["Грецка", "Балут", "Арча"],
+      "ar": ["الجوز", "البلوط", "الأرز"]
+    }
+  },
+  "expo-dubai": {
+    "title": {
+      "en": "Expo Dubai",
+      "tg": "Expo Dubai",
+      "ar": "إكسبو دبي"
+    },
+    "location": {
+      "en": "Dubai, UAE",
+      "tg": "Дубай, ИМА",
+      "ar": "دبي، الإمارات"
+    },
+    "country": {
+      "en": "UAE",
+      "tg": "ИМА",
+      "ar": "الإمارات"
+    },
+    "area": {
+      "en": "4,800 m²",
+      "tg": "4 800 м²",
+      "ar": "4,800 م²"
+    },
+    "duration": {
+      "en": "10 months",
+      "tg": "10 моҳ",
+      "ar": "10 أشهر"
+    },
+    "summary": {
+      "en": "Exclusive timber structures and décor for an international exhibition venue.",
+      "tg": "Конструксияҳо ва ороиши эксклюзивии чӯбӣ барои майдони намоишгоҳи байналмилалӣ.",
+      "ar": "هياكل وديكور خشبي حصري لموقع معرض دولي."
+    },
+    "overview": {
+      "en": "For Expo Dubai, we designed and produced unique timber structures and decorative elements that showcased the company's craftsmanship on the international stage.",
+      "tg": "Барои Expo Dubai конструксияҳо ва элементҳои ороишии беназири чӯбӣ тарҳрезӣ ва истеҳсол шуданд, ки маҳорати ширкатро дар аренаи байналмилалӣ намоиш доданд.",
+      "ar": "لإكسبو دبي صُمّمت وأُنتجت هياكل وعناصر زخرفية خشبية فريدة تُبرز حرفة الشركة على الساحة الدولية."
+    },
+    "result": {
+      "en": "An exhibition space with timber architecture that drew international attention and underscored the contractor's standing.",
+      "tg": "Фазои намоишгоҳ бо меъмориии чӯбӣ, ки таваҷҷуҳи байналмилалиро ҷалб кард ва мақоми пешравро таъкид намуд.",
+      "ar": "مساحة معرض بعمارة خشبية جذبت اهتماماً دولياً وأكّدت مكانة المقاول."
+    },
+    "scope": {
+      "en": ["Exhibition structures", "Decorative panels", "On-site installation"],
+      "tg": ["Конструксияҳои намоишгоҳӣ", "Панелҳои ороишӣ", "Насб дар объект"],
+      "ar": ["هياكل معرضية", "ألواح زخرفية", "التركيب في الموقع"]
+    },
+    "completedWorks": {
+      "en": [
+        "Modular structures",
+        "Decorative panels",
+        "Information stands",
+        "Installation"
+      ],
+      "tg": [
+        "Конструксияҳои модулӣ",
+        "Панелҳои ороишӣ",
+        "Стендҳои иттилоотӣ",
+        "Насб"
+      ],
+      "ar": [
+        "هياكل معيارية",
+        "ألواح زخرفية",
+        "منصات معلومات",
+        "التركيب"
+      ]
+    },
+    "productionSteps": {
+      "en": ["Module design", "Manufacturing", "Finishing", "Packing"],
+      "tg": ["Тарҳрезии модулҳо", "Истеҳсол", "Ороиш", "Бастабандӣ"],
+      "ar": ["تصميم الوحدات", "الإنتاج", "التشطيب", "التعبئة"]
+    },
+    "installationSteps": {
+      "en": [
+        "International delivery",
+        "On-site assembly",
+        "Final installation"
+      ],
+      "tg": [
+        "Расонидани байналмилалӣ",
+        "Ҷамъоварӣ дар майдон",
+        "Насби ниҳоӣ"
+      ],
+      "ar": [
+        "التوصيل الدولي",
+        "التجميع في الموقع",
+        "التركيب النهائي"
+      ]
+    },
+    "materials": {
+      "en": ["Ash", "Pine", "Abachi"],
+      "tg": ["Олча", "Санавбар", "Абачи"],
+      "ar": ["الرماد", "الصنوبر", "أباشي"]
+    }
+  },
+  "expo-qatar": {
+    "title": {
+      "en": "Expo Qatar",
+      "tg": "Expo Qatar",
+      "ar": "إكسبو قطر"
+    },
+    "location": {
+      "en": "Doha, Qatar",
+      "tg": "Доҳа, Қатар",
+      "ar": "الدوحة، قطر"
+    },
+    "country": {
+      "en": "Qatar",
+      "tg": "Қатар",
+      "ar": "قطر"
+    },
+    "area": {
+      "en": "5,100 m²",
+      "tg": "5 100 м²",
+      "ar": "5,100 م²"
+    },
+    "duration": {
+      "en": "11 months",
+      "tg": "11 моҳ",
+      "ar": "11 شهراً"
+    },
+    "summary": {
+      "en": "Architectural timber solutions for an international exhibition project.",
+      "tg": "Ҳалли меъмориии чӯбӣ барои лоиҳаи намоишгоҳи байналмилалӣ.",
+      "ar": "حلول خشبية معمارية لمشروع معرض دولي."
+    },
+    "overview": {
+      "en": "The Expo Qatar project comprises a suite of timber architectural elements for a prestigious international space with an emphasis on Eastern aesthetics.",
+      "tg": "Лоиҳаи Expo Qatar — комплекси элементҳои меъмориии чӯбӣ барои фазои байналмилалии намояндагӣ бо таъкид ба эстетикаи шарқӣ.",
+      "ar": "مشروع إكسبو قطر يضم مجموعة من العناصر المعمارية الخشبية لمساحة دولية رسمية مع التركيز على الجماليات الشرقية."
+    },
+    "result": {
+      "en": "The completed venue is a harmonious blend of contemporary architecture and traditional timber craftsmanship.",
+      "tg": "Объекти ниҳоӣ — омехтаи ҳармониявии меъмориии муосир ва маҳорати анъанавии кор бо чӯб.",
+      "ar": "المشروع المنجز مزيج متناغم من العمارة المعاصرة والحرفة الخشبية التقليدية."
+    },
+    "scope": {
+      "en": ["Architectural décor", "Panels and structures", "Full installation cycle"],
+      "tg": ["Ороиши меъморӣ", "Панелҳо ва конструксияҳо", "Давраи пурраи насб"],
+      "ar": ["ديكور معماري", "ألواح وهياكل", "دورة تركيب كاملة"]
+    },
+    "completedWorks": {
+      "en": [
+        "Architectural panels",
+        "Decorative elements",
+        "Pavilion structures"
+      ],
+      "tg": [
+        "Панелҳои меъморӣ",
+        "Элементҳои ороишӣ",
+        "Конструксияҳои павильон"
+      ],
+      "ar": [
+        "ألواح معمارية",
+        "عناصر زخرفية",
+        "هياكل البافيليون"
+      ]
+    },
+    "productionSteps": {
+      "en": ["Sawing", "Carving", "Assembly", "Lacquering"],
+      "tg": ["Буриш", "Резьба", "Ҷамъоварӣ", "Лаккунӣ"],
+      "ar": ["النشر", "النحت", "التجميع", "الطلاء اللاكي"]
+    },
+    "installationSteps": {
+      "en": [
+        "Delivery to Qatar",
+        "Installation by specialist team",
+        "Project handover"
+      ],
+      "tg": [
+        "Расонидан ба Қатар",
+        "Насб аз ҷониби бригада",
+        "Супориши объект"
+      ],
+      "ar": [
+        "التوصيل إلى قطر",
+        "التركيب بواسطة فريق متخصص",
+        "تسليم المشروع"
+      ]
+    },
+    "materials": {
+      "en": ["Oak", "Cedar", "Walnut"],
+      "tg": ["Балут", "Арча", "Грецка"],
+      "ar": ["البلوط", "الأرز", "الجوز"]
+    }
+  },
+  "wyndham-grand-hotel": {
+    "title": {
+      "en": "Wyndham Grand Hotel",
+      "tg": "Wyndham Grand Hotel",
+      "ar": "فندق ويندهام غراند"
+    },
+    "location": {
+      "en": "International project",
+      "tg": "Лоиҳаи байналмилалӣ",
+      "ar": "مشروع دولي"
+    },
+    "country": {
+      "en": "UAE",
+      "tg": "ИМА",
+      "ar": "الإمارات"
+    },
+    "area": {
+      "en": "3,400 m²",
+      "tg": "3 400 м²",
+      "ar": "3,400 م²"
+    },
+    "duration": {
+      "en": "9 months",
+      "tg": "9 моҳ",
+      "ar": "9 أشهر"
+    },
+    "summary": {
+      "en": "Premium wooden interiors for a luxury-class hotel.",
+      "tg": "Интерьерҳои чӯбии премиум барои меҳмонхонаи синфи люкс.",
+      "ar": "تشطيبات خشبية فاخرة لفندق من فئة الرفاهية."
+    },
+    "overview": {
+      "en": "For Wyndham Grand Hotel, we delivered a full suite of timber interior solutions — panels, furniture, decorative elements, and finishes for public areas.",
+      "tg": "Барои Wyndham Grand Hotel комплекси ҳалли интерьерии чӯбӣ иҷро шуд — панелҳо, мебел, элементҳои ороишӣ ва ороиши фазоҳои ҷамъиятӣ.",
+      "ar": "لفندق ويندهام غراند نفّذنا مجموعة شاملة من الحلول الخشبية الداخلية — ألواح وأثاث وعناصر زخرفية وتشطيبات للمناطق العامة."
+    },
+    "result": {
+      "en": "The hotel received a cohesive wooden interior that establishes a sense of luxury from the guest's first step into the lobby.",
+      "tg": "Меҳмонхона интерьери якпарчагии чӯбӣ гирифт, ки аз аввалин қадами меҳмон ба лобби ҳисси люксро эҷод мекунад.",
+      "ar": "حصل الفندق على تشطيب خشبي متكامل يخلق أجواء الرفاهية من أول خطوة للضيف في الردهة."
+    },
+    "scope": {
+      "en": ["Interior panels", "Solid-wood furniture", "Public areas"],
+      "tg": ["Панелҳои интерьерӣ", "Мебел аз массив", "Фазоҳои ҷамъиятӣ"],
+      "ar": ["ألواح داخلية", "أثاث من الخشب الصلب", "المناطق العامة"]
+    },
+    "completedWorks": {
+      "en": [
+        "Lobby panels",
+        "Reception desk",
+        "Guest room furniture",
+        "Restaurant décor"
+      ],
+      "tg": [
+        "Панелҳои лобби",
+        "Ресепшн",
+        "Мебели ҳуҷраҳо",
+        "Ороиши ресторан"
+      ],
+      "ar": [
+        "ألواح الردهة",
+        "مكتب الاستقبال",
+        "أثاث الغرف",
+        "ديكور المطعم"
+      ]
+    },
+    "productionSteps": {
+      "en": ["Panel production", "Furniture making", "Finishing", "Packing"],
+      "tg": ["Истеҳсоли панелҳо", "Мебелсозӣ", "Ороиш", "Бастабандӣ"],
+      "ar": ["إنتاج الألواح", "صناعة الأثاث", "التشطيب", "التعبئة"]
+    },
+    "installationSteps": {
+      "en": ["Delivery", "Zone-by-zone installation", "Final acceptance"],
+      "tg": ["Расонидан", "Насб аз рӯи зонаҳо", "Қабули ниҳоӣ"],
+      "ar": ["التوصيل", "التركيب حسب المناطق", "الاستلام النهائي"]
+    },
+    "materials": {
+      "en": ["Oak", "Walnut", "Ash"],
+      "tg": ["Балут", "Грецка", "Олча"],
+      "ar": ["البلوط", "الجوز", "الرماد"]
+    }
+  },
+  "national-botanical-garden": {
+    "title": {
+      "en": "National Botanical Garden",
+      "tg": "Боғи ботаникии миллӣ",
+      "ar": "الحديقة النباتية الوطنية"
+    },
+    "location": {
+      "en": "Regional project",
+      "tg": "Лоиҳаи минтақавӣ",
+      "ar": "مشروع إقليمي"
+    },
+    "country": {
+      "en": "Tajikistan",
+      "tg": "Тоҷикистон",
+      "ar": "طاجيكستان"
+    },
+    "area": {
+      "en": "2,200 m²",
+      "tg": "2 200 м²",
+      "ar": "2,200 م²"
+    },
+    "duration": {
+      "en": "7 months",
+      "tg": "7 моҳ",
+      "ar": "7 أشهر"
+    },
+    "summary": {
+      "en": "Gazebos, pavilions, and architectural timber elements for a public landscape.",
+      "tg": "Беседкаҳо, павильонҳо ва элементҳои меъмориии чӯбӣ барои фазои ҷамъиятӣ.",
+      "ar": "مظلات وأكشاك وعناصر خشبية معمارية لمساحة عامة."
+    },
+    "overview": {
+      "en": "For the National Botanical Garden, we designed and installed timber gazebos, pavilions, and decorative structures.",
+      "tg": "Барои Боғи ботаникии миллӣ беседкаҳо, павильонҳо ва конструксияҳои ороишии чӯбӣ тарҳрезӣ ва насб шуданд.",
+      "ar": "للحديقة النباتية الوطنية صُمّمت ورُكّبت مظلات وأكشاك وهياكل زخرفية خشبية."
+    },
+    "result": {
+      "en": "The park gained architectural timber features that harmonize with the natural landscape and are built to serve for decades.",
+      "tg": "Боғ объектҳои меъмориии чӯбӣ гирифт, ки бо манзараи табиӣ ҳармония доранд ва барои даҳсолаҳо хизмат мекунанд.",
+      "ar": "حصلت الحديقة على عناصر خشبية معمارية تتناغم مع المشهد الطبيعي ومصممة لتدوم عقوداً."
+    },
+    "scope": {
+      "en": ["Gazebos and pavilions", "Decorative structures", "Installation"],
+      "tg": ["Беседкаҳо ва павильонҳо", "Конструксияҳои ороишӣ", "Насб"],
+      "ar": ["مظلات وأكشاك", "هياكل زخرفية", "التركيب"]
+    },
+    "completedWorks": {
+      "en": [
+        "Gazebos",
+        "Pavilions",
+        "Decorative pergolas",
+        "Benches and railings"
+      ],
+      "tg": [
+        "Беседкаҳо",
+        "Павильонҳо",
+        "Перголҳои ороишӣ",
+        "Нишастгоҳҳо ва деворчаҳо"
+      ],
+      "ar": [
+        "مظلات",
+        "أكشاك",
+        "عريشات زخرفية",
+        "مقاعد ودرابزين"
+      ]
+    },
+    "productionSteps": {
+      "en": [
+        "Sawing",
+        "Frame assembly",
+        "Carving",
+        "Protective treatment"
+      ],
+      "tg": [
+        "Буриш",
+        "Ҷамъоварии каркасҳо",
+        "Резьба",
+        "Пропиткунии ҳифозатӣ"
+      ],
+      "ar": [
+        "النشر",
+        "تجميع الهياكل",
+        "النحت",
+        "المعالجة الوقائية"
+      ]
+    },
+    "installationSteps": {
+      "en": [
+        "Delivery",
+        "On-site installation",
+        "Final treatment"
+      ],
+      "tg": [
+        "Расонидан",
+        "Насб дар майдон",
+        "Коркарди ниҳоӣ"
+      ],
+      "ar": [
+        "التوصيل",
+        "التركيب في الموقع",
+        "المعالجة النهائية"
+      ]
+    },
+    "materials": {
+      "en": ["Pine", "Cedar", "Oak"],
+      "tg": ["Санавбар", "Арча", "Балут"],
+      "ar": ["الصنوبر", "الأرز", "البلوط"]
+    }
+  },
+  "royal-gazebo-14x8": {
+    "title": {
+      "en": "Royal Gazebo 14×8",
+      "tg": "Беседкаи шоҳона 14×8",
+      "ar": "المظلة الملكية 14×8"
+    },
+    "location": {
+      "en": "Private commission",
+      "tg": "Фармоиши хусусӣ",
+      "ar": "طلب خاص"
+    },
+    "country": {
+      "en": "UAE",
+      "tg": "ИМА",
+      "ar": "الإمارات"
+    },
+    "area": {
+      "en": "112 m²",
+      "tg": "112 м²",
+      "ar": "112 م²"
+    },
+    "duration": {
+      "en": "5 months",
+      "tg": "5 моҳ",
+      "ar": "5 أشهر"
+    },
+    "summary": {
+      "en": "A monumental 14×8 metre gazebo in noble hardwoods with artistic hand carving.",
+      "tg": "Беседкаи монументалии 14×8 метр аз намудҳои шарифи чӯб бо резьбаи ҳунармандонаи дастӣ.",
+      "ar": "مظلة ضخمة بأبعاد 14×8 أمتار من أخشاب نبيلة مع نحت يدوي فني."
+    },
+    "overview": {
+      "en": "The Royal Gazebo 14×8 is a bespoke project with monumental proportions, hand carving, and a structure built to endure for generations.",
+      "tg": "Беседкаи шоҳона 14×8 — лоиҳаи авторӣ бо андозаҳои монументалӣ, резьбаи дастӣ ва конструксияе, ки барои асрҳо сохта шудааст.",
+      "ar": "المظلة الملكية 14×8 مشروع مخصص بأبعاد ضخمة ونحت يدوي وهيكل مصمم ليدوم أجيالاً."
+    },
+    "result": {
+      "en": "The gazebo became the centrepiece of a private residence — monumental, functional, and aesthetically flawless.",
+      "tg": "Беседка ба маркази резиденсияи хусусӣ табдил ёфт — монументалӣ, функсионалӣ ва аз лиҳози эстетикӣ беайб.",
+      "ar": "أصبحت المظلة العنصر المحوري للقصر الخاص — ضخمة وعملية وخالية من العيوب الجمالية."
+    },
+    "scope": {
+      "en": ["Design", "Manufacturing", "Delivery and installation"],
+      "tg": ["Тарҳрезӣ", "Истеҳсол", "Расонидан ва насб"],
+      "ar": ["التصميم", "الإنتاج", "التوصيل والتركيب"]
+    },
+    "completedWorks": {
+      "en": [
+        "Gazebo frame",
+        "Roofing",
+        "Carved columns",
+        "Decorative elements"
+      ],
+      "tg": [
+        "Каркаси беседка",
+        "Сақф",
+        "Сутунҳои резьбашуда",
+        "Элементҳои ороишӣ"
+      ],
+      "ar": [
+        "هيكل المظلة",
+        "السقف",
+        "أعمدة منحوتة",
+        "عناصر زخرفية"
+      ]
+    },
+    "productionSteps": {
+      "en": [
+        "CNC machining",
+        "Column carving",
+        "Assembly",
+        "Lacquering"
+      ],
+      "tg": [
+        "Коркарди станокӣ",
+        "Резьбаи сутунҳо",
+        "Ҷамъоварӣ",
+        "Лаккунӣ"
+      ],
+      "ar": [
+        "التشغيل الآلي",
+        "نحت الأعمدة",
+        "التجميع",
+        "الطلاء اللاكي"
+      ]
+    },
+    "installationSteps": {
+      "en": [
+        "Delivery",
+        "Frame installation",
+        "Roof fitting",
+        "Finishing"
+      ],
+      "tg": [
+        "Расонидан",
+        "Насби каркас",
+        "Насби сақф",
+        "Ороиши ниҳоӣ"
+      ],
+      "ar": [
+        "التوصيل",
+        "تركيب الهيكل",
+        "تركيب السقف",
+        "التشطيب النهائي"
+      ]
+    },
+    "materials": {
+      "en": ["Walnut", "Oak", "Cedar"],
+      "tg": ["Грецка", "Балут", "Арча"],
+      "ar": ["الجوز", "البلوط", "الأرز"]
+    }
+  },
+  "walnut-daybed": {
+    "title": {
+      "en": "Walnut Daybed",
+      "tg": "Топчан аз грецка",
+      "ar": "سرير خشبي من الجوز"
+    },
+    "location": {
+      "en": "Private commission",
+      "tg": "Фармоиши хусусӣ",
+      "ar": "طلب خاص"
+    },
+    "country": {
+      "en": "Tajikistan",
+      "tg": "Тоҷикистон",
+      "ar": "طاجيكستان"
+    },
+    "area": {
+      "en": "12 m²",
+      "tg": "12 м²",
+      "ar": "12 م²"
+    },
+    "duration": {
+      "en": "2 months",
+      "tg": "2 моҳ",
+      "ar": "شهران"
+    },
+    "summary": {
+      "en": "A bespoke walnut daybed in solid timber with hand finishing and premium hardware.",
+      "tg": "Топчани авторӣ аз массиви грецка бо ороиши дастӣ ва фурнитураи премиум.",
+      "ar": "سرير خشبي مخصص من خشب الجوز الصلب بتشطيب يدوي وتجهيزات فاخرة."
+    },
+    "overview": {
+      "en": "The Walnut Daybed is a premium one-off piece crafted from select solid timber with hand sanding and finishing.",
+      "tg": "Топчан аз грецка — маҳсулоти ягонаи синфи премиум аз массиви интихобшуда бо сафкунӣ ва ороиши дастӣ.",
+      "ar": "السرير الخشبي من الجوز قطعة فريدة فاخرة من خشب صلب مختار مع صنفرة وتشطيب يدوي."
+    },
+    "result": {
+      "en": "The finished piece is a benchmark of craftsmanship: precise geometry, rich walnut grain, and impeccable finishing.",
+      "tg": "Маҳсулоти тайёр — эталони маҳорат аст: геометрияи комил, танаки бойи грецка ва ороиши беайб.",
+      "ar": "القطعة المنجزة معيار للحرفة: هندسة دقيقة وعرق جوز غني وتشطيب لا تشوبه شائبة."
+    },
+    "scope": {
+      "en": ["3D visualization", "Manufacturing", "Hand finishing"],
+      "tg": ["Визуализатсияи 3D", "Истеҳсол", "Ороиши дастӣ"],
+      "ar": ["التصوير ثلاثي الأبعاد", "الإنتاج", "التشطيب اليدوي"]
+    },
+    "completedWorks": {
+      "en": [
+        "Daybed frame",
+        "Carved elements",
+        "Hand finishing",
+        "Delivery and installation"
+      ],
+      "tg": [
+        "Каркаси топчан",
+        "Элементҳои резьбашуда",
+        "Ороиши дастӣ",
+        "Расонидан ва насб"
+      ],
+      "ar": [
+        "هيكل السرير",
+        "عناصر منحوتة",
+        "تشطيب يدوي",
+        "التوصيل والتركيب"
+      ]
+    },
+    "productionSteps": {
+      "en": [
+        "Solid timber sawing",
+        "Assembly",
+        "Hand carving",
+        "Lacquering"
+      ],
+      "tg": [
+        "Буриши массив",
+        "Ҷамъоварӣ",
+        "Резьбаи дастӣ",
+        "Лаккунӣ"
+      ],
+      "ar": [
+        "نشر الخشب الصلب",
+        "التجميع",
+        "النحت اليدوي",
+        "الطلاء اللاكي"
+      ]
+    },
+    "installationSteps": {
+      "en": ["Delivery", "On-site installation"],
+      "tg": ["Расонидан", "Насб дар объект"],
+      "ar": ["التوصيل", "التركيب في الموقع"]
+    },
+    "materials": {
+      "en": ["Walnut"],
+      "tg": ["Грецка"],
+      "ar": ["الجوز"]
+    }
+  },
+  "private-villa-interior": {
+    "title": {
+      "en": "Private Villa Interior",
+      "tg": "Интерьери виллаи хусусӣ",
+      "ar": "تشطيب فيلا خاصة"
+    },
+    "location": {
+      "en": "Private residence",
+      "tg": "Резиденсияи хусусӣ",
+      "ar": "إقامة خاصة"
+    },
+    "country": {
+      "en": "UAE",
+      "tg": "ИМА",
+      "ar": "الإمارات"
+    },
+    "area": {
+      "en": "1,800 m²",
+      "tg": "1 800 м²",
+      "ar": "1,800 م²"
+    },
+    "duration": {
+      "en": "12 months",
+      "tg": "12 моҳ",
+      "ar": "12 شهراً"
+    },
+    "summary": {
+      "en": "Comprehensive timber interior fit-out for a private villa — panels, ceilings, and furniture.",
+      "tg": "Ороиши комплексии интерьери чӯбӣ барои виллаи хусусӣ — панелҳо, сақфҳо, мебел.",
+      "ar": "تشطيب خشبي شامل لفيلا خاصة — ألواح وأسقف وأثاث."
+    },
+    "overview": {
+      "en": "The private villa interior is a unified timber architecture project: panels, ceilings, doors, and furniture within a single premium concept.",
+      "tg": "Интерьери виллаи хусусӣ — лоиҳаи якпарчагии меъмориии чӯбӣ: панелҳо, сақфҳо, дарҳо ва мебел дар консепсияи ягонаи премиум.",
+      "ar": "تشطيب الفيلا الخاصة مشروع معماري خشبي متكامل: ألواح وأسقف وأبواب وأثاث ضمن مفهوم فاخر موحّد."
+    },
+    "result": {
+      "en": "The villa received a cohesive wooden interior — from the entrance portal to furniture in bedrooms and living rooms.",
+      "tg": "Вилла интерьери якпарчагии чӯбӣ гирифт — аз портали вуруд то мебел дар ҳуҷраҳои хоб ва меҳмонхонаҳо.",
+      "ar": "حصلت الفيلا على تشطيب خشبي متكامل — من بوابة المدخل إلى الأثاث في غرف النوم والصالات."
+    },
+    "scope": {
+      "en": ["Interior panels", "Ceilings", "Bespoke furniture"],
+      "tg": ["Панелҳои интерьерӣ", "Сақфҳо", "Мебели фармоишӣ"],
+      "ar": ["ألواح داخلية", "أسقف", "أثاث مخصص"]
+    },
+    "completedWorks": {
+      "en": [
+        "Wall panels",
+        "Ceilings",
+        "Doors",
+        "Bespoke furniture"
+      ],
+      "tg": [
+        "Панелҳои деворӣ",
+        "Сақфҳо",
+        "Дарҳо",
+        "Мебели авторӣ"
+      ],
+      "ar": [
+        "ألواح جدارية",
+        "أسقف",
+        "أبواب",
+        "أثاث مخصص"
+      ]
+    },
+    "productionSteps": {
+      "en": ["Panel production", "Furniture making", "Finishing", "Packing"],
+      "tg": ["Истеҳсоли панелҳо", "Мебелсозӣ", "Ороиш", "Бастабандӣ"],
+      "ar": ["إنتاج الألواح", "صناعة الأثاث", "التشطيب", "التعبئة"]
+    },
+    "installationSteps": {
+      "en": [
+        "Delivery",
+        "Phased installation",
+        "Turnkey handover"
+      ],
+      "tg": [
+        "Расонидан",
+        "Насби марҳилавӣ",
+        "Супориши «под калид»"
+      ],
+      "ar": [
+        "التوصيل",
+        "التركيب على مراحل",
+        "التسليم جاهزاً"
+      ]
+    },
+    "materials": {
+      "en": ["Walnut", "Ash", "Oak"],
+      "tg": ["Грецка", "Олча", "Балут"],
+      "ar": ["الجوز", "الرماد", "البلوط"]
+    }
+  }
+}
