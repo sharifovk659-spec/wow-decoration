@@ -1,499 +1,416 @@
 import type { Locale } from "@/i18n/routing";
+import type { CountryKey } from "@/lib/countries";
 
 export type ProjectCategory =
-  | "palace"
-  | "sacred"
-  | "hospitality"
-  | "residence";
+  | "gazebo"
+  | "interior"
+  | "mosque"
+  | "hotel"
+  | "villa"
+  | "government"
+  | "commercial";
 
 export interface Project {
   slug: string;
   category: ProjectCategory;
+  countryKey: CountryKey;
   year: string;
   featured: boolean;
   cover: string;
-  /** Optional silent clip that plays on hover / in the project hero. */
   video?: string;
+  processVideo?: string;
   gallery: string[];
   title: Record<Locale, string>;
   location: Record<Locale, string>;
+  country: Record<Locale, string>;
+  area: Record<Locale, string>;
+  duration: Record<Locale, string>;
   summary: Record<Locale, string>;
   overview: Record<Locale, string>;
+  result: Record<Locale, string>;
   scope: Record<Locale, string[]>;
+  completedWorks: Record<Locale, string[]>;
+  productionSteps: Record<Locale, string[]>;
+  installationSteps: Record<Locale, string[]>;
   materials: Record<Locale, string[]>;
 }
 
-/** Build an optimised Unsplash source URL. */
+const PROCESS_VIDEO = "https://assets.mixkit.co/videos/20390/20390-720.mp4";
+
+const GALLERY_IDS = [
+  "1600585154340-be6161a56a0c",
+  "1615529182904-14819c35db37",
+  "1564769662533-4f00a87b4056",
+  "1616137466211-f939a420be84",
+  "1618221195710-dd6b41faaea6",
+  "1585036156171-384164a8c675",
+  "1600566752355-35792bedcfea",
+  "1600607687939-ce8a6c25118c",
+  "1600566753086-00f18fb6b3ea",
+  "1616486338812-3dadae4b4ace",
+  "1600607687920-4e2a09cf159d",
+  "1566073771259-6a8506099945",
+  "1600585154340-be6161a56a0c",
+  "1615529182904-14819c35db37",
+  "1582719508461-905c673771fd",
+  "1519817650390-64a93db51149",
+  "1600566752355-35792bedcfea",
+  "1616137466211-f939a420be84",
+  "1600585154340-be6161a56a0c",
+  "1618221195710-dd6b41faaea6",
+  "1564769662533-4f00a87b4056",
+  "1600607687939-ce8a6c25118c",
+  "1585036156171-384164a8c675",
+  "1616486338812-3dadae4b4ace",
+  "1600566753086-00f18fb6b3ea",
+  "1615529182904-14819c35db37",
+  "1600585154340-be6161a56a0c",
+  "1616137466211-f939a420be84",
+  "1566073771259-6a8506099945",
+  "1600566752355-35792bedcfea",
+  "1618221195710-dd6b41faaea6",
+  "1585036156171-384164a8c675",
+  "1600607687939-ce8a6c25118c",
+  "1564769662533-4f00a87b4056",
+  "1616486338812-3dadae4b4ace",
+  "1600566753086-00f18fb6b3ea",
+  "1519817650390-64a93db51149",
+  "1600607687920-4e2a09cf159d",
+  "1615529182904-14819c35db37",
+  "1600585154340-be6161a56a0c",
+  "1616137466211-f939a420be84",
+  "1582719508461-905c673771fd",
+  "1600566752355-35792bedcfea",
+  "1618221195710-dd6b41faaea6",
+  "1564769662533-4f00a87b4056",
+] as const;
+
 const img = (id: string, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
-/** Silent hover/hero preview clip (Mixkit CDN). */
-const vid = (id: string) => `https://assets.mixkit.co/videos/${id}/${id}-720.mp4`;
+function buildGallery(slug: string, count = 42): string[] {
+  let hash = 0;
+  for (const char of slug) hash = (hash * 31 + char.charCodeAt(0)) | 0;
+  return Array.from({ length: count }, (_, i) => {
+    const id = GALLERY_IDS[Math.abs((hash + i * 7) % GALLERY_IDS.length)]!;
+    return img(id, 1000 + (i % 6) * 120);
+  });
+}
+
+const loc = (ru: string): Record<Locale, string> => ({ ru, en: ru, ar: ru });
+const locList = (ru: string[]): Record<Locale, string[]> => ({ ru, en: ru, ar: ru });
+
+type ProjectInput = {
+  slug: string;
+  category: ProjectCategory;
+  countryKey: CountryKey;
+  year: string;
+  featured: boolean;
+  cover: string;
+  video?: string;
+  title: string;
+  location: string;
+  country: string;
+  area: string;
+  duration: string;
+  summary: string;
+  overview: string;
+  result: string;
+  scope: string[];
+  completedWorks: string[];
+  productionSteps: string[];
+  installationSteps: string[];
+  materials: string[];
+};
+
+function project(data: ProjectInput): Project {
+  return {
+    slug: data.slug,
+    category: data.category,
+    countryKey: data.countryKey,
+    year: data.year,
+    featured: data.featured,
+    cover: data.cover,
+    video: data.video,
+    processVideo: PROCESS_VIDEO,
+    gallery: buildGallery(data.slug),
+    title: loc(data.title),
+    location: loc(data.location),
+    country: loc(data.country),
+    area: loc(data.area),
+    duration: loc(data.duration),
+    summary: loc(data.summary),
+    overview: loc(data.overview),
+    result: loc(data.result),
+    scope: locList(data.scope),
+    completedWorks: locList(data.completedWorks),
+    productionSteps: locList(data.productionSteps),
+    installationSteps: locList(data.installationSteps),
+    materials: locList(data.materials),
+  };
+}
 
 export const projects: Project[] = [
-  {
-    slug: "royal-palace-majlis",
-    category: "palace",
+  project({
+    slug: "kohi-navruz",
+    category: "government",
+    countryKey: "tajikistan",
+    year: "2023",
+    featured: true,
+    cover: img("1564769662533-4f00a87b4056"),
+    title: "Kohi Navruz",
+    location: "Душанбе, Таджикистан",
+    country: "Таджикистан",
+    area: "12 000 м²",
+    duration: "18 месяцев",
+    summary: "Монументальный деревянный комплекс с элементами восточной архитектуры и художественной резьбы.",
+    overview:
+      "Проект Kohi Navruz — масштабный государственный объект, в котором натуральное дерево становится главным архитектурным выразительным средством. World of Wood Decoration выполнила полный цикл: проектирование, производство, доставку и монтаж.",
+    result:
+      "Итог — монументальное пространство, где дерево работает как архитектурный материал мирового уровня. Объект стал визитной карточкой современной восточной архитектуры.",
+    scope: ["Архитектурные деревянные элементы", "Художественная резьба", "Производство и монтаж"],
+    completedWorks: [
+      "Декоративные панели и колонны",
+      "Резные элементы восточного орнамента",
+      "Потолочные конструкции из массива",
+      "Монтаж на объекте под ключ",
+    ],
+    productionSteps: [
+      "Распил и подготовка массива на станках",
+      "Ручная художественная резьба",
+      "Шлифовка и лакировка",
+      "Контроль качества перед упаковкой",
+    ],
+    installationSteps: [
+      "Доставка в специализированной упаковке",
+      "Сборка конструкций на объекте",
+      "Финальная подгонка и монтаж",
+      "Сдача объекта заказчику",
+    ],
+    materials: ["Орех", "Дуб", "Кедр"],
+  }),
+  project({
+    slug: "parliament-tajikistan",
+    category: "government",
+    countryKey: "tajikistan",
+    year: "2022",
+    featured: true,
+    cover: img("1616486338812-3dadae4b4ace"),
+    title: "Парламент Республики Таджикистан",
+    location: "Душанбе, Таджикистан",
+    country: "Таджикистан",
+    area: "8 500 м²",
+    duration: "14 месяцев",
+    summary: "Премиальные интерьерные и архитектурные деревянные решения для государственного здания.",
+    overview:
+      "Для Парламента Республики Таджикистан изготовлен комплекс деревянных интерьерных и архитектурных элементов — от панелей и потолков до детализированной отделки общественных зон.",
+    result:
+      "Результат — представительский интерьер, отражающий статус государственного учреждения и высочайшее качество столярного исполнения.",
+    scope: ["Панели и потолки", "Двери и порталы", "Декоративная отделка"],
+    completedWorks: [
+      "Стеновые панели из массива",
+      "Потолочные кессоны",
+      "Монументальные двери",
+      "Декоративные колонны",
+    ],
+    productionSteps: ["Производство панелей", "Резьба и отделка", "Лакировка", "Упаковка"],
+    installationSteps: ["Логистика на объект", "Монтаж панелей", "Установка дверей", "Финальная сдача"],
+    materials: ["Орех", "Дуб", "Ясень"],
+  }),
+  project({
+    slug: "palace-nation",
+    category: "government",
+    countryKey: "kazakhstan",
+    year: "2021",
+    featured: true,
+    cover: img("1600585154340-be6161a56a0c"),
+    title: "Дворец Нации",
+    location: "Астана, Казахстан",
+    country: "Казахстан",
+    area: "6 200 м²",
+    duration: "16 месяцев",
+    summary: "Роскошные деревянные интерьеры и архитектурные элементы для представительского дворца.",
+    overview:
+      "Проект Дворца Нации включает изготовление монументальных деревянных интерьеров, панелей, колонн и декоративных элементов с ручной художественной отделкой.",
+    result:
+      "Дворец получил цельный деревянный интерьер премиум-класса — от входных порталов до деталей отделки залов.",
+    scope: ["Интерьерные панели", "Колонны и порталы", "Ручная резьба"],
+    completedWorks: ["Панели залов", "Колонны", "Порталы", "Резные карнизы"],
+    productionSteps: ["Станочная обработка", "Ручная резьба", "Сборка модулей", "Лакировка"],
+    installationSteps: ["Доставка", "Монтаж панелей", "Установка колонн", "Финишная отделка"],
+    materials: ["Орех", "Дуб", "Кедр"],
+  }),
+  project({
+    slug: "expo-dubai",
+    category: "commercial",
+    countryKey: "uae",
+    year: "2021",
+    featured: true,
+    cover: img("1566073771259-6a8506099945"),
+    title: "Expo Dubai",
+    location: "Дубай, ОАЭ",
+    country: "ОАЭ",
+    area: "4 800 м²",
+    duration: "10 месяцев",
+    summary: "Эксклюзивные деревянные конструкции и декор для международной выставочной площадки.",
+    overview:
+      "Для Expo Dubai разработаны и произведены уникальные деревянные конструкции и декоративные элементы, демонстрирующие мастерство компании на международной арене.",
+    result:
+      "Выставочное пространство с деревянной архитектурой, которое привлекло внимание международной аудитории и подчеркнуло статус подрядчика.",
+    scope: ["Выставочные конструкции", "Декоративные панели", "Монтаж на объекте"],
+    completedWorks: ["Модульные конструкции", "Декоративные панели", "Информационные стенды", "Монтаж"],
+    productionSteps: ["Проектирование модулей", "Производство", "Отделка", "Упаковка"],
+    installationSteps: ["Международная доставка", "Сборка на площадке", "Финальный монтаж"],
+    materials: ["Ясень", "Сосна", "Абачи"],
+  }),
+  project({
+    slug: "expo-qatar",
+    category: "commercial",
+    countryKey: "qatar",
+    year: "2022",
+    featured: true,
+    cover: img("1600566752355-35792bedcfea"),
+    title: "Expo Qatar",
+    location: "Доха, Катар",
+    country: "Катар",
+    area: "5 100 м²",
+    duration: "11 месяцев",
+    summary: "Архитектурные деревянные решения для международного выставочного проекта.",
+    overview:
+      "Проект Expo Qatar — комплекс деревянных архитектурных элементов для представительского международного пространства с акцентом на восточную эстетику.",
+    result:
+      "Итоговый объект — гармоничное сочетание современной архитектуры и традиционного деревянного мастерства.",
+    scope: ["Архитектурный декор", "Панели и конструкции", "Полный цикл монтажа"],
+    completedWorks: ["Архитектурные панели", "Декоративные элементы", "Конструкции павильона"],
+    productionSteps: ["Распил", "Резьба", "Сборка", "Лакировка"],
+    installationSteps: ["Доставка в Катар", "Монтаж бригадой", "Сдача объекта"],
+    materials: ["Дуб", "Кедр", "Орех"],
+  }),
+  project({
+    slug: "wyndham-grand-hotel",
+    category: "hotel",
+    countryKey: "uae",
+    year: "2023",
+    featured: true,
+    cover: img("1616486338812-3dadae4b4ace"),
+    title: "Wyndham Grand Hotel",
+    location: "Международный проект",
+    country: "ОАЭ",
+    area: "3 400 м²",
+    duration: "9 месяцев",
+    summary: "Премиальные деревянные интерьеры для отеля класса люкс.",
+    overview:
+      "Для Wyndham Grand Hotel выполнен комплекс деревянных интерьерных решений — панели, мебель, декоративные элементы и отделка общественных зон.",
+    result:
+      "Отель получил цельный деревянный интерьер, формирующий атмосферу люкса с первого шага гостя в лобби.",
+    scope: ["Интерьерные панели", "Мебель из массива", "Общественные зоны"],
+    completedWorks: ["Панели лобби", "Ресепшн", "Мебель номеров", "Декор ресторана"],
+    productionSteps: ["Производство панелей", "Мебель", "Отделка", "Упаковка"],
+    installationSteps: ["Доставка", "Монтаж по зонам", "Финальная приёмка"],
+    materials: ["Дуб", "Орех", "Ясень"],
+  }),
+  project({
+    slug: "national-botanical-garden",
+    category: "government",
+    countryKey: "tajikistan",
+    year: "2020",
+    featured: true,
+    cover: img("1616137466211-f939a420be84"),
+    title: "Национальный ботанический сад",
+    location: "Региональный проект",
+    country: "Таджикистан",
+    area: "2 200 м²",
+    duration: "7 месяцев",
+    summary: "Беседки, павильоны и архитектурные деревянные элементы для общественного пространства.",
+    overview:
+      "Для Национального ботанического сада спроектированы и установлены деревянные беседки, павильоны и декоративные конструкции.",
+    result:
+      "Парк получил архитектурные деревянные объекты, гармонирующие с природным ландшафтом и служащие десятилетиями.",
+    scope: ["Беседки и павильоны", "Декоративные конструкции", "Монтаж"],
+    completedWorks: ["Беседки", "Павильоны", "Декоративные перголы", "Скамьи и ограждения"],
+    productionSteps: ["Распил", "Сборка каркасов", "Резьба", "Защитная пропитка"],
+    installationSteps: ["Доставка", "Монтаж на площадке", "Финальная обработка"],
+    materials: ["Сосна", "Кедр", "Дуб"],
+  }),
+  project({
+    slug: "royal-gazebo-14x8",
+    category: "gazebo",
+    countryKey: "uae",
+    year: "2024",
+    featured: true,
+    cover: img("1616137466211-f939a420be84"),
+    title: "Королевская беседка 14×8",
+    location: "Частный заказ",
+    country: "ОАЭ",
+    area: "112 м²",
+    duration: "5 месяцев",
+    summary: "Монументальная беседка 14×8 метров из благородных пород дерева с художественной резьбой.",
+    overview:
+      "Королевская беседка 14×8 — авторский проект с монументальными пропорциями, ручной резьбой и конструкцией на века.",
+    result:
+      "Беседка стала центральным элементом частной резиденции — монументальным, функциональным и эстетически безупречным.",
+    scope: ["Проектирование", "Производство", "Доставка и монтаж"],
+    completedWorks: ["Каркас беседки", "Кровля", "Резные колонны", "Декоративные элементы"],
+    productionSteps: ["Станочная обработка", "Резьба колонн", "Сборка", "Лакировка"],
+    installationSteps: ["Доставка", "Монтаж каркаса", "Установка кровли", "Финиш"],
+    materials: ["Орех", "Дуб", "Кедр"],
+  }),
+  project({
+    slug: "walnut-daybed",
+    category: "interior",
+    countryKey: "tajikistan",
     year: "2023",
     featured: true,
     cover: img("1600585154340-be6161a56a0c"),
-    video: vid("20390"),
-    gallery: [
-      img("1600585154340-be6161a56a0c"),
-      img("1616486338812-3dadae4b4ace"),
-      img("1615529182904-14819c35db37"),
-    ],
-    title: {
-      ru: "Меджлис Королевского дворца",
-      en: "Royal Palace Majlis",
-      ar: "مجلس القصر الملكي",
-    },
-    location: {
-      ru: "Персидский залив",
-      en: "The Gulf",
-      ar: "الخليج",
-    },
-    summary: {
-      ru: "Церемониальный меджлис площадью 900 м², полностью отделанный резным орехом и позолоченными ширмами.",
-      en: "A 900 m² ceremonial majlis clad entirely in hand-carved walnut and gilded screens.",
-      ar: "مجلس احتفالي بمساحة ٩٠٠ م² مكسوٌّ بالكامل بالجوز المنقوش يدوياً والمشربيات المذهّبة.",
-    },
-    overview: {
-      ru: "Задуманный вместе с архитекторами королевского двора, этот церемониальный меджлис соединяет монументальный масштаб с интимностью резной детали. Купольные потолки из зеркально подобранного ореха парят над стенами из позолоченных машрабий — каждая ширма вырезана по геометрии, созданной только для этого дворца.",
-      en: "Conceived with the royal court's architects, this ceremonial majlis unites monumental scale with the intimacy of hand-carved detail. Domed ceilings in book-matched walnut float above walls of gilded mashrabiya, each screen cut to a geometry drawn for this palace alone.",
-      ar: "صُمّم بالتعاون مع مهندسي الديوان الملكي، ويجمع هذا المجلس الاحتفالي بين الضخامة وحميمية التفاصيل المنحوتة يدوياً. تطفو الأسقف المقبّبة من الجوز المتطابق فوق جدران من المشربيات المذهّبة، كلّ مشربية قُصّت وفق هندسة رُسمت لهذا القصر وحده.",
-    },
-    scope: {
-      ru: [
-        "Купольный потолок из зеркально подобранного ореха",
-        "Позолоченные ширмы-машрабии",
-        "Монументальные входные двери",
-        "Встроенная архитектура посадочных мест",
-      ],
-      en: [
-        "Domed ceiling in book-matched walnut",
-        "Gilded mashrabiya screens",
-        "Monumental entrance doors",
-        "Integrated seating architecture",
-      ],
-      ar: [
-        "سقف مقبّب من الجوز المتطابق",
-        "مشربيات مذهّبة",
-        "أبواب مدخل ضخمة",
-        "عمارة جلوس مدمجة",
-      ],
-    },
-    materials: {
-      ru: ["Американский чёрный орех", "Сусальное золото 24 карата", "Инкрустация верблюжьей костью"],
-      en: ["American black walnut", "24k gold leaf", "Camel bone inlay"],
-      ar: ["الجوز الأسود الأمريكي", "ذهب عيار ٢٤", "تطعيم عظم الجمل"],
-    },
-  },
-  {
-    slug: "grand-mosque-mihrab",
-    category: "sacred",
-    year: "2022",
-    featured: true,
-    cover: img("1564769662533-4f00a87b4056"),
-    video: vid("3090"),
-    gallery: [
-      img("1564769662533-4f00a87b4056"),
-      img("1585036156171-384164a8c675"),
-      img("1519817650390-64a93db51149"),
-    ],
-    title: {
-      ru: "Михраб и минбар Соборной мечети",
-      en: "Grand Mosque Mihrab & Minbar",
-      ar: "محراب ومنبر المسجد الكبير",
-    },
-    location: {
-      ru: "Северная Африка",
-      en: "North Africa",
-      ar: "شمال أفريقيا",
-    },
-    summary: {
-      ru: "Резной михраб и минбар из тика для национальной соборной мечети, основанные на исторической геометрии.",
-      en: "A carved teak mihrab and minbar for a national grand mosque, drawn from historic geometry.",
-      ar: "محراب ومنبر من الساج المنقوش لمسجدٍ وطني كبير، مستلهَمان من الهندسة التاريخية.",
-    },
-    overview: {
-      ru: "Для мечети национального значения наши резчики восемнадцать месяцев переводили классическую геометрию в михраб и минбар из бирманского тика. Каждая ячейка мукарнаса вырезана и подогнана вручную, завершённая теплотой, что несёт свет молитвенного зала.",
-      en: "For a mosque of national significance, our carvers spent eighteen months translating classical geometry into a mihrab and minbar of Burmese teak. Every muqarnas cell was cut and fitted by hand, finished in a warmth that carries the light of the prayer hall.",
-      ar: "لمسجدٍ ذي أهمية وطنية، أمضى نحّاتونا ثمانية عشر شهراً في ترجمة الهندسة الكلاسيكية إلى محراب ومنبر من ساج بورما. قُصّت كل خلية مقرنص ورُكّبت باليد، وأُنجزت بدفءٍ يحمل نور قاعة الصلاة.",
-    },
-    scope: {
-      ru: [
-        "Резной михраб с мукарнами",
-        "Церемониальный минбар",
-        "Резной деревянный фриз потолка",
-        "Инкрустированные каллиграфические панели",
-      ],
-      en: [
-        "Hand-carved muqarnas mihrab",
-        "Ceremonial minbar",
-        "Carved timber ceiling band",
-        "Inlaid calligraphy panels",
-      ],
-      ar: [
-        "محراب مقرنص منحوت يدوياً",
-        "منبر احتفالي",
-        "شريط سقف خشبي منحوت",
-        "ألواح خط مطعّمة",
-      ],
-    },
-    materials: {
-      ru: ["Бирманский тик", "Инкрустация перламутром", "Натуральное масляное покрытие"],
-      en: ["Burmese teak", "Mother-of-pearl inlay", "Natural oil finish"],
-      ar: ["ساج بورما", "تطعيم صدف", "تشطيب زيتي طبيعي"],
-    },
-  },
-  {
-    slug: "alpine-chalet-residence",
-    category: "residence",
+    title: "Топчан из ореха",
+    location: "Частный заказ",
+    country: "Таджикистан",
+    area: "12 м²",
+    duration: "2 месяца",
+    summary: "Авторский топчан из массива ореха с ручной отделкой и премиальной фурнитурой.",
+    overview:
+      "Топчан из ореха — штучное изделие премиум-класса из отборного массива с ручной шлифовкой и отделкой.",
+    result:
+      "Готовое изделие — эталон мастерства: идеальная геометрия, богатая текстура ореха и безупречная отделка.",
+    scope: ["3D-визуализация", "Производство", "Отделка вручную"],
+    completedWorks: ["Каркас топчана", "Резные элементы", "Ручная отделка", "Доставка и установка"],
+    productionSteps: ["Распил массива", "Сборка", "Ручная резьба", "Лакировка"],
+    installationSteps: ["Доставка", "Установка на объекте"],
+    materials: ["Орех"],
+  }),
+  project({
+    slug: "private-villa-interior",
+    category: "villa",
+    countryKey: "uae",
     year: "2024",
     featured: true,
-    cover: img("1618221195710-dd6b41faaea6"),
-    video: vid("4711"),
-    gallery: [
-      img("1618221195710-dd6b41faaea6"),
-      img("1600607687939-ce8a6c25118c"),
-      img("1600566753086-00f18fb6b3ea"),
-    ],
-    title: {
-      ru: "Резиденция в альпийском шале",
-      en: "Alpine Chalet Residence",
-      ar: "مسكن الشاليه الألبي",
-    },
-    location: {
-      ru: "Швейцарские Альпы",
-      en: "Swiss Alps",
-      ar: "جبال الألب السويسرية",
-    },
-    summary: {
-      ru: "Дубовая архитектура интерьера для всего дома частного альпийского имения — от библиотеки до спа.",
-      en: "Full-house oak interior architecture for a private alpine estate, from library to spa.",
-      ar: "عمارة داخلية كاملة من البلوط لمنزلٍ ألبي خاص، من المكتبة إلى المنتجع.",
-    },
-    overview: {
-      ru: "Полная архитектура интерьера из европейского дуба для частного альпийского имения. Тёплые панели радиального распила окутывают каждую комнату, скрывая двери, хранение и освещение в едином непрерывном волокне, что сопровождает гостя от библиотеки до спа.",
-      en: "A complete interior architecture in European oak for a private alpine estate. Warm quarter-sawn panelling wraps every room, concealing doors, storage and lighting within a single, continuous grain that follows the guest from library to spa.",
-      ar: "عمارة داخلية كاملة من البلوط الأوروبي لمنزلٍ ألبي خاص. تلفّ الكسوات ربعية النشر كل غرفة، مخفيةً الأبواب والتخزين والإضاءة ضمن عرقٍ واحد متصل يرافق الضيف من المكتبة إلى المنتجع.",
-    },
-    scope: {
-      ru: [
-        "Панельная обшивка стен всего дома",
-        "Столярка библиотеки и кабинета",
-        "Скрытые двери и системы хранения",
-        "Дерево для спа и велнеса",
-      ],
-      en: [
-        "Full-house wall panelling",
-        "Library and study joinery",
-        "Concealed doors and storage",
-        "Spa and wellness timber",
-      ],
-      ar: [
-        "كسوة جدران للمنزل كامل",
-        "نجارة المكتبة والمكتب",
-        "أبواب وتخزين مخفية",
-        "خشب المنتجع والعافية",
-      ],
-    },
-    materials: {
-      ru: ["Европейский дуб", "Копчёный дуб", "Твёрдое масло-воск ручной втирки"],
-      en: ["European oak", "Smoked oak", "Hand-rubbed hardwax oil"],
-      ar: ["البلوط الأوروبي", "البلوط المدخّن", "زيت شمعي بالفرك اليدوي"],
-    },
-  },
-  {
-    slug: "five-star-hotel-lobby",
-    category: "hospitality",
-    year: "2023",
-    featured: true,
-    cover: img("1566073771259-6a8506099945"),
-    video: vid("4185"),
-    gallery: [
-      img("1566073771259-6a8506099945"),
-      img("1582719508461-905c673771fd"),
-      img("1616137466211-f939a420be84"),
-    ],
-    title: {
-      ru: "Лобби пятизвёздочного отеля",
-      en: "Five-Star Hotel Lobby",
-      ar: "بهو فندق خمس نجوم",
-    },
-    location: {
-      ru: "Центральная Европа",
-      en: "Central Europe",
-      ar: "وسط أوروبا",
-    },
-    summary: {
-      ru: "Скульптурная стена ресепшн из эбена и рифлёные колонны для знакового гостиничного бренда.",
-      en: "A sculptural ebony reception wall and reeded columns for a landmark hospitality group.",
-      ar: "جدار استقبال نحتي من الأبنوس وأعمدة مضلّعة لمجموعة ضيافة بارزة.",
-    },
-    overview: {
-      ru: "Сценарий прибытия для знакового отеля, построенный вокруг скульптурной стены ресепшн из макассарского эбена. Рифлёные деревянные колонны поднимаются на всю высоту лобби, их вертикальный ритм ведёт взгляд вверх и задаёт тон всему объекту.",
-      en: "The arrival experience for a landmark hotel, built around a sculptural reception wall in Macassar ebony. Reeded timber columns rise the full height of the lobby, their vertical rhythm drawing the eye upward and setting the tone for the entire property.",
-      ar: "تجربة الوصول لفندقٍ بارز، مبنيّةٌ حول جدار استقبال نحتي من أبنوس مكسّر. تعلو أعمدة خشبية مضلّعة بكامل ارتفاع البهو، إيقاعها العمودي يرفع النظر ويحدّد نبرة العقار بأكمله.",
-    },
-    scope: {
-      ru: [
-        "Скульптурная стена ресепшн",
-        "Рифлёные колонны на всю высоту",
-        "Столярка консьержа и бара",
-        "Обшивка лифтового холла",
-      ],
-      en: [
-        "Sculptural reception wall",
-        "Full-height reeded columns",
-        "Concierge and bar millwork",
-        "Lift lobby panelling",
-      ],
-      ar: [
-        "جدار استقبال نحتي",
-        "أعمدة مضلّعة بكامل الارتفاع",
-        "نجارة الكونسيرج والبار",
-        "كسوة بهو المصاعد",
-      ],
-    },
-    materials: {
-      ru: ["Макассарский эбен", "Матовая латунь", "Зеркально подобранный шпон"],
-      en: ["Macassar ebony", "Brushed brass", "Book-matched veneer"],
-      ar: ["أبنوس مكسّر", "نحاس مصقول", "قشرة متطابقة"],
-    },
-  },
-  {
-    slug: "desert-palace-doors",
-    category: "palace",
-    year: "2021",
-    featured: false,
-    cover: img("1616486338812-3dadae4b4ace"),
-    gallery: [
-      img("1616486338812-3dadae4b4ace"),
-      img("1600585154340-be6161a56a0c"),
-    ],
-    title: {
-      ru: "Парадные двери дворца в пустыне",
-      en: "Desert Palace Grand Doors",
-      ar: "الأبواب الكبرى لقصر الصحراء",
-    },
-    location: {
-      ru: "Аравийский полуостров",
-      en: "Arabian Peninsula",
-      ar: "شبه الجزيرة العربية",
-    },
-    summary: {
-      ru: "Шестиметровые входные двери из резного дуба и бронзы для дворца в пустыне.",
-      en: "Six-metre entrance doors in carved oak and bronze for a desert palace.",
-      ar: "أبواب مدخل بارتفاع ستة أمتار من البلوط المنحوت والبرونز لقصرٍ صحراوي.",
-    },
-    overview: {
-      ru: "Пара шестиметровых входных дверей, инженерно рассчитанных на движение по скрытым осям одной рукой. Глубокая рельефная резьба по европейскому дубу обрамлена литой бронзой, создавая порог, достойный дворцового парадного двора.",
-      en: "A pair of six-metre entrance doors, engineered to move on concealed pivots with a single hand. Deep-relief carving in European oak is framed by cast bronze, creating a threshold worthy of a palace forecourt.",
-      ar: "زوج من أبواب المدخل بارتفاع ستة أمتار، مهندَسة لتدور على محاور مخفية بيدٍ واحدة. يؤطّر البرونز المصبوب نقشاً غائراً في البلوط الأوروبي، صانعاً عتبةً تليق بفناء قصر.",
-    },
-    scope: {
-      ru: [
-        "Шестиметровые двери на скрытых осях",
-        "Глубокая рельефная ручная резьба",
-        "Обрамление из литой бронзы",
-        "Инженерия скрытых осей вращения",
-      ],
-      en: [
-        "Six-metre pivot doors",
-        "Deep-relief hand carving",
-        "Cast bronze framing",
-        "Concealed pivot engineering",
-      ],
-      ar: [
-        "أبواب محورية بارتفاع ستة أمتار",
-        "نقش يدوي غائر",
-        "تأطير برونزي مصبوب",
-        "هندسة محاور مخفية",
-      ],
-    },
-    materials: {
-      ru: ["Европейский дуб", "Литая бронза", "Патинированное покрытие"],
-      en: ["European oak", "Cast bronze", "Patinated finish"],
-      ar: ["البلوط الأوروبي", "البرونز المصبوب", "تشطيب مؤكسد"],
-    },
-  },
-  {
-    slug: "coastal-villa-library",
-    category: "residence",
-    year: "2024",
-    featured: false,
     cover: img("1600607687939-ce8a6c25118c"),
-    gallery: [
-      img("1600607687939-ce8a6c25118c"),
-      img("1618221195710-dd6b41faaea6"),
-    ],
-    title: {
-      ru: "Библиотека приморской виллы",
-      en: "Coastal Villa Library",
-      ar: "مكتبة الفيلا الساحلية",
-    },
-    location: {
-      ru: "Средиземноморское побережье",
-      en: "Mediterranean Coast",
-      ar: "الساحل المتوسطي",
-    },
-    summary: {
-      ru: "Двухсветная библиотека из ореха с подвесной галереей для чтения.",
-      en: "A double-height walnut library with a suspended reading gallery.",
-      ar: "مكتبة من الجوز بارتفاع مضاعف مع شرفة قراءة معلّقة.",
-    },
-    overview: {
-      ru: "Двухсветная библиотека из тёплого ореха, увенчанная подвесной галереей для чтения, к которой ведёт консольная лестница. Каждая полка, поручень лестницы и скрытая дверь спроектированы как единый непрерывный элемент архитектуры.",
-      en: "A double-height library in warm walnut, crowned by a suspended reading gallery reached by a cantilevered stair. Every shelf, ladder rail and hidden door was engineered as one continuous piece of architecture.",
-      ar: "مكتبة بارتفاع مضاعف من الجوز الدافئ، تتوّجها شرفة قراءة معلّقة يُوصَل إليها بدرجٍ ناتئ. صُمّم كل رفّ وقضيب سلّم وباب مخفي كقطعة عمارة واحدة متصلة.",
-    },
-    scope: {
-      ru: [
-        "Двухсветные стеллажи",
-        "Подвесная галерея для чтения",
-        "Консольная деревянная лестница",
-        "Скрытые двери",
-      ],
-      en: [
-        "Double-height shelving",
-        "Suspended reading gallery",
-        "Cantilevered timber stair",
-        "Concealed doors",
-      ],
-      ar: [
-        "رفوف بارتفاع مضاعف",
-        "شرفة قراءة معلّقة",
-        "درج خشبي ناتئ",
-        "أبواب مخفية",
-      ],
-    },
-    materials: {
-      ru: ["Американский орех", "Чернёная сталь", "Кожаные детали"],
-      en: ["American walnut", "Blackened steel", "Leather detailing"],
-      ar: ["الجوز الأمريكي", "الفولاذ المسوّد", "تفاصيل جلدية"],
-    },
-  },
-  {
-    slug: "boutique-hotel-suite",
-    category: "hospitality",
-    year: "2022",
-    featured: false,
-    cover: img("1582719508461-905c673771fd"),
-    gallery: [
-      img("1582719508461-905c673771fd"),
-      img("1566073771259-6a8506099945"),
-    ],
-    title: {
-      ru: "Фирменный люкс бутик-отеля",
-      en: "Boutique Hotel Signature Suite",
-      ar: "الجناح المميز لفندق بوتيك",
-    },
-    location: {
-      ru: "Южная Европа",
-      en: "Southern Europe",
-      ar: "جنوب أوروبا",
-    },
-    summary: {
-      ru: "Фирменный люкс, окутанный рифлёным дубом, со встроенной деревянной стеной-изголовьем.",
-      en: "A signature suite wrapped in fluted oak with an integrated timber headboard wall.",
-      ar: "جناح مميز مكسوٌّ بالبلوط المضلّع مع جدار مسند سرير خشبي مدمج.",
-    },
-    overview: {
-      ru: "Фирменный люкс бутик-отеля, определённый единой стеной из рифлёного дуба, что становится изголовьем, гардеробом и мини-баром без видимого шва. Этюд о том, как архитектура и столярка становятся неразличимы.",
-      en: "The signature suite of a boutique hotel, defined by a single wall of fluted oak that becomes headboard, wardrobe and minibar without a visible seam. A study in how architecture and joinery become indistinguishable.",
-      ar: "الجناح المميز لفندق بوتيك، يحدّده جدار واحد من البلوط المضلّع يتحوّل إلى مسند سرير وخزانة وميني بار دون وصلة ظاهرة. دراسةٌ في كيف تصبح العمارة والنجارة شيئاً واحداً.",
-    },
-    scope: {
-      ru: [
-        "Рифлёная стена-изголовье",
-        "Встроенные гардероб и мини-бар",
-        "Столярка тумбы в ванной",
-        "Стол и полки на заказ",
-      ],
-      en: [
-        "Fluted headboard wall",
-        "Integrated wardrobe and minibar",
-        "Bathroom vanity joinery",
-        "Bespoke desk and shelving",
-      ],
-      ar: [
-        "جدار مسند سرير مضلّع",
-        "خزانة وميني بار مدمجان",
-        "نجارة مغسلة الحمام",
-        "مكتب ورفوف مصمّمة",
-      ],
-    },
-    materials: {
-      ru: ["Европейский дуб", "Рифлёные детали", "Матовый лак"],
-      en: ["European oak", "Fluted detailing", "Matte lacquer"],
-      ar: ["البلوط الأوروبي", "تفاصيل مضلّعة", "طلاء مطفأ"],
-    },
-  },
-  {
-    slug: "private-chapel-ceiling",
-    category: "sacred",
-    year: "2020",
-    featured: false,
-    cover: img("1585036156171-384164a8c675"),
-    gallery: [
-      img("1585036156171-384164a8c675"),
-      img("1564769662533-4f00a87b4056"),
-    ],
-    title: {
-      ru: "Кессонный потолок частной капеллы",
-      en: "Private Chapel Coffered Ceiling",
-      ar: "سقف الكنيسة الخاصة المقسّم",
-    },
-    location: {
-      ru: "Западная Европа",
-      en: "Western Europe",
-      ar: "غرب أوروبا",
-    },
-    summary: {
-      ru: "Кессонный дубовый потолок с позолоченными деталями для капеллы частного имения.",
-      en: "A coffered oak ceiling with gilded detailing for a private estate chapel.",
-      ar: "سقف مقسّم من البلوط بتفاصيل مذهّبة لكنيسة منزلٍ خاص.",
-    },
-    overview: {
-      ru: "Кессонный потолок из состаренного дуба, чьи углубления выстланы сусальным золотом, чтобы ловить меняющийся дневной свет. Применены столярные техники реставрационного уровня, чтобы потолок простоял века без подвижек.",
-      en: "A coffered ceiling in aged oak, its recesses lined with gold leaf to catch the changing daylight. Restoration-grade joinery techniques were used to ensure the ceiling will stand for centuries without movement.",
-      ar: "سقف مقسّم من البلوط المعتّق، تُبطَّن تجاويفه بورق الذهب لالتقاط ضوء النهار المتغيّر. استُخدمت تقنيات نجارة بمستوى الترميم لضمان بقاء السقف قروناً دون حركة.",
-    },
-    scope: {
-      ru: [
-        "Структура кессонного потолка",
-        "Углубления с сусальным золотом",
-        "Резной карниз",
-        "Интеграция скрытого освещения",
-      ],
-      en: [
-        "Coffered ceiling structure",
-        "Gold-leaf recesses",
-        "Carved cornice",
-        "Concealed lighting integration",
-      ],
-      ar: [
-        "بنية سقف مقسّم",
-        "تجاويف بورق الذهب",
-        "إفريز منحوت",
-        "دمج إضاءة مخفية",
-      ],
-    },
-    materials: {
-      ru: ["Состаренный европейский дуб", "Сусальное золото 23 карата", "Покрытие шеллаком"],
-      en: ["Aged European oak", "23k gold leaf", "Shellac finish"],
-      ar: ["البلوط الأوروبي المعتّق", "ذهب عيار ٢٣", "تشطيب شيلاك"],
-    },
-  },
+    title: "Интерьер частной виллы",
+    location: "Частная резиденция",
+    country: "ОАЭ",
+    area: "1 800 м²",
+    duration: "12 месяцев",
+    summary: "Комплексное деревянное оформление интерьера частной виллы — панели, потолки, мебель.",
+    overview:
+      "Интерьер частной виллы — цельный проект деревянной архитектуры: панели, потолки, двери и мебель в единой премиальной концепции.",
+    result:
+      "Вилла получила цельный деревянный интерьер — от входного портала до мебели в спальнях и гостиных.",
+    scope: ["Интерьерные панели", "Потолки", "Мебель на заказ"],
+    completedWorks: ["Стеновые панели", "Потолки", "Двери", "Авторская мебель"],
+    productionSteps: ["Производство панелей", "Мебель", "Отделка", "Упаковка"],
+    installationSteps: ["Доставка", "Монтаж поэтапно", "Сдача под ключ"],
+    materials: ["Орех", "Ясень", "Дуб"],
+  }),
 ];
 
 export const projectCategories: ProjectCategory[] = [
-  "palace",
-  "sacred",
-  "hospitality",
-  "residence",
+  "gazebo",
+  "interior",
+  "mosque",
+  "hotel",
+  "villa",
+  "government",
+  "commercial",
 ];
 
 export function getFeaturedProjects() {
@@ -502,6 +419,10 @@ export function getFeaturedProjects() {
 
 export function getProjectBySlug(slug: string) {
   return projects.find((p) => p.slug === slug);
+}
+
+export function getProjectsByCountry(countryKey: CountryKey) {
+  return projects.filter((p) => p.countryKey === countryKey);
 }
 
 export function getAdjacentProject(slug: string) {

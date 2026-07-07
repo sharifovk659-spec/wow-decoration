@@ -6,7 +6,7 @@ export const siteConfig = {
   url: (
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.worldofwooddecoration.com"
   ).replace(/\/$/, ""),
-  email: "atelier@worldofwooddecoration.com",
+  email: "info@worldofwooddecoration.com",
   phone: "+971 4 000 0000",
   phoneHref: "+97140000000",
   whatsapp: "+971 50 000 0000",
@@ -20,17 +20,19 @@ export const siteConfig = {
 
 /** Primary navigation — labels resolved via the `nav` message namespace. */
 export const navLinks = [
+  { key: "home", href: "/" },
   { key: "about", href: "/about" },
   { key: "services", href: "/services" },
+  { key: "production", href: "/#production" },
+  { key: "materials", href: "/#materials" },
   { key: "projects", href: "/projects" },
+  { key: "gallery", href: "/gallery" },
   { key: "contact", href: "/contact" },
 ] as const;
 
 export const socialLinks = [
-  { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
-  { label: "Pinterest", href: "https://pinterest.com", icon: "pinterest" },
-  { label: "Behance", href: "https://behance.net", icon: "behance" },
+  { label: "Instagram", href: "https://instagram.com/worldofwooddecoration", icon: "instagram" },
+  { label: "YouTube", href: "https://youtube.com/@worldofwooddecoration", icon: "youtube" },
   { label: "WhatsApp", href: "https://wa.me/971500000000", icon: "whatsapp" },
   { label: "Telegram", href: "https://t.me/worldofwood", icon: "telegram" },
 ] as const;

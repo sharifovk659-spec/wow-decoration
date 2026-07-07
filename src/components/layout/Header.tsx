@@ -9,37 +9,53 @@ import {
 } from "framer-motion";
 import { gsap } from "gsap";
 import { useTranslations } from "next-intl";
-import { HiBars2, HiXMark, HiChevronDown } from "react-icons/hi2";
+import { HiBars2, HiXMark } from "react-icons/hi2";
 import { Link, usePathname } from "@/i18n/navigation";
-import { projectCategories } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 import { easeLuxe } from "@/lib/motion";
 import { useGSAP } from "@/hooks/useGSAP";
+import { useLenis } from "@/components/layout/SmoothScroll";
 import { Logo } from "./Logo";
-import { LanguageSwitcher } from "./LanguageSwitcher";
-import { MegaMenu, type MegaKey } from "./MegaMenu";
 import { ButtonLink } from "@/components/ui/Button";
 
-type NavItem = { key: string; href: string; mega?: MegaKey };
+type NavItem = { key: string; href: string };
 
 const NAV: NavItem[] = [
+  { key: "home", href: "/" },
   { key: "about", href: "/about" },
-  { key: "services", href: "/services", mega: "services" },
-  { key: "projects", href: "/projects", mega: "projects" },
+  { key: "services", href: "/services" },
+  { key: "production", href: "/#production" },
+  { key: "materials", href: "/#materials" },
+  { key: "projects", href: "/projects" },
   { key: "gallery", href: "/gallery" },
   { key: "contact", href: "/contact" },
 ];
 
-const SERVICE_KEYS = ["0", "1", "2", "3", "4", "5"] as const;
+function isNavActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  const base = href.split("#")[0];
+  if (!base || base === "/") return false;
+  return pathname === base || pathname.startsWith(`${base}/`);
+}
+
+function scrollToHash(hash: string, lenis: ReturnType<typeof useLenis>) {
+  const el = document.querySelector(hash);
+  if (!(el instanceof HTMLElement)) return;
+  if (lenis?.current) {
+    lenis.current.scrollTo(el, { offset: -96, duration: 1.2 });
+    return;
+  }
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 export function Header() {
   const t = useTranslations("nav");
   const pathname = usePathname();
+  const lenis = useLenis();
   const headerRef = useRef<HTMLElement>(null);
 
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [activeMega, setActiveMega] = useState<MegaKey | null>(null);
 
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (latest) => setScrolled(latest > 48));
@@ -62,57 +78,68 @@ export function Header() {
     { scope: headerRef },
   );
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+
+    const hash = href.slice(hashIndex);
+    const base = href.slice(0, hashIndex) || "/";
+
+    if (pathname === "/" && base === "/") {
+      e.preventDefault();
+      scrollToHash(hash, lenis);
+      setOpen(false);
+    }
+  };
+
   return (
     <>
       <header
         ref={headerRef}
-        onMouseLeave={() => setActiveMega(null)}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color,padding] duration-500",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color,padding,box-shadow] duration-500",
           scrolled ? "py-3" : "py-5",
-          scrolled || activeMega
-            ? "glass border-x-0 border-t-0"
-            : "border-b border-transparent",
+          scrolled
+            ? "glass border-x-0 border-t-0 shadow-[0_1px_0_0_rgba(192,160,104,0.28)]"
+            : "border-b border-transparent bg-transparent",
         )}
       >
-        <div className="container-luxe flex items-center justify-between gap-6">
-          <div className="header-anim">
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/45 to-transparent transition-opacity duration-500",
+            scrolled ? "opacity-100" : "opacity-0",
+          )}
+          aria-hidden
+        />
+
+        <div className="container-luxe flex items-center justify-between gap-4 xl:gap-6">
+          <div className="header-anim shrink-0">
             <Logo />
           </div>
 
-          <nav className="hidden items-center gap-9 lg:flex">
+          <nav className="hidden items-center gap-4 xl:flex 2xl:gap-6">
             {NAV.map((item) => {
-              const active = pathname === item.href;
-              const isMega = Boolean(item.mega);
-              const megaActive = activeMega === item.mega;
+              const active = isNavActive(pathname, item.href);
               return (
-                <div
-                  key={item.key}
-                  className="header-anim"
-                  onMouseEnter={() => setActiveMega(item.mega ?? null)}
-                >
+                <div key={item.key} className="header-anim">
                   <Link
                     href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className={cn(
-                      "group relative flex items-center gap-1.5 text-[0.8125rem] font-medium uppercase tracking-[0.16em] transition-colors duration-300 rtl:tracking-[0.05em]",
-                      active || megaActive
+                      "group relative whitespace-nowrap px-0.5 py-2 text-[0.6875rem] font-medium uppercase tracking-[0.14em] transition-colors duration-300 2xl:text-[0.7rem] 2xl:tracking-[0.16em]",
+                      active
                         ? "text-gold"
                         : "text-bone-soft hover:text-bone",
                     )}
                   >
                     {t(item.key)}
-                    {isMega && (
-                      <HiChevronDown
-                        className={cn(
-                          "text-sm transition-transform duration-500",
-                          megaActive && "rotate-180",
-                        )}
-                      />
-                    )}
                     <span
                       className={cn(
-                        "absolute -bottom-1.5 left-0 h-px bg-gold transition-all duration-500 ease-out",
-                        active || megaActive ? "w-full" : "w-0 group-hover:w-full",
+                        "absolute -bottom-0.5 left-0 h-px bg-gradient-to-r from-gold/20 via-gold to-gold/20 transition-all duration-500 ease-out",
+                        active ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100",
                       )}
                     />
                   </Link>
@@ -121,14 +148,12 @@ export function Header() {
             })}
           </nav>
 
-          <div className="header-anim hidden items-center gap-6 lg:flex">
-            <LanguageSwitcher />
-            <span className="h-4 w-px bg-line-strong" />
+          <div className="header-anim hidden shrink-0 xl:block">
             <ButtonLink
               href="/contact"
               variant="outline"
               withArrow
-              className="px-6 py-3 text-[0.7rem]"
+              className="border-gold/35 px-5 py-3 text-[0.68rem] tracking-[0.14em] hover:border-gold/60 hover:shadow-gold 2xl:px-6 2xl:text-[0.7rem]"
             >
               {t("cta")}
             </ButtonLink>
@@ -137,7 +162,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            className="header-anim flex items-center gap-2 text-bone lg:hidden"
+            className="header-anim flex items-center gap-2 text-bone transition-colors hover:text-gold xl:hidden"
             aria-label={t("menu")}
           >
             <span className="text-[0.7rem] uppercase tracking-[0.2em]">
@@ -146,11 +171,13 @@ export function Header() {
             <HiBars2 className="text-2xl" />
           </button>
         </div>
-
-        <MegaMenu active={activeMega} onNavigate={() => setActiveMega(null)} />
       </header>
 
-      <MobileMenu open={open} onClose={() => setOpen(false)} />
+      <MobileMenu
+        open={open}
+        onClose={() => setOpen(false)}
+        onNavClick={handleNavClick}
+      />
     </>
   );
 }
@@ -158,17 +185,14 @@ export function Header() {
 function MobileMenu({
   open,
   onClose,
+  onNavClick,
 }: {
   open: boolean;
   onClose: () => void;
+  onNavClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }) {
   const t = useTranslations("nav");
-  const tServices = useTranslations("services");
-  const tProjects = useTranslations("projects");
-  const [accordion, setAccordion] = useState<MegaKey | null>(null);
-
-  const toggle = (key: MegaKey) =>
-    setAccordion((cur) => (cur === key ? null : key));
+  const pathname = usePathname();
 
   return (
     <AnimatePresence>
@@ -178,14 +202,14 @@ function MobileMenu({
           animate={{ clipPath: "inset(0 0 0% 0)" }}
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 0.7, ease: easeLuxe }}
-          className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-ink-800 lg:hidden"
+          className="fixed inset-0 z-[70] flex flex-col overflow-y-auto bg-ink-800/98 backdrop-blur-xl xl:hidden"
         >
-          <div className="container-luxe flex items-center justify-between py-5">
+          <div className="container-luxe flex items-center justify-between border-b border-line py-5">
             <Logo onClick={onClose} />
             <button
               type="button"
               onClick={onClose}
-              className="flex items-center gap-2 text-bone"
+              className="flex items-center gap-2 text-bone transition-colors hover:text-gold"
               aria-label={t("close")}
             >
               <span className="text-[0.7rem] uppercase tracking-[0.2em]">
@@ -195,99 +219,54 @@ function MobileMenu({
             </button>
           </div>
 
-          <nav className="container-luxe flex flex-1 flex-col justify-center gap-1 py-8">
-            {NAV.map((item, i) => (
-              <motion.div
-                key={item.key}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.2 + i * 0.07,
-                  duration: 0.7,
-                  ease: easeLuxe,
-                }}
-                className="border-b border-line"
-              >
-                {item.mega ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => toggle(item.mega!)}
-                      className="flex w-full items-center justify-between py-5 text-start"
-                    >
-                      <span className="font-display text-4xl text-bone">
-                        {t(item.key)}
-                      </span>
-                      <HiChevronDown
-                        className={cn(
-                          "text-2xl text-gold transition-transform duration-500",
-                          accordion === item.mega && "rotate-180",
-                        )}
-                      />
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {accordion === item.mega && (
-                        <motion.ul
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.45, ease: easeLuxe }}
-                          className="overflow-hidden"
-                        >
-                          {item.mega === "services"
-                            ? SERVICE_KEYS.map((k) => (
-                                <li key={k}>
-                                  <Link
-                                    href="/services"
-                                    onClick={onClose}
-                                    className="block py-2.5 ps-1 text-lg text-bone-dim transition-colors hover:text-gold"
-                                  >
-                                    {tServices(`items.${k}.title`)}
-                                  </Link>
-                                </li>
-                              ))
-                            : projectCategories.map((c) => (
-                                <li key={c}>
-                                  <Link
-                                    href="/projects"
-                                    onClick={onClose}
-                                    className="block py-2.5 ps-1 text-lg text-bone-dim transition-colors hover:text-gold"
-                                  >
-                                    {tProjects(`filters.${c}`)}
-                                  </Link>
-                                </li>
-                              ))}
-                          <li className="pb-4" />
-                        </motion.ul>
-                      )}
-                    </AnimatePresence>
-                  </>
-                ) : (
+          <nav className="container-luxe flex flex-1 flex-col justify-center gap-0 py-8">
+            {NAV.map((item, i) => {
+              const active = isNavActive(pathname, item.href);
+              return (
+                <motion.div
+                  key={item.key}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: 0.15 + i * 0.05,
+                    duration: 0.7,
+                    ease: easeLuxe,
+                  }}
+                  className="border-b border-line"
+                >
                   <Link
                     href={item.href}
-                    onClick={onClose}
-                    className="block py-5 font-display text-4xl text-bone transition-colors hover:text-gold"
+                    onClick={(e) => {
+                      onNavClick(e, item.href);
+                      onClose();
+                    }}
+                    className={cn(
+                      "block py-5 font-display text-3xl transition-colors sm:text-4xl",
+                      active
+                        ? "text-gold"
+                        : "text-bone hover:text-gold-soft",
+                    )}
                   >
                     {t(item.key)}
                   </Link>
-                )}
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </nav>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.55, duration: 0.6 }}
-            className="container-luxe flex items-center justify-between py-8"
+            className="container-luxe border-t border-line py-8"
           >
-            <LanguageSwitcher />
             <ButtonLink
               href="/contact"
               variant="primary"
               withArrow
               magnetic={false}
               onClick={onClose}
+              className="w-full justify-center sm:w-auto"
             >
               {t("cta")}
             </ButtonLink>

@@ -1,44 +1,53 @@
 import { z } from "zod";
 
 export const projectTypes = [
-  "palace",
-  "residence",
-  "sacred",
-  "hospitality",
-  "yacht",
+  "gazebo",
+  "interior",
+  "mosque",
+  "hotel",
+  "villa",
+  "government",
+  "commercial",
+  "other",
+] as const;
+
+export const contactCountries = [
+  "tajikistan",
+  "kazakhstan",
+  "saudi",
+  "uae",
+  "qatar",
+  "iraq",
+  "kuwait",
+  "russia",
   "other",
 ] as const;
 
 type Messages = {
   nameMin: string;
-  emailInvalid: string;
+  phoneMin: string;
+  country: string;
   projectType: string;
   messageMin: string;
 };
 
-/**
- * Build the contact schema with localised messages so validation copy
- * respects the active locale.
- */
 export function createContactSchema(m: Messages) {
   return z.object({
     name: z.string().trim().min(2, { message: m.nameMin }),
-    email: z.string().trim().email({ message: m.emailInvalid }),
-    phone: z.string().trim().optional().or(z.literal("")),
+    phone: z.string().trim().min(6, { message: m.phoneMin }),
+    country: z.enum(contactCountries, { message: m.country }),
     projectType: z.enum(projectTypes, { message: m.projectType }),
-    budget: z.string().optional().or(z.literal("")),
     message: z.string().trim().min(10, { message: m.messageMin }),
-    // Honeypot — must remain empty (bots fill hidden fields).
     company: z.string().max(0).optional().or(z.literal("")),
   });
 }
 
 export type ContactFormValues = z.infer<ReturnType<typeof createContactSchema>>;
 
-/** Server-side schema with static messages (no translation context). */
 export const contactServerSchema = createContactSchema({
   nameMin: "Name is too short.",
-  emailInvalid: "Invalid email address.",
+  phoneMin: "Phone is too short.",
+  country: "Invalid country.",
   projectType: "Invalid project type.",
   messageMin: "Message is too short.",
 });

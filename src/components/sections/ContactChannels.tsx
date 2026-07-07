@@ -2,21 +2,24 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { FaWhatsapp, FaTelegram } from "react-icons/fa6";
-import { HiOutlineEnvelope, HiOutlinePhone, HiArrowLongRight } from "react-icons/hi2";
+import {
+  FaWhatsapp,
+  FaTelegram,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa6";
+import { HiOutlineEnvelope, HiArrowLongRight } from "react-icons/hi2";
 import type { IconType } from "react-icons";
-import { siteConfig } from "@/lib/site";
+import { siteConfig, socialLinks } from "@/lib/site";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 interface Channel {
-  key: "whatsapp" | "telegram" | "email" | "phone";
+  key: string;
   icon: IconType;
   href: string;
   value: string;
-  action: "open" | "write" | "call";
   external?: boolean;
-  ltr?: boolean;
 }
 
 const channels: Channel[] = [
@@ -25,34 +28,34 @@ const channels: Channel[] = [
     icon: FaWhatsapp,
     href: `https://wa.me/${siteConfig.whatsappHref}`,
     value: siteConfig.whatsapp,
-    action: "open",
     external: true,
-    ltr: true,
   },
   {
     key: "telegram",
     icon: FaTelegram,
     href: `https://t.me/${siteConfig.telegramHref}`,
     value: siteConfig.telegram,
-    action: "open",
     external: true,
-    ltr: true,
   },
   {
     key: "email",
     icon: HiOutlineEnvelope,
     href: `mailto:${siteConfig.email}`,
     value: siteConfig.email,
-    action: "write",
-    ltr: true,
   },
   {
-    key: "phone",
-    icon: HiOutlinePhone,
-    href: `tel:${siteConfig.phoneHref}`,
-    value: siteConfig.phone,
-    action: "call",
-    ltr: true,
+    key: "instagram",
+    icon: FaInstagram,
+    href: socialLinks.find((s) => s.icon === "instagram")?.href ?? "#",
+    value: "@worldofwooddecoration",
+    external: true,
+  },
+  {
+    key: "youtube",
+    icon: FaYoutube,
+    href: socialLinks.find((s) => s.icon === "youtube")?.href ?? "#",
+    value: "World of Wood Decoration",
+    external: true,
   },
 ];
 
@@ -70,11 +73,11 @@ export function ContactChannels() {
         />
 
         <motion.div
-          variants={staggerContainer(0.1)}
+          variants={staggerContainer(0.08)}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
         >
           {channels.map((c) => {
             const Icon = c.icon;
@@ -99,11 +102,10 @@ export function ContactChannels() {
                   <h3 className="font-display text-xl text-bone">
                     {t(`${c.key}.label`)}
                   </h3>
-                  <p className="mt-1 text-sm text-bone-dim">{t(`${c.key}.hint`)}</p>
-                  <p
-                    className="mt-4 text-sm text-gold-soft"
-                    dir={c.ltr ? "ltr" : undefined}
-                  >
+                  <p className="mt-1 text-sm text-bone-dim">
+                    {t(`${c.key}.hint`)}
+                  </p>
+                  <p className="mt-4 text-sm text-gold-soft" dir="ltr">
                     {c.value}
                   </p>
                 </div>

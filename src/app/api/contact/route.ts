@@ -27,11 +27,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  // Integration point — deliver the enquiry to the atelier inbox.
+  // Integration point — deliver the enquiry to the company inbox.
   // e.g. await sendEmail({ to: process.env.CONTACT_INBOX_EMAIL, ...parsed.data })
-  const { name, email, projectType } = parsed.data;
+  const { name, phone, country, projectType } = parsed.data;
   console.info(
-    `[contact] enquiry from ${name} <${email}> — ${projectType}`,
+    `[contact] enquiry from ${name} (${phone}) — ${country} / ${projectType}`,
   );
 
   return NextResponse.json({ ok: true }, { status: 200 });

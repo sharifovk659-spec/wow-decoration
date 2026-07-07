@@ -35,7 +35,7 @@ export function Gallery() {
   );
 
   const fullImages = useMemo(
-    () => visible.map((item) => galleryFull(item.id)),
+    () => visible.map((item) => galleryFull(item)),
     [visible],
   );
 
@@ -81,7 +81,7 @@ export function Gallery() {
         >
           {visible.map((item, i) => (
             <motion.button
-              key={item.id}
+              key={item.key}
               variants={fadeUp}
               type="button"
               data-cursor="hover"

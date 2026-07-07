@@ -9,9 +9,9 @@ import { useGSAP } from "@/hooks/useGSAP";
 import { ButtonLink } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
-/** Still frame — instant LCP paint, video poster, and reduced-motion fallback. */
+/** Still frame — luxury palace interior, instant LCP + reduced-motion fallback. */
 const POSTER =
-  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=80";
+  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2400&q=80";
 
 /**
  * Remote fallback clip (wooden interior, Mixkit free licence). Used only when
@@ -212,10 +212,11 @@ export function Hero() {
       </div>
 
       {/* -------- Luxury overlays -------- */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/20 to-transparent rtl:bg-gradient-to-l" />
-      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(125%_120%_at_50%_28%,transparent_38%,rgba(18,19,22,0.72)_100%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-ink/75 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/30" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/35 to-transparent rtl:bg-gradient-to-l" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(125%_120%_at_50%_28%,transparent_32%,rgba(18,19,22,0.78)_100%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-ink/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
         style={{ backgroundImage: NOISE }}
@@ -233,7 +234,7 @@ export function Hero() {
 
         <h1
           ref={titleRef}
-          className="will-transform text-display max-w-[16ch] font-display text-bone"
+          className="will-transform text-display max-w-[14ch] font-display text-bone"
         >
           {lines.map((line, i) => (
             <span key={line} className="clip-text block">
@@ -250,8 +251,12 @@ export function Hero() {
         </h1>
 
         <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <p className="hero-desc text-lead max-w-xl text-bone-soft">
-            {t("description")}
+          <p className="hero-desc text-lead max-w-2xl leading-relaxed text-bone-soft">
+            <span className="font-medium text-gold-soft">
+              World of Wood Decoration
+            </span>
+            {" — "}
+            {t("descriptionLead")}
           </p>
 
           <div className="hero-cta flex flex-wrap items-center gap-4">

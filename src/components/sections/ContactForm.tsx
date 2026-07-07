@@ -9,6 +9,7 @@ import { HiCheckCircle, HiExclamationCircle } from "react-icons/hi2";
 import {
   createContactSchema,
   projectTypes,
+  contactCountries,
   type ContactFormValues,
 } from "@/lib/validations";
 import { Button } from "@/components/ui/Button";
@@ -17,15 +18,14 @@ import { easeLuxe } from "@/lib/motion";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const budgetKeys = ["0", "1", "2", "3"] as const;
-
 export function ContactForm() {
   const t = useTranslations("contact.form");
   const [status, setStatus] = useState<Status>("idle");
 
   const schema = createContactSchema({
     nameMin: t("errors.nameMin"),
-    emailInvalid: t("errors.emailInvalid"),
+    phoneMin: t("errors.phoneMin"),
+    country: t("errors.country"),
     projectType: t("errors.projectType"),
     messageMin: t("errors.messageMin"),
   });
@@ -39,10 +39,9 @@ export function ContactForm() {
     resolver: zodResolver(schema),
     defaultValues: {
       name: "",
-      email: "",
       phone: "",
+      country: undefined,
       projectType: undefined,
-      budget: "",
       message: "",
       company: "",
     },
@@ -70,14 +69,17 @@ export function ContactForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: easeLuxe }}
-        className="card-luxe flex flex-col items-start gap-6 p-10 md:p-12"
+        className="rounded-luxe-lg border border-gold/25 bg-ink-800/80 p-10 md:p-12"
       >
         <HiCheckCircle className="text-5xl text-gold" />
-        <div>
-          <h3 className="text-h3 text-bone">{t("successTitle")}</h3>
-          <p className="mt-3 max-w-md text-bone-dim">{t("successMessage")}</p>
-        </div>
-        <Button variant="ghost" withArrow onClick={() => setStatus("idle")}>
+        <h3 className="text-h3 mt-6 text-bone">{t("successTitle")}</h3>
+        <p className="mt-3 max-w-md text-bone-dim">{t("successMessage")}</p>
+        <Button
+          variant="ghost"
+          withArrow
+          className="mt-8"
+          onClick={() => setStatus("idle")}
+        >
           {t("sendAnother")}
         </Button>
       </motion.div>
@@ -85,8 +87,11 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-8">
-      {/* Honeypot */}
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+      className="relative rounded-luxe-lg border border-line/80 bg-ink-800/60 p-8 md:p-10"
+    >
       <input
         type="text"
         tabIndex={-1}
@@ -105,18 +110,7 @@ export function ContactForm() {
             {...register("name")}
           />
         </Field>
-        <Field label={t("email")} error={errors.email?.message}>
-          <input
-            type="email"
-            placeholder={t("emailPlaceholder")}
-            className="input-luxe"
-            {...register("email")}
-          />
-        </Field>
-      </div>
-
-      <div className="grid gap-8 sm:grid-cols-2">
-        <Field label={t("phone")}>
+        <Field label={t("phone")} error={errors.phone?.message}>
           <input
             type="tel"
             placeholder={t("phonePlaceholder")}
@@ -124,6 +118,25 @@ export function ContactForm() {
             dir="ltr"
             {...register("phone")}
           />
+        </Field>
+      </div>
+
+      <div className="mt-8 grid gap-8 sm:grid-cols-2">
+        <Field label={t("country")} error={errors.country?.message}>
+          <select
+            defaultValue=""
+            className="input-luxe"
+            {...register("country")}
+          >
+            <option value="" disabled>
+              {t("countryPlaceholder")}
+            </option>
+            {contactCountries.map((c) => (
+              <option key={c} value={c} className="bg-ink-700">
+                {t(`countries.${c}`)}
+              </option>
+            ))}
+          </select>
         </Field>
         <Field label={t("projectType")} error={errors.projectType?.message}>
           <select
@@ -143,27 +156,16 @@ export function ContactForm() {
         </Field>
       </div>
 
-      <Field label={t("budget")}>
-        <select defaultValue="" className="input-luxe" {...register("budget")}>
-          <option value="" disabled>
-            {t("budgetPlaceholder")}
-          </option>
-          {budgetKeys.map((key) => (
-            <option key={key} value={t(`budgets.${key}`)} className="bg-ink-700">
-              {t(`budgets.${key}`)}
-            </option>
-          ))}
-        </select>
-      </Field>
-
-      <Field label={t("message")} error={errors.message?.message}>
-        <textarea
-          rows={5}
-          placeholder={t("messagePlaceholder")}
-          className="input-luxe resize-none"
-          {...register("message")}
-        />
-      </Field>
+      <div className="mt-8">
+        <Field label={t("message")} error={errors.message?.message}>
+          <textarea
+            rows={5}
+            placeholder={t("messagePlaceholder")}
+            className="input-luxe resize-none"
+            {...register("message")}
+          />
+        </Field>
+      </div>
 
       <AnimatePresence>
         {status === "error" && (
@@ -171,14 +173,14 @@ export function ContactForm() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="flex items-center gap-2 text-sm text-red-400"
+            className="mt-4 flex items-center gap-2 text-sm text-red-400"
           >
             <HiExclamationCircle /> {t("errorMessage")}
           </motion.p>
         )}
       </AnimatePresence>
 
-      <div className="pt-2">
+      <div className="mt-10">
         <Button
           type="submit"
           variant="primary"
@@ -206,7 +208,7 @@ function Field({
     <label className="flex flex-col gap-2">
       <span
         className={cn(
-          "text-xs uppercase tracking-[0.15em] transition-colors",
+          "text-xs uppercase tracking-[0.14em]",
           error ? "text-red-400" : "text-bone-dim",
         )}
       >

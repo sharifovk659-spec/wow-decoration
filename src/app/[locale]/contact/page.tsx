@@ -8,7 +8,6 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { ContactDetails } from "@/components/sections/ContactDetails";
 import { ContactMap } from "@/components/sections/ContactMap";
 import { WorldMap } from "@/components/sections/WorldMap";
-import { CallToAction } from "@/components/sections/CallToAction";
 
 export async function generateMetadata({
   params,
@@ -52,7 +51,6 @@ export default async function ContactPage({
       </section>
       <ContactMap />
       <WorldMap />
-      <CallToAction />
     </>
   );
 }

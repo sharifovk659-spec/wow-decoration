@@ -10,9 +10,9 @@ import { Counter } from "@/components/ui/Counter";
 import { ButtonLink } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
 
-/** Large workshop / atelier image — the visual anchor of the section. */
+/** Premium completed project — corporate, not workshop. */
 const ABOUT_IMG =
-  "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1800&q=80";
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80";
 
 const stats = [
   { value: 30, suffix: "+" },
@@ -21,12 +21,14 @@ const stats = [
   { value: 120, suffix: "" },
 ] as const;
 
+const advantageKeys = ["0", "1", "2", "3", "4", "5"] as const;
+
 export function About() {
   const t = useTranslations();
   const root = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
-  const titleWords = t("about.story.title").split(" ");
+  const titleWords = t("about.sectionTitle").split(" ");
 
   useGSAP(
     () => {
@@ -36,7 +38,6 @@ export function About() {
       ).matches;
       if (reduce) return;
 
-      // Eyebrow rule + label
       gsap.from(".about-eyebrow-line", {
         scaleX: 0,
         transformOrigin: "left center",
@@ -52,7 +53,6 @@ export function About() {
         scrollTrigger: { trigger: root.current, start: "top 78%" },
       });
 
-      // Masked, word-by-word heading reveal
       gsap.from(".about-word", {
         yPercent: 120,
         duration: 1.1,
@@ -61,7 +61,6 @@ export function About() {
         scrollTrigger: { trigger: ".about-heading", start: "top 82%" },
       });
 
-      // Copy + CTA fade-up
       gsap.from(".about-fade", {
         autoAlpha: 0,
         y: 28,
@@ -71,7 +70,15 @@ export function About() {
         scrollTrigger: { trigger: ".about-copy", start: "top 82%" },
       });
 
-      // Image clip-reveal + settle
+      gsap.from(".about-advantage", {
+        autoAlpha: 0,
+        y: 22,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.08,
+        scrollTrigger: { trigger: ".about-advantages", start: "top 85%" },
+      });
+
       gsap.fromTo(
         ".about-image-inner",
         { clipPath: "inset(0% 0% 100% 0% round 8px)", scale: 1.12 },
@@ -83,7 +90,6 @@ export function About() {
           scrollTrigger: { trigger: imageRef.current, start: "top 82%" },
         },
       );
-      // Image parallax
       gsap.to(".about-image-media", {
         yPercent: -8,
         ease: "none",
@@ -94,7 +100,6 @@ export function About() {
           scrub: true,
         },
       });
-      // Founded badge
       gsap.from(".about-badge", {
         autoAlpha: 0,
         y: 24,
@@ -103,7 +108,6 @@ export function About() {
         scrollTrigger: { trigger: imageRef.current, start: "top 62%" },
       });
 
-      // KPI strip
       gsap.fromTo(
         ".about-stat-rule",
         { scaleY: 0 },
@@ -129,10 +133,12 @@ export function About() {
   );
 
   return (
-    <section className="relative overflow-hidden border-y border-line bg-ink-800 py-28 md:py-48">
+    <section
+      id="about-company"
+      className="relative scroll-mt-28 overflow-hidden border-y border-line bg-ink-800 py-28 md:scroll-mt-32 md:py-48"
+    >
       <div ref={root} className="container-luxe">
         <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">
-          {/* Narrative */}
           <div className="about-copy lg:col-span-5">
             <div className="mb-7 flex items-center gap-4">
               <span className="about-eyebrow-line h-px w-12 bg-gold/70" />
@@ -154,19 +160,29 @@ export function About() {
               ))}
             </h2>
 
-            <div className="mt-8 flex flex-col gap-6 text-lead text-bone-dim">
-              <p className="about-fade">{t("about.story.paragraph1")}</p>
-              <p className="about-fade">{t("about.story.paragraph2")}</p>
-            </div>
+            <p className="about-fade mt-8 text-lead leading-relaxed text-bone-dim">
+              {t("about.sectionText")}
+            </p>
+
+            <ul className="about-advantages about-fade mt-10 grid gap-4 sm:grid-cols-2">
+              {advantageKeys.map((key) => (
+                <li
+                  key={key}
+                  className="about-advantage flex items-start gap-3 text-sm text-bone-soft"
+                >
+                  <span className="mt-2 h-px w-5 shrink-0 bg-gold/80" />
+                  <span>{t(`about.advantages.${key}`)}</span>
+                </li>
+              ))}
+            </ul>
 
             <div className="about-fade mt-10">
-              <ButtonLink href="/about" variant="outline" withArrow>
+              <ButtonLink href="/contact" variant="outline" withArrow>
                 {t("about.sectionCta")}
               </ButtonLink>
             </div>
           </div>
 
-          {/* Large workshop image */}
           <div className="lg:col-span-7">
             <div
               ref={imageRef}
@@ -176,18 +192,18 @@ export function About() {
                 <div className="about-image-media absolute -inset-y-[8%] inset-x-0">
                   <Image
                     src={ABOUT_IMG}
-                    alt="Craftsmen at work inside the atelier workshop"
+                    alt="Премиальный деревянный интерьер World of Wood Decoration"
                     fill
                     sizes="(max-width: 1024px) 100vw, 55vw"
                     className="object-cover"
                   />
                 </div>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" />
-                <div className="pointer-events-none absolute inset-0 rounded-luxe-lg ring-1 ring-inset ring-cream/10" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent" />
+                <div className="pointer-events-none absolute inset-0 rounded-luxe-lg ring-1 ring-inset ring-gold/15" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent" />
               </div>
 
-              {/* Founded badge */}
-              <div className="about-badge glass absolute -bottom-6 start-6 flex items-baseline gap-3 rounded-luxe px-6 py-4 shadow-luxe-lg sm:start-8 lg:-start-6">
+              <div className="about-badge glass absolute -bottom-6 start-6 flex items-baseline gap-3 rounded-luxe border border-gold/20 px-6 py-4 shadow-luxe-lg sm:start-8 lg:-start-6">
                 <span className="font-display text-4xl leading-none text-gold md:text-5xl">
                   {siteConfig.founded}
                 </span>
@@ -199,7 +215,6 @@ export function About() {
           </div>
         </div>
 
-        {/* Animated KPI strip — corporate presentation */}
         <div className="about-stats mt-28 grid grid-cols-2 gap-y-14 border-t border-line pt-14 md:mt-36 md:grid-cols-4 md:pt-16">
           {stats.map((stat, i) => (
             <div
