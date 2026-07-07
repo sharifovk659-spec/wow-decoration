@@ -6,10 +6,18 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
-import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { ButtonLink } from "@/components/ui/Button";
-import { siteVideos } from "@/lib/videos";
 import { cn } from "@/lib/utils";
+
+/** Still frame — luxury palace interior, instant LCP + reduced-motion fallback. */
+const POSTER =
+  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2400&q=80";
+
+/**
+ * Remote fallback clip (wooden interior, Mixkit free licence). Used only when
+ * a local `/videos/hero.*` file is not present — see public/videos/README.md.
+ */
+const REMOTE_VIDEO = "https://assets.mixkit.co/videos/3090/3090-720.mp4";
 
 const NOISE =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
@@ -25,9 +33,6 @@ export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const [videoReady, setVideoReady] = useState(false);
-  const [motionOk, setMotionOk] = useState(true);
-
-  useBackgroundVideo(videoRef, { enabled: motionOk });
 
   const lines = [t("titleLine1"), t("titleLine2")];
   const stats = [
@@ -46,7 +51,6 @@ export function Hero() {
 
       if (reduce) {
         gsap.set(contentRef.current, { autoAlpha: 1 });
-        gsap.set(mediaInnerRef.current, { scale: 1 });
         return;
       }
 
@@ -153,16 +157,17 @@ export function Hero() {
     };
   }, []);
 
+  /* ------------------- Video: play / reduced-motion -------------------- */
   useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setMotionOk(!reduce);
-    const fallback = window.setTimeout(() => {
-      if (contentRef.current) {
-        gsap.set(contentRef.current, { autoAlpha: 1 });
-      }
-      setVideoReady(true);
-    }, 1200);
-    return () => window.clearTimeout(fallback);
+    if (reduce) {
+      video.pause();
+      return;
+    }
+    const play = video.play();
+    if (play) play.catch(() => undefined);
   }, []);
 
   return (
@@ -173,35 +178,35 @@ export function Hero() {
       {/* -------- Media layer (parallax) -------- */}
       <div
         ref={mediaRef}
-        className="will-transform pointer-events-none absolute -top-[8%] left-0 h-[116%] w-full bg-ink"
+        className="will-transform pointer-events-none absolute -top-[8%] left-0 h-[116%] w-full"
       >
         <div ref={mediaInnerRef} className="will-transform relative h-full w-full">
           <Image
-            src={siteVideos.hero.poster}
+            src={POSTER}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover"
           />
           <video
             ref={videoRef}
             className={cn(
-              "absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] ease-out",
+              "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out",
               videoReady ? "opacity-100" : "opacity-0",
             )}
-            poster={siteVideos.hero.poster}
+            poster={POSTER}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
             onCanPlay={() => setVideoReady(true)}
-            onLoadedData={() => setVideoReady(true)}
-            onError={() => setVideoReady(false)}
             aria-hidden
           >
-            <source src={siteVideos.hero.mp4} type="video/mp4" />
+            <source src="/videos/hero.webm" type="video/webm" />
+            <source src="/videos/hero.mp4" type="video/mp4" />
+            <source src={REMOTE_VIDEO} type="video/mp4" />
           </video>
         </div>
       </div>
@@ -220,7 +225,7 @@ export function Hero() {
       {/* -------- Content -------- */}
       <div
         ref={contentRef}
-        className="container-luxe relative z-10 flex min-h-0 flex-1 flex-col justify-end pb-12 pt-4 opacity-100 md:pb-20 md:pt-6"
+        className="container-luxe invisible relative z-10 flex min-h-0 flex-1 flex-col justify-end pb-12 pt-4 md:pb-20 md:pt-6"
       >
         <div className="mb-8 flex items-center gap-4">
           <span className="hero-eyebrow-line h-px w-14 bg-gold/70" />
@@ -264,13 +269,13 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-12 grid max-w-2xl grid-cols-3 gap-3 border-t border-line pt-6 sm:gap-6 md:mt-16 md:gap-8 md:pt-8">
+        <div className="mt-16 grid max-w-2xl grid-cols-3 gap-8 border-t border-line pt-8">
           {stats.map((stat) => (
-            <div key={stat.l} className="hero-stat min-w-0">
-              <p className="font-display text-2xl text-gold sm:text-3xl md:text-4xl">
+            <div key={stat.l} className="hero-stat">
+              <p className="font-display text-3xl text-gold md:text-4xl">
                 {stat.v}
               </p>
-              <p className="mt-1 text-[0.65rem] uppercase tracking-[0.12em] text-bone-dim sm:text-xs sm:tracking-[0.15em]">
+              <p className="mt-1 text-xs uppercase tracking-[0.15em] text-bone-dim">
                 {stat.l}
               </p>
             </div>
