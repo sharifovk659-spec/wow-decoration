@@ -35,7 +35,18 @@ export function About() {
       const reduce = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
-      if (reduce) return;
+      if (reduce) {
+        gsap.set(".about-word, .about-fade, .about-advantage, .about-stat, .about-badge", {
+          autoAlpha: 1,
+          y: 0,
+        });
+        gsap.set(".about-image-inner", {
+          clipPath: "inset(0% 0% 0% 0% round 8px)",
+          scale: 1,
+        });
+        gsap.set(".about-stat-rule", { scaleY: 1 });
+        return;
+      }
 
       gsap.from(".about-eyebrow-line", {
         scaleX: 0,

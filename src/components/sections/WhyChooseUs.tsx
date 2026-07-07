@@ -47,7 +47,10 @@ export function WhyChooseUs() {
       const reduce = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
-      if (reduce) return;
+      if (reduce) {
+        gsap.set(".why-head, .why-card, .why-stat", { autoAlpha: 1, y: 0 });
+        return;
+      }
 
       gsap.from(".why-head", {
         autoAlpha: 0,

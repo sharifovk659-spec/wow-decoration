@@ -2,6 +2,7 @@
 
 import { useEffect, type RefObject } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface Options {
   scope?: RefObject<HTMLElement | null>;
@@ -19,6 +20,10 @@ export function useGSAP(callback: () => void, options: Options = {}) {
     const ctx = gsap.context(() => {
       callback();
     }, scope?.current ?? undefined);
+
+    const refresh = () => ScrollTrigger.refresh();
+    requestAnimationFrame(refresh);
+    window.setTimeout(refresh, 300);
 
     return () => ctx.revert();
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -18,10 +18,15 @@ export function Process() {
   useGSAP(
     () => {
       gsap.registerPlugin(ScrollTrigger);
-      const prefersReduced = window.matchMedia(
+      const reduce = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
-      if (prefersReduced || !track.current) return;
+      if (reduce) {
+        gsap.set(".process-step", { opacity: 1, x: 0 });
+        gsap.set(".process-line", { scaleY: 1 });
+        return;
+      }
+      if (!track.current) return;
 
       gsap.fromTo(
         ".process-line",

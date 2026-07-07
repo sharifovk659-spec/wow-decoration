@@ -47,4 +47,4 @@ export const imageReveal: Variants = {
   visible: { scale: 1, transition: { duration: 1.4, ease: easeLuxe } },
 };
 
-export const viewportOnce = { once: true, amount: 0.3 } as const;
+export const viewportOnce = { once: true, amount: 0.12 } as const;

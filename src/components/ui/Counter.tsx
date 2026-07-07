@@ -18,7 +18,7 @@ interface CounterProps {
 /** Animated number that counts up when scrolled into view. */
 export function Counter({ value, suffix = "", className }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const inView = useInView(ref, { once: true, amount: 0.2 });
   const reduceMotion = useReducedMotion();
 
   const motionValue = useMotionValue(0);

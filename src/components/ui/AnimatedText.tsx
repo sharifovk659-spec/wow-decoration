@@ -52,7 +52,7 @@ export function AnimatedText({
       variants={container}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount: 0.5 }}
+      viewport={{ once, amount: 0.2 }}
       aria-label={text}
     >
       {words.map((w, i) => (

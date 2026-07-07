@@ -60,7 +60,7 @@ export function Philosophy() {
         variants={staggerContainer(0.12)}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.12 }}
         className="container-luxe mt-24 grid gap-6 md:mt-32 md:grid-cols-3 md:gap-8"
       >
         {pillarKeys.map((key) => (

@@ -11,6 +11,7 @@ import {
 import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useScrollTriggerRefresh } from "@/hooks/useScrollTriggerRefresh";
 
 const LenisContext = createContext<RefObject<Lenis | null> | null>(null);
 
@@ -24,6 +25,8 @@ export const useLenis = () => useContext(LenisContext);
  */
 export function SmoothScroll({ children }: { children: ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
+
+  useScrollTriggerRefresh();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -45,6 +48,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     const onScroll = () => ScrollTrigger.update();
     instance.on("scroll", onScroll);
+    ScrollTrigger.refresh();
 
     const handler = (time: number) => instance.raf(time * 1000);
     gsap.ticker.add(handler);

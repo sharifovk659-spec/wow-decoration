@@ -77,7 +77,7 @@ export function ServiceCards({ withHeading = true }: { withHeading?: boolean }) 
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                   <h3 className="text-h3 text-bone">{t(`items.${key}.title`)}</h3>
 
-                  <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] lg:group-focus-within:grid-rows-[1fr]">
+                  <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] max-lg:grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] lg:group-focus-within:grid-rows-[1fr]">
                     <div className="overflow-hidden">
                       <p className="mt-3 max-w-sm text-sm leading-relaxed text-bone-dim">
                         {t(`items.${key}.text`)}
@@ -85,7 +85,7 @@ export function ServiceCards({ withHeading = true }: { withHeading?: boolean }) 
                     </div>
                   </div>
 
-                  <span className="mt-5 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-gold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:-translate-x-2 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100">
+                  <span className="mt-5 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-gold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] max-lg:translate-x-0 max-lg:opacity-100 lg:-translate-x-2 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100">
                     {t("cta")}
                     <HiArrowLongRight className="text-sm transition-transform duration-500 group-hover:translate-x-1" />
                   </span>

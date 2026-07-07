@@ -37,7 +37,7 @@ export function ProductionProcess() {
   const [videoReady, setVideoReady] = useState(false);
   const [motionOk, setMotionOk] = useState(true);
 
-  useBackgroundVideo(videoRef, { enabled: motionOk, lazy: true });
+  useBackgroundVideo(videoRef, { enabled: motionOk });
 
   useGSAP(
     () => {
@@ -115,7 +115,7 @@ export function ProductionProcess() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           onCanPlay={() => setVideoReady(true)}
           onLoadedData={() => setVideoReady(true)}
           aria-hidden

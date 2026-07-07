@@ -23,7 +23,7 @@ export function Reveal({
   delay = 0,
   y = 28,
   once = true,
-  amount = 0.3,
+  amount = 0.12,
 }: RevealProps) {
   const reduceMotion = useReducedMotion();
 
