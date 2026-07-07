@@ -173,7 +173,7 @@ export function Hero() {
       {/* -------- Media layer (parallax) -------- */}
       <div
         ref={mediaRef}
-        className="will-transform pointer-events-none absolute -top-[8%] left-0 h-[116%] w-full"
+        className="will-transform pointer-events-none absolute -top-[8%] left-0 h-[116%] w-full bg-ink"
       >
         <div ref={mediaInnerRef} className="will-transform relative h-full w-full">
           <Image
@@ -182,12 +182,12 @@ export function Hero() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-contain object-center md:object-cover"
           />
           <video
             ref={videoRef}
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out",
+              "absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-[1200ms] ease-out md:object-cover",
               videoReady ? "opacity-100" : "opacity-0",
             )}
             poster={siteVideos.hero.poster}
