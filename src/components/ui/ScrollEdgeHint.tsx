@@ -1,39 +1,40 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { HiChevronDown, HiChevronUp } from "react-icons/hi2";
 import { useTranslations } from "next-intl";
 import { useLenis } from "@/components/layout/SmoothScroll";
 import { cn } from "@/lib/utils";
 
 /**
- * Mobile scroll affordance — bottom-right.
- * Down animation while browsing; flips to up near page bottom.
+ * Mobile scroll control — circular button, bottom-right.
+ * Arrow stem fills with scroll progress; flips ↑ at page bottom.
  */
 export function ScrollEdgeHint() {
   const t = useTranslations("hero");
   const lenisRef = useLenis();
+  const [progress, setProgress] = useState(0);
   const [atBottom, setAtBottom] = useState(false);
 
   useEffect(() => {
-    const check = () => {
+    const update = () => {
       const doc = document.documentElement;
-      setAtBottom(
-        window.scrollY + window.innerHeight >= doc.scrollHeight - 96,
-      );
+      const max = Math.max(doc.scrollHeight - window.innerHeight, 1);
+      const y = window.scrollY;
+      setProgress(Math.min(1, Math.max(0, y / max)));
+      setAtBottom(y + window.innerHeight >= doc.scrollHeight - 56);
     };
 
-    check();
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
 
     const lenis = lenisRef?.current;
-    lenis?.on("scroll", check);
+    lenis?.on("scroll", update);
 
     return () => {
-      window.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-      lenis?.off("scroll", check);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      lenis?.off("scroll", update);
     };
   }, [lenisRef]);
 
@@ -49,32 +50,67 @@ export function ScrollEdgeHint() {
     else window.scrollTo({ top: target, behavior: "smooth" });
   };
 
+  const stemY1 = 15;
+  const stemY2 = 27;
+  const stemLen = stemY2 - stemY1;
+  const fillStart = stemY1;
+  const fillEnd = atBottom
+    ? stemY2
+    : stemY1 + stemLen * Math.max(progress, 0.12);
+
   return (
     <button
       type="button"
       onClick={onClick}
       aria-label={atBottom ? t("scrollUp") : t("scroll")}
       className={cn(
-        "hero-hint fixed bottom-5 end-4 z-40 flex flex-col items-center gap-2",
-        "rounded-full border border-line/70 bg-ink/45 px-2.5 py-3 backdrop-blur-md",
-        "transition-colors duration-300 hover:border-gold/40 active:scale-95 md:hidden",
+        "hero-hint fixed bottom-6 end-4 z-40 flex h-12 w-12 items-center justify-center",
+        "rounded-full border border-bone/20 bg-ink/55 shadow-luxe backdrop-blur-md",
+        "transition-transform duration-300 active:scale-95 md:hidden",
       )}
     >
-      <span className="relative h-9 w-px overflow-hidden bg-line-strong">
-        <span
-          className={cn(
-            "absolute inset-x-0 h-full w-full bg-gold",
-            atBottom
-              ? "[animation:scroll-hint-up_2s_ease-in-out_infinite]"
-              : "[animation:scroll-hint_2s_ease-in-out_infinite]",
-          )}
+      <svg
+        viewBox="0 0 48 48"
+        className="h-7 w-7"
+        aria-hidden
+        style={{
+          transform: atBottom ? "rotate(0deg)" : "rotate(180deg)",
+          transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
+        {/* Arrow stem — track */}
+        <line
+          x1="24"
+          y1={stemY1}
+          x2="24"
+          y2={stemY2}
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          className="text-bone/25"
         />
-      </span>
-      {atBottom ? (
-        <HiChevronUp className="text-lg text-gold" aria-hidden />
-      ) : (
-        <HiChevronDown className="text-lg text-gold" aria-hidden />
-      )}
+        {/* Arrow stem — scroll fill */}
+        <line
+          x1="24"
+          y1={fillStart}
+          x2="24"
+          y2={fillEnd}
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          className="text-bone"
+        />
+        {/* Chevron */}
+        <polyline
+          points="18,21 24,15 30,21"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-bone"
+        />
+      </svg>
     </button>
   );
 }
