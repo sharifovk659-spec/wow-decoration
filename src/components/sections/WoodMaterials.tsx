@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { photoUrl } from "@/lib/media";
 
 /** Wood grain / texture photography — no interior apartment shots. */
 const WOODS = [
@@ -19,8 +20,7 @@ const WOODS = [
   { img: "1615529182904-14819c35db37", latin: "Triplochiton scleroxylon", tone: "#d8c39a" },
 ] as const;
 
-const src = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1100&q=80&crop=entropy`;
+const src = (id: string) => photoUrl(id);
 
 const keys = ["0", "1", "2", "3", "4", "5", "6"] as const;
 

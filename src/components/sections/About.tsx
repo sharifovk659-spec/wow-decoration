@@ -9,10 +9,9 @@ import { useGSAP } from "@/hooks/useGSAP";
 import { Counter } from "@/components/ui/Counter";
 import { ButtonLink } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
+import { photoUrl } from "@/lib/media";
 
-/** Premium completed project — corporate, not workshop. */
-const ABOUT_IMG =
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80";
+const ABOUT_IMG = photoUrl("1600585154340-be6161a56a0c");
 
 const stats = [
   { value: 30, suffix: "+" },

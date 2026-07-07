@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
 import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { siteVideos } from "@/lib/videos";
+import { photoUrl } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
 const NOISE =
@@ -24,8 +25,7 @@ const STEP_IMAGES = [
   "1566073771259-6a8506099945",
 ] as const;
 
-const img = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=80`;
+const img = (id: string) => photoUrl(id);
 
 const steps = ["0", "1", "2", "3", "4", "5", "6", "7"] as const;
 
@@ -106,6 +106,7 @@ export function ProductionProcess() {
         />
         <video
           ref={videoRef}
+          src={siteVideos.process.mp4}
           className={cn(
             "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms]",
             videoReady ? "opacity-100" : "opacity-0",

@@ -80,13 +80,12 @@ export const galleryItems: GalleryItem[] = [
   ...itemsFor("beforeAfter", 4, 11),
 ];
 
-const BASE = "https://images.unsplash.com/photo-";
+import { photoUrl } from "./media";
 
-export function galleryThumb(item: GalleryItem, w = 800): string {
-  const h = Math.round((w * item.ratio[1]) / item.ratio[0]);
-  return `${BASE}${item.photoId}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
+export function galleryThumb(item: GalleryItem, _w = 800): string {
+  return photoUrl(item.photoId);
 }
 
-export function galleryFull(item: GalleryItem, w = 1800): string {
-  return `${BASE}${item.photoId}?auto=format&fit=max&w=${w}&q=85`;
+export function galleryFull(item: GalleryItem, _w = 1800): string {
+  return photoUrl(item.photoId);
 }

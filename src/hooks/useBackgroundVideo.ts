@@ -30,6 +30,9 @@ export function useBackgroundVideo(
     const onCanPlay = () => tryPlay();
     video.addEventListener("canplay", onCanPlay);
 
+    const unlock = () => tryPlay();
+    document.addEventListener("touchstart", unlock, { once: true, passive: true });
+
     if (!lazy) {
       video.preload = "auto";
       tryPlay();
@@ -57,6 +60,7 @@ export function useBackgroundVideo(
 
     return () => {
       video.removeEventListener("canplay", onCanPlay);
+      document.removeEventListener("touchstart", unlock);
       io?.disconnect();
     };
   }, [videoRef, enabled, lazy]);

@@ -46,6 +46,7 @@ export function Hero() {
 
       if (reduce) {
         gsap.set(contentRef.current, { autoAlpha: 1 });
+        gsap.set(mediaInnerRef.current, { scale: 1 });
         return;
       }
 
@@ -155,6 +156,13 @@ export function Hero() {
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     setMotionOk(!reduce);
+    const fallback = window.setTimeout(() => {
+      if (contentRef.current) {
+        gsap.set(contentRef.current, { autoAlpha: 1 });
+      }
+      setVideoReady(true);
+    }, 1200);
+    return () => window.clearTimeout(fallback);
   }, []);
 
   return (
@@ -178,6 +186,7 @@ export function Hero() {
           />
           <video
             ref={videoRef}
+            src={siteVideos.hero.mp4}
             className={cn(
               "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out",
               videoReady ? "opacity-100" : "opacity-0",
@@ -190,6 +199,7 @@ export function Hero() {
             preload="auto"
             onCanPlay={() => setVideoReady(true)}
             onLoadedData={() => setVideoReady(true)}
+            onError={() => setVideoReady(false)}
             aria-hidden
           >
             <source src={siteVideos.hero.mp4} type="video/mp4" />
@@ -212,7 +222,7 @@ export function Hero() {
       {/* -------- Content -------- */}
       <div
         ref={contentRef}
-        className="container-luxe invisible relative z-10 flex min-h-0 flex-1 flex-col justify-end pb-12 pt-4 md:pb-20 md:pt-6"
+        className="container-luxe relative z-10 flex min-h-0 flex-1 flex-col justify-end pb-12 pt-4 opacity-100 md:pb-20 md:pt-6"
       >
         <div className="mb-8 flex items-center gap-4">
           <span className="hero-eyebrow-line h-px w-14 bg-gold/70" />

@@ -12,14 +12,15 @@ import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { easeLuxe } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { photoUrl } from "@/lib/media";
 
 const SERVICE_IMAGES = [
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80",
+  photoUrl("1600585154340-be6161a56a0c"),
+  photoUrl("1600607687939-ce8a6c25118c"),
+  photoUrl("1615529182904-14819c35db37"),
+  photoUrl("1585036156171-384164a8c675"),
+  photoUrl("1616486338812-3dadae4b4ace"),
+  photoUrl("1566073771259-6a8506099945"),
 ];
 
 const keys = ["0", "1", "2", "3", "4", "5"] as const;

@@ -6,9 +6,9 @@ import { ParallaxImage } from "@/components/ui/ParallaxImage";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 import { Reveal } from "@/components/ui/Reveal";
 import { staggerContainer, fadeUp } from "@/lib/motion";
+import { photoUrl } from "@/lib/media";
 
-const PHILOSOPHY_IMG =
-  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=80";
+const PHILOSOPHY_IMG = photoUrl("1616486338812-3dadae4b4ace");
 
 const pillarKeys = ["0", "1", "2"] as const;
 

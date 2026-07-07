@@ -87,15 +87,14 @@ const GALLERY_IDS = [
   "1564769662533-4f00a87b4056",
 ] as const;
 
-const img = (id: string, w = 1600) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+import { photoUrl } from "@/lib/media";
 
 function buildGallery(slug: string, count = 42): string[] {
   let hash = 0;
   for (const char of slug) hash = (hash * 31 + char.charCodeAt(0)) | 0;
   return Array.from({ length: count }, (_, i) => {
     const id = GALLERY_IDS[Math.abs((hash + i * 7) % GALLERY_IDS.length)]!;
-    return img(id, 1000 + (i % 6) * 120);
+    return photoUrl(id);
   });
 }
 
@@ -213,7 +212,7 @@ export const projects: Project[] = [
     countryKey: "tajikistan",
     year: "2023",
     featured: true,
-    cover: img("1564769662533-4f00a87b4056"),
+    cover: photoUrl("1564769662533-4f00a87b4056"),
     title: "Kohi Navruz",
     location: "Душанбе, Таджикистан",
     country: "Таджикистан",
@@ -251,7 +250,7 @@ export const projects: Project[] = [
     countryKey: "tajikistan",
     year: "2022",
     featured: true,
-    cover: img("1616486338812-3dadae4b4ace"),
+    cover: photoUrl("1616486338812-3dadae4b4ace"),
     title: "Парламент Республики Таджикистан",
     location: "Душанбе, Таджикистан",
     country: "Таджикистан",
@@ -279,7 +278,7 @@ export const projects: Project[] = [
     countryKey: "kazakhstan",
     year: "2021",
     featured: true,
-    cover: img("1600585154340-be6161a56a0c"),
+    cover: photoUrl("1600585154340-be6161a56a0c"),
     title: "Дворец Нации",
     location: "Астана, Казахстан",
     country: "Казахстан",
@@ -302,7 +301,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2021",
     featured: true,
-    cover: img("1566073771259-6a8506099945"),
+    cover: photoUrl("1566073771259-6a8506099945"),
     title: "Expo Dubai",
     location: "Дубай, ОАЭ",
     country: "ОАЭ",
@@ -325,7 +324,7 @@ export const projects: Project[] = [
     countryKey: "qatar",
     year: "2022",
     featured: true,
-    cover: img("1600566752355-35792bedcfea"),
+    cover: photoUrl("1600566752355-35792bedcfea"),
     title: "Expo Qatar",
     location: "Доха, Катар",
     country: "Катар",
@@ -348,7 +347,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2023",
     featured: true,
-    cover: img("1616486338812-3dadae4b4ace"),
+    cover: photoUrl("1616486338812-3dadae4b4ace"),
     title: "Wyndham Grand Hotel",
     location: "Международный проект",
     country: "ОАЭ",
@@ -371,7 +370,7 @@ export const projects: Project[] = [
     countryKey: "tajikistan",
     year: "2020",
     featured: true,
-    cover: img("1616137466211-f939a420be84"),
+    cover: photoUrl("1616137466211-f939a420be84"),
     title: "Национальный ботанический сад",
     location: "Региональный проект",
     country: "Таджикистан",
@@ -394,7 +393,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2024",
     featured: true,
-    cover: img("1616137466211-f939a420be84"),
+    cover: photoUrl("1616137466211-f939a420be84"),
     title: "Королевская беседка 14×8",
     location: "Частный заказ",
     country: "ОАЭ",
@@ -417,7 +416,7 @@ export const projects: Project[] = [
     countryKey: "tajikistan",
     year: "2023",
     featured: true,
-    cover: img("1600585154340-be6161a56a0c"),
+    cover: photoUrl("1600585154340-be6161a56a0c"),
     title: "Топчан из ореха",
     location: "Частный заказ",
     country: "Таджикистан",
@@ -440,7 +439,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2024",
     featured: true,
-    cover: img("1600607687939-ce8a6c25118c"),
+    cover: photoUrl("1600607687939-ce8a6c25118c"),
     title: "Интерьер частной виллы",
     location: "Частная резиденция",
     country: "ОАЭ",

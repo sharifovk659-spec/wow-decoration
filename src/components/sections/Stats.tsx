@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import { Counter } from "@/components/ui/Counter";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 import { staggerContainer, fadeUp } from "@/lib/motion";
+import { photoUrl } from "@/lib/media";
 
-const STATS_IMG =
-  "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=2000&q=80";
+const STATS_IMG = photoUrl("1615529182904-14819c35db37");
 
 const stats = [
   { value: 30, suffix: "+" },

@@ -8,15 +8,15 @@ import { AnimatedText } from "@/components/ui/AnimatedText";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { staggerContainer, fadeUp } from "@/lib/motion";
+import { photoUrl } from "@/lib/media";
 
-const STORY_IMG =
-  "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1400&q=80";
+const STORY_IMG = photoUrl("1600566752355-35792bedcfea");
 
 const TEAM_IMAGES = [
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+  photoUrl("1507003211169-0a1dd7228f2d"),
+  photoUrl("1494790108377-be9c29b29330"),
+  photoUrl("1500648767791-00dcc994a43e"),
+  photoUrl("1573496359142-b8d87734a5a2"),
 ];
 
 const valueKeys = ["0", "1", "2", "3"] as const;

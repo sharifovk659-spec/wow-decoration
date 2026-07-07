@@ -7,15 +7,15 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
+import { photoUrl } from "@/lib/media";
 
-/** Premium direction imagery — interiors, pavilions, doors, furniture, sacred, hospitality. */
 const CARD_IMAGES = [
-  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1616137466211-f939a420be84?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?auto=format&fit=crop&w=1400&q=80",
-  "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=80",
+  photoUrl("1600607687939-ce8a6c25118c"),
+  photoUrl("1616137466211-f939a420be84"),
+  photoUrl("1616486338812-3dadae4b4ace"),
+  photoUrl("1600585154340-be6161a56a0c"),
+  photoUrl("1564769662533-4f00a87b4056"),
+  photoUrl("1566073771259-6a8506099945"),
 ];
 
 const keys = ["0", "1", "2", "3", "4", "5"] as const;

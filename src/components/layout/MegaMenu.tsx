@@ -8,13 +8,13 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import { Link } from "@/i18n/navigation";
 import { getFeaturedProjects, projectCategories } from "@/lib/projects";
 import type { Locale } from "@/i18n/routing";
+import { photoUrl } from "@/lib/media";
 
 export type MegaKey = "services" | "projects";
 
 const SERVICE_KEYS = ["0", "1", "2", "3", "4", "5"] as const;
 
-const MEGA_IMG =
-  "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=900&q=80";
+const MEGA_IMG = photoUrl("1615529182904-14819c35db37");
 
 interface MegaMenuProps {
   active: MegaKey | null;
