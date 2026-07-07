@@ -6,12 +6,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
+import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
+import { siteVideos } from "@/lib/videos";
 import { cn } from "@/lib/utils";
-
-const POSTER =
-  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=80";
-
-const REMOTE_VIDEO = "https://assets.mixkit.co/videos/20390/20390-720.mp4";
 
 const NOISE =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
@@ -38,6 +35,9 @@ export function ProductionProcess() {
   const track = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [motionOk, setMotionOk] = useState(true);
+
+  useBackgroundVideo(videoRef, { enabled: motionOk, lazy: true });
 
   useGSAP(
     () => {
@@ -87,15 +87,8 @@ export function ProductionProcess() {
   );
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      video.pause();
-      return;
-    }
-    const play = video.play();
-    if (play) play.catch(() => undefined);
+    setMotionOk(!reduce);
   }, []);
 
   return (
@@ -104,25 +97,31 @@ export function ProductionProcess() {
       className="relative isolate scroll-mt-28 overflow-hidden py-28 md:scroll-mt-32 md:py-48"
     >
       <div className="prod-bg absolute inset-x-0 -top-[6%] -z-10 h-[112%]">
-        <Image src={POSTER} alt="" fill sizes="100vw" className="object-cover" />
+        <Image
+          src={siteVideos.process.poster}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
         <video
           ref={videoRef}
           className={cn(
             "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms]",
             videoReady ? "opacity-100" : "opacity-0",
           )}
-          poster={POSTER}
+          poster={siteVideos.process.poster}
           autoPlay
           muted
           loop
           playsInline
-          preload="none"
+          preload="metadata"
           onCanPlay={() => setVideoReady(true)}
+          onLoadedData={() => setVideoReady(true)}
           aria-hidden
         >
-          <source src="/videos/process.webm" type="video/webm" />
-          <source src="/videos/process.mp4" type="video/mp4" />
-          <source src={REMOTE_VIDEO} type="video/mp4" />
+          <source src={siteVideos.process.mp4} type="video/mp4" />
+          <source src={siteVideos.process.remote} type="video/mp4" />
         </video>
       </div>
 

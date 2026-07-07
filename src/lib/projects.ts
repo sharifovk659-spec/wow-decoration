@@ -1,5 +1,6 @@
 import type { Locale } from "@/i18n/routing";
 import type { CountryKey } from "@/lib/countries";
+import { siteVideos } from "@/lib/videos";
 import projectI18n from "../../messages/projects.i18n.json";
 
 export type ProjectCategory =
@@ -36,7 +37,7 @@ export interface Project {
   materials: Record<Locale, string[]>;
 }
 
-const PROCESS_VIDEO = "https://assets.mixkit.co/videos/20390/20390-720.mp4";
+const PROCESS_VIDEO = siteVideos.projectProcess.mp4;
 
 const GALLERY_IDS = [
   "1600585154340-be6161a56a0c",
