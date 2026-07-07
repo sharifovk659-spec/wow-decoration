@@ -173,7 +173,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex h-svh min-h-[38rem] w-full flex-col overflow-hidden"
+      className="relative flex min-h-[42rem] min-h-svh w-full flex-col overflow-hidden pt-24 md:pt-28"
     >
       {/* -------- Media layer (parallax) -------- */}
       <div
@@ -225,7 +225,7 @@ export function Hero() {
       {/* -------- Content -------- */}
       <div
         ref={contentRef}
-        className="container-luxe invisible relative z-10 flex h-full flex-col justify-end pb-16 pt-40 md:pb-24"
+        className="container-luxe invisible relative z-10 flex min-h-0 flex-1 flex-col justify-end pb-12 pt-4 md:pb-20 md:pt-6"
       >
         <div className="mb-8 flex items-center gap-4">
           <span className="hero-eyebrow-line h-px w-14 bg-gold/70" />
@@ -234,7 +234,7 @@ export function Hero() {
 
         <h1
           ref={titleRef}
-          className="will-transform text-display max-w-[14ch] font-display text-bone"
+          className="will-transform text-display max-w-[14ch] text-balance font-display text-bone"
         >
           {lines.map((line, i) => (
             <span key={line} className="clip-text block">

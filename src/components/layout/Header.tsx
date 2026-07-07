@@ -102,10 +102,10 @@ export function Header() {
         ref={headerRef}
         className={cn(
           "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color,padding,box-shadow] duration-500",
-          scrolled ? "py-3" : "py-5",
+          scrolled ? "py-3" : "py-4",
           scrolled
             ? "glass border-x-0 border-t-0 shadow-[0_1px_0_0_rgba(192,160,104,0.28)]"
-            : "border-b border-transparent bg-transparent",
+            : "border-b border-line/20 bg-ink/55 backdrop-blur-md",
         )}
       >
         <div
@@ -121,7 +121,7 @@ export function Header() {
             <Logo />
           </div>
 
-          <nav className="hidden items-center gap-4 xl:flex 2xl:gap-6">
+          <nav className="hidden items-center gap-2 xl:flex 2xl:gap-4">
             {NAV.map((item) => {
               const active = isNavActive(pathname, item.href);
               return (
@@ -130,11 +130,12 @@ export function Header() {
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={cn(
-                      "group relative whitespace-nowrap px-0.5 py-2 text-[0.6875rem] font-medium uppercase tracking-[0.14em] transition-colors duration-300 2xl:text-[0.7rem] 2xl:tracking-[0.16em]",
+                      "group relative max-w-[8.5rem] truncate px-0.5 py-2 text-[0.625rem] font-medium uppercase tracking-[0.1em] transition-colors duration-300 2xl:max-w-none 2xl:text-[0.68rem] 2xl:tracking-[0.14em]",
                       active
                         ? "text-gold"
                         : "text-bone-soft hover:text-bone",
                     )}
+                    title={t(item.key)}
                   >
                     {t(item.key)}
                     <span
