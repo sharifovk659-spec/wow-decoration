@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -31,8 +31,13 @@ export function HoverVideo({
 }: HoverVideoProps) {
   const reduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const touchRef = useRef(false);
   const [ready, setReady] = useState(false);
   const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    touchRef.current = !window.matchMedia("(pointer: fine)").matches;
+  }, []);
 
   const canPlay = Boolean(video) && !reduceMotion;
 
@@ -52,11 +57,18 @@ export function HoverVideo({
     setPlaying(false);
   };
 
+  const onTouchToggle = () => {
+    if (!touchRef.current) return;
+    if (playing) stop();
+    else start();
+  };
+
   return (
     <div
       className={cn("relative overflow-hidden", className)}
       onPointerEnter={start}
       onPointerLeave={stop}
+      onClick={onTouchToggle}
     >
       <Image
         src={src}
@@ -70,10 +82,11 @@ export function HoverVideo({
       {canPlay && (
         <video
           ref={videoRef}
+          src={video}
           muted
           loop
           playsInline
-          preload="none"
+          preload="metadata"
           aria-hidden
           onCanPlay={() => setReady(true)}
           className={cn(
@@ -81,7 +94,6 @@ export function HoverVideo({
             playing && ready ? "opacity-100" : "opacity-0",
           )}
         >
-          <source src={video} type="video/mp4" />
         </video>
       )}
     </div>

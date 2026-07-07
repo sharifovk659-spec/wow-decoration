@@ -64,8 +64,9 @@ export function VideoTestimonials() {
           grabCursor
           speed={700}
           spaceBetween={24}
-          slidesPerView={1.15}
+          slidesPerView={1.05}
           breakpoints={{
+            430: { slidesPerView: 1.12, spaceBetween: 20 },
             640: { slidesPerView: 1.8, spaceBetween: 28 },
             1024: { slidesPerView: 2.4, spaceBetween: 32 },
             1440: { slidesPerView: 3, spaceBetween: 36 },

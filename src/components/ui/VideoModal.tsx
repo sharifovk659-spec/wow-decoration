@@ -117,7 +117,7 @@ export function VideoModal({
                 autoPlay
                 playsInline
                 preload="metadata"
-                className="aspect-video w-full bg-ink"
+                className="aspect-video max-h-[72dvh] w-full bg-ink object-contain sm:max-h-none"
               >
                 <source src={src} type="video/mp4" />
               </video>

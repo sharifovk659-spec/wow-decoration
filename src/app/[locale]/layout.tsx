@@ -94,7 +94,9 @@ export default async function LocaleLayout({
           <Cursor />
           <SmoothScroll>
             <Header />
-            <main id="main">{children}</main>
+            <main id="main" className="overflow-x-clip">
+              {children}
+            </main>
             <Footer />
           </SmoothScroll>
         </NextIntlClientProvider>

@@ -21,6 +21,12 @@ export function useBackgroundVideo(
     const video = videoRef.current;
     if (!video || !enabled) return;
 
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      video.pause();
+      return;
+    }
+
     const tryPlay = () => {
       if (video.paused) {
         video.play().catch(() => undefined);

@@ -6,9 +6,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
+import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { ButtonLink } from "@/components/ui/Button";
-import { siteVideos } from "@/lib/videos";
+import { photoUrl } from "@/lib/media";
 import { cn } from "@/lib/utils";
+
+/** Local still — same frame as the original banner, bundled for mobile. */
+const HERO_POSTER = photoUrl("1616486338812-3dadae4b4ace");
+const HERO_VIDEO = "/videos/hero.mp4";
 
 const NOISE =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
@@ -25,6 +30,8 @@ export function Hero() {
 
   const [videoReady, setVideoReady] = useState(false);
 
+  useBackgroundVideo(videoRef);
+
   const lines = [t("titleLine1"), t("titleLine2")];
   const stats = [
     { v: t("stat1Value"), l: t("stat1Label") },
@@ -39,31 +46,36 @@ export function Hero() {
       const reduce = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+      const mobile = window.matchMedia("(max-width: 767px)").matches;
 
       if (reduce) {
         gsap.set(contentRef.current, { autoAlpha: 1 });
         return;
       }
 
-      gsap.set(mediaInnerRef.current, { scale: 1.18 });
+      gsap.set(mediaInnerRef.current, { scale: mobile ? 1 : 1.18 });
 
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-      tl.set(contentRef.current, { autoAlpha: 1 })
-        .to(
+      tl.set(contentRef.current, { autoAlpha: 1 });
+
+      if (!mobile) {
+        tl.to(
           mediaInnerRef.current,
           { scale: 1, duration: 2, ease: "power3.out" },
           0,
-        )
-        .from(
-          ".hero-eyebrow-line",
-          { scaleX: 0, transformOrigin: "left center", duration: 1.1 },
-          0.25,
-        )
+        );
+      }
+
+      tl.from(
+        ".hero-eyebrow-line",
+        { scaleX: 0, transformOrigin: "left center", duration: 1.1 },
+        mobile ? 0.1 : 0.25,
+      )
         .from(".hero-eyebrow", { autoAlpha: 0, x: -12, duration: 0.9 }, "<")
         .from(
           ".hero-line-inner",
           { yPercent: 120, duration: 1.3, stagger: 0.12 },
-          0.4,
+          mobile ? 0.2 : 0.4,
         )
         .from(".hero-desc", { autoAlpha: 0, y: 28, duration: 1 }, "-=0.75")
         .from(".hero-cta", { autoAlpha: 0, y: 28, duration: 1 }, "-=0.85")
@@ -74,28 +86,29 @@ export function Hero() {
         )
         .from(".hero-hint", { autoAlpha: 0, duration: 1 }, "-=0.5");
 
-      // Scroll parallax — media drifts down, content drifts up (depth).
-      gsap.to(mediaRef.current, {
-        yPercent: 16,
-        scale: 1.06,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-      gsap.to(contentRef.current, {
-        yPercent: -14,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      if (!mobile) {
+        gsap.to(mediaRef.current, {
+          yPercent: 16,
+          scale: 1.06,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+        gsap.to(contentRef.current, {
+          yPercent: -14,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
     },
     { scope: sectionRef },
   );
@@ -148,62 +161,49 @@ export function Hero() {
     };
   }, []);
 
-  /* ------------------- Video: play / reduced-motion -------------------- */
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      video.pause();
-      return;
-    }
-    const play = video.play();
-    if (play) play.catch(() => undefined);
-  }, []);
-
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[42rem] min-h-svh w-full flex-col overflow-hidden pt-24 md:pt-28"
+      className="relative flex min-h-[42rem] min-h-svh w-full max-w-[100vw] flex-col overflow-hidden pt-24 md:pt-28"
     >
       {/* -------- Media layer (parallax) -------- */}
       <div
         ref={mediaRef}
-        className="will-transform pointer-events-none absolute -top-[8%] left-0 h-[116%] w-full"
+        className="will-transform pointer-events-none absolute inset-0 h-full w-full md:-top-[8%] md:h-[116%]"
       >
-        <div ref={mediaInnerRef} className="will-transform relative h-full w-full">
+        <div ref={mediaInnerRef} className="will-transform relative h-full w-full overflow-hidden">
           <Image
-            src={siteVideos.hero.poster}
+            src={HERO_POSTER}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center"
           />
           <video
             ref={videoRef}
+            src={HERO_VIDEO}
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out",
+              "absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] ease-out",
               videoReady ? "opacity-100" : "opacity-0",
             )}
-            poster={siteVideos.hero.poster}
+            poster={HERO_POSTER}
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
             onCanPlay={() => setVideoReady(true)}
+            onLoadedData={() => setVideoReady(true)}
             aria-hidden
-          >
-            <source src={siteVideos.hero.mp4} type="video/mp4" />
-          </video>
+          />
         </div>
       </div>
 
       {/* -------- Luxury overlays -------- */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/30" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/35 to-transparent rtl:bg-gradient-to-l" />
-      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(125%_120%_at_50%_28%,transparent_32%,rgba(18,19,22,0.78)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/30 max-md:via-ink/75 max-md:to-ink/40" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/35 to-transparent max-md:from-ink/95 max-md:via-ink/55 rtl:bg-gradient-to-l" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(125%_120%_at_50%_28%,transparent_32%,rgba(18,19,22,0.78)_100%)] max-md:[background:radial-gradient(125%_120%_at_50%_22%,transparent_18%,rgba(18,19,22,0.85)_100%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-ink/80 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       <div
@@ -216,14 +216,14 @@ export function Hero() {
         ref={contentRef}
         className="container-luxe invisible relative z-10 flex min-h-0 flex-1 flex-col justify-end pb-12 pt-4 md:pb-20 md:pt-6"
       >
-        <div className="mb-8 flex items-center gap-4">
+        <div className="mb-6 flex items-center gap-4 md:mb-8">
           <span className="hero-eyebrow-line h-px w-14 bg-gold/70" />
           <span className="hero-eyebrow eyebrow">{t("eyebrow")}</span>
         </div>
 
         <h1
           ref={titleRef}
-          className="will-transform text-display max-w-[14ch] text-balance font-display text-bone"
+          className="will-transform text-display max-w-[12ch] text-balance font-display text-bone sm:max-w-[14ch]"
         >
           {lines.map((line, i) => (
             <span key={line} className="clip-text block">
@@ -239,7 +239,7 @@ export function Hero() {
           ))}
         </h1>
 
-        <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mt-8 flex flex-col gap-8 lg:mt-10 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
           <p className="hero-desc text-lead max-w-2xl leading-relaxed text-bone-soft">
             <span className="font-medium text-gold-soft">
               World of Wood Decoration
@@ -248,23 +248,33 @@ export function Hero() {
             {t("descriptionLead")}
           </p>
 
-          <div className="hero-cta flex flex-wrap items-center gap-4">
-            <ButtonLink href="/contact" variant="primary" withArrow>
+          <div className="hero-cta flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
+            <ButtonLink
+              href="/contact"
+              variant="primary"
+              withArrow
+              className="w-full justify-center sm:w-auto"
+            >
               {t("cta")}
             </ButtonLink>
-            <ButtonLink href="/projects" variant="outline" magnetic={false}>
+            <ButtonLink
+              href="/projects"
+              variant="outline"
+              magnetic={false}
+              className="w-full justify-center sm:w-auto"
+            >
               {t("secondary")}
             </ButtonLink>
           </div>
         </div>
 
-        <div className="mt-16 grid max-w-2xl grid-cols-3 gap-8 border-t border-line pt-8">
+        <div className="mt-12 grid max-w-2xl grid-cols-3 gap-3 border-t border-line pt-6 sm:mt-16 sm:gap-8 sm:pt-8">
           {stats.map((stat) => (
-            <div key={stat.l} className="hero-stat">
-              <p className="font-display text-3xl text-gold md:text-4xl">
+            <div key={stat.l} className="hero-stat min-w-0">
+              <p className="font-display text-2xl text-gold sm:text-3xl md:text-4xl">
                 {stat.v}
               </p>
-              <p className="mt-1 text-xs uppercase tracking-[0.15em] text-bone-dim">
+              <p className="mt-1 text-[0.6rem] uppercase leading-snug tracking-[0.12em] text-bone-dim sm:text-xs sm:tracking-[0.15em]">
                 {stat.l}
               </p>
             </div>
