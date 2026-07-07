@@ -5,9 +5,11 @@ import { useTranslations } from "next-intl";
 import { useLenis } from "@/components/layout/SmoothScroll";
 import { cn } from "@/lib/utils";
 
+const STEM = 11;
+
 /**
- * Mobile scroll control — circular button, bottom-right.
- * Arrow stem fills with scroll progress; flips ↑ at page bottom.
+ * Mobile scroll orb (bottom-right) — matches reference:
+ * circular control, arrow stem fills with scroll progress, flips ↑ at page end.
  */
 export function ScrollEdgeHint() {
   const t = useTranslations("hero");
@@ -21,7 +23,7 @@ export function ScrollEdgeHint() {
       const max = Math.max(doc.scrollHeight - window.innerHeight, 1);
       const y = window.scrollY;
       setProgress(Math.min(1, Math.max(0, y / max)));
-      setAtBottom(y + window.innerHeight >= doc.scrollHeight - 56);
+      setAtBottom(y + window.innerHeight >= doc.scrollHeight - 96);
     };
 
     update();
@@ -50,13 +52,8 @@ export function ScrollEdgeHint() {
     else window.scrollTo({ top: target, behavior: "smooth" });
   };
 
-  const stemY1 = 15;
-  const stemY2 = 27;
-  const stemLen = stemY2 - stemY1;
-  const fillStart = stemY1;
-  const fillEnd = atBottom
-    ? stemY2
-    : stemY1 + stemLen * Math.max(progress, 0.12);
+  const fill = atBottom ? STEM : STEM * progress;
+  const active = progress > 0.04 || atBottom;
 
   return (
     <button
@@ -64,51 +61,58 @@ export function ScrollEdgeHint() {
       onClick={onClick}
       aria-label={atBottom ? t("scrollUp") : t("scroll")}
       className={cn(
-        "hero-hint fixed bottom-6 end-4 z-40 flex h-12 w-12 items-center justify-center",
-        "rounded-full border border-bone/20 bg-ink/55 shadow-luxe backdrop-blur-md",
-        "transition-transform duration-300 active:scale-95 md:hidden",
+        "scroll-edge-hint fixed bottom-6 end-5 z-50",
+        "flex h-12 w-12 items-center justify-center rounded-full",
+        "border border-line-strong bg-ink/85 shadow-luxe backdrop-blur-md",
+        "transition-[transform,border-color,box-shadow] duration-300",
+        "hover:border-gold/40 hover:shadow-gold active:scale-95 md:hidden",
       )}
     >
       <svg
-        viewBox="0 0 48 48"
-        className="h-7 w-7"
+        viewBox="0 0 24 24"
+        fill="none"
         aria-hidden
-        style={{
-          transform: atBottom ? "rotate(0deg)" : "rotate(180deg)",
-          transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
+        className={cn(
+          "h-[1.375rem] w-[1.375rem] transition-transform duration-500 ease-out",
+          atBottom && "rotate-180",
+        )}
       >
-        {/* Arrow stem — track */}
+        {/* stem track */}
         <line
-          x1="24"
-          y1={stemY1}
-          x2="24"
-          y2={stemY2}
+          x1="12"
+          y1="5.5"
+          x2="12"
+          y2="16.5"
           stroke="currentColor"
-          strokeWidth="1.5"
+          className="text-bone-faint/30"
+          strokeWidth="1.85"
           strokeLinecap="round"
-          className="text-bone/25"
         />
-        {/* Arrow stem — scroll fill */}
+        {/* stem fill — grows with scroll depth */}
         <line
-          x1="24"
-          y1={fillStart}
-          x2="24"
-          y2={fillEnd}
+          x1="12"
+          y1="5.5"
+          x2="12"
+          y2="16.5"
           stroke="currentColor"
-          strokeWidth="1.5"
+          className="text-gold transition-[stroke-dashoffset] duration-150 ease-out"
+          strokeWidth="1.85"
           strokeLinecap="round"
-          className="text-bone"
+          pathLength={STEM}
+          strokeDasharray={STEM}
+          strokeDashoffset={STEM - fill}
         />
-        {/* Chevron */}
-        <polyline
-          points="18,21 24,15 30,21"
-          fill="none"
+        {/* arrowhead */}
+        <path
+          d="M8.5 13.5 L12 17 L15.5 13.5"
           stroke="currentColor"
-          strokeWidth="1.5"
+          className={cn(
+            "transition-colors duration-300",
+            active ? "text-gold" : "text-bone-faint/45",
+          )}
+          strokeWidth="1.85"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-bone"
         />
       </svg>
     </button>
