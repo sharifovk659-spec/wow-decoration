@@ -186,7 +186,6 @@ export function Hero() {
           />
           <video
             ref={videoRef}
-            src={siteVideos.hero.mp4}
             className={cn(
               "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out",
               videoReady ? "opacity-100" : "opacity-0",
@@ -203,7 +202,6 @@ export function Hero() {
             aria-hidden
           >
             <source src={siteVideos.hero.mp4} type="video/mp4" />
-            <source src={siteVideos.hero.remote} type="video/mp4" />
           </video>
         </div>
       </div>

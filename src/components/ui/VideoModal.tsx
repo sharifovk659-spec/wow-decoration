@@ -12,7 +12,6 @@ const emptySubscribe = () => () => {};
 
 interface VideoModalProps {
   src: string | null;
-  fallbackSrc?: string;
   poster?: string;
   open: boolean;
   onClose: () => void;
@@ -27,7 +26,6 @@ interface VideoModalProps {
  */
 export function VideoModal({
   src,
-  fallbackSrc,
   poster,
   open,
   onClose,
@@ -122,9 +120,6 @@ export function VideoModal({
                 className="aspect-video w-full bg-ink"
               >
                 <source src={src} type="video/mp4" />
-                {fallbackSrc && (
-                  <source src={fallbackSrc} type="video/mp4" />
-                )}
               </video>
             </motion.div>
           </div>

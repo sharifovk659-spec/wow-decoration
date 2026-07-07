@@ -106,7 +106,6 @@ export function ProductionProcess() {
         />
         <video
           ref={videoRef}
-          src={siteVideos.process.mp4}
           className={cn(
             "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms]",
             videoReady ? "opacity-100" : "opacity-0",
@@ -122,7 +121,6 @@ export function ProductionProcess() {
           aria-hidden
         >
           <source src={siteVideos.process.mp4} type="video/mp4" />
-          <source src={siteVideos.process.remote} type="video/mp4" />
         </video>
       </div>
 

@@ -138,7 +138,6 @@ export function VideoTestimonials() {
       <VideoModal
         open={active !== null}
         src={current?.video ?? null}
-        fallbackSrc={current?.videoRemote}
         poster={current?.poster}
         onClose={() => setActive(null)}
         closeLabel={tc("close")}

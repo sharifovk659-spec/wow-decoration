@@ -199,10 +199,6 @@ export function ProjectDetail({
                 className="h-full w-full object-cover"
               >
                 <source src={siteVideos.projectProcess.mp4} type="video/mp4" />
-                <source
-                  src={siteVideos.projectProcess.remote}
-                  type="video/mp4"
-                />
               </video>
               <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink/20 opacity-0 transition-opacity hover:opacity-0">
                 <HiPlay className="text-5xl text-gold" />
