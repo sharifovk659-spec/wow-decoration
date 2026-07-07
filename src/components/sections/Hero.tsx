@@ -182,12 +182,12 @@ export function Hero() {
             fill
             priority
             sizes="100vw"
-            className="object-contain object-center md:object-cover"
+            className="object-cover object-center"
           />
           <video
             ref={videoRef}
             className={cn(
-              "absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-[1200ms] ease-out md:object-cover",
+              "absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-[1200ms] ease-out",
               videoReady ? "opacity-100" : "opacity-0",
             )}
             poster={siteVideos.hero.poster}

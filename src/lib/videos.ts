@@ -2,7 +2,8 @@ import { photoUrl } from "@/lib/media";
 
 export const localVideos = {
   /** Previous process-work clip requested for the banner. */
-  carving: "/videos/hero.mp4",
+  /** Prosesr kor — original banner clip; v3 busts stale CDN cache on Vercel. */
+  carving: "/videos/hero.mp4?v=3",
   installation: "/videos/process-installation-v2.mp4",
   detail: "/videos/project-process-v2.mp4",
   dacha: "/videos/testimonial-dacha-v2.mp4",
