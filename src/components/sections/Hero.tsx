@@ -7,17 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
 import { ButtonLink } from "@/components/ui/Button";
+import { siteVideos } from "@/lib/videos";
 import { cn } from "@/lib/utils";
-
-/** Still frame — luxury palace interior, instant LCP + reduced-motion fallback. */
-const POSTER =
-  "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2400&q=80";
-
-/**
- * Remote fallback clip (wooden interior, Mixkit free licence). Used only when
- * a local `/videos/hero.*` file is not present — see public/videos/README.md.
- */
-const REMOTE_VIDEO = "https://assets.mixkit.co/videos/3090/3090-720.mp4";
 
 const NOISE =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
@@ -182,7 +173,7 @@ export function Hero() {
       >
         <div ref={mediaInnerRef} className="will-transform relative h-full w-full">
           <Image
-            src={POSTER}
+            src={siteVideos.hero.poster}
             alt=""
             fill
             priority
@@ -195,7 +186,7 @@ export function Hero() {
               "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out",
               videoReady ? "opacity-100" : "opacity-0",
             )}
-            poster={POSTER}
+            poster={siteVideos.hero.poster}
             autoPlay
             muted
             loop
@@ -204,9 +195,7 @@ export function Hero() {
             onCanPlay={() => setVideoReady(true)}
             aria-hidden
           >
-            <source src="/videos/hero.webm" type="video/webm" />
-            <source src="/videos/hero.mp4" type="video/mp4" />
-            <source src={REMOTE_VIDEO} type="video/mp4" />
+            <source src={siteVideos.hero.mp4} type="video/mp4" />
           </video>
         </div>
       </div>
