@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
 import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { ButtonLink } from "@/components/ui/Button";
+import { ScrollEdgeHint } from "@/components/ui/ScrollEdgeHint";
 import { photoUrl } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
@@ -238,11 +239,21 @@ export function Hero() {
             {t("descriptionLead")}
           </p>
 
-          <div className="hero-cta flex flex-wrap items-center gap-4">
-            <ButtonLink href="/contact" variant="primary" withArrow>
+          <div className="hero-cta flex flex-wrap items-center gap-2 md:gap-4">
+            <ButtonLink
+              href="/contact"
+              variant="primary"
+              withArrow
+              className="max-md:px-4 max-md:py-2 max-md:text-[0.65rem] max-md:tracking-[0.12em]"
+            >
               {t("cta")}
             </ButtonLink>
-            <ButtonLink href="/projects" variant="outline" magnetic={false}>
+            <ButtonLink
+              href="/projects"
+              variant="outline"
+              magnetic={false}
+              className="max-md:px-4 max-md:py-2 max-md:text-[0.65rem] max-md:tracking-[0.12em]"
+            >
               {t("secondary")}
             </ButtonLink>
           </div>
@@ -261,6 +272,8 @@ export function Hero() {
           ))}
         </div>
       </div>
+
+      <ScrollEdgeHint />
 
       <div className="hero-hint pointer-events-none absolute bottom-8 end-6 z-10 hidden flex-col items-center gap-3 md:flex">
         <span className="rotate-180 text-[0.65rem] uppercase tracking-[0.3em] text-bone-dim [writing-mode:vertical-lr]">
