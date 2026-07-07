@@ -2,11 +2,11 @@ import { photoUrl } from "@/lib/media";
 
 export const localVideos = {
   /** Previous process-work clip requested for the banner. */
-  carving: "/videos/hero.mp4",
-  installation: "/videos/process.mp4",
-  detail: "/videos/project-process.mp4",
-  dacha: "/videos/testimonial-dacha.mp4",
-  mehmonkhona: "/videos/testimonial-mehmonkhona.mp4",
+  carving: "/videos/hero-banner-v2.mp4",
+  installation: "/videos/process-installation-v2.mp4",
+  detail: "/videos/project-process-v2.mp4",
+  dacha: "/videos/testimonial-dacha-v2.mp4",
+  mehmonkhona: "/videos/testimonial-mehmonkhona-v2.mp4",
 } as const;
 
 export const siteVideos = {
