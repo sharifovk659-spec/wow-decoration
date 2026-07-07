@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/routing";
 import type { CountryKey } from "@/lib/countries";
-import { siteVideos } from "@/lib/videos";
+import { localVideos, siteVideos } from "@/lib/videos";
 import projectI18n from "../../messages/projects.i18n.json";
 
 export type ProjectCategory =
@@ -38,6 +38,31 @@ export interface Project {
 }
 
 const PROCESS_VIDEO = siteVideos.projectProcess.mp4;
+const PROJECT_VIDEO_BY_SLUG: Record<string, string> = {
+  "kohi-navruz": localVideos.carving,
+  "parliament-tajikistan": localVideos.installation,
+  "palace-nation": localVideos.detail,
+  "expo-dubai": localVideos.dacha,
+  "expo-qatar": localVideos.mehmonkhona,
+  "wyndham-grand-hotel": localVideos.mehmonkhona,
+  "national-botanical-garden": localVideos.dacha,
+  "royal-gazebo-14x8": localVideos.detail,
+  "walnut-daybed": localVideos.carving,
+  "private-villa-interior": localVideos.installation,
+};
+
+const PROCESS_VIDEO_BY_SLUG: Record<string, string> = {
+  "kohi-navruz": localVideos.detail,
+  "parliament-tajikistan": localVideos.installation,
+  "palace-nation": localVideos.carving,
+  "expo-dubai": localVideos.dacha,
+  "expo-qatar": localVideos.mehmonkhona,
+  "wyndham-grand-hotel": localVideos.installation,
+  "national-botanical-garden": localVideos.dacha,
+  "royal-gazebo-14x8": localVideos.detail,
+  "walnut-daybed": localVideos.carving,
+  "private-villa-interior": localVideos.mehmonkhona,
+};
 
 const GALLERY_IDS = [
   "1600585154340-be6161a56a0c",
@@ -159,6 +184,7 @@ type ProjectInput = {
   featured: boolean;
   cover: string;
   video?: string;
+  processVideo?: string;
   title: string;
   location: string;
   country: string;
@@ -182,8 +208,9 @@ function project(data: ProjectInput): Project {
     year: data.year,
     featured: data.featured,
     cover: data.cover,
-    video: data.video,
-    processVideo: PROCESS_VIDEO,
+    video: data.video ?? PROJECT_VIDEO_BY_SLUG[data.slug] ?? localVideos.carving,
+    processVideo:
+      data.processVideo ?? PROCESS_VIDEO_BY_SLUG[data.slug] ?? PROCESS_VIDEO,
     gallery: buildGallery(data.slug),
     title: pickL10n(data.slug, "title", data.title),
     location: pickL10n(data.slug, "location", data.location),
