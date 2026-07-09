@@ -13,6 +13,8 @@ interface HoverVideoProps {
   imageClassName?: string;
   sizes?: string;
   priority?: boolean;
+  /** Inside a navigation link — skip tap toggle and in-view autoplay on touch. */
+  inLink?: boolean;
 }
 
 /**
@@ -27,6 +29,7 @@ export function HoverVideo({
   imageClassName,
   sizes = "(max-width: 768px) 100vw, 50vw",
   priority = false,
+  inLink = false,
 }: HoverVideoProps) {
   const reduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -58,13 +61,13 @@ export function HoverVideo({
   };
 
   const onTouchToggle = () => {
-    if (!touchRef.current) return;
+    if (!touchRef.current || inLink) return;
     if (playing) stop();
     else start();
   };
 
   useEffect(() => {
-    if (!canPlay || !touchRef.current) return;
+    if (!canPlay || !touchRef.current || inLink) return;
     const root = rootRef.current;
     const el = videoRef.current;
     if (!root || !el) return;
@@ -88,7 +91,7 @@ export function HoverVideo({
     );
     io.observe(root);
     return () => io.disconnect();
-  }, [canPlay, video]);
+  }, [canPlay, video, inLink]);
 
   return (
     <div
@@ -96,7 +99,7 @@ export function HoverVideo({
       className={cn("relative overflow-hidden", className)}
       onPointerEnter={start}
       onPointerLeave={stop}
-      onClick={onTouchToggle}
+      onClick={inLink ? undefined : onTouchToggle}
     >
       <Image
         src={src}

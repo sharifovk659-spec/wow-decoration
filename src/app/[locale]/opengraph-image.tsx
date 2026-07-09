@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
+import { siteConfig } from "@/lib/site";
 
 export const alt = "World of Wood Decoration";
 export const size = { width: 1200, height: 630 };
@@ -68,7 +69,7 @@ export default async function OpengraphImage({
             fontFamily: "Arial, sans-serif",
           }}
         >
-          World of Wood Decoration — Est. 1994
+          World of Wood Decoration — Est. {siteConfig.founded}
         </div>
       </div>
     ),

@@ -114,11 +114,11 @@ export function WorldMap() {
           ))}
         </div>
 
-        <div className="relative mb-14">
+        <div className="relative mb-14 overflow-hidden">
           <svg
             ref={svgRef}
             viewBox={VIEWBOX}
-            className="h-auto w-full overflow-visible"
+            className="h-auto w-full"
             role="img"
             aria-label={t("title")}
           >

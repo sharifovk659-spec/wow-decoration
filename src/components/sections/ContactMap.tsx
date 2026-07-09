@@ -9,47 +9,50 @@ import { siteConfig } from "@/lib/site";
 export function ContactMap() {
   const t = useTranslations("contact.map");
   const query = encodeURIComponent(siteConfig.mapQuery);
-  const embed = `https://www.google.com/maps?q=${query}&z=13&output=embed`;
+  const embed = `https://www.google.com/maps?q=${query}&z=14&output=embed`;
   const link = `https://www.google.com/maps/search/?api=1&query=${query}`;
 
   return (
-    <section className="relative border-t border-line py-24 md:py-32">
+    <section className="relative border-t border-line py-28 md:py-48">
       <div className="container-luxe">
-        <div className="mb-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="flex max-w-3xl flex-col gap-8">
           <SectionHeading
             eyebrow={t("eyebrow")}
             title={t("title")}
             description={t("description")}
           />
+
           <a
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            data-cursor="hover"
-            className="group inline-flex items-center gap-3 text-sm uppercase tracking-[0.18em] text-bone transition-colors hover:text-gold"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2.5 rounded-luxe border border-gold/35 bg-gold/5 px-5 py-3 text-[0.68rem] uppercase tracking-[0.14em] text-gold transition-colors hover:border-gold hover:bg-gold/10 sm:w-auto sm:self-start"
           >
-            {t("openMap")}
-            <HiArrowUpRight className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            <HiOutlineMapPin className="text-base" aria-hidden />
+            <span>{t("openMap")}</span>
+            <HiArrowUpRight className="text-sm" aria-hidden />
           </a>
         </div>
 
-        <Reveal>
-          <div className="group relative overflow-hidden rounded-luxe-lg border border-line shadow-image">
+        <Reveal className="mt-10 md:mt-12">
+          <div className="overflow-hidden rounded-luxe-lg border border-line shadow-image">
             <iframe
               title={siteConfig.mapQuery}
               src={embed}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="h-[380px] w-full grayscale-[0.35] contrast-[1.05] transition-all duration-700 group-hover:grayscale-0 md:h-[520px]"
-              style={{ border: 0 }}
+              className="block h-[min(360px,52vh)] w-full border-0 contrast-[1.05] grayscale-[0.2] md:h-[480px] lg:h-[520px]"
               allowFullScreen
             />
-            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-gold/10" />
-            <div className="pointer-events-none absolute bottom-5 start-5 flex items-center gap-3 rounded-full border border-bone/15 bg-ink/70 px-5 py-2.5 text-sm text-bone backdrop-blur-md">
-              <HiOutlineMapPin className="text-gold" />
-              {siteConfig.mapQuery}
-            </div>
           </div>
+
+          <p className="mt-4 flex items-start gap-2.5 text-sm leading-relaxed text-bone-dim">
+            <HiOutlineMapPin
+              className="mt-0.5 shrink-0 text-gold"
+              aria-hidden
+            />
+            <span>{siteConfig.mapQuery}</span>
+          </p>
         </Reveal>
       </div>
     </section>

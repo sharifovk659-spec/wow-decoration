@@ -122,13 +122,13 @@ export function Timeline() {
   );
 
   return (
-    <section className="relative overflow-hidden border-t border-line bg-ink-800 py-28 md:py-48">
+    <section className="relative overflow-hidden border-t border-line bg-ink-800 section">
       <div ref={root} className="container-luxe">
         <SectionHeading
           eyebrow={t("eyebrow")}
           title={t("title")}
           description={t("description")}
-          className="mb-16 md:mb-24"
+          className="mb-luxe"
         />
 
         {/* Desktop — horizontal timeline */}

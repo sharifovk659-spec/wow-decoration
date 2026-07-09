@@ -78,7 +78,7 @@ export function ScrollEdgeHint() {
       onClick={onClick}
       aria-label={pointUp ? t("scrollUp") : t("scroll")}
       className={cn(
-        "scroll-edge-hint fixed bottom-6 end-5 z-50",
+        "scroll-edge-hint fixed bottom-[30px] end-[30px] z-50 max-md:mb-[env(safe-area-inset-bottom,0px)]",
         "flex h-12 w-12 items-center justify-center rounded-full",
         "border border-line-strong/60 bg-ink/85 shadow-luxe backdrop-blur-md",
         "transition-[border-color,box-shadow] duration-300",

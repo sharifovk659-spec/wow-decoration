@@ -20,9 +20,9 @@ export function Testimonials() {
   const active = keys[index]!;
 
   return (
-    <section className="relative border-t border-line py-28 md:py-48">
+    <section className="relative border-t border-line section">
       <div className="container-luxe">
-        <div className="mb-14 flex items-center gap-4">
+        <div className="mb-luxe flex items-center gap-4">
           <span className="h-px w-10 bg-gold/60" />
           <span className="eyebrow">{t("eyebrow")}</span>
         </div>
@@ -30,7 +30,7 @@ export function Testimonials() {
         <AnimatedText
           text={t("title")}
           as="h2"
-          className="text-h2 mb-16 max-w-3xl text-bone"
+          className="text-h2 mb-luxe max-w-3xl text-bone"
         />
 
         <div className="relative min-h-[16rem] md:min-h-[14rem]">

@@ -101,7 +101,7 @@ export function Header() {
       <header
         ref={headerRef}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color,padding,box-shadow] duration-500",
+          "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-[background-color,backdrop-filter,border-color,padding,box-shadow] duration-500",
           scrolled ? "py-3" : "py-4",
           scrolled
             ? "glass border-x-0 border-t-0 shadow-[0_1px_0_0_rgba(192,160,104,0.28)]"

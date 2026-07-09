@@ -38,8 +38,8 @@ export default async function PrivacyPage({
         title={t("title")}
         description={t("description")}
       />
-      <section className="container-luxe pb-28 md:pb-40">
-        <p className="eyebrow mb-16 text-gold-soft">{t("updated")}</p>
+      <section className="container-luxe pb-luxe">
+        <p className="eyebrow mb-luxe text-gold-soft">{t("updated")}</p>
 
         <div className="flex flex-col divide-y divide-line border-t border-line">
           {sectionKeys.map((key) => (

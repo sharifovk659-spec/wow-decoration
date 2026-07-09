@@ -27,7 +27,7 @@ export function Marquee({
       aria-hidden
     >
       <div
-        className="flex shrink-0 items-center gap-16 pe-16 group-hover:[animation-play-state:paused] motion-reduce:animate-none"
+        className="flex shrink-0 items-center gap-luxe pe-16 group-hover:[animation-play-state:paused] motion-reduce:animate-none"
         style={{
           animation: `marquee ${speed}s linear infinite`,
           animationDirection: reverse ? "reverse" : "normal",
@@ -36,7 +36,7 @@ export function Marquee({
         {track.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="flex items-center gap-16 whitespace-nowrap font-display text-4xl text-bone-dim md:text-6xl"
+            className="flex items-center gap-luxe whitespace-nowrap font-display text-4xl text-bone-dim md:text-6xl"
           >
             {item}
             <span className="text-gold">✦</span>

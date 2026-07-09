@@ -41,7 +41,7 @@ export default async function ContactPage({
         description={t("description")}
       />
       <ContactChannels />
-      <section className="container-luxe grid gap-16 py-24 md:py-32 lg:grid-cols-12 lg:gap-20">
+      <section className="container-luxe grid gap-16 py-28 md:py-48 lg:grid-cols-12 lg:gap-20">
         <div className="lg:col-span-7">
           <ContactForm />
         </div>

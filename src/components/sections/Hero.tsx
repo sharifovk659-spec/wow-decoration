@@ -82,27 +82,30 @@ export function Hero() {
         )
         .from(".hero-hint", { autoAlpha: 0, duration: 1 }, "-=0.5");
 
-      gsap.to(mediaRef.current, {
-        yPercent: 16,
-        scale: 1.06,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-      gsap.to(contentRef.current, {
-        yPercent: -14,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      if (!isMobile) {
+        gsap.to(mediaRef.current, {
+          yPercent: 16,
+          scale: 1.06,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+        gsap.to(contentRef.current, {
+          yPercent: -14,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      }
     },
     { scope: sectionRef },
   );
@@ -259,13 +262,13 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-16 grid max-w-2xl grid-cols-3 gap-8 border-t border-line pt-8">
+        <div className="mt-16 grid max-w-2xl grid-cols-1 gap-6 border-t border-line pt-8 sm:grid-cols-3 sm:gap-8">
           {stats.map((stat) => (
             <div key={stat.l} className="hero-stat min-w-0">
               <p className="font-display text-3xl text-gold md:text-4xl">
                 {stat.v}
               </p>
-              <p className="mt-1 text-xs uppercase tracking-[0.15em] text-bone-dim">
+              <p className="mt-1 text-xs uppercase tracking-[0.12em] text-bone-dim sm:tracking-[0.15em]">
                 {stat.l}
               </p>
             </div>

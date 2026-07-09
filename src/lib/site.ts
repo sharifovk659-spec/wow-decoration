@@ -15,7 +15,7 @@ export const siteConfig = {
   telegramHref: "worldofwood",
   mapQuery: "DIFC Gate Precinct, Dubai, UAE",
   ogImage: "/og.svg",
-  founded: 1994,
+  founded: 2015,
 } as const;
 
 /** Primary navigation — labels resolved via the `nav` message namespace. */

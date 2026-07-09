@@ -16,8 +16,11 @@ export function ContactDetails() {
         <p className="eyebrow mb-8">{t("title")}</p>
         <div className="flex flex-col divide-y divide-line border-y border-line">
           {studioKeys.map((key) => (
-            <Reveal key={key} className="flex items-baseline justify-between gap-6 py-5">
-              <div>
+            <Reveal
+              key={key}
+              className="flex flex-col gap-2 py-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
+            >
+              <div className="min-w-0">
                 <h3 className="font-display text-2xl text-bone">
                   {t(`studios.${key}.city`)}
                 </h3>
@@ -25,7 +28,7 @@ export function ContactDetails() {
                   {t(`studios.${key}.address`)}
                 </p>
               </div>
-              <span className="shrink-0 text-xs uppercase tracking-[0.15em] text-gold-soft">
+          <span className="text-xs uppercase tracking-[0.15em] text-gold-soft sm:shrink-0">
                 {t(`studios.${key}.role`)}
               </span>
             </Reveal>
@@ -39,7 +42,7 @@ export function ContactDetails() {
           className="group flex items-center gap-4 text-bone transition-colors hover:text-gold"
         >
           <HiOutlineEnvelope className="text-xl text-gold" />
-          <span>{siteConfig.email}</span>
+          <span className="break-all">{siteConfig.email}</span>
         </a>
         <a
           href={`tel:${siteConfig.phoneHref}`}

@@ -64,14 +64,14 @@ export function VideoTestimonials() {
           grabCursor
           speed={700}
           spaceBetween={24}
-          slidesPerView={1.05}
+          slidesPerView={1}
           breakpoints={{
-            430: { slidesPerView: 1.12, spaceBetween: 20 },
+            430: { slidesPerView: 1.05, spaceBetween: 20 },
             640: { slidesPerView: 1.8, spaceBetween: 28 },
             1024: { slidesPerView: 2.4, spaceBetween: 32 },
             1440: { slidesPerView: 3, spaceBetween: 36 },
           }}
-          className="!px-[clamp(1.25rem,0.5rem+3vw,5rem)]"
+          className="!px-[30px]"
         >
           {videoTestimonials.map((item, i) => (
             <SwiperSlide key={item.id} className="!h-auto">

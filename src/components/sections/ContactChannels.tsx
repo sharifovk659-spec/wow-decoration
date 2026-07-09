@@ -63,7 +63,7 @@ export function ContactChannels() {
   const t = useTranslations("contact.channels");
 
   return (
-    <section className="relative border-t border-line py-24 md:py-32">
+    <section className="relative border-t border-line py-28 md:py-48">
       <div className="container-luxe">
         <SectionHeading
           eyebrow={t("eyebrow")}
@@ -105,7 +105,7 @@ export function ContactChannels() {
                   <p className="mt-1 text-sm text-bone-dim">
                     {t(`${c.key}.hint`)}
                   </p>
-                  <p className="mt-4 text-sm text-gold-soft" dir="ltr">
+                  <p className="mt-4 break-words text-sm text-gold-soft" dir="ltr">
                     {c.value}
                   </p>
                 </div>

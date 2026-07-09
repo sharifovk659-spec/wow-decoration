@@ -27,8 +27,8 @@ export function Materials() {
   const inView = useInView(canvasRef, { once: true, amount: 0.3 });
 
   return (
-    <section className="relative overflow-hidden py-28 md:py-48">
-      <div className="container-luxe grid gap-16 lg:grid-cols-12 lg:gap-20">
+    <section className="relative overflow-hidden section">
+      <div className="container-luxe grid gap-luxe lg:grid-cols-12">
         <div className="order-2 flex flex-col lg:order-1 lg:col-span-6">
           <SectionHeading
             eyebrow={t("eyebrow")}

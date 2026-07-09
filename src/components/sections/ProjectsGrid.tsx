@@ -37,9 +37,9 @@ export function ProjectsGrid() {
   const rest = visible.slice(1);
 
   return (
-    <section className="container-luxe pb-28 md:pb-40">
+    <section className="container-luxe pb-[30px]">
       {/* Filter bar */}
-      <div className="mb-12 flex flex-wrap items-center gap-x-7 gap-y-3 border-b border-line pb-6 md:mb-16">
+      <div className="mb-luxe flex flex-wrap items-center gap-x-7 gap-y-3 border-b border-line pb-6 mb-luxe">
         {filters.map((f) => (
           <button
             key={f}
@@ -87,6 +87,7 @@ export function ProjectsGrid() {
                 alt={hero.title[locale]}
                 sizes="(max-width: 1024px) 100vw, 92vw"
                 priority
+                inLink
                 className="aspect-[16/10] w-full sm:aspect-[16/9] lg:aspect-[21/9]"
                 imageClassName="scale-105 transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
               />
@@ -194,6 +195,7 @@ function ProjectCard({
             video={project.video}
             alt={project.title[locale]}
             sizes="(max-width: 768px) 100vw, 46vw"
+            inLink
             className="aspect-[4/3] w-full"
             imageClassName="transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
           />

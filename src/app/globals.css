@@ -65,7 +65,7 @@
 
   /* ---- Large spacing scale (airy, expensive rhythm) ------------ */
   --space-section: clamp(6rem, 4rem + 7vw, 12rem);
-  --space-gutter: clamp(1.5rem, 0.75rem + 3vw, 5.5rem);
+  --space-gutter: 30px;
 
   /* ---- Luxury shadows (layered, warm-tinted, soft) ------------- */
   --shadow-luxe:
@@ -425,12 +425,8 @@
   animation: shimmer 6s linear infinite;
 }
 
-/* Narrow phones — prevent overflow without changing desktop */
+/* Narrow phones — display scale only */
 @media (max-width: 430px) {
-  :root {
-    --space-gutter: clamp(1rem, 0.35rem + 3.5vw, 1.35rem);
-  }
-
   .text-display {
     font-size: clamp(2.35rem, 1.4rem + 5.5vw, 3.25rem);
   }
