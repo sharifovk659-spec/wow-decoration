@@ -6,7 +6,6 @@ import { PageHeader } from "@/components/sections/PageHeader";
 import { ContactChannels } from "@/components/sections/ContactChannels";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { ContactDetails } from "@/components/sections/ContactDetails";
-import { ContactMap } from "@/components/sections/ContactMap";
 import { WorldMap } from "@/components/sections/WorldMap";
 
 export async function generateMetadata({
@@ -49,7 +48,6 @@ export default async function ContactPage({
           <ContactDetails />
         </div>
       </section>
-      <ContactMap />
       <WorldMap />
     </>
   );

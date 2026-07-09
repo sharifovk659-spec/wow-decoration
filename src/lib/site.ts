@@ -13,7 +13,6 @@ export const siteConfig = {
   whatsappHref: "971500000000",
   telegram: "@worldofwood",
   telegramHref: "worldofwood",
-  mapQuery: "DIFC Gate Precinct, Dubai, UAE",
   ogImage: "/og.svg",
   founded: 2015,
 } as const;
