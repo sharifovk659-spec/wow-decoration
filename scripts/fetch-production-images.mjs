@@ -30,15 +30,15 @@ const STEPS = [
   },
   {
     file: "step-5.jpg",
-    url: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-6.jpg",
-    url: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-7.jpg",
-    url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&h=800&q=92",
+    local: "gallery/installation.jpg",
   },
 ];
 
