@@ -9,7 +9,8 @@ import { useGSAP } from "@/hooks/useGSAP";
 import { Counter } from "@/components/ui/Counter";
 import { ButtonLink } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
-import { aboutCompanyImage } from "@/lib/media";
+
+const ABOUT_IMG = "/images/about/2015-company.jpg";
 
 const stats = [
   { value: 10, suffix: "+" },
@@ -196,19 +197,17 @@ export function About() {
               ref={imageRef}
               className="relative mx-auto max-w-2xl lg:ms-auto lg:me-0"
             >
-              <div className="about-image-inner relative aspect-[4/5] overflow-hidden rounded-luxe-lg shadow-image sm:aspect-[5/4] lg:aspect-[4/5]">
-                <div className="about-image-media absolute -inset-y-[8%] inset-x-0">
+              <div className="about-image-inner relative aspect-[16/10] overflow-hidden rounded-luxe-lg bg-ink-900 shadow-image">
+                <div className="about-image-media absolute inset-0">
                   <Image
-                    src={aboutCompanyImage}
-                    alt={t("about.sectionEyebrow")}
+                    src={ABOUT_IMG}
+                    alt="Интерьер проекта World of Wood Decoration, 2015"
                     fill
                     sizes="(max-width: 1024px) 100vw, 55vw"
-                    className="object-cover object-center"
+                    className="object-contain object-center"
                   />
                 </div>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent" />
                 <div className="pointer-events-none absolute inset-0 rounded-luxe-lg ring-1 ring-inset ring-gold/15" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent" />
               </div>
 
               <div className="about-badge glass absolute -bottom-6 start-6 flex items-baseline gap-3 rounded-luxe border border-gold/20 px-6 py-4 shadow-luxe-lg sm:start-8 lg:-start-6">
