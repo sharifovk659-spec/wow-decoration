@@ -3,7 +3,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 import { CallToAction } from "@/components/sections/CallToAction";
-import { ContactChannels } from "@/components/sections/ContactChannels";
 import { WorldMap } from "@/components/sections/WorldMap";
 
 export async function generateMetadata({
@@ -32,7 +31,6 @@ export default async function ContactPage({
   return (
     <>
       <CallToAction />
-      <ContactChannels />
       <WorldMap />
     </>
   );

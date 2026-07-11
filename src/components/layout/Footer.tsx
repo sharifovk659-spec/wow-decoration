@@ -3,7 +3,7 @@ import {
   FaInstagram,
   FaWhatsapp,
   FaTelegram,
-  FaYoutube,
+  FaFacebook,
 } from "react-icons/fa6";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import type { IconType } from "react-icons";
@@ -13,7 +13,7 @@ import { Logo } from "./Logo";
 
 const icons: Record<string, IconType> = {
   instagram: FaInstagram,
-  youtube: FaYoutube,
+  facebook: FaFacebook,
   whatsapp: FaWhatsapp,
   telegram: FaTelegram,
 };
@@ -58,6 +58,15 @@ export function Footer() {
           <div className="lg:col-span-3">
             <p className="eyebrow mb-4">{t("contactTitle")}</p>
             <ul className="flex flex-col gap-3 text-sm text-bone-dim">
+              <li>
+                <a
+                  href={`tel:${siteConfig.phoneHref}`}
+                  className="transition-colors hover:text-gold"
+                  dir="ltr"
+                >
+                  {siteConfig.phone}
+                </a>
+              </li>
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}

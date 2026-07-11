@@ -52,6 +52,16 @@ export function ContactDetails() {
           <HiOutlinePhone className="text-xl text-gold" />
           <span>{siteConfig.phone}</span>
         </a>
+        <a
+          href={`https://wa.me/${siteConfig.whatsappHref}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-4 text-bone transition-colors hover:text-gold"
+          dir="ltr"
+        >
+          <HiOutlinePhone className="text-xl text-gold" />
+          <span>WhatsApp: {siteConfig.whatsapp}</span>
+        </a>
       </div>
     </div>
   );

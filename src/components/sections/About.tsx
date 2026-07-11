@@ -201,10 +201,10 @@ export function About() {
                 <div className="about-image-media absolute inset-0">
                   <Image
                     src={ABOUT_IMG}
-                    alt="Интерьер проекта World of Wood Decoration, 2015"
+                    alt="Национальный дворец — проект World of Wood Decoration"
                     fill
                     sizes="(max-width: 1024px) 100vw, 55vw"
-                    className="object-contain object-center"
+                    className="object-cover object-center"
                   />
                 </div>
                 <div className="pointer-events-none absolute inset-0 rounded-luxe-lg ring-1 ring-inset ring-gold/15" />

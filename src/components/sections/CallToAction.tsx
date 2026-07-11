@@ -6,9 +6,9 @@ import {
   FaWhatsapp,
   FaTelegram,
   FaInstagram,
-  FaYoutube,
+  FaFacebook,
 } from "react-icons/fa6";
-import { HiOutlineEnvelope } from "react-icons/hi2";
+import { HiOutlineEnvelope, HiOutlinePhone } from "react-icons/hi2";
 import type { IconType } from "react-icons";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 import { ContactForm } from "@/components/sections/ContactForm";
@@ -19,10 +19,16 @@ const socialIcons: Record<string, IconType> = {
   whatsapp: FaWhatsapp,
   telegram: FaTelegram,
   instagram: FaInstagram,
-  youtube: FaYoutube,
+  facebook: FaFacebook,
 };
 
 const directChannels = [
+  {
+    key: "phone",
+    icon: HiOutlinePhone,
+    href: `tel:${siteConfig.phoneHref}`,
+    label: siteConfig.phone,
+  },
   {
     key: "whatsapp",
     icon: FaWhatsapp,
@@ -94,9 +100,15 @@ export function CallToAction() {
                     <a
                       key={ch.key}
                       href={ch.href}
-                      target={ch.key !== "email" ? "_blank" : undefined}
+                      target={
+                        ch.key !== "email" && ch.key !== "phone"
+                          ? "_blank"
+                          : undefined
+                      }
                       rel={
-                        ch.key !== "email" ? "noopener noreferrer" : undefined
+                        ch.key !== "email" && ch.key !== "phone"
+                          ? "noopener noreferrer"
+                          : undefined
                       }
                       data-cursor="hover"
                       className="group flex items-center gap-3 rounded-full border border-line/80 bg-ink-800/50 px-5 py-3 text-sm text-bone-dim transition-all duration-300 hover:border-gold/40 hover:text-gold"
@@ -109,7 +121,7 @@ export function CallToAction() {
                   );
                 })}
                 {socialLinks
-                  .filter((s) => s.icon === "instagram" || s.icon === "youtube")
+                  .filter((s) => s.icon === "instagram" || s.icon === "facebook")
                   .map((social) => {
                   const Icon = socialIcons[social.icon];
                   if (!Icon) return null;

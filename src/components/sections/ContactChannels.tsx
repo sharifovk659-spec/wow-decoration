@@ -6,7 +6,7 @@ import {
   FaWhatsapp,
   FaTelegram,
   FaInstagram,
-  FaYoutube,
+  FaFacebook,
 } from "react-icons/fa6";
 import { HiOutlineEnvelope, HiArrowLongRight } from "react-icons/hi2";
 import type { IconType } from "react-icons";
@@ -47,14 +47,14 @@ const channels: Channel[] = [
     key: "instagram",
     icon: FaInstagram,
     href: socialLinks.find((s) => s.icon === "instagram")?.href ?? "#",
-    value: "@worldofwooddecoration",
+    value: siteConfig.instagramHandle,
     external: true,
   },
   {
-    key: "youtube",
-    icon: FaYoutube,
-    href: socialLinks.find((s) => s.icon === "youtube")?.href ?? "#",
-    value: "World of Wood Decoration",
+    key: "facebook",
+    icon: FaFacebook,
+    href: socialLinks.find((s) => s.icon === "facebook")?.href ?? "#",
+    value: siteConfig.instagramHandle,
     external: true,
   },
 ];

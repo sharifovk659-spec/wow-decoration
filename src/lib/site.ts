@@ -7,12 +7,14 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.worldofwooddecoration.com"
   ).replace(/\/$/, ""),
   email: "info@worldofwooddecoration.com",
-  phone: "+971 4 000 0000",
-  phoneHref: "+97140000000",
-  whatsapp: "+971 50 000 0000",
-  whatsappHref: "971500000000",
-  telegram: "@worldofwood",
-  telegramHref: "worldofwood",
+  phone: "+992 900 074646",
+  phoneHref: "+992900074646",
+  whatsapp: "+992 937 074646",
+  whatsappHref: "992937074646",
+  telegram: "+992 937 074646",
+  telegramHref: "+992937074646",
+  instagramHandle: "@kandakori.tjk",
+  linktree: "https://linktr.ee/WorldofWoodDecoration",
   ogImage: "/og.svg",
   founded: 2015,
 } as const;
@@ -30,10 +32,10 @@ export const navLinks = [
 ] as const;
 
 export const socialLinks = [
-  { label: "Instagram", href: "https://instagram.com/worldofwooddecoration", icon: "instagram" },
-  { label: "YouTube", href: "https://youtube.com/@worldofwooddecoration", icon: "youtube" },
-  { label: "WhatsApp", href: "https://wa.me/971500000000", icon: "whatsapp" },
-  { label: "Telegram", href: "https://t.me/worldofwood", icon: "telegram" },
+  { label: "Instagram", href: "https://www.instagram.com/kandakori.tjk", icon: "instagram" },
+  { label: "Facebook", href: "https://www.facebook.com/kandakori.tjk", icon: "facebook" },
+  { label: "WhatsApp", href: "https://wa.me/992937074646", icon: "whatsapp" },
+  { label: "Telegram", href: "https://t.me/+992937074646", icon: "telegram" },
 ] as const;
 
 /** Legal / policy links surfaced in the footer. */
