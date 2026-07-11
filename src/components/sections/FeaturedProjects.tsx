@@ -78,37 +78,36 @@ export function FeaturedProjects() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="grid gap-6 md:grid-cols-2 lg:gap-8 xl:grid-cols-3"
+            className="grid gap-6 md:grid-cols-2 lg:gap-8"
           >
             {visible.map((project, i) => (
               <motion.div
                 key={project.slug}
                 variants={fadeUp}
-                className={cn(i === 0 && visible.length > 2 && "md:col-span-2 xl:col-span-2")}
+                className={cn(i === 0 && visible.length > 1 && "md:col-span-2")}
               >
                 <Link
-                  href={`/projects/${project.slug}`}
+                  href="/contact"
                   data-cursor="hover"
-                  className="group relative block overflow-hidden rounded-luxe-lg border border-line/80 bg-ink-800 shadow-luxe transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:border-gold/35 hover:shadow-image"
+                  className="group relative block overflow-hidden rounded-luxe-lg border border-line/80 bg-ink-800 shadow-luxe transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1 hover:border-gold/35 hover:shadow-image"
                 >
                   <div
                     className={cn(
                       "relative overflow-hidden",
-                      i === 0 && visible.length > 2
-                        ? "aspect-[16/10] md:aspect-[21/9]"
-                        : "aspect-[4/5]",
+                      i === 0 && visible.length > 1
+                        ? "aspect-[16/9]"
+                        : "aspect-[3/2]",
                     )}
                   >
                     <Image
                       src={project.cover}
                       alt={project.title[locale]}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      quality={90}
-                      className="object-cover object-center transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={92}
+                      className="object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/10" />
-                    <div className="absolute inset-0 bg-gold/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-transparent" />
                   </div>
 
                   <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5 md:p-6">
@@ -124,7 +123,7 @@ export function FeaturedProjects() {
                     <h3
                       className={cn(
                         "font-display text-bone",
-                        i === 0 && visible.length > 2
+                        i === 0 && visible.length > 1
                           ? "text-3xl md:text-4xl"
                           : "text-2xl md:text-3xl",
                       )}
@@ -134,8 +133,8 @@ export function FeaturedProjects() {
                     <p className="mt-2 line-clamp-2 max-w-xl text-sm text-bone-dim">
                       {project.summary[locale]}
                     </p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.16em] text-gold opacity-80 transition-all duration-500 group-hover:gap-3 group-hover:opacity-100">
-                      {t("viewProject")}
+                    <span className="mt-4 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.16em] text-gold opacity-90 transition-all duration-500 group-hover:gap-3 group-hover:opacity-100">
+                      {t("detail.cta")}
                       <HiArrowLongRight className="text-sm transition-transform group-hover:translate-x-1" />
                     </span>
                   </div>

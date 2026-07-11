@@ -51,9 +51,9 @@
     "secondary": "عرض المشاريع",
     "scroll": "مرّر للاستكشاف",
     "scrollUp": "إلى الأعلى",
-    "stat1Value": "30+",
+    "stat1Value": "10+",
     "stat1Label": "سنوات الخبرة",
-    "stat2Value": "42",
+    "stat2Value": "18",
     "stat2Label": "دولة حول العالم",
     "stat3Value": "180+",
     "stat3Label": "مشروع منجز"
@@ -335,10 +335,10 @@
   },
   "stats": {
     "eyebrow": "الشركة بالأرقام",
-    "title": "ثلاثة عقود من الخبرة الدولية.",
+    "title": "عشر سنوات من الخبرة الدولية.",
     "items": {
-      "0": { "value": 30, "suffix": "+", "label": "سنوات في السوق" },
-      "1": { "value": 42, "suffix": "", "label": "دولة حول العالم" },
+      "0": { "value": 10, "suffix": "+", "label": "سنوات في السوق" },
+      "1": { "value": 18, "suffix": "", "label": "دولة حول العالم" },
       "2": { "value": 180, "suffix": "+", "label": "مشروع منجز" },
       "3": { "value": 120, "suffix": "", "label": "متخصص في الفريق" }
     }

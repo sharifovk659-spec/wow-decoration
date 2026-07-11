@@ -11,8 +11,8 @@ import { photoUrl } from "@/lib/media";
 const STATS_IMG = photoUrl("1615529182904-14819c35db37");
 
 const stats = [
-  { value: 30, suffix: "+" },
-  { value: 42, suffix: "" },
+  { value: 10, suffix: "+" },
+  { value: 18, suffix: "" },
   { value: 180, suffix: "+" },
   { value: 120, suffix: "" },
 ];

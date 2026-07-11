@@ -1,14 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ParallaxImage } from "@/components/ui/ParallaxImage";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 import { Reveal } from "@/components/ui/Reveal";
 import { staggerContainer, fadeUp } from "@/lib/motion";
-import { photoUrl } from "@/lib/media";
+import { siteImage } from "@/lib/media";
 
-const PHILOSOPHY_IMG = photoUrl("1616486338812-3dadae4b4ace");
+const PHILOSOPHY_IMG = siteImage("philosophy/kohi-hall.jpg");
 
 const pillarKeys = ["0", "1", "2"] as const;
 
@@ -19,12 +19,18 @@ export function Philosophy() {
     <section className="relative py-28 md:py-48">
       <div className="container-luxe grid gap-14 lg:grid-cols-12 lg:gap-24">
         <div className="lg:col-span-5">
-          <ParallaxImage
-            src={PHILOSOPHY_IMG}
-            alt="Master joiner shaping architectural woodwork"
-            className="aspect-[4/5] w-full rounded-luxe-lg shadow-image"
-            sizes="(max-width: 1024px) 100vw, 40vw"
-          />
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-luxe-lg shadow-image">
+            <Image
+              src={PHILOSOPHY_IMG}
+              alt="Kohi Navruz — grand carved wood interior"
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              quality={92}
+              priority
+              className="object-cover object-center"
+            />
+            <div className="pointer-events-none absolute inset-0 rounded-luxe-lg ring-1 ring-inset ring-gold/15" />
+          </div>
         </div>
 
         <div className="flex flex-col justify-center lg:col-span-7">
