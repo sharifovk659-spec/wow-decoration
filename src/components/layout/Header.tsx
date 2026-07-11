@@ -56,10 +56,25 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
 
   const [scrolled, setScrolled] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
   const [open, setOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   const { scrollY } = useScroll();
-  useMotionValueEvent(scrollY, "change", (latest) => setScrolled(latest > 48));
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const delta = latest - lastScrollY.current;
+    setScrolled(latest > 48);
+
+    if (latest < 64) {
+      setHeaderVisible(true);
+    } else if (delta > 6) {
+      setHeaderVisible(false);
+    } else if (delta < -6) {
+      setHeaderVisible(true);
+    }
+
+    lastScrollY.current = latest;
+  });
 
   useGSAP(
     () => {
@@ -98,11 +113,14 @@ export function Header() {
 
   return (
     <>
-      <header
+      <motion.header
         ref={headerRef}
+        initial={{ y: 0 }}
+        animate={{ y: open || headerVisible ? 0 : "-100%" }}
+        transition={{ duration: 0.35, ease: easeLuxe }}
         className={cn(
           "fixed inset-x-0 top-0 z-50 pt-[env(safe-area-inset-top,0px)] transition-[background-color,backdrop-filter,border-color,padding,box-shadow] duration-500",
-          scrolled ? "py-3" : "py-4",
+          scrolled ? "py-2.5" : "py-3",
           scrolled
             ? "glass border-x-0 border-t-0 shadow-[0_1px_0_0_rgba(192,160,104,0.28)]"
             : "border-b border-line/20 bg-ink/55 backdrop-blur-md",
@@ -116,7 +134,7 @@ export function Header() {
           aria-hidden
         />
 
-        <div className="container-luxe flex items-center justify-between gap-4 xl:gap-6">
+        <div className="container-luxe flex items-center justify-between gap-2 sm:gap-4 xl:gap-6">
           <div className="header-anim shrink-0">
             <Logo />
           </div>
@@ -174,7 +192,7 @@ export function Header() {
             <HiBars2 className="text-2xl" />
           </button>
         </div>
-      </header>
+      </motion.header>
 
       <MobileMenu
         open={open}

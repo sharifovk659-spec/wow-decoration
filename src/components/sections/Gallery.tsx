@@ -93,6 +93,7 @@ export function Gallery() {
                   alt={t(`categories.${item.category}`)}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={95}
                   className="object-cover object-center transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
                 />
 

@@ -64,7 +64,7 @@ export function WoodMaterials() {
                     alt={t(`items.${key}.name`)}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    quality={92}
+                    quality={95}
                     className="object-cover object-center"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
@@ -76,7 +76,7 @@ export function WoodMaterials() {
                 </div>
 
                 <div className="flex flex-1 flex-col p-6 md:p-7">
-                  <h3 className="text-h3 text-bone">{t(`items.${key}.name`)}</h3>
+                  <h3 className="text-lg text-bone md:text-xl">{t(`items.${key}.name`)}</h3>
                   <span className="mt-1.5 font-display text-[0.9375rem] italic text-gold-soft/80 md:text-base">
                     {wood.latin}
                   </span>

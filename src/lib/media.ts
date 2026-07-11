@@ -45,8 +45,5 @@ export function productionStepImage(index: number): string {
   return `/images/production/v2/step-${index}.jpg`;
 }
 
-/** Company hall photography for the About section. */
-export const aboutCompanyImage = siteImage("about/2015-company.jpg");
-
 /** Hero / production wood workshop still. */
 export const heroPoster = photoUrl("1618221195710-dd6b41faaea6");

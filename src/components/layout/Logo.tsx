@@ -1,31 +1,50 @@
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-/** Typographic wordmark for the atelier. */
+const LOGO_SRC = "/0101010.png";
+
+/** Brand logotip — World of Wood Decoration. */
 export function Logo({
   className,
   onClick,
+  size = "header",
 }: {
   className?: string;
   onClick?: () => void;
+  size?: "header" | "footer";
 }) {
+  const dimensions =
+    size === "footer"
+      ? { width: 320, height: 320, className: "h-16 w-auto sm:h-20 md:h-24" }
+      : {
+          width: 400,
+          height: 400,
+          className:
+            "h-12 w-auto max-w-[5.5rem] sm:h-14 sm:max-w-none md:h-20 lg:h-24 xl:h-28",
+        };
+
   return (
     <Link
       href="/"
       onClick={onClick}
       aria-label="World of Wood Decoration — home"
-      className={cn(
-        "group inline-flex flex-col leading-none text-bone",
-        className,
-      )}
+      className={cn("group inline-flex shrink-0 items-center", className)}
     >
-      <span className="font-display text-lg tracking-tight md:text-xl">
-        World of Wood
-      </span>
-      <span className="flex items-center gap-2 text-[0.6rem] font-medium uppercase tracking-[0.42em] text-gold-soft rtl:tracking-[0.15em]">
-        <span className="h-px w-4 bg-gold/60 transition-all duration-500 group-hover:w-6" />
-        Decoration
-      </span>
+      <Image
+        src={LOGO_SRC}
+        alt="World of Wood Decoration"
+        width={dimensions.width}
+        height={dimensions.height}
+        priority
+        unoptimized
+        className={cn(
+          dimensions.className,
+          "max-w-none object-contain transition-[transform,opacity,filter] duration-300",
+          "drop-shadow-[0_4px_16px_rgba(192,160,104,0.4)] sm:drop-shadow-[0_8px_28px_rgba(192,160,104,0.5)]",
+          "group-hover:scale-[1.04] group-hover:brightness-110",
+        )}
+      />
     </Link>
   );
 }

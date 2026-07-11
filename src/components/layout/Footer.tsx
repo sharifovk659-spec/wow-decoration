@@ -33,7 +33,7 @@ export function Footer() {
       <div className="container-luxe py-16 md:py-20">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="flex flex-col gap-4 lg:col-span-4">
-            <Logo />
+            <Logo size="footer" />
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
               {t("description")}
             </p>
@@ -65,6 +65,17 @@ export function Footer() {
                   dir="ltr"
                 >
                   {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={socialLinks.find((s) => s.icon === "instagram")?.href ?? "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-gold"
+                  dir="ltr"
+                >
+                  {siteConfig.instagramHandle}
                 </a>
               </li>
               <li>
@@ -125,11 +136,19 @@ export function Footer() {
 
         <div className="mt-10 hairline" />
 
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 text-xs text-bone-faint md:flex-row">
-          <p>
+        <div className="mt-8 flex flex-col gap-4 text-xs text-bone-faint md:flex-row md:items-center md:justify-between">
+          <a
+            href="https://dushanbe.inovaauto.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="order-1 transition-colors hover:text-gold md:order-none"
+          >
+            {t("developedBy")}
+          </a>
+          <p className="order-2 text-center md:order-none">
             © {year} {siteConfig.name}. {t("rights")}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-5">
+          <div className="order-3 flex flex-wrap items-center justify-center gap-5 md:order-none md:justify-end">
             {legalLinks.map((item) => (
               <Link
                 key={item.key}

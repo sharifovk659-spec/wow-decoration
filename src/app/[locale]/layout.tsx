@@ -9,6 +9,7 @@ import { cormorant, inter, elMessiri } from "@/app/fonts";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingContact } from "@/components/layout/FloatingContact";
 import { Cursor } from "@/components/ui/Cursor";
 import { JsonLd } from "@/components/seo/JsonLd";
 import "@/app/globals.css";
@@ -98,6 +99,7 @@ export default async function LocaleLayout({
               {children}
             </main>
             <Footer />
+            <FloatingContact />
           </SmoothScroll>
         </NextIntlClientProvider>
       </body>

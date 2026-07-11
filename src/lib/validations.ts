@@ -37,7 +37,7 @@ export function createContactSchema(m: Messages) {
     phone: z.string().trim().min(6, { message: m.phoneMin }),
     country: z.enum(contactCountries, { message: m.country }),
     projectType: z.enum(projectTypes, { message: m.projectType }),
-    message: z.string().trim().min(10, { message: m.messageMin }),
+    message: z.string().trim().max(2000).optional().or(z.literal("")),
     company: z.string().max(0).optional().or(z.literal("")),
   });
 }
@@ -49,5 +49,5 @@ export const contactServerSchema = createContactSchema({
   phoneMin: "Phone is too short.",
   country: "Invalid country.",
   projectType: "Invalid project type.",
-  messageMin: "Message is too short.",
+  messageMin: "",
 });

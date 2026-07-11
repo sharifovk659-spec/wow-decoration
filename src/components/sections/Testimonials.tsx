@@ -19,19 +19,17 @@ function TestimonialCard({
         {t(`items.${id}.brand`)}
       </span>
 
-      <blockquote className="mt-4 flex-1 border-0 p-0">
-        <p className="font-display text-[1.05rem] leading-relaxed text-bone-soft md:text-lg">
-          {t(`items.${id}.quote`)}
-        </p>
-      </blockquote>
+      <p className="mt-4 flex-1 font-display text-lg leading-snug text-bone-soft md:text-xl">
+        <span className="text-gold">“</span>
+        {t(`items.${id}.quote`)}
+        <span className="text-gold">”</span>
+      </p>
 
       <footer className="mt-5 border-t border-line pt-4">
         <cite className="not-italic text-sm font-medium text-bone">
           {t(`items.${id}.author`)}
         </cite>
-        <p className="mt-1 text-xs leading-relaxed text-bone-dim">
-          {t(`items.${id}.role`)}
-        </p>
+        <p className="mt-1 text-xs text-bone-dim">{t(`items.${id}.role`)}</p>
       </footer>
     </article>
   );

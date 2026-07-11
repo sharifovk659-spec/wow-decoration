@@ -10,7 +10,7 @@ import { Counter } from "@/components/ui/Counter";
 import { ButtonLink } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
 
-const ABOUT_IMG = "/images/about/2015-company.jpg";
+const ABOUT_IMG = "/images/about/company-palace.jpg";
 
 const stats = [
   { value: 10, suffix: "+" },
@@ -26,7 +26,8 @@ export function About() {
   const root = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
-  const titleWords = t("about.sectionTitle").split(" ");
+  const titleLine1Words = t("about.sectionTitleLine1").split(" ");
+  const titleLine2Words = t("about.sectionTitleLine2").split(" ");
 
   useGSAP(
     () => {
@@ -156,17 +157,31 @@ export function About() {
               </span>
             </div>
 
-            <h2 className="about-heading text-h2 max-w-xl text-bone">
-              {titleWords.map((word, i) => (
-                <span
-                  key={`${word}-${i}`}
-                  className="me-[0.26em] inline-block overflow-hidden pb-[0.15em] align-bottom -mb-[0.15em]"
-                >
-                  <span className="about-word inline-block will-change-transform">
-                    {word}
+            <h2 className="about-heading text-h2 max-w-xl text-bone max-sm:text-[1.6rem]">
+              <span className="block">
+                {titleLine1Words.map((word, i) => (
+                  <span
+                    key={`l1-${word}-${i}`}
+                    className="me-[0.26em] inline-block overflow-hidden pb-[0.15em] align-bottom -mb-[0.15em]"
+                  >
+                    <span className="about-word inline-block will-change-transform">
+                      {word}
+                    </span>
                   </span>
-                </span>
-              ))}
+                ))}
+              </span>
+              <span className="mt-1 block text-gold">
+                {titleLine2Words.map((word, i) => (
+                  <span
+                    key={`l2-${word}-${i}`}
+                    className="me-[0.26em] inline-block overflow-hidden pb-[0.15em] align-bottom -mb-[0.15em]"
+                  >
+                    <span className="about-word inline-block will-change-transform">
+                      {word}
+                    </span>
+                  </span>
+                ))}
+              </span>
             </h2>
 
             <p className="about-fade mt-8 text-lead leading-relaxed text-bone-dim">
@@ -197,21 +212,23 @@ export function About() {
               ref={imageRef}
               className="relative mx-auto max-w-2xl lg:ms-auto lg:me-0"
             >
-              <div className="about-image-inner relative aspect-[16/10] overflow-hidden rounded-luxe-lg bg-ink-900 shadow-image">
+              <div className="about-image-inner relative aspect-[3/2] overflow-hidden rounded-luxe-lg bg-ink-900 shadow-image">
                 <div className="about-image-media absolute inset-0">
                   <Image
                     src={ABOUT_IMG}
                     alt="Национальный дворец — проект World of Wood Decoration"
                     fill
-                    sizes="(max-width: 1024px) 100vw, 55vw"
-                    className="object-cover object-center"
+                    priority
+                    quality={95}
+                    sizes="(max-width: 640px) 100vw, 55vw"
+                    className="object-contain object-center"
                   />
                 </div>
                 <div className="pointer-events-none absolute inset-0 rounded-luxe-lg ring-1 ring-inset ring-gold/15" />
               </div>
 
-              <div className="about-badge glass absolute -bottom-6 start-6 flex items-baseline gap-3 rounded-luxe border border-gold/20 px-6 py-4 shadow-luxe-lg sm:start-8 lg:-start-6">
-                <span className="font-display text-4xl leading-none text-gold md:text-5xl">
+              <div className="about-badge glass absolute -bottom-4 start-4 flex items-baseline gap-2 rounded-luxe border border-gold/20 px-4 py-3 shadow-luxe-lg sm:-bottom-6 sm:start-6 sm:gap-3 sm:px-6 sm:py-4 lg:-start-6">
+                <span className="font-display text-3xl leading-none text-gold sm:text-4xl md:text-5xl">
                   {siteConfig.founded}
                 </span>
                 <span className="text-xs uppercase tracking-[0.2em] text-bone-dim">

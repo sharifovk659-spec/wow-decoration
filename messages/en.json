@@ -342,13 +342,16 @@
   "materials": {
     "eyebrow": "Materials",
     "title": "Timber chosen as a jeweller chooses stones.",
-    "description": "We work only with wood whose origin, grain, and stability meet standards most houses never see. A selection from our reserve.",
+    "description": "We work only with selected species — for interiors, façades, gazebos, and architectural elements built to last decades.",
     "cta": "Request a proposal",
     "items": {
-      "0": { "name": "American black walnut", "origin": "North America", "note": "Chocolate depth, ribbon grain." },
-      "1": { "name": "European oak", "origin": "France & Slavonia", "note": "Structural strength, radial cut." },
-      "2": { "name": "Macassar ebony", "origin": "Indonesia", "note": "Dramatic striping, mirror polish." },
-      "3": { "name": "Burmese teak", "origin": "Southeast Asia", "note": "Golden warmth, weather resistance." }
+      "0": { "name": "Oak", "note": "Strength, monumentality, and noble medullary rays." },
+      "1": { "name": "Walnut", "note": "Deep chocolate tone and expressive grain — for luxury interiors and furniture." },
+      "2": { "name": "Beech", "note": "Even grain and uniform warm tone for clean architectural forms." },
+      "3": { "name": "Ash", "note": "Light warm hue, resilience, and a lively texture pattern." },
+      "4": { "name": "Pine", "note": "Light timber with distinctive texture — for pavilions and structures." },
+      "5": { "name": "Cedar", "note": "Aromatic, warm texture with natural resistance." },
+      "6": { "name": "Abachi", "note": "Light, low-density timber — ideal for décor and Eastern interiors." }
     }
   },
   "stats": {
@@ -426,6 +429,7 @@
     "contactTitle": "Contact",
     "socialTitle": "Social",
     "rights": "All rights reserved.",
+    "developedBy": "Website development-WebDushanbe",
     "legal": {
       "privacy": "Privacy policy",
       "terms": "Terms",
@@ -436,6 +440,8 @@
     "since": "Company since",
     "sectionEyebrow": "About",
     "sectionTitle": "Premium production and installation",
+    "sectionTitleLine1": "Premium production",
+    "sectionTitleLine2": "and installation",
     "sectionText": "We design, produce, and install gazebos, interior solutions, doors, ceilings, columns, furniture, and architectural elements of premium quality for private residences, hotels, restaurants, palaces, mosques, and public buildings.",
     "sectionCta": "Request a proposal",
     "advantages": {
@@ -510,7 +516,7 @@
       "countryPlaceholder": "Select country",
       "projectType": "Project type",
       "projectTypePlaceholder": "Select project type",
-      "message": "Message",
+      "message": "Message (optional)",
       "messagePlaceholder": "Tell us about the site, area, timeline, and requirements…",
       "submit": "Request a proposal",
       "submitting": "Sending…",

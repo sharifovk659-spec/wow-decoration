@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { contactServerSchema } from "@/lib/validations";
+import {
+  isTelegramConfigured,
+  sendContactToTelegram,
+} from "@/lib/telegram";
 
-/**
- * Contact enquiry endpoint. Validates the payload server-side and rejects
- * honeypot submissions. Wire `CONTACT_INBOX_EMAIL` to an email provider
- * (Resend, SendGrid, SES…) where indicated to deliver enquiries.
- */
+/** Contact enquiry — validates and forwards to Telegram. */
 export async function POST(request: Request) {
   let json: unknown;
   try {
@@ -22,17 +22,28 @@ export async function POST(request: Request) {
     );
   }
 
-  // Honeypot: silently accept bots without processing.
   if (parsed.data.company) {
     return NextResponse.json({ ok: true });
   }
 
-  // Integration point — deliver the enquiry to the company inbox.
-  // e.g. await sendEmail({ to: process.env.CONTACT_INBOX_EMAIL, ...parsed.data })
-  const { name, phone, country, projectType } = parsed.data;
-  console.info(
-    `[contact] enquiry from ${name} (${phone}) — ${country} / ${projectType}`,
-  );
+  if (!isTelegramConfigured()) {
+    console.error(
+      "[contact] TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are not set.",
+    );
+    return NextResponse.json(
+      { error: "Contact delivery is not configured on the server." },
+      { status: 503 },
+    );
+  }
+
+  const sent = await sendContactToTelegram(parsed.data);
+  if (!sent) {
+    console.error("[contact] Telegram delivery failed.");
+    return NextResponse.json(
+      { error: "Failed to deliver enquiry. Please try again later." },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }

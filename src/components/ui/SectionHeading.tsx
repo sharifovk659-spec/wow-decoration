@@ -47,7 +47,7 @@ export function SectionHeading({
       <AnimatedText
         text={title}
         as="h2"
-        className={cn("text-h2 max-w-3xl text-balance text-bone", titleClassName)}
+        className={cn("text-h2 max-w-3xl text-balance text-bone max-sm:leading-tight", titleClassName)}
       />
 
       {description && (
@@ -57,7 +57,7 @@ export function SectionHeading({
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className={cn(
-            "text-lead text-bone-dim",
+            "text-base text-bone-dim max-sm:leading-relaxed sm:text-lead",
             descriptionClassName ?? "max-w-xl",
           )}
         >

@@ -33,19 +33,19 @@ const directChannels = [
     key: "whatsapp",
     icon: FaWhatsapp,
     href: `https://wa.me/${siteConfig.whatsappHref}`,
-    label: "WhatsApp",
+    label: siteConfig.whatsapp,
   },
   {
     key: "telegram",
     icon: FaTelegram,
     href: `https://t.me/${siteConfig.telegramHref}`,
-    label: "Telegram",
+    label: siteConfig.telegram,
   },
   {
     key: "email",
     icon: HiOutlineEnvelope,
     href: `mailto:${siteConfig.email}`,
-    label: "Email",
+    label: siteConfig.email,
   },
 ] as const;
 
@@ -79,14 +79,14 @@ export function CallToAction() {
             <AnimatedText
               text={t("title")}
               as="h2"
-              className="text-h1 text-bone"
+              className="text-h2 text-bone sm:text-h1"
             />
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.15, ease: easeLuxe }}
-              className="text-lead mt-8 text-bone-dim"
+              className="text-base mt-6 leading-relaxed text-bone-dim sm:text-lead sm:mt-8"
             >
               {t("description")}
             </motion.p>
@@ -111,12 +111,12 @@ export function CallToAction() {
                           : undefined
                       }
                       data-cursor="hover"
-                      className="group flex items-center gap-3 rounded-full border border-line/80 bg-ink-800/50 px-5 py-3 text-sm text-bone-dim transition-all duration-300 hover:border-gold/40 hover:text-gold"
+                      className="group flex w-full min-w-0 items-center gap-2.5 rounded-full border border-line/80 bg-ink-800/50 px-3.5 py-2.5 text-xs text-bone-dim transition-all duration-300 hover:border-gold/40 hover:text-gold sm:w-auto sm:gap-3 sm:px-5 sm:py-3 sm:text-sm"
                     >
                       <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/20 bg-gold/5 text-gold transition-colors group-hover:bg-gold group-hover:text-ink">
                         <Icon />
                       </span>
-                      {ch.label}
+                      <span className="truncate" dir="ltr">{ch.label}</span>
                     </a>
                   );
                 })}
@@ -133,12 +133,14 @@ export function CallToAction() {
                       rel="noopener noreferrer"
                       aria-label={social.label}
                       data-cursor="hover"
-                      className="group flex items-center gap-3 rounded-full border border-line/80 bg-ink-800/50 px-5 py-3 text-sm text-bone-dim transition-all duration-300 hover:border-gold/40 hover:text-gold"
+                      className="group flex w-full min-w-0 items-center gap-2.5 rounded-full border border-line/80 bg-ink-800/50 px-3.5 py-2.5 text-xs text-bone-dim transition-all duration-300 hover:border-gold/40 hover:text-gold sm:w-auto sm:gap-3 sm:px-5 sm:py-3 sm:text-sm"
                     >
                       <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/20 bg-gold/5 text-gold transition-colors group-hover:bg-gold group-hover:text-ink">
                         <Icon />
                       </span>
-                      {social.label}
+                      {social.label === "Instagram"
+                        ? siteConfig.instagramHandle
+                        : social.label}
                     </a>
                   );
                 })}
