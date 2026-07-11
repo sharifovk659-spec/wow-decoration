@@ -11,7 +11,8 @@ import { easeLuxe } from "@/lib/motion";
 const emptySubscribe = () => () => {};
 
 interface VideoModalProps {
-  src: string | null;
+  src?: string | null;
+  youtubeId?: string | null;
   poster?: string;
   open: boolean;
   onClose: () => void;
@@ -20,12 +21,12 @@ interface VideoModalProps {
 }
 
 /**
- * Cinematic video player rendered through a portal. Locks Lenis + body
- * scroll while open, closes on Escape or backdrop click, and autoplays the
- * film once mounted.
+ * Cinematic player rendered through a portal. Supports local MP4 or YouTube
+ * Shorts embed. Locks Lenis + body scroll while open.
  */
 export function VideoModal({
   src,
+  youtubeId,
   poster,
   open,
   onClose,
@@ -34,6 +35,7 @@ export function VideoModal({
 }: VideoModalProps) {
   const lenisRef = useLenis();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const isYoutube = Boolean(youtubeId);
 
   const mounted = useSyncExternalStore(
     emptySubscribe,
@@ -41,7 +43,6 @@ export function VideoModal({
     () => false,
   );
 
-  // Lock scroll while open.
   useEffect(() => {
     if (!open) return;
     const lenis = lenisRef?.current;
@@ -54,7 +55,6 @@ export function VideoModal({
     };
   }, [open, lenisRef]);
 
-  // Escape to close.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -64,17 +64,18 @@ export function VideoModal({
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  // Best-effort autoplay once the film is shown.
   useEffect(() => {
-    if (!open || !src) return;
+    if (!open || !src || isYoutube) return;
     videoRef.current?.play().catch(() => {});
-  }, [open, src]);
+  }, [open, src, isYoutube]);
 
   if (!mounted) return null;
 
+  const hasMedia = isYoutube ? Boolean(youtubeId) : Boolean(src);
+
   return createPortal(
     <AnimatePresence>
-      {open && src && (
+      {open && hasMedia && (
         <motion.div
           role="dialog"
           aria-modal="true"
@@ -108,19 +109,34 @@ export function VideoModal({
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.55, ease: easeLuxe }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-5xl overflow-hidden rounded-luxe-lg shadow-luxe-lg"
+              className={
+                isYoutube
+                  ? "aspect-[9/16] w-full max-w-[min(100%,22rem)] overflow-hidden rounded-luxe-lg shadow-luxe-lg sm:max-w-sm"
+                  : "w-full max-w-5xl overflow-hidden rounded-luxe-lg shadow-luxe-lg"
+              }
             >
-              <video
-                ref={videoRef}
-                poster={poster}
-                controls
-                autoPlay
-                playsInline
-                preload="metadata"
-                className="aspect-video max-h-[72dvh] w-full bg-ink object-contain sm:max-h-none"
-              >
-                <source src={src} type="video/mp4" />
-              </video>
+              {isYoutube && youtubeId ? (
+                <iframe
+                  key={youtubeId}
+                  title={caption ?? "YouTube video"}
+                  src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="h-full w-full border-0 bg-ink"
+                />
+              ) : (
+                <video
+                  ref={videoRef}
+                  poster={poster}
+                  controls
+                  autoPlay
+                  playsInline
+                  preload="metadata"
+                  className="aspect-video max-h-[72dvh] w-full bg-ink object-contain sm:max-h-none"
+                >
+                  <source src={src!} type="video/mp4" />
+                </video>
+              )}
             </motion.div>
           </div>
         </motion.div>

@@ -81,7 +81,7 @@ export function VideoTestimonials() {
                 data-cursor="hover"
                 className="group relative block w-full overflow-hidden rounded-luxe-lg text-start shadow-image transition-shadow duration-700 hover:shadow-luxe-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"
               >
-                <div className="relative aspect-[4/5] w-full">
+                <div className="relative aspect-[9/16] w-full">
                   <Image
                     src={item.poster}
                     alt={t(`items.${item.id}.author`)}
@@ -138,7 +138,7 @@ export function VideoTestimonials() {
 
       <VideoModal
         open={active !== null}
-        src={current?.video ?? null}
+        youtubeId={current?.youtubeId ?? null}
         poster={current?.poster}
         onClose={() => setActive(null)}
         closeLabel={tc("close")}
