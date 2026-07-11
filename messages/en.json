@@ -386,26 +386,26 @@
     "title": "Trusted by those who commission rarely.",
     "items": {
       "0": {
-        "brand": "Royal Palace",
-        "quote": "They did not deliver joinery. They delivered a heirloom our family will cherish for a century.",
-        "author": "His Excellency, Head of the Royal Court",
-        "role": "Royal palace project, Gulf"
+        "brand": "Palace of the Nation",
+        "quote": "Carving, ceilings, and panels were executed with flawless precision. You can see masters at work who understand the scale of a state commission.",
+        "author": "Client representative",
+        "role": "State palace, Tajikistan"
       },
       "1": {
         "brand": "Grand Mosque",
-        "quote": "The mihrab they carved became the soul of the mosque. Craft of this level is almost lost to the world.",
-        "author": "Board of the Grand Mosque Waqf",
+        "quote": "The mihrab and decorative elements were made with deep respect for tradition and modern quality standards. The result exceeded expectations.",
+        "author": "Waqf board",
         "role": "Sacred project, North Africa"
       },
       "2": {
-        "brand": "Five-star hotel group",
-        "quote": "Our guests touch the walls. In luxury hospitality, that is the highest praise a material can receive.",
+        "brand": "Hotel group",
+        "quote": "Wood became the defining element of the interior — guests notice the tactility and nobility of the material. A rare level for the premium segment.",
         "author": "Managing Director",
         "role": "Five-star hotel, Europe"
       },
       "3": {
         "brand": "Private residence",
-        "quote": "World of Wood Decoration turned our home into a work of art — wood lives in every room.",
+        "quote": "From sketch to installation — transparent process, deadlines met, and a result that turns a home into an architectural work.",
         "author": "Private client",
         "role": "Coastal villa, Mediterranean"
       }

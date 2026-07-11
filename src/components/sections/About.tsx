@@ -9,9 +9,7 @@ import { useGSAP } from "@/hooks/useGSAP";
 import { Counter } from "@/components/ui/Counter";
 import { ButtonLink } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/site";
-import { photoUrl } from "@/lib/media";
-
-const ABOUT_IMG = photoUrl("1600585154340-be6161a56a0c");
+import { aboutCompanyImage } from "@/lib/media";
 
 const stats = [
   { value: 10, suffix: "+" },
@@ -201,11 +199,11 @@ export function About() {
               <div className="about-image-inner relative aspect-[4/5] overflow-hidden rounded-luxe-lg shadow-image sm:aspect-[5/4] lg:aspect-[4/5]">
                 <div className="about-image-media absolute -inset-y-[8%] inset-x-0">
                   <Image
-                    src={ABOUT_IMG}
-                    alt="Премиальный деревянный интерьер World of Wood Decoration"
+                    src={aboutCompanyImage}
+                    alt={t("about.sectionEyebrow")}
                     fill
                     sizes="(max-width: 1024px) 100vw, 55vw"
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                 </div>
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent" />
