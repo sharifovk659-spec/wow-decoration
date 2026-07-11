@@ -22,23 +22,23 @@ const STEPS = [
   },
   {
     file: "step-3.jpg",
-    url: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.pexels.com/photos/3846269/pexels-photo-3846269.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-4.jpg",
-    url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.pexels.com/photos/5691657/pexels-photo-5691657.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-5.jpg",
-    url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.pexels.com/photos/4481327/pexels-photo-4481327.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-6.jpg",
-    url: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.pexels.com/photos/262353/pexels-photo-262353.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-7.jpg",
-    local: "gallery/installation.jpg",
+    url: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
 ];
 

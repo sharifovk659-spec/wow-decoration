@@ -38,6 +38,8 @@ export function WoodMaterials() {
           eyebrow={t("eyebrow")}
           title={t("title")}
           description={t("description")}
+          titleClassName="max-w-3xl"
+          descriptionClassName="max-w-2xl"
           className="mb-16 md:mb-20"
         />
 
@@ -75,12 +77,12 @@ export function WoodMaterials() {
                   </div>
                 </div>
 
-                <div className="flex flex-1 flex-col p-6">
+                <div className="flex flex-1 flex-col p-6 md:p-7">
                   <h3 className="text-h3 text-bone">{t(`items.${key}.name`)}</h3>
-                  <span className="mt-1 font-display text-sm italic text-gold-soft/80">
+                  <span className="mt-1.5 font-display text-[0.9375rem] italic text-gold-soft/80 md:text-base">
                     {wood.latin}
                   </span>
-                  <p className="mt-3 text-sm leading-relaxed text-bone-dim">
+                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-bone-dim md:text-base">
                     {t(`items.${key}.note`)}
                   </p>
                 </div>
