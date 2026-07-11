@@ -103,7 +103,7 @@ export function WorldMap() {
               onClick={() => setSelected(key)}
               data-cursor="hover"
               className={cn(
-                "rounded-full border px-4 py-2 text-[0.68rem] uppercase tracking-[0.12em] transition-all duration-300 md:px-5 md:text-xs",
+                "shrink-0 rounded-full border px-4 py-2.5 text-xs leading-snug transition-all duration-300 md:px-5 md:py-2.5 md:text-sm",
                 selected === key
                   ? "border-gold/50 bg-gold/10 text-gold shadow-gold"
                   : "border-line text-bone-dim hover:border-gold/30 hover:text-bone",
