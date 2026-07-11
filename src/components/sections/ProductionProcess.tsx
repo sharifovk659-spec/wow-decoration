@@ -163,7 +163,7 @@ export function ProductionProcess() {
                       <h3 className="mt-2 text-h3 text-bone">
                         {t(`steps.${key}.title`)}
                       </h3>
-                      <p className="mt-2 max-w-lg text-sm text-bone-dim">
+                      <p className="mt-2 max-w-lg text-[0.9375rem] leading-relaxed text-bone-dim md:text-base">
                         {t(`steps.${key}.text`)}
                       </p>
                     </div>

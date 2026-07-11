@@ -144,7 +144,7 @@ function ProjectCard({
             <h3 className="text-h3 text-bone transition-colors duration-300 group-hover:text-gold">
               {project.title[locale]}
             </h3>
-            <p className="mt-1 text-sm text-bone-dim">
+            <p className="mt-1 text-[0.9375rem] text-bone-dim md:text-base">
               {project.location[locale]}
             </p>
           </div>

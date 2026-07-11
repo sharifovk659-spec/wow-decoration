@@ -92,6 +92,8 @@ export function Process() {
           eyebrow={t("eyebrow")}
           title={t("title")}
           description={t("description")}
+          titleClassName="max-w-3xl"
+          descriptionClassName="max-w-2xl"
           className="mb-16 md:mb-24"
         />
 
@@ -120,7 +122,7 @@ export function Process() {
                       {t(`steps.${key}.title`)}
                     </h3>
                   </div>
-                  <p className="mt-3 max-w-xl text-sm leading-relaxed text-bone-dim md:text-base">
+                  <p className="mt-3 max-w-xl text-[0.9375rem] leading-relaxed text-bone-dim md:text-base">
                     {t(`steps.${key}.text`)}
                   </p>
                 </div>

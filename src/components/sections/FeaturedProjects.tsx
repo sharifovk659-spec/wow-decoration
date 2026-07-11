@@ -112,7 +112,7 @@ export function FeaturedProjects() {
                     <h3 className="font-display text-2xl text-bone md:text-3xl">
                       {project.title[locale]}
                     </h3>
-                    <p className="mt-2 line-clamp-2 max-w-xl text-sm text-bone-dim">
+                    <p className="mt-2 line-clamp-2 max-w-xl text-[0.9375rem] leading-relaxed text-bone-dim md:text-base">
                       {project.summary[locale]}
                     </p>
                     <span className="mt-4 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.16em] text-gold opacity-90 transition-all duration-500 group-hover:gap-3 group-hover:opacity-100">
