@@ -40,5 +40,10 @@ export function siteImage(relativePath: string): string {
   return `/images/${relativePath.replace(/^\/+/, "")}`;
 }
 
+/** Production step photography. */
+export function productionStepImage(index: number): string {
+  return `/images/production/step-${index}.jpg`;
+}
+
 /** Hero / production wood workshop still. */
 export const heroPoster = photoUrl("1618221195710-dd6b41faaea6");

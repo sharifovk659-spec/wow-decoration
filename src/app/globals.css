@@ -404,6 +404,11 @@
   }
 }
 
+.video-marquee .swiper-wrapper,
+.testimonial-marquee .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
 @keyframes scroll-hint {
   0% {
     transform: translateY(-100%);

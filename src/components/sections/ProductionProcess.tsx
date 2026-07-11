@@ -8,24 +8,11 @@ import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
 import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { siteVideos } from "@/lib/videos";
-import { photoUrl } from "@/lib/media";
+import { productionStepImage } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
 const NOISE =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
-
-const STEP_IMAGES = [
-  "1618221195710-dd6b41faaea6",
-  "1615529182904-14819c35db37",
-  "1600566753086-00f18fb6b3ea",
-  "1600585154340-be6161a56a0c",
-  "1600566752355-35792bedcfea",
-  "1600607687920-4e2a09cf159d",
-  "1616137466211-f939a420be84",
-  "1566073771259-6a8506099945",
-] as const;
-
-const img = (id: string) => photoUrl(id);
 
 const steps = ["0", "1", "2", "3", "4", "5", "6", "7"] as const;
 
@@ -159,15 +146,16 @@ export function ProductionProcess() {
               >
                 <span className="absolute top-2 start-0 z-10 h-[18px] w-[18px] -translate-x-1/2 rounded-full border-2 border-gold/40 bg-ink-600" />
                 <div className="overflow-hidden rounded-luxe-lg border border-line/80 bg-ink/70 backdrop-blur-sm transition-colors hover:border-gold/30">
-                  <div className="relative h-40 md:h-48">
+                  <div className="relative aspect-[2/1] w-full md:aspect-[5/2]">
                     <Image
-                      src={img(STEP_IMAGES[i]!)}
-                      alt=""
+                      src={productionStepImage(i)}
+                      alt={t(`steps.${key}.title`)}
                       fill
                       sizes="(max-width: 768px) 100vw, 800px"
-                      className="object-cover opacity-80"
+                      quality={92}
+                      className="object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/55 to-ink/15" />
                     <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-8">
                       <span className="font-display text-3xl text-gold md:text-4xl">
                         {t(`steps.${key}.number`)}

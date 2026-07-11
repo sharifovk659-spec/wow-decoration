@@ -34,7 +34,8 @@ export function ServiceCards({ withHeading = true }: { withHeading?: boolean }) 
             eyebrow={t("eyebrow")}
             title={t("title")}
             description={t("description")}
-            className="mb-16 md:mb-20"
+            descriptionClassName="max-w-5xl text-pretty leading-relaxed"
+            className="mb-16 max-w-none md:mb-20"
           />
         )}
 
@@ -58,7 +59,8 @@ export function ServiceCards({ withHeading = true }: { withHeading?: boolean }) 
                     alt={t(`items.${key}.title`)}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.12] group-focus-visible:scale-[1.12]"
+                    quality={92}
+                    className="object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/15" />
                   <div className="absolute inset-0 bg-gradient-to-br from-gold-deep/10 via-transparent to-transparent opacity-60" />
@@ -77,15 +79,13 @@ export function ServiceCards({ withHeading = true }: { withHeading?: boolean }) 
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                   <h3 className="text-h3 text-bone">{t(`items.${key}.title`)}</h3>
 
-                  <div className="grid grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] max-lg:grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] lg:group-focus-within:grid-rows-[1fr]">
-                    <div className="overflow-hidden">
-                      <p className="mt-3 max-w-sm text-sm leading-relaxed text-bone-dim">
-                        {t(`items.${key}.text`)}
-                      </p>
-                    </div>
+                  <div className="mt-3">
+                    <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
+                      {t(`items.${key}.text`)}
+                    </p>
                   </div>
 
-                  <span className="mt-5 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-gold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] max-lg:translate-x-0 max-lg:opacity-100 lg:-translate-x-2 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100">
+                  <span className="mt-5 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.2em] text-gold">
                     {t("cta")}
                     <HiArrowLongRight className="text-sm transition-transform duration-500 group-hover:translate-x-1" />
                   </span>

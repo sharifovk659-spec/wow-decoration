@@ -87,14 +87,14 @@ export function FeaturedProjects() {
                   data-cursor="hover"
                   className="group relative block overflow-hidden rounded-luxe-lg border border-line/80 bg-ink-800 shadow-luxe transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1 hover:border-gold/35 hover:shadow-image"
                 >
-                  <div className="relative aspect-[3/2] overflow-hidden">
+                  <div className="relative aspect-[3/2] overflow-hidden bg-ink-900">
                     <Image
                       src={project.cover}
                       alt={project.title[locale]}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       quality={92}
-                      className="object-cover object-center"
+                      className="object-contain object-center"
                     />
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
                   </div>

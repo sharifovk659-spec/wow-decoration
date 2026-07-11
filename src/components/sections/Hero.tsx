@@ -217,7 +217,7 @@ export function Hero() {
 
         <h1
           ref={titleRef}
-          className="will-transform text-display max-w-none text-balance font-display leading-[1.08] text-bone sm:max-w-[18ch] md:leading-[1.02]"
+          className="will-transform max-w-none text-balance font-display text-[clamp(1.85rem,1rem+4.8vw,4.75rem)] leading-[1.12] text-bone sm:max-w-[24ch] md:leading-[1.08] lg:max-w-[28ch]"
         >
           {lines.map((line, i) => (
             <span key={line} className="clip-text-line block pb-[0.14em]">
@@ -234,7 +234,7 @@ export function Hero() {
         </h1>
 
         <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <p className="hero-desc text-lead max-w-2xl leading-relaxed text-bone-soft">
+          <p className="hero-desc max-w-3xl text-base leading-relaxed text-bone-soft md:text-lg lg:max-w-4xl">
             <span className="font-medium text-gold-soft">
               World of Wood Decoration
             </span>

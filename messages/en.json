@@ -259,6 +259,24 @@
         "role": "Coastal estate",
         "project": "Seaside Villa Library",
         "quote": "From the first sketch to installation, everything felt effortless and deeply personal."
+      },
+      "5": {
+        "author": "Rashid Al-Hamad",
+        "role": "Residence owner",
+        "project": "Private villa interior",
+        "quote": "The execution exceeded expectations — every detail was considered to perfection."
+      },
+      "6": {
+        "author": "Sara Mahmoud",
+        "role": "Interior designer",
+        "project": "Premium restaurant",
+        "quote": "Woodwork at this level is a rarity in contemporary architecture."
+      },
+      "7": {
+        "author": "Omar Ben Ali",
+        "role": "Hotel manager",
+        "project": "Boutique hotel lobby",
+        "quote": "The wood panels became the centrepiece — guests never stop admiring them."
       }
     }
   },
@@ -368,19 +386,28 @@
     "title": "Trusted by those who commission rarely.",
     "items": {
       "0": {
+        "brand": "Royal Palace",
         "quote": "They did not deliver joinery. They delivered a heirloom our family will cherish for a century.",
         "author": "His Excellency, Head of the Royal Court",
         "role": "Royal palace project, Gulf"
       },
       "1": {
+        "brand": "Grand Mosque",
         "quote": "The mihrab they carved became the soul of the mosque. Craft of this level is almost lost to the world.",
         "author": "Board of the Grand Mosque Waqf",
         "role": "Sacred project, North Africa"
       },
       "2": {
+        "brand": "Five-star hotel group",
         "quote": "Our guests touch the walls. In luxury hospitality, that is the highest praise a material can receive.",
         "author": "Managing Director",
-        "role": "Five-star hotel group, Europe"
+        "role": "Five-star hotel, Europe"
+      },
+      "3": {
+        "brand": "Private residence",
+        "quote": "World of Wood Decoration turned our home into a work of art — wood lives in every room.",
+        "author": "Private client",
+        "role": "Coastal villa, Mediterranean"
       }
     }
   },

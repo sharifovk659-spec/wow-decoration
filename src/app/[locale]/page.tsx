@@ -11,6 +11,7 @@ import { ProductionProcess } from "@/components/sections/ProductionProcess";
 import { About } from "@/components/sections/About";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { VideoTestimonials } from "@/components/sections/VideoTestimonials";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { WorldMap } from "@/components/sections/WorldMap";
 import { CallToAction } from "@/components/sections/CallToAction";
 
@@ -34,6 +35,7 @@ export default async function HomePage({
       <ProductionProcess />
       <About />
       <VideoTestimonials />
+      <Testimonials />
       <WhyChooseUs />
       <WorldMap />
       <CallToAction />

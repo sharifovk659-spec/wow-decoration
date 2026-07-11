@@ -6,13 +6,16 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const outDir = path.join(root, "public", "images", "testimonials");
 
-/** Card id → YouTube Shorts video id */
+/** Card id → YouTube Shorts video id (@worldofwooddecoration). */
 const SHORTS = [
-  { id: "0", youtubeId: "ruvm251rosk" },
-  { id: "1", youtubeId: "eO3ympRFvhI" },
-  { id: "2", youtubeId: "FmH5kf-NUGU" },
-  { id: "3", youtubeId: "Vs8ljxm5F0U" },
-  { id: "4", youtubeId: "EHTFwjoTF04" },
+  { id: "0", youtubeId: "Ka697QCAe5s" },
+  { id: "1", youtubeId: "-B6JMuL6dKA" },
+  { id: "2", youtubeId: "vqlolLqhMa8" },
+  { id: "3", youtubeId: "boJ6XNyzuGA" },
+  { id: "4", youtubeId: "_9xkhgfp0VI" },
+  { id: "5", youtubeId: "lV9M2mOh_io" },
+  { id: "6", youtubeId: "F14wyhzLMpU" },
+  { id: "7", youtubeId: "8sM5lDu1EwM" },
 ];
 
 async function fetchBuffer(url) {

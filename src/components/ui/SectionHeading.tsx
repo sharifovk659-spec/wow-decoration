@@ -11,6 +11,7 @@ interface SectionHeadingProps {
   align?: "start" | "center";
   className?: string;
   titleClassName?: string;
+  descriptionClassName?: string;
 }
 
 export function SectionHeading({
@@ -20,6 +21,7 @@ export function SectionHeading({
   align = "start",
   className,
   titleClassName,
+  descriptionClassName,
 }: SectionHeadingProps) {
   return (
     <div
@@ -54,7 +56,10 @@ export function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lead max-w-xl text-bone-dim"
+          className={cn(
+            "text-lead text-bone-dim",
+            descriptionClassName ?? "max-w-xl",
+          )}
         >
           {description}
         </motion.p>

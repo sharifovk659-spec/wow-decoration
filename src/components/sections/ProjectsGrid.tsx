@@ -13,7 +13,7 @@ import {
 } from "@/lib/projects";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { easeLuxe, fadeUp, lineReveal, staggerContainer } from "@/lib/motion";
+import { easeLuxe, fadeUp } from "@/lib/motion";
 import { HoverVideo } from "@/components/ui/HoverVideo";
 import { ButtonLink } from "@/components/ui/Button";
 
@@ -34,13 +34,9 @@ export function ProjectsGrid() {
     [filter],
   );
 
-  const hero = visible[0];
-  const rest = visible.slice(1);
-
   return (
     <section className="container-luxe pb-[30px]">
-      {/* Filter bar */}
-      <div className="mb-luxe flex flex-wrap items-center gap-x-7 gap-y-3 border-b border-line pb-6 mb-luxe">
+      <div className="mb-luxe flex flex-wrap items-center gap-x-7 gap-y-3 border-b border-line pb-6">
         {filters.map((f) => (
           <button
             key={f}
@@ -67,95 +63,16 @@ export function ProjectsGrid() {
         </span>
       </div>
 
-      {/* Featured hero */}
-      <AnimatePresence mode="wait">
-        {hero && (
-          <motion.div
-            key={hero.slug}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: easeLuxe }}
-          >
-            <Link
-              href={`/projects/${hero.slug}`}
-              data-cursor="hover"
-              className="group relative block overflow-hidden rounded-luxe-lg shadow-image transition-shadow duration-700 hover:shadow-luxe-lg"
-            >
-              <HoverVideo
-                src={hero.cover}
-                video={hero.video}
-                alt={hero.title[locale]}
-                sizes="(max-width: 1024px) 100vw, 92vw"
-                priority
-                inLink
-                className="aspect-[16/10] w-full sm:aspect-[16/9] lg:aspect-[21/9]"
-                imageClassName="transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-              />
-
-              <div className="pointer-events-none absolute inset-0 rounded-luxe-lg bg-gradient-to-t from-ink via-ink/35 to-transparent" />
-
-              {hero.video && (
-                <span className="absolute end-6 top-6 flex h-12 w-12 items-center justify-center rounded-full border border-bone/30 bg-ink/30 text-bone backdrop-blur-sm transition-all duration-500 group-hover:border-gold group-hover:text-gold">
-                  <HiPlay className="text-lg ltr:translate-x-px" />
-                </span>
-              )}
-
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={staggerContainer(0.08)}
-                className="absolute inset-x-0 bottom-0 p-6 md:p-10 lg:p-14"
-              >
-                <motion.div
-                  variants={fadeUp}
-                  className="mb-4 flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-gold-soft"
-                >
-                  <span>{t(`filters.${hero.category}`)}</span>
-                  <span className="text-bone-faint">·</span>
-                  <span>{hero.year}</span>
-                </motion.div>
-
-                <div className="overflow-hidden pb-2">
-                  <motion.h2
-                    variants={lineReveal}
-                    className="text-h1 max-w-3xl text-bone"
-                  >
-                    {hero.title[locale]}
-                  </motion.h2>
-                </div>
-
-                <motion.div
-                  variants={fadeUp}
-                  className="mt-5 flex items-center gap-4"
-                >
-                  <span className="text-sm text-bone-soft">
-                    {hero.location[locale]}
-                  </span>
-                  <span className="hidden h-px w-16 bg-gold/40 sm:block" />
-                  <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-bone transition-colors duration-300 group-hover:text-gold">
-                    {t("viewProject")}
-                    <HiArrowLongRight className="transition-transform duration-500 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
-                  </span>
-                </motion.div>
-              </motion.div>
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Grid */}
       <motion.div
         layout
-        className="mt-10 grid gap-8 md:mt-16 md:grid-cols-2 md:gap-x-10 md:gap-y-16"
+        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
       >
         <AnimatePresence mode="popLayout">
-          {rest.map((project, i) => (
+          {visible.map((project) => (
             <ProjectCard
               key={project.slug}
               project={project}
               locale={locale}
-              offset={i % 2 === 1}
               t={t}
             />
           ))}
@@ -174,43 +91,41 @@ export function ProjectsGrid() {
 function ProjectCard({
   project,
   locale,
-  offset,
   t,
 }: {
   project: Project;
   locale: Locale;
-  offset: boolean;
   t: (key: string) => string;
 }) {
   return (
     <motion.article
       layout
-      initial={{ opacity: 0, y: 32 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.96 }}
-      transition={{ duration: 0.6, ease: easeLuxe }}
-      className={cn(offset && "md:mt-16")}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.5, ease: easeLuxe }}
+      className="flex h-full flex-col"
     >
       <Link
         href={`/projects/${project.slug}`}
         data-cursor="hover"
-        className="group block"
+        className="group flex h-full flex-col"
       >
-        <div className="relative overflow-hidden rounded-luxe-lg shadow-image transition-shadow duration-700 group-hover:shadow-luxe-lg">
+        <div className="relative overflow-hidden rounded-luxe-lg border border-line/80 bg-ink-900 shadow-image transition-shadow duration-500 group-hover:shadow-luxe-lg">
           <HoverVideo
             src={project.cover}
             video={project.video}
             alt={project.title[locale]}
-            sizes="(max-width: 768px) 100vw, 46vw"
+            sizes="(max-width: 768px) 100vw, 33vw"
             inLink
-            className="aspect-[4/3] w-full"
-            imageClassName="transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+            className="aspect-[3/2] w-full"
+            imageClassName="bg-ink-900 object-contain object-center transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent" />
 
-          <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5">
-            <span className="rounded-full border border-bone/25 bg-ink/30 px-4 py-1.5 text-[0.65rem] uppercase tracking-[0.2em] text-bone backdrop-blur-sm rtl:tracking-[0.1em]">
+          <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4 md:p-5">
+            <span className="rounded-full border border-bone/25 bg-ink/30 px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-bone backdrop-blur-sm rtl:tracking-[0.1em]">
               {t(`filters.${project.category}`)}
             </span>
             {project.video && (
@@ -221,8 +136,8 @@ function ProjectCard({
           </div>
         </div>
 
-        <div className="mt-6 flex items-start justify-between gap-6">
-          <div>
+        <div className="mt-5 flex flex-1 items-start justify-between gap-4 px-0.5">
+          <div className="min-w-0">
             <div className="mb-2 flex items-center gap-3 text-xs uppercase tracking-[0.15em] text-gold-soft">
               <span>{project.year}</span>
             </div>

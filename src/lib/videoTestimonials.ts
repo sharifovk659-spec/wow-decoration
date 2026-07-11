@@ -33,11 +33,14 @@ function item(
   };
 }
 
-/** Client films — YouTube Shorts with local poster thumbnails. */
+/** Client films — YouTube Shorts from @worldofwooddecoration with local posters. */
 export const videoTestimonials: VideoTestimonial[] = [
-  item("0", "ruvm251rosk", "0:41"),
-  item("1", "eO3ympRFvhI", "1:07"),
-  item("2", "FmH5kf-NUGU", "2:13"),
-  item("3", "Vs8ljxm5F0U", "0:59"),
-  item("4", "EHTFwjoTF04", "0:58"),
+  item("0", "Ka697QCAe5s", "0:45"),
+  item("1", "-B6JMuL6dKA", "0:52"),
+  item("2", "vqlolLqhMa8", "1:03"),
+  item("3", "boJ6XNyzuGA", "0:48"),
+  item("4", "_9xkhgfp0VI", "0:56"),
+  item("5", "lV9M2mOh_io", "1:08"),
+  item("6", "F14wyhzLMpU", "0:41"),
+  item("7", "8sM5lDu1EwM", "0:59"),
 ];
