@@ -404,8 +404,15 @@
   }
 }
 
-.video-marquee .swiper-wrapper,
-.testimonial-marquee .swiper-wrapper {
+.testimonial-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+.testimonial-marquee-reverse {
+  animation: marquee 45s linear infinite reverse;
+}
+
+.video-marquee .swiper-wrapper {
   transition-timing-function: linear !important;
 }
 

@@ -50,7 +50,6 @@ export function VideoTestimonials() {
           autoplay={{
             delay: 0,
             disableOnInteraction: false,
-            pauseOnMouseEnter: true,
           }}
           className="video-marquee !px-4 sm:!px-6"
         >

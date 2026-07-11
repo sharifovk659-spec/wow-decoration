@@ -18,7 +18,7 @@
     },
     "contact": {
       "title": "Contact — World of Wood Decoration",
-      "description": "Tell us about your project and we will prepare a bespoke proposal. Reach us through your preferred channel."
+      "description": "Tell us about your project, home, or site — we will develop a bespoke solution, prepare the design, produce works in natural timber, and deliver professional installation."
     },
     "gallery": {
       "title": "Gallery — World of Wood Decoration",
@@ -413,8 +413,8 @@
   },
   "cta": {
     "eyebrow": "Contact",
-    "title": "Shall we discuss your project?",
-    "description": "Tell us about your project and we will prepare a bespoke proposal.",
+    "title": "Let's discuss your project",
+    "description": "Tell us about your project, home, or site — we will develop a bespoke solution, prepare the design, produce works in natural timber, and deliver professional installation.",
     "button": "Request a proposal",
     "channelsTitle": "Get in touch",
     "note": "We respond within one business day."
@@ -498,8 +498,8 @@
     },
     "hero": {
       "eyebrow": "Contact",
-      "title": "Shall we discuss your project?",
-      "description": "Tell us about your project and we will prepare a bespoke proposal."
+      "title": "Let's discuss your project",
+      "description": "Tell us about your project, home, or site — we will develop a bespoke solution, prepare the design, produce works in natural timber, and deliver professional installation."
     },
     "form": {
       "name": "Name",
@@ -562,7 +562,7 @@
     }
   },
   "marquee": {
-    "items": ["Palaces", "Villas", "Grand mosques", "Hotels", "Private residences", "Yachts"]
+    "items": ["Palaces", "Villas", "Grand mosques", "Hotels", "Private residences", "Gazebos"]
   },
   "notFound": {
     "title": "This page has not been carved yet.",

@@ -19,7 +19,7 @@ export function Philosophy() {
     <section className="relative py-28 md:py-48">
       <div className="container-luxe grid gap-14 lg:grid-cols-12 lg:gap-24">
         <div className="lg:col-span-5">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-luxe-lg shadow-image">
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-luxe-lg bg-ink-900 shadow-image">
             <Image
               src={PHILOSOPHY_IMG}
               alt="Kohi Navruz — grand carved wood interior"
@@ -27,7 +27,7 @@ export function Philosophy() {
               sizes="(max-width: 1024px) 100vw, 40vw"
               quality={92}
               priority
-              className="object-cover object-center"
+              className="object-contain object-center"
             />
             <div className="pointer-events-none absolute inset-0 rounded-luxe-lg ring-1 ring-inset ring-gold/15" />
           </div>
