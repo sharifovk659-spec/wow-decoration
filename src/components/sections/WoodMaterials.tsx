@@ -6,18 +6,17 @@ import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
-import { cn } from "@/lib/utils";
 import { siteImage } from "@/lib/media";
 
 /** 1 Дуб · 2 Орех · 3 Бук · 4 Ясень · 5 Сосна · 6 Кедра · 7 Абачи */
 const WOODS = [
-  { img: siteImage("materials/oak.jpg"), latin: "Quercus robur", tone: "#8a5f2e" },
-  { img: siteImage("materials/walnut.jpg"), latin: "Juglans regia", tone: "#3d2817" },
-  { img: siteImage("materials/beech.jpg"), latin: "Fagus sylvatica", tone: "#b07d4f" },
-  { img: siteImage("materials/ash.jpg"), latin: "Fraxinus excelsior", tone: "#b79a6b" },
-  { img: siteImage("materials/pine.jpg"), latin: "Pinus sylvestris", tone: "#c9a468" },
-  { img: siteImage("materials/cedar.jpg"), latin: "Cedrus libani", tone: "#94502f" },
-  { img: siteImage("materials/abachi.jpg"), latin: "Triplochiton scleroxylon", tone: "#d8c39a" },
+  { img: siteImage("materials/oak.jpg"), latin: "Quercus robur" },
+  { img: siteImage("materials/walnut.jpg"), latin: "Juglans regia" },
+  { img: siteImage("materials/beech.jpg"), latin: "Fagus sylvatica" },
+  { img: siteImage("materials/ash.jpg"), latin: "Fraxinus excelsior" },
+  { img: siteImage("materials/pine.jpg"), latin: "Pinus sylvestris" },
+  { img: siteImage("materials/cedar.jpg"), latin: "Cedrus libani" },
+  { img: siteImage("materials/abachi.jpg"), latin: "Triplochiton scleroxylon" },
 ] as const;
 
 const src = (path: string) => path;
@@ -59,20 +58,16 @@ export function WoodMaterials() {
                 data-cursor="hover"
                 className="group relative flex flex-col overflow-hidden rounded-luxe-lg border border-line/80 bg-ink-800 transition-[border-color,box-shadow,transform] duration-500 hover:-translate-y-1 hover:border-gold/45 hover:shadow-gold"
               >
-                <div className="relative h-52 overflow-hidden sm:h-56">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={src(wood.img)}
                     alt={t(`items.${key}.name`)}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                    quality={92}
+                    className="object-cover object-center"
                   />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 opacity-20 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-10"
-                    style={{ backgroundColor: wood.tone }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-ink/5 via-transparent to-ink/75" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
                   <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5">
                     <span className="font-display text-xl text-gold">
                       {String(i + 1).padStart(2, "0")}
