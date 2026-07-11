@@ -6,38 +6,31 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
 const out = path.join(root, "public/images/production");
 
-/** Step images matched to production titles (Unsplash, free license). */
+/** Steps 04–08 only — matched to production titles. */
 const STEPS = [
   {
-    file: "step-0.jpg",
-    url: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1600&h=800&q=92",
-  },
-  {
-    file: "step-1.jpg",
-    url: "https://images.unsplash.com/photo-1497219055242-93359eeed651?auto=format&fit=crop&w=1600&h=800&q=92",
-  },
-  {
-    file: "step-2.jpg",
-    url: "https://images.unsplash.com/photo-1414497729697-b8555ba6c1cc?auto=format&fit=crop&w=1600&h=800&q=92",
-  },
-  {
     file: "step-3.jpg",
+    label: "04 Сборка",
     url: "https://images.pexels.com/photos/15016509/pexels-photo-15016509.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-4.jpg",
+    label: "05 Лакировка",
     url: "https://images.pexels.com/photos/37661593/pexels-photo-37661593.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-5.jpg",
+    label: "06 Упаковка",
     url: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-6.jpg",
+    label: "07 Погрузка",
     url: "https://images.pexels.com/photos/262353/pexels-photo-262353.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-7.jpg",
+    label: "08 Установка",
     url: "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
   },
 ];
@@ -57,27 +50,13 @@ async function main() {
   const sharp = (await import("sharp")).default;
 
   for (const step of STEPS) {
-    const raw = step.local
-      ? await sharp(
-          path.join(root, "public/images", step.local),
-        )
-          .rotate()
-          .resize(WIDTH, HEIGHT, { fit: "cover", position: "center" })
-          .jpeg({ quality: QUALITY, mozjpeg: true })
-          .toBuffer()
-      : await downloadBuffer(step.url);
-    if (!step.local) {
-      await sharp(raw)
-        .rotate()
-        .resize(WIDTH, HEIGHT, { fit: "cover", position: "attention" })
-        .jpeg({ quality: QUALITY, mozjpeg: true })
-        .toFile(path.join(out, step.file));
-    } else {
-      await sharp(raw)
-        .jpeg({ quality: QUALITY, mozjpeg: true })
-        .toFile(path.join(out, step.file));
-    }
-    console.log(`✓ production/${step.file}`);
+    const raw = await downloadBuffer(step.url);
+    await sharp(raw)
+      .rotate()
+      .resize(WIDTH, HEIGHT, { fit: "cover", position: "center" })
+      .jpeg({ quality: QUALITY, mozjpeg: true })
+      .toFile(path.join(out, step.file));
+    console.log(`✓ ${step.label} → production/${step.file}`);
   }
 }
 
