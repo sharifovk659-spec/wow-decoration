@@ -81,7 +81,7 @@ export function ProductionProcess() {
   return (
     <section
       id="production"
-      className="relative isolate scroll-mt-28 overflow-hidden py-28 md:scroll-mt-32 md:py-48"
+      className="relative isolate scroll-mt-28 overflow-hidden py-20 md:scroll-mt-32 md:py-32"
     >
       <div className="prod-bg absolute inset-x-0 -top-[6%] -z-10 h-[112%]">
         <Image

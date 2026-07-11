@@ -49,7 +49,7 @@ export function CallToAction() {
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden border-t border-line bg-ink py-28 md:py-40"
+      className="relative isolate overflow-hidden border-t border-line bg-ink py-20 md:py-32"
     >
       <div
         aria-hidden

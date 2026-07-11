@@ -22,15 +22,15 @@ const STEPS = [
   },
   {
     file: "step-3.jpg",
-    url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&h=800&q=92",
+    local: "gallery/production.jpg",
   },
   {
     file: "step-4.jpg",
-    url: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-5.jpg",
-    url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-6.jpg",
@@ -56,14 +56,28 @@ async function main() {
   fs.mkdirSync(out, { recursive: true });
   const sharp = (await import("sharp")).default;
 
-  for (const { file, url } of STEPS) {
-    const raw = await downloadBuffer(url);
-    await sharp(raw)
-      .rotate()
-      .resize(WIDTH, HEIGHT, { fit: "cover", position: "attention" })
-      .jpeg({ quality: QUALITY, mozjpeg: true })
-      .toFile(path.join(out, file));
-    console.log(`✓ production/${file}`);
+  for (const step of STEPS) {
+    const raw = step.local
+      ? await sharp(
+          path.join(root, "public/images", step.local),
+        )
+          .rotate()
+          .resize(WIDTH, HEIGHT, { fit: "cover", position: "center" })
+          .jpeg({ quality: QUALITY, mozjpeg: true })
+          .toBuffer()
+      : await downloadBuffer(step.url);
+    if (!step.local) {
+      await sharp(raw)
+        .rotate()
+        .resize(WIDTH, HEIGHT, { fit: "cover", position: "attention" })
+        .jpeg({ quality: QUALITY, mozjpeg: true })
+        .toFile(path.join(out, step.file));
+    } else {
+      await sharp(raw)
+        .jpeg({ quality: QUALITY, mozjpeg: true })
+        .toFile(path.join(out, step.file));
+    }
+    console.log(`✓ production/${step.file}`);
   }
 }
 

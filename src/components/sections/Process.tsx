@@ -83,7 +83,7 @@ export function Process() {
   return (
     <section
       id="process"
-      className="relative scroll-mt-28 border-t border-line bg-ink-800 py-28 md:scroll-mt-32 md:py-48"
+      className="relative scroll-mt-28 border-t border-line bg-ink-800 py-20 md:scroll-mt-32 md:py-32"
     >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
 

@@ -37,7 +37,7 @@ export function FeaturedProjects() {
   return (
     <section
       id="projects"
-      className="relative scroll-mt-28 overflow-hidden border-t border-line py-28 md:scroll-mt-32 md:py-48"
+      className="relative scroll-mt-28 overflow-hidden border-t border-line py-20 md:scroll-mt-32 md:py-32"
     >
       <div className="container-luxe">
         <SectionHeading

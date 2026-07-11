@@ -80,7 +80,7 @@ export function WorldMap() {
   return (
     <section
       id="countries"
-      className="relative scroll-mt-28 overflow-hidden border-t border-line bg-ink py-28 md:scroll-mt-32 md:py-48"
+      className="relative scroll-mt-28 overflow-hidden border-t border-line bg-ink py-20 md:scroll-mt-32 md:py-32"
     >
       <div
         aria-hidden

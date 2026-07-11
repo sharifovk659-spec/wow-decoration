@@ -26,7 +26,7 @@ export function ServiceCards({ withHeading = true }: { withHeading?: boolean }) 
   return (
     <section
       id="directions"
-      className="relative scroll-mt-28 border-t border-line bg-ink py-28 md:scroll-mt-32 md:py-48"
+      className="relative scroll-mt-28 border-t border-line bg-ink py-20 md:scroll-mt-32 md:py-32"
     >
       <div className="container-luxe">
         {withHeading && (

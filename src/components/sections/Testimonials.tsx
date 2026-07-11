@@ -70,7 +70,7 @@ export function Testimonials() {
   const t = useTranslations("testimonials");
 
   return (
-    <section className="relative overflow-hidden border-t border-line py-20 md:py-32">
+    <section className="relative overflow-hidden border-t border-line py-16 md:py-24">
       <div className="container-luxe">
         <div className="mb-12 flex items-center gap-4 md:mb-16">
           <span className="h-px w-10 bg-gold/60" />

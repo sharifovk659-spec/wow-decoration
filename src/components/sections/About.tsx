@@ -145,7 +145,7 @@ export function About() {
   return (
     <section
       id="about-company"
-      className="relative scroll-mt-28 overflow-hidden border-y border-line bg-ink-800 py-28 md:scroll-mt-32 md:py-48"
+      className="relative scroll-mt-28 overflow-hidden border-y border-line bg-ink-800 py-20 md:scroll-mt-32 md:py-32"
     >
       <div ref={root} className="container-luxe">
         <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-20">

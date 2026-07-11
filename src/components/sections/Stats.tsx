@@ -21,7 +21,7 @@ export function Stats() {
   const t = useTranslations("stats");
 
   return (
-    <section className="relative isolate overflow-hidden py-28 md:py-48">
+    <section className="relative isolate overflow-hidden py-20 md:py-32">
       <Image
         src={STATS_IMG}
         alt=""

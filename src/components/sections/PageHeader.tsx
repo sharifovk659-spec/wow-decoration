@@ -21,7 +21,7 @@ export function PageHeader({
   return (
     <header
       className={cn(
-        "container-luxe pb-[30px] pt-36 md:pt-48",
+        "container-luxe pb-[30px] pt-28 md:pt-36",
         className,
       )}
     >

@@ -43,7 +43,7 @@ export function Services({ withHeading = true }: { withHeading?: boolean }) {
   };
 
   return (
-    <section className="relative border-t border-line bg-ink-800 py-28 md:py-48">
+    <section className="relative border-t border-line bg-ink-800 py-20 md:py-32">
       <div className="container-luxe">
         {withHeading && (
           <SectionHeading

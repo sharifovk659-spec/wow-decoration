@@ -25,7 +25,7 @@ export function VideoTestimonials() {
   const loopItems = [...videoTestimonials, ...videoTestimonials];
 
   return (
-    <section className="relative overflow-hidden border-t border-line bg-ink-800 py-20 md:py-32">
+    <section className="relative overflow-hidden border-t border-line bg-ink-800 py-16 md:py-24">
       <div className="container-luxe">
         <SectionHeading
           eyebrow={t("eyebrow")}
@@ -86,25 +86,12 @@ export function VideoTestimonials() {
                   </span>
 
                   <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4">
-                    <span className="mb-2 flex items-center gap-2 text-gold">
-                      <span className="h-px w-4 bg-gold/70" />
-                      <span className="text-[0.6rem] uppercase tracking-[0.18em]">
-                        {t(`items.${item.id}.project`)}
-                      </span>
-                    </span>
-                    <p className="line-clamp-2 font-display text-sm leading-snug text-bone-soft">
-                      <span className="text-gold">“</span>
-                      {t(`items.${item.id}.quote`)}
-                      <span className="text-gold">”</span>
+                    <p className="text-[0.6rem] uppercase tracking-[0.18em] text-gold">
+                      {t(`items.${item.id}.project`)}
                     </p>
-                    <div className="mt-3 border-t border-bone/15 pt-2.5">
-                      <p className="text-xs font-medium text-bone">
-                        {t(`items.${item.id}.author`)}
-                      </p>
-                      <p className="text-[0.65rem] text-bone-dim">
-                        {t(`items.${item.id}.role`)}
-                      </p>
-                    </div>
+                    <p className="mt-1.5 truncate text-xs font-medium text-bone">
+                      {t(`items.${item.id}.author`)}
+                    </p>
                   </div>
                 </div>
               </button>

@@ -64,7 +64,7 @@
   --radius-luxe-lg: 8px;
 
   /* ---- Large spacing scale (airy, expensive rhythm) ------------ */
-  --space-section: clamp(6rem, 4rem + 7vw, 12rem);
+  --space-section: clamp(4rem, 3rem + 4vw, 8rem);
   --space-gutter: 30px;
 
   /* ---- Luxury shadows (layered, warm-tinted, soft) ------------- */
@@ -192,6 +192,10 @@
     max-width: var(--container-max);
     margin-inline: auto;
     padding-inline: var(--space-gutter);
+  }
+
+  .mb-luxe {
+    margin-bottom: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
   }
 
   /* Generous section rhythm */

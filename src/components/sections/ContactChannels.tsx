@@ -63,7 +63,7 @@ export function ContactChannels() {
   const t = useTranslations("contact.channels");
 
   return (
-    <section className="relative border-t border-line py-28 md:py-48">
+    <section className="relative border-t border-line py-20 md:py-32">
       <div className="container-luxe">
         <SectionHeading
           eyebrow={t("eyebrow")}

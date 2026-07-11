@@ -231,51 +231,51 @@
     "watch": "Watch film",
     "items": {
       "0": {
-        "author": "H.E. Khalid Al-Mansouri",
+        "author": "Khalid Al-Mansouri",
         "role": "Director, Royal Court",
-        "project": "Royal Palace Majlis",
+        "project": "Royal Palace",
         "quote": "They transformed a vision we could barely articulate into a hall that silences everyone who enters."
       },
       "1": {
         "author": "Isabelle Laurent",
-        "role": "Partner, Laurent Architects",
-        "project": "Alpine Chalet Residence",
+        "role": "Laurent Architects",
+        "project": "Alpine Residence",
         "quote": "Every joint and every grain is considered — the finest joinery I have seen in twenty years."
       },
       "2": {
         "author": "Markus Feld",
-        "role": "Group Design Director",
-        "project": "Five-Star Hotel Lobby",
+        "role": "Design Director",
+        "project": "Five-Star Hotel",
         "quote": "Guests pause at the entrance. The reception wall became the signature of the entire hotel."
       },
       "3": {
         "author": "Dr. Amina Sharif",
         "role": "Board of Trustees",
-        "project": "Grand Mosque Mihrab",
+        "project": "Grand Mosque",
         "quote": "The craftsmanship honours tradition yet feels alive. It moved our entire community."
       },
       "4": {
         "author": "Private client",
         "role": "Coastal estate",
-        "project": "Seaside Villa Library",
+        "project": "Seaside Villa",
         "quote": "From the first sketch to installation, everything felt effortless and deeply personal."
       },
       "5": {
         "author": "Rashid Al-Hamad",
         "role": "Residence owner",
-        "project": "Private villa interior",
+        "project": "Private Villa",
         "quote": "The execution exceeded expectations — every detail was considered to perfection."
       },
       "6": {
         "author": "Sara Mahmoud",
         "role": "Interior designer",
-        "project": "Premium restaurant",
+        "project": "Restaurant",
         "quote": "Woodwork at this level is a rarity in contemporary architecture."
       },
       "7": {
         "author": "Omar Ben Ali",
         "role": "Hotel manager",
-        "project": "Boutique hotel lobby",
+        "project": "Boutique Hotel",
         "quote": "The wood panels became the centrepiece — guests never stop admiring them."
       }
     }

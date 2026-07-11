@@ -30,20 +30,17 @@ export function Footer() {
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"
       />
 
-      <div className="container-luxe py-20 md:py-28">
-        <div className="grid gap-14 lg:grid-cols-12">
-          <div className="flex flex-col gap-5 lg:col-span-4">
+      <div className="container-luxe py-16 md:py-20">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="flex flex-col gap-4 lg:col-span-4">
             <Logo />
             <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
               {t("description")}
             </p>
-            <p className="font-display text-xl leading-snug text-bone-soft">
-              {t("tagline")}
-            </p>
           </div>
 
           <div className="lg:col-span-2 lg:col-start-6">
-            <p className="eyebrow mb-6">{t("navTitle")}</p>
+            <p className="eyebrow mb-4">{t("navTitle")}</p>
             <ul className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <li key={link.key}>
@@ -59,7 +56,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <p className="eyebrow mb-6">{t("contactTitle")}</p>
+            <p className="eyebrow mb-4">{t("contactTitle")}</p>
             <ul className="flex flex-col gap-3 text-sm text-bone-dim">
               <li>
                 <a
@@ -96,7 +93,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <p className="eyebrow mb-6">{t("socialTitle")}</p>
+            <p className="eyebrow mb-4">{t("socialTitle")}</p>
             <div className="flex flex-wrap items-center gap-3">
               {socialLinks.map((social) => {
                 const Icon = icons[social.icon];
@@ -107,42 +104,23 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-line/80 text-bone-dim transition-all duration-300 hover:border-gold/50 hover:bg-gold/5 hover:text-gold"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line/80 text-bone-dim transition-all duration-300 hover:border-gold/50 hover:bg-gold/5 hover:text-gold"
                   >
                     {Icon && <Icon className="text-base" />}
                   </a>
                 );
               })}
-              <a
-                href={`mailto:${siteConfig.email}`}
-                aria-label="Email"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-line/80 text-bone-dim transition-all duration-300 hover:border-gold/50 hover:bg-gold/5 hover:text-gold"
-              >
-                <HiOutlineEnvelope className="text-base" />
-              </a>
             </div>
           </div>
         </div>
 
-        <div
-          aria-hidden
-          className="mt-20 select-none overflow-hidden"
-        >
-          <p className="whitespace-nowrap text-center font-display text-[15vw] leading-[0.8] tracking-tight text-bone/[0.025] md:text-[11vw]">
-            World of Wood
-          </p>
-        </div>
+        <div className="mt-10 hairline" />
 
-        <div className="my-14 hairline" />
-
-        <div className="flex flex-col items-center justify-between gap-6 text-xs text-bone-faint md:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 text-xs text-bone-faint md:flex-row">
           <p>
             © {year} {siteConfig.name}. {t("rights")}
           </p>
-          <p className="font-display text-[0.7rem] uppercase tracking-[0.3em] text-bone-dim">
-            Est. {siteConfig.founded}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-5">
             {legalLinks.map((item) => (
               <Link
                 key={item.key}

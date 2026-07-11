@@ -33,7 +33,7 @@ export const galleryCategories: GalleryCategory[] = [
   "beforeAfter",
 ];
 
-/** Real project photography — uniform 4:3 grid on gallery page. */
+/** Real project photography — uniform 3:2 grid on gallery page. */
 export const galleryItems: GalleryItem[] = [
   { key: "gazebo-0", src: "/images/gallery/gazebo.jpg", category: "gazebo" },
   { key: "gazebo-1", src: "/images/gallery/gazebo-royal.jpg", category: "gazebo" },

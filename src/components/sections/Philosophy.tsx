@@ -16,7 +16,7 @@ export function Philosophy() {
   const t = useTranslations("philosophy");
 
   return (
-    <section className="relative py-28 md:py-48">
+    <section className="relative py-20 md:py-32">
       <div className="container-luxe grid gap-14 lg:grid-cols-12 lg:gap-24">
         <div className="lg:col-span-6">
           <div className="relative aspect-[3/4] w-full overflow-hidden rounded-luxe-lg shadow-image">
@@ -67,7 +67,7 @@ export function Philosophy() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.12 }}
-        className="container-luxe mt-24 grid gap-6 md:mt-32 md:grid-cols-3 md:gap-8"
+        className="container-luxe mt-16 grid gap-5 md:mt-20 md:grid-cols-3 md:gap-6"
       >
         {pillarKeys.map((key) => (
           <motion.div

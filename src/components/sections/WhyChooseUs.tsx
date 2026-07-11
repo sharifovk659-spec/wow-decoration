@@ -83,7 +83,7 @@ export function WhyChooseUs() {
   return (
     <section
       id="why-us"
-      className="relative scroll-mt-28 overflow-hidden border-t border-line py-28 md:scroll-mt-32 md:py-48"
+      className="relative scroll-mt-28 overflow-hidden border-t border-line py-20 md:scroll-mt-32 md:py-32"
     >
       <div ref={root} className="container-luxe">
         <div className="mx-auto max-w-3xl text-center">

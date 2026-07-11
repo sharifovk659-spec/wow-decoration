@@ -64,7 +64,7 @@ export function AboutSections() {
       </section>
 
       {/* Values */}
-      <section className="relative border-t border-line bg-ink-800 py-28 md:py-44">
+      <section className="relative border-t border-line bg-ink-800 py-20 md:py-28">
         <div className="container-luxe">
           <SectionHeading
             eyebrow={t("values.eyebrow")}
@@ -100,7 +100,7 @@ export function AboutSections() {
       </section>
 
       {/* Team */}
-      <section className="relative py-28 md:py-44">
+      <section className="relative py-20 md:py-28">
         <div className="container-luxe">
           <SectionHeading
             eyebrow={t("team.eyebrow")}
