@@ -3,7 +3,7 @@ interface ContactPayload {
   phone: string;
   country: string;
   projectType: string;
-  message: string;
+  message?: string;
 }
 
 /** Sends a contact enquiry to Telegram when bot token and chat id are configured. */
