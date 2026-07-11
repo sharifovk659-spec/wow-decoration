@@ -85,15 +85,15 @@ export function Gallery() {
               data-cursor="hover"
               onClick={() => setLightboxIndex(i)}
               aria-label={tc("fullscreen")}
-              className="group block w-full overflow-hidden rounded-luxe-lg border border-line/80 bg-ink-900 p-3 shadow-image transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1 hover:border-gold/35 hover:shadow-luxe-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 sm:p-4"
+              className="group block w-full overflow-hidden rounded-luxe-lg border border-line/80 bg-ink-900 shadow-image transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1 hover:border-gold/35 hover:shadow-luxe-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
             >
-              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-luxe bg-ink-900">
+              <div className="relative aspect-[3/2] w-full overflow-hidden">
                 <Image
                   src={galleryThumb(item)}
                   alt={t(`categories.${item.category}`)}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-contain object-center transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
+                  className="object-cover object-center transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
                 />
 
                 <div className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-ink/20 to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100">

@@ -80,7 +80,7 @@ export function ServiceCards({ withHeading = true }: { withHeading?: boolean }) 
                   <h3 className="text-h3 text-bone">{t(`items.${key}.title`)}</h3>
 
                   <div className="mt-3">
-                    <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
+                    <p className="max-w-sm text-[0.9375rem] leading-relaxed text-bone-dim md:text-base">
                       {t(`items.${key}.text`)}
                     </p>
                   </div>

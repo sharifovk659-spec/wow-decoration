@@ -31,6 +31,8 @@ export function VideoTestimonials() {
           eyebrow={t("eyebrow")}
           title={t("title")}
           description={t("description")}
+          titleClassName="max-w-3xl"
+          descriptionClassName="max-w-2xl"
         />
       </div>
 
@@ -86,10 +88,10 @@ export function VideoTestimonials() {
                   </span>
 
                   <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4">
-                    <p className="text-[0.6rem] uppercase tracking-[0.18em] text-gold">
+                    <p className="text-[0.65rem] uppercase tracking-[0.18em] text-gold">
                       {t(`items.${item.id}.project`)}
                     </p>
-                    <p className="mt-1.5 truncate text-xs font-medium text-bone">
+                    <p className="mt-1.5 truncate text-sm font-medium text-bone">
                       {t(`items.${item.id}.author`)}
                     </p>
                   </div>

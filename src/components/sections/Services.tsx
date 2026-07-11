@@ -104,7 +104,7 @@ export function Services({ withHeading = true }: { withHeading?: boolean }) {
                   <h3 className="text-h3 text-bone transition-transform duration-500 group-hover:translate-x-2 rtl:group-hover:-translate-x-2 md:col-span-5">
                     {t(`items.${key}.title`)}
                   </h3>
-                  <p className="text-bone-dim md:col-span-6">
+                  <p className="text-[0.9375rem] leading-relaxed text-bone-dim md:text-base md:col-span-6">
                     {t(`items.${key}.text`)}
                   </p>
                 </motion.div>
