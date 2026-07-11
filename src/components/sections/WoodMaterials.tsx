@@ -7,20 +7,20 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-import { photoUrl } from "@/lib/media";
+import { siteImage } from "@/lib/media";
 
-/** Wood grain / texture photography — no interior apartment shots. */
+/** Wood grain / texture photography — project materials library. */
 const WOODS = [
-  { img: "1600585154340-be6161a56a0c", latin: "Juglans nigra", tone: "#3d2817" },
-  { img: "1600607687939-ce8a6c25118c", latin: "Fraxinus excelsior", tone: "#b79a6b" },
-  { img: "1600566752355-35792bedcfea", latin: "Quercus robur", tone: "#8a5f2e" },
-  { img: "1600566753086-00f18fb6b3ea", latin: "Fagus sylvatica", tone: "#b07d4f" },
-  { img: "1618221195710-dd6b41faaea6", latin: "Pinus sylvestris", tone: "#c9a468" },
-  { img: "1585036156171-384164a8c675", latin: "Cedrus libani", tone: "#94502f" },
-  { img: "1615529182904-14819c35db37", latin: "Triplochiton scleroxylon", tone: "#d8c39a" },
+  { img: siteImage("materials/wood-grain.jpg"), latin: "Juglans nigra", tone: "#3d2817" },
+  { img: siteImage("projects/palace-nation.jpg"), latin: "Fraxinus excelsior", tone: "#b79a6b" },
+  { img: siteImage("projects/expo-qatar.jpg"), latin: "Quercus robur", tone: "#8a5f2e" },
+  { img: siteImage("gallery/furniture.jpg"), latin: "Fagus sylvatica", tone: "#b07d4f" },
+  { img: siteImage("gallery/gazebo.jpg"), latin: "Pinus sylvestris", tone: "#c9a468" },
+  { img: siteImage("gallery/islamic.jpg"), latin: "Cedrus libani", tone: "#94502f" },
+  { img: siteImage("projects/kohi-navruz.jpg"), latin: "Triplochiton scleroxylon", tone: "#d8c39a" },
 ] as const;
 
-const src = (id: string) => photoUrl(id);
+const src = (path: string) => path;
 
 const keys = ["0", "1", "2", "3", "4", "5", "6"] as const;
 

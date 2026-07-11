@@ -14,7 +14,7 @@ export type GalleryCategory =
 
 export interface GalleryItem {
   key: string;
-  photoId: string;
+  src: string;
   category: GalleryCategory;
   ratio: [number, number];
 }
@@ -34,58 +34,34 @@ export const galleryCategories: GalleryCategory[] = [
   "beforeAfter",
 ];
 
-const POOL: { id: string; ratio: [number, number] }[] = [
-  { id: "1600585154340-be6161a56a0c", ratio: [4, 5] },
-  { id: "1615529182904-14819c35db37", ratio: [4, 3] },
-  { id: "1618221195710-dd6b41faaea6", ratio: [3, 2] },
-  { id: "1600566752355-35792bedcfea", ratio: [3, 2] },
-  { id: "1600566753086-00f18fb6b3ea", ratio: [1, 1] },
-  { id: "1585036156171-384164a8c675", ratio: [4, 5] },
-  { id: "1600607687939-ce8a6c25118c", ratio: [4, 5] },
-  { id: "1616137466211-f939a420be84", ratio: [4, 5] },
-  { id: "1564769662533-4f00a87b4056", ratio: [3, 4] },
-  { id: "1600607687920-4e2a09cf159d", ratio: [4, 5] },
-  { id: "1616486338812-3dadae4b4ace", ratio: [3, 4] },
-  { id: "1519817650390-64a93db51149", ratio: [3, 2] },
-];
-
-function itemsFor(
-  category: GalleryCategory,
-  count: number,
-  offset: number,
-): GalleryItem[] {
-  return Array.from({ length: count }, (_, i) => {
-    const p = POOL[(offset + i) % POOL.length]!;
-    return {
-      key: `${category}-${i}`,
-      photoId: p.id,
-      category,
-      ratio: p.ratio,
-    };
-  });
-}
-
+/** Real project photography — mapped from the IMG folder by category. */
 export const galleryItems: GalleryItem[] = [
-  ...itemsFor("gazebo", 5, 0),
-  ...itemsFor("interiors", 6, 1),
-  ...itemsFor("ceilings", 4, 2),
-  ...itemsFor("walls", 5, 3),
-  ...itemsFor("doors", 4, 4),
-  ...itemsFor("columns", 4, 5),
-  ...itemsFor("furniture", 5, 6),
-  ...itemsFor("daybeds", 3, 7),
-  ...itemsFor("islamic", 5, 8),
-  ...itemsFor("production", 6, 9),
-  ...itemsFor("installation", 5, 10),
-  ...itemsFor("beforeAfter", 4, 11),
+  { key: "gazebo-0", src: "/images/gallery/gazebo.jpg", category: "gazebo", ratio: [4, 3] },
+  { key: "gazebo-1", src: "/images/gallery/gazebo-royal.jpg", category: "gazebo", ratio: [4, 3] },
+  { key: "interiors-0", src: "/images/gallery/interiors.jpg", category: "interiors", ratio: [4, 3] },
+  { key: "interiors-1", src: "/images/projects/wyndham-grand-hotel.jpg", category: "interiors", ratio: [4, 3] },
+  { key: "interiors-2", src: "/images/projects/palace-nation.jpg", category: "interiors", ratio: [4, 3] },
+  { key: "ceilings-0", src: "/images/projects/kohi-navruz.jpg", category: "ceilings", ratio: [4, 3] },
+  { key: "ceilings-1", src: "/images/gallery/interiors.jpg", category: "ceilings", ratio: [3, 4] },
+  { key: "walls-0", src: "/images/gallery/walls.jpg", category: "walls", ratio: [4, 3] },
+  { key: "walls-1", src: "/images/projects/expo-qatar.jpg", category: "walls", ratio: [4, 3] },
+  { key: "doors-0", src: "/images/projects/parliament-tajikistan.jpg", category: "doors", ratio: [4, 3] },
+  { key: "columns-0", src: "/images/gallery/government.jpg", category: "columns", ratio: [3, 4] },
+  { key: "columns-1", src: "/images/projects/kohi-navruz.jpg", category: "columns", ratio: [4, 3] },
+  { key: "furniture-0", src: "/images/gallery/furniture.jpg", category: "furniture", ratio: [4, 3] },
+  { key: "daybeds-0", src: "/images/gallery/daybeds.jpg", category: "daybeds", ratio: [4, 3] },
+  { key: "islamic-0", src: "/images/gallery/islamic.jpg", category: "islamic", ratio: [4, 3] },
+  { key: "islamic-1", src: "/images/projects/kohi-navruz.jpg", category: "islamic", ratio: [3, 4] },
+  { key: "production-0", src: "/images/gallery/production.jpg", category: "production", ratio: [4, 3] },
+  { key: "installation-0", src: "/images/gallery/installation.jpg", category: "installation", ratio: [4, 3] },
+  { key: "beforeAfter-0", src: "/images/gallery/commercial.jpg", category: "beforeAfter", ratio: [4, 3] },
+  { key: "beforeAfter-1", src: "/images/projects/national-botanical-garden.jpg", category: "beforeAfter", ratio: [4, 3] },
 ];
 
-import { photoUrl } from "./media";
-
-export function galleryThumb(item: GalleryItem, _w = 800): string {
-  return photoUrl(item.photoId);
+export function galleryThumb(item: GalleryItem): string {
+  return item.src;
 }
 
-export function galleryFull(item: GalleryItem, _w = 1800): string {
-  return photoUrl(item.photoId);
+export function galleryFull(item: GalleryItem): string {
+  return item.src;
 }

@@ -30,5 +30,15 @@ export function photoUrl(id: string): string {
   return `/images/photos/${id}.jpg`;
 }
 
+/** Real project photography from `/public/images/projects/`. */
+export function projectPhoto(slug: string): string {
+  return `/images/projects/${slug}.jpg`;
+}
+
+/** Gallery / materials photography under `/public/images/`. */
+export function siteImage(relativePath: string): string {
+  return `/images/${relativePath.replace(/^\/+/, "")}`;
+}
+
 /** Hero / production wood workshop still. */
 export const heroPoster = photoUrl("1618221195710-dd6b41faaea6");

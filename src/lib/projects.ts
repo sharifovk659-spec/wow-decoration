@@ -64,63 +64,62 @@ const PROCESS_VIDEO_BY_SLUG: Record<string, string> = {
   "private-villa-interior": localVideos.mehmonkhona,
 };
 
-const GALLERY_IDS = [
-  "1600585154340-be6161a56a0c",
-  "1615529182904-14819c35db37",
-  "1564769662533-4f00a87b4056",
-  "1616137466211-f939a420be84",
-  "1618221195710-dd6b41faaea6",
-  "1585036156171-384164a8c675",
-  "1600566752355-35792bedcfea",
-  "1600607687939-ce8a6c25118c",
-  "1600566753086-00f18fb6b3ea",
-  "1616486338812-3dadae4b4ace",
-  "1600607687920-4e2a09cf159d",
-  "1566073771259-6a8506099945",
-  "1600585154340-be6161a56a0c",
-  "1615529182904-14819c35db37",
-  "1582719508461-905c673771fd",
-  "1519817650390-64a93db51149",
-  "1600566752355-35792bedcfea",
-  "1616137466211-f939a420be84",
-  "1600585154340-be6161a56a0c",
-  "1618221195710-dd6b41faaea6",
-  "1564769662533-4f00a87b4056",
-  "1600607687939-ce8a6c25118c",
-  "1585036156171-384164a8c675",
-  "1616486338812-3dadae4b4ace",
-  "1600566753086-00f18fb6b3ea",
-  "1615529182904-14819c35db37",
-  "1600585154340-be6161a56a0c",
-  "1616137466211-f939a420be84",
-  "1566073771259-6a8506099945",
-  "1600566752355-35792bedcfea",
-  "1618221195710-dd6b41faaea6",
-  "1585036156171-384164a8c675",
-  "1600607687939-ce8a6c25118c",
-  "1564769662533-4f00a87b4056",
-  "1616486338812-3dadae4b4ace",
-  "1600566753086-00f18fb6b3ea",
-  "1519817650390-64a93db51149",
-  "1600607687920-4e2a09cf159d",
-  "1615529182904-14819c35db37",
-  "1600585154340-be6161a56a0c",
-  "1616137466211-f939a420be84",
-  "1582719508461-905c673771fd",
-  "1600566752355-35792bedcfea",
-  "1618221195710-dd6b41faaea6",
-  "1564769662533-4f00a87b4056",
-] as const;
+import { projectPhoto } from "@/lib/media";
 
-import { photoUrl } from "@/lib/media";
+const PROJECT_GALLERY: Record<string, string[]> = {
+  "kohi-navruz": [
+    projectPhoto("kohi-navruz"),
+    "/images/gallery/government.jpg",
+    "/images/gallery/islamic.jpg",
+  ],
+  "parliament-tajikistan": [
+    projectPhoto("parliament-tajikistan"),
+    "/images/gallery/furniture.jpg",
+    projectPhoto("palace-nation"),
+  ],
+  "palace-nation": [
+    projectPhoto("palace-nation"),
+    "/images/gallery/interiors.jpg",
+    "/images/gallery/government.jpg",
+  ],
+  "expo-dubai": [
+    projectPhoto("expo-dubai"),
+    "/images/gallery/commercial.jpg",
+    "/images/gallery/production.jpg",
+  ],
+  "expo-qatar": [
+    projectPhoto("expo-qatar"),
+    "/images/gallery/commercial.jpg",
+    "/images/gallery/walls.jpg",
+  ],
+  "wyndham-grand-hotel": [
+    projectPhoto("wyndham-grand-hotel"),
+    "/images/gallery/interiors.jpg",
+    "/images/gallery/furniture.jpg",
+  ],
+  "national-botanical-garden": [
+    projectPhoto("national-botanical-garden"),
+    "/images/gallery/gazebo.jpg",
+    "/images/gallery/gazebo-royal.jpg",
+  ],
+  "royal-gazebo-14x8": [
+    projectPhoto("royal-gazebo-14x8"),
+    "/images/gallery/gazebo.jpg",
+  ],
+  "walnut-daybed": [
+    projectPhoto("walnut-daybed"),
+    "/images/gallery/furniture.jpg",
+    "/images/materials/wood-grain.jpg",
+  ],
+  "private-villa-interior": [
+    projectPhoto("private-villa-interior"),
+    "/images/gallery/furniture.jpg",
+    projectPhoto("wyndham-grand-hotel"),
+  ],
+};
 
-function buildGallery(slug: string, count = 42): string[] {
-  let hash = 0;
-  for (const char of slug) hash = (hash * 31 + char.charCodeAt(0)) | 0;
-  return Array.from({ length: count }, (_, i) => {
-    const id = GALLERY_IDS[Math.abs((hash + i * 7) % GALLERY_IDS.length)]!;
-    return photoUrl(id);
-  });
+function buildGallery(slug: string): string[] {
+  return PROJECT_GALLERY[slug] ?? [projectPhoto(slug)];
 }
 
 const locList = (
@@ -239,7 +238,7 @@ export const projects: Project[] = [
     countryKey: "tajikistan",
     year: "2023",
     featured: true,
-    cover: photoUrl("1564769662533-4f00a87b4056"),
+    cover: projectPhoto("kohi-navruz"),
     title: "Kohi Navruz",
     location: "Душанбе, Таджикистан",
     country: "Таджикистан",
@@ -277,7 +276,7 @@ export const projects: Project[] = [
     countryKey: "tajikistan",
     year: "2022",
     featured: true,
-    cover: photoUrl("1616486338812-3dadae4b4ace"),
+    cover: projectPhoto("parliament-tajikistan"),
     title: "Парламент Республики Таджикистан",
     location: "Душанбе, Таджикистан",
     country: "Таджикистан",
@@ -305,7 +304,7 @@ export const projects: Project[] = [
     countryKey: "kazakhstan",
     year: "2021",
     featured: true,
-    cover: photoUrl("1600585154340-be6161a56a0c"),
+    cover: projectPhoto("palace-nation"),
     title: "Дворец Нации",
     location: "Астана, Казахстан",
     country: "Казахстан",
@@ -328,7 +327,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2021",
     featured: true,
-    cover: photoUrl("1566073771259-6a8506099945"),
+    cover: projectPhoto("expo-dubai"),
     title: "Expo Dubai",
     location: "Дубай, ОАЭ",
     country: "ОАЭ",
@@ -351,7 +350,7 @@ export const projects: Project[] = [
     countryKey: "qatar",
     year: "2022",
     featured: true,
-    cover: photoUrl("1600566752355-35792bedcfea"),
+    cover: projectPhoto("expo-qatar"),
     title: "Expo Qatar",
     location: "Доха, Катар",
     country: "Катар",
@@ -374,7 +373,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2023",
     featured: true,
-    cover: photoUrl("1616486338812-3dadae4b4ace"),
+    cover: projectPhoto("wyndham-grand-hotel"),
     title: "Wyndham Grand Hotel",
     location: "Международный проект",
     country: "ОАЭ",
@@ -397,7 +396,7 @@ export const projects: Project[] = [
     countryKey: "tajikistan",
     year: "2020",
     featured: true,
-    cover: photoUrl("1616137466211-f939a420be84"),
+    cover: projectPhoto("national-botanical-garden"),
     title: "Национальный ботанический сад",
     location: "Региональный проект",
     country: "Таджикистан",
@@ -420,7 +419,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2024",
     featured: true,
-    cover: photoUrl("1616137466211-f939a420be84"),
+    cover: projectPhoto("royal-gazebo-14x8"),
     title: "Королевская беседка 14×8",
     location: "Частный заказ",
     country: "ОАЭ",
@@ -443,7 +442,7 @@ export const projects: Project[] = [
     countryKey: "tajikistan",
     year: "2023",
     featured: true,
-    cover: photoUrl("1600585154340-be6161a56a0c"),
+    cover: projectPhoto("walnut-daybed"),
     title: "Топчан из ореха",
     location: "Частный заказ",
     country: "Таджикистан",
@@ -466,7 +465,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2024",
     featured: true,
-    cover: photoUrl("1600607687939-ce8a6c25118c"),
+    cover: projectPhoto("private-villa-interior"),
     title: "Интерьер частной виллы",
     location: "Частная резиденция",
     country: "ОАЭ",
