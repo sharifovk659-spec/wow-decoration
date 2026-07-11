@@ -4,37 +4,37 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
-const out = path.join(root, "public/images/materials");
+const out = path.join(root, "public/images/materials/woods");
 
-/** Tree / species photos matched to card names (Unsplash, free license). */
+/** Wood grain close-ups for species cards (Pexels FWStudio, free license). */
 const WOODS = [
   {
     file: "oak.jpg",
-    url: "https://images.unsplash.com/photo-1762891993331-d2ab60346457?auto=format&fit=crop&w=1400&h=1050&q=92",
+    url: "https://images.pexels.com/photos/172276/pexels-photo-172276.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1050&fit=crop",
   },
   {
     file: "walnut.jpg",
-    url: "https://images.unsplash.com/photo-1726900711795-d98c119e90ae?auto=format&fit=crop&w=1400&h=1050&q=92",
+    url: "https://images.pexels.com/photos/172292/pexels-photo-172292.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1050&fit=crop",
   },
   {
     file: "beech.jpg",
-    url: "https://images.unsplash.com/photo-1678562393030-2bcd241c4e1b?auto=format&fit=crop&w=1400&h=1050&q=92",
+    url: "https://images.pexels.com/photos/172277/pexels-photo-172277.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1050&fit=crop",
   },
   {
     file: "ash.jpg",
-    url: "https://images.unsplash.com/photo-1740243059272-87e509f45615?auto=format&fit=crop&w=1400&h=1050&q=92",
+    url: "https://images.pexels.com/photos/172282/pexels-photo-172282.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1050&fit=crop",
   },
   {
     file: "pine.jpg",
-    url: "https://images.unsplash.com/photo-1768734463253-5e6744e281ca?auto=format&fit=crop&w=1400&h=1050&q=92",
+    url: "https://images.pexels.com/photos/172280/pexels-photo-172280.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1050&fit=crop",
   },
   {
     file: "cedar.jpg",
-    url: "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1400&h=1050&q=92",
+    url: "https://images.pexels.com/photos/172278/pexels-photo-172278.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1050&fit=crop",
   },
   {
     file: "abachi.jpg",
-    url: "https://images.unsplash.com/photo-1770573321383-4367691d87df?auto=format&fit=crop&w=1400&h=1050&q=92",
+    url: "https://images.pexels.com/photos/172294/pexels-photo-172294.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1050&fit=crop",
   },
 ];
 
@@ -54,13 +54,12 @@ async function main() {
 
   for (const { file, url } of WOODS) {
     const raw = await downloadBuffer(url);
-    const dest = path.join(out, file);
     await sharp(raw)
       .rotate()
-      .resize(WIDTH, HEIGHT, { fit: "cover", position: "attention" })
-      .sharpen({ sigma: 0.4 })
+      .resize(WIDTH, HEIGHT, { fit: "cover", position: "center" })
+      .sharpen({ sigma: 0.35 })
       .jpeg({ quality: QUALITY, mozjpeg: true })
-      .toFile(dest);
+      .toFile(path.join(out, file));
     console.log(`✓ materials/${file}`);
   }
 }

@@ -10,16 +10,14 @@ import { siteImage } from "@/lib/media";
 
 /** 1 Дуб · 2 Орех · 3 Бук · 4 Ясень · 5 Сосна · 6 Кедра · 7 Абачи */
 const WOODS = [
-  { img: siteImage("materials/oak.jpg"), latin: "Quercus robur" },
-  { img: siteImage("materials/walnut.jpg"), latin: "Juglans regia" },
-  { img: siteImage("materials/beech.jpg"), latin: "Fagus sylvatica" },
-  { img: siteImage("materials/ash.jpg"), latin: "Fraxinus excelsior" },
-  { img: siteImage("materials/pine.jpg"), latin: "Pinus sylvestris" },
-  { img: siteImage("materials/cedar.jpg"), latin: "Cedrus libani" },
-  { img: siteImage("materials/abachi.jpg"), latin: "Triplochiton scleroxylon" },
+  { img: siteImage("materials/woods/oak.jpg"), latin: "Quercus robur" },
+  { img: siteImage("materials/woods/walnut.jpg"), latin: "Juglans regia" },
+  { img: siteImage("materials/woods/beech.jpg"), latin: "Fagus sylvatica" },
+  { img: siteImage("materials/woods/ash.jpg"), latin: "Fraxinus excelsior" },
+  { img: siteImage("materials/woods/pine.jpg"), latin: "Pinus sylvestris" },
+  { img: siteImage("materials/woods/cedar.jpg"), latin: "Cedrus libani" },
+  { img: siteImage("materials/woods/abachi.jpg"), latin: "Triplochiton scleroxylon" },
 ] as const;
-
-const src = (path: string) => path;
 
 const keys = ["0", "1", "2", "3", "4", "5", "6"] as const;
 
@@ -62,7 +60,7 @@ export function WoodMaterials() {
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
-                    src={src(wood.img)}
+                    src={wood.img}
                     alt={t(`items.${key}.name`)}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
