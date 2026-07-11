@@ -212,7 +212,7 @@ export function Lightbox({
             )}
 
             <div
-              className="relative h-[62vh] w-full max-w-6xl md:h-[74vh]"
+              className="relative h-[72vh] w-full max-w-6xl md:h-[85vh]"
               onClick={(e) => e.stopPropagation()}
             >
               <AnimatePresence custom={direction} mode="wait" initial={false}>
@@ -234,8 +234,8 @@ export function Lightbox({
                     src={images[index]!}
                     alt={alt(index)}
                     fill
-                    sizes="90vw"
-                    quality={90}
+                    sizes="95vw"
+                    quality={95}
                     priority
                     draggable={false}
                     className="select-none object-contain"

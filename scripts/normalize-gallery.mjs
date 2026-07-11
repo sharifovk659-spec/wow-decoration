@@ -4,9 +4,9 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
-const WIDTH = 1200;
-const HEIGHT = 900;
-const QUALITY = 85;
+const WIDTH = 1920;
+const HEIGHT = 1280;
+const QUALITY = 92;
 
 const DIRS = ["public/images/gallery", "public/images/projects"];
 

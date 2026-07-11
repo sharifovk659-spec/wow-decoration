@@ -226,7 +226,8 @@ export function WorldMap() {
                           alt={p.title[locale]}
                           fill
                           sizes="96px"
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          quality={85}
+                          className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
                         />
                       </div>
                       <div className="min-w-0 flex-1">

@@ -104,7 +104,8 @@ export function FeaturedProjects() {
                       alt={project.title[locale]}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.08]"
+                      quality={90}
+                      className="object-cover object-center transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/10" />
                     <div className="absolute inset-0 bg-gold/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
@@ -144,9 +145,12 @@ export function FeaturedProjects() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="mt-14 flex justify-center md:mt-16">
+        <div className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row md:mt-16">
           <ButtonLink href="/projects" variant="outline" withArrow>
             {t("cta")}
+          </ButtonLink>
+          <ButtonLink href="/contact" variant="primary" withArrow>
+            {t("detail.cta")}
           </ButtonLink>
         </div>
       </div>

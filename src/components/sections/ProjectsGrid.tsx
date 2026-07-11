@@ -15,6 +15,7 @@ import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { easeLuxe, fadeUp, lineReveal, staggerContainer } from "@/lib/motion";
 import { HoverVideo } from "@/components/ui/HoverVideo";
+import { ButtonLink } from "@/components/ui/Button";
 
 type Filter = ProjectCategory | "all";
 
@@ -89,7 +90,7 @@ export function ProjectsGrid() {
                 priority
                 inLink
                 className="aspect-[16/10] w-full sm:aspect-[16/9] lg:aspect-[21/9]"
-                imageClassName="scale-105 transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
+                imageClassName="transition-transform duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
               />
 
               <div className="pointer-events-none absolute inset-0 rounded-luxe-lg bg-gradient-to-t from-ink via-ink/35 to-transparent" />
@@ -160,6 +161,12 @@ export function ProjectsGrid() {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      <div className="mt-16 flex justify-center border-t border-line pt-12">
+        <ButtonLink href="/contact" variant="primary" withArrow>
+          {t("detail.cta")}
+        </ButtonLink>
+      </div>
     </section>
   );
 }

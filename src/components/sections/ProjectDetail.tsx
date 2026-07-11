@@ -68,7 +68,8 @@ export function ProjectDetail({
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            quality={92}
+            className="object-cover object-center"
           />
           {showHeroVideo && (
             <video
@@ -271,10 +272,11 @@ export function ProjectDetail({
                 <Image
                   src={src}
                   alt={`${project.title[locale]} — ${i + 1}`}
-                  width={800}
-                  height={i % 3 === 0 ? 1000 : i % 3 === 1 ? 600 : 800}
+                  width={1920}
+                  height={1280}
+                  quality={90}
                   sizes="(max-width: 640px) 100vw, 25vw"
-                  className="h-auto w-full object-cover transition-transform duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                  className="h-auto w-full object-cover object-center transition-transform duration-[1000ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                 />
                 <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors group-hover:bg-ink/20">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full border border-bone/40 bg-ink/50 text-bone opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
@@ -323,7 +325,7 @@ export function ProjectDetail({
               {next.title[locale]}
             </h2>
             <span className="mt-6 inline-flex items-center gap-2 text-sm uppercase tracking-[0.15em] text-bone-dim transition-colors group-hover:text-gold">
-              {t("detail.cta")}
+              {t("viewProject")}
               <HiArrowLongRight className="transition-transform group-hover:translate-x-1" />
             </span>
           </div>

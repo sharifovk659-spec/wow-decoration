@@ -106,8 +106,9 @@ export function HoverVideo({
         alt={alt}
         fill
         sizes={sizes}
+        quality={90}
         priority={priority}
-        className={cn("object-cover", imageClassName)}
+        className={cn("object-cover object-center", imageClassName)}
       />
 
       {canPlay && (
