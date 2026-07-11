@@ -12,15 +12,15 @@ import { useTranslations } from "next-intl";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { easeLuxe } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-import { photoUrl } from "@/lib/media";
+import { siteImage } from "@/lib/media";
 
 const SERVICE_IMAGES = [
-  photoUrl("1600585154340-be6161a56a0c"),
-  photoUrl("1600607687939-ce8a6c25118c"),
-  photoUrl("1615529182904-14819c35db37"),
-  photoUrl("1585036156171-384164a8c675"),
-  photoUrl("1616486338812-3dadae4b4ace"),
-  photoUrl("1566073771259-6a8506099945"),
+  siteImage("projects/private-villa-interior.jpg"),
+  siteImage("gallery/gazebo-royal.jpg"),
+  siteImage("projects/parliament-tajikistan.jpg"),
+  siteImage("gallery/furniture.jpg"),
+  siteImage("gallery/islamic.jpg"),
+  siteImage("projects/expo-dubai.jpg"),
 ];
 
 const keys = ["0", "1", "2", "3", "4", "5"] as const;

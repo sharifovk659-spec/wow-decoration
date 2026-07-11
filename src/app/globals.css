@@ -229,6 +229,11 @@
   [dir="rtl"] .eyebrow {
     letter-spacing: 0.1em;
   }
+  :lang(tg) .eyebrow,
+  :lang(ru) .eyebrow,
+  :lang(ar) .eyebrow {
+    letter-spacing: 0.06em;
+  }
 
   /* Matte-gold gradient text (restrained sheen) */
   .text-brass {
@@ -375,6 +380,11 @@
     overflow: hidden;
     display: inline-block;
     vertical-align: top;
+  }
+  .clip-text-line {
+    overflow: hidden;
+    display: block;
+    padding-bottom: 0.1em;
   }
   .will-transform {
     will-change: transform;

@@ -217,13 +217,13 @@ export function Hero() {
 
         <h1
           ref={titleRef}
-          className="will-transform text-display max-w-[14ch] text-balance font-display text-bone"
+          className="will-transform text-display max-w-none text-balance font-display leading-[1.08] text-bone sm:max-w-[18ch] md:leading-[1.02]"
         >
           {lines.map((line, i) => (
-            <span key={line} className="clip-text block">
+            <span key={line} className="clip-text-line block pb-[0.14em]">
               <span
                 className={cn(
-                  "hero-line-inner block",
+                  "hero-line-inner block pb-[0.06em]",
                   i === 1 && "text-brass",
                 )}
               >

@@ -48,7 +48,7 @@ export function AnimatedText({
     as,
     { className },
     <motion.span
-      className="inline"
+      className="inline-flex max-w-full flex-wrap gap-x-[0.25em] gap-y-0"
       variants={container}
       initial="hidden"
       whileInView="visible"
@@ -59,7 +59,7 @@ export function AnimatedText({
         <span
           key={`${w}-${i}`}
           aria-hidden
-          className="clip-text me-[0.25em] last:me-0"
+          className="clip-text last:me-0"
         >
           <motion.span variants={word} className="inline-block">
             {w}

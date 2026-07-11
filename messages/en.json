@@ -312,13 +312,13 @@
     "description": "We work only with selected species — for interiors, façades, gazebos, and architectural elements built to last decades.",
     "cta": "Request a proposal",
     "items": {
-      "0": { "name": "Walnut", "origin": "Premium species", "note": "Deep chocolate tone and expressive grain — for luxury interiors and furniture." },
-      "1": { "name": "Ash", "origin": "Premium species", "note": "Light warm hue, resilience, and a lively texture pattern." },
-      "2": { "name": "Oak", "origin": "Premium species", "note": "Strength, monumentality, and noble medullary rays." },
-      "3": { "name": "Beech", "origin": "Premium species", "note": "Even grain and uniform warm tone for clean architectural forms." },
+      "0": { "name": "Oak", "origin": "Premium species", "note": "Strength, monumentality, and noble medullary rays." },
+      "1": { "name": "Walnut", "origin": "Premium species", "note": "Deep chocolate tone and expressive grain — for luxury interiors and furniture." },
+      "2": { "name": "Beech", "origin": "Premium species", "note": "Even grain and uniform warm tone for clean architectural forms." },
+      "3": { "name": "Ash", "origin": "Premium species", "note": "Light warm hue, resilience, and a lively texture pattern." },
       "4": { "name": "Pine", "origin": "Premium species", "note": "Light timber with distinctive texture — for pavilions and structures." },
       "5": { "name": "Cedar", "origin": "Premium species", "note": "Aromatic, warm texture with natural resistance." },
-      "6": { "name": "Abachi / Ayous", "origin": "Premium species", "note": "Light, low-density timber — ideal for décor and Eastern interiors." }
+      "6": { "name": "Abachi", "origin": "Premium species", "note": "Light, low-density timber — ideal for décor and Eastern interiors." }
     }
   },
   "materials": {

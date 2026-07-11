@@ -7,15 +7,15 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
-import { photoUrl } from "@/lib/media";
+import { siteImage } from "@/lib/media";
 
 const CARD_IMAGES = [
-  photoUrl("1600607687939-ce8a6c25118c"),
-  photoUrl("1616137466211-f939a420be84"),
-  photoUrl("1616486338812-3dadae4b4ace"),
-  photoUrl("1600585154340-be6161a56a0c"),
-  photoUrl("1564769662533-4f00a87b4056"),
-  photoUrl("1566073771259-6a8506099945"),
+  siteImage("projects/private-villa-interior.jpg"),
+  siteImage("gallery/gazebo-royal.jpg"),
+  siteImage("projects/parliament-tajikistan.jpg"),
+  siteImage("gallery/furniture.jpg"),
+  siteImage("gallery/islamic.jpg"),
+  siteImage("projects/expo-dubai.jpg"),
 ];
 
 const keys = ["0", "1", "2", "3", "4", "5"] as const;

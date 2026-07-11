@@ -41,7 +41,6 @@ export function Gallery() {
 
   return (
     <section className="container-luxe pb-28 md:pb-40">
-      {/* Filters */}
       <div className="mb-12 flex flex-wrap items-center gap-x-7 gap-y-3 border-b border-line pb-6 md:mb-16">
         {filters.map((f) => (
           <button
@@ -69,15 +68,14 @@ export function Gallery() {
         </span>
       </div>
 
-      {/* Masonry */}
       <AnimatePresence mode="wait">
         <motion.div
           key={filter}
-          variants={staggerContainer(0.05)}
+          variants={staggerContainer(0.04)}
           initial="hidden"
           animate="visible"
-          exit={{ opacity: 0, transition: { duration: 0.25 } }}
-          className="columns-1 gap-6 sm:columns-2 lg:columns-3"
+          exit={{ opacity: 0, transition: { duration: 0.2 } }}
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         >
           {visible.map((item, i) => (
             <motion.button
@@ -87,19 +85,18 @@ export function Gallery() {
               data-cursor="hover"
               onClick={() => setLightboxIndex(i)}
               aria-label={tc("fullscreen")}
-              className="group mb-6 block w-full break-inside-avoid overflow-hidden rounded-luxe-lg shadow-image"
+              className="group block w-full overflow-hidden rounded-luxe-lg border border-line/60 bg-ink-800 shadow-image transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1 hover:border-gold/35 hover:shadow-luxe-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60"
             >
-              <div className="relative overflow-hidden">
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
                   src={galleryThumb(item)}
                   alt={t(`categories.${item.category}`)}
-                  width={item.ratio[0] * 240}
-                  height={item.ratio[1] * 240}
+                  fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="h-auto w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                  className="object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                 />
 
-                <div className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-ink/75 via-transparent to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                <div className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-ink/20 to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                   <span className="text-xs uppercase tracking-[0.2em] text-bone rtl:tracking-[0.1em]">
                     {t(`categories.${item.category}`)}
                   </span>

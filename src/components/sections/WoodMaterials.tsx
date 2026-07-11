@@ -9,15 +9,15 @@ import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { siteImage } from "@/lib/media";
 
-/** Wood grain / texture photography — project materials library. */
+/** 1 Дуб · 2 Орех · 3 Бук · 4 Ясень · 5 Сосна · 6 Кедра · 7 Абачи */
 const WOODS = [
-  { img: siteImage("materials/wood-grain.jpg"), latin: "Juglans nigra", tone: "#3d2817" },
-  { img: siteImage("projects/palace-nation.jpg"), latin: "Fraxinus excelsior", tone: "#b79a6b" },
-  { img: siteImage("projects/expo-qatar.jpg"), latin: "Quercus robur", tone: "#8a5f2e" },
-  { img: siteImage("gallery/furniture.jpg"), latin: "Fagus sylvatica", tone: "#b07d4f" },
-  { img: siteImage("gallery/gazebo.jpg"), latin: "Pinus sylvestris", tone: "#c9a468" },
-  { img: siteImage("gallery/islamic.jpg"), latin: "Cedrus libani", tone: "#94502f" },
-  { img: siteImage("projects/kohi-navruz.jpg"), latin: "Triplochiton scleroxylon", tone: "#d8c39a" },
+  { img: siteImage("materials/oak.jpg"), latin: "Quercus robur", tone: "#8a5f2e" },
+  { img: siteImage("materials/walnut.jpg"), latin: "Juglans regia", tone: "#3d2817" },
+  { img: siteImage("materials/beech.jpg"), latin: "Fagus sylvatica", tone: "#b07d4f" },
+  { img: siteImage("materials/ash.jpg"), latin: "Fraxinus excelsior", tone: "#b79a6b" },
+  { img: siteImage("materials/pine.jpg"), latin: "Pinus sylvestris", tone: "#c9a468" },
+  { img: siteImage("materials/cedar.jpg"), latin: "Cedrus libani", tone: "#94502f" },
+  { img: siteImage("materials/abachi.jpg"), latin: "Triplochiton scleroxylon", tone: "#d8c39a" },
 ] as const;
 
 const src = (path: string) => path;
@@ -69,7 +69,7 @@ export function WoodMaterials() {
                   />
                   <div
                     aria-hidden
-                    className="absolute inset-0 opacity-35 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-15"
+                    className="absolute inset-0 opacity-20 mix-blend-multiply transition-opacity duration-700 group-hover:opacity-10"
                     style={{ backgroundColor: wood.tone }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-ink/5 via-transparent to-ink/75" />
