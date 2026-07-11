@@ -22,19 +22,19 @@ const STEPS = [
   },
   {
     file: "step-3.jpg",
-    local: "gallery/production.jpg",
+    url: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-4.jpg",
-    url: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-5.jpg",
-    url: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-6.jpg",
-    url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-7.jpg",
