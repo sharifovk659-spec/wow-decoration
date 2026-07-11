@@ -26,9 +26,6 @@ export function About() {
   const root = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
-  const titleLine1Words = t("about.sectionTitleLine1").split(" ");
-  const titleLine2Words = t("about.sectionTitleLine2").split(" ");
-
   useGSAP(
     () => {
       gsap.registerPlugin(ScrollTrigger);
@@ -158,29 +155,15 @@ export function About() {
             </div>
 
             <h2 className="about-heading text-h2 max-w-xl text-bone max-sm:text-[1.6rem]">
-              <span className="block">
-                {titleLine1Words.map((word, i) => (
-                  <span
-                    key={`l1-${word}-${i}`}
-                    className="me-[0.26em] inline-block overflow-hidden pb-[0.15em] align-bottom -mb-[0.15em]"
-                  >
-                    <span className="about-word inline-block will-change-transform">
-                      {word}
-                    </span>
-                  </span>
-                ))}
+              <span className="block overflow-hidden pb-[0.15em] -mb-[0.15em]">
+                <span className="about-word inline-block will-change-transform max-sm:whitespace-nowrap">
+                  {t("about.sectionTitleLine1")}
+                </span>
               </span>
-              <span className="mt-1 block text-gold">
-                {titleLine2Words.map((word, i) => (
-                  <span
-                    key={`l2-${word}-${i}`}
-                    className="me-[0.26em] inline-block overflow-hidden pb-[0.15em] align-bottom -mb-[0.15em]"
-                  >
-                    <span className="about-word inline-block will-change-transform">
-                      {word}
-                    </span>
-                  </span>
-                ))}
+              <span className="mt-1 block overflow-hidden text-gold pb-[0.15em] -mb-[0.15em]">
+                <span className="about-word inline-block will-change-transform">
+                  {t("about.sectionTitleLine2")}
+                </span>
               </span>
             </h2>
 
