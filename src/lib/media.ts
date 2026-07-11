@@ -40,9 +40,9 @@ export function siteImage(relativePath: string): string {
   return `/images/${relativePath.replace(/^\/+/, "")}`;
 }
 
-/** Production step photography. */
+/** Production step photography (v2 paths bust long-lived image cache). */
 export function productionStepImage(index: number): string {
-  return `/images/production/step-${index}.jpg`;
+  return `/images/production/v2/step-${index}.jpg`;
 }
 
 /** Hero / production wood workshop still. */

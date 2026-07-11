@@ -30,6 +30,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/images/production/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, must-revalidate",
+          },
+        ],
+      },
+      {
         source: "/images/:path*",
         headers: [
           {

@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
-const out = path.join(root, "public/images/production");
+const out = path.join(root, "public/images/production/v2");
 
 /** Step images matched to production titles (Unsplash, free license). */
 const STEPS = [
