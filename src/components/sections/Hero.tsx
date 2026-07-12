@@ -37,6 +37,7 @@ export function Hero() {
     { v: t("stat1Value"), l: t("stat1Label") },
     { v: t("stat2Value"), l: t("stat2Label") },
     { v: t("stat3Value"), l: t("stat3Label") },
+    { v: t("stat4Value"), l: t("stat4Label") },
   ];
 
   /* -------- Intro reveal timeline + scroll parallax (GSAP) -------- */
@@ -262,13 +263,22 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mt-16 grid max-w-2xl grid-cols-3 gap-2 border-t border-line pt-8 sm:gap-8">
-          {stats.map((stat) => (
-            <div key={stat.l} className="hero-stat min-w-0">
-              <p className="font-display text-[1.35rem] leading-none text-gold sm:text-3xl md:text-4xl">
+        <div className="mt-16 grid max-w-4xl grid-cols-2 gap-x-4 gap-y-8 border-t border-line pt-8 md:grid-cols-4 md:gap-y-0 md:gap-x-6">
+          {stats.map((stat, i) => (
+            <div
+              key={stat.l}
+              className="hero-stat relative min-w-0 px-1 text-center md:px-3 md:text-start"
+            >
+              {i > 0 && (
+                <span
+                  className={`absolute inset-y-0 start-0 w-px bg-line-strong/80 ${i === 2 ? "max-md:hidden" : ""}`}
+                  aria-hidden
+                />
+              )}
+              <p className="font-display text-[1.5rem] leading-none text-[#c8a46a] sm:text-3xl md:text-4xl">
                 {stat.v}
               </p>
-              <p className="mt-1 text-[0.58rem] uppercase leading-snug tracking-[0.06em] text-bone-dim sm:text-xs sm:tracking-[0.15em]">
+              <p className="mt-2 text-[0.58rem] uppercase leading-snug tracking-[0.08em] text-[#f2e9d8]/75 sm:text-xs sm:tracking-[0.15em]">
                 {stat.l}
               </p>
             </div>

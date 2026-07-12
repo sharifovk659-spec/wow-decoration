@@ -80,11 +80,15 @@ export function Testimonials() {
         <AnimatedText
           text={t("title")}
           as="h2"
-          className="text-h2 mb-12 max-w-3xl text-bone md:mb-16"
+          className="section-title max-w-4xl"
         />
+
+        <p className="mt-6 max-w-4xl text-base leading-relaxed text-bone-dim sm:text-lead md:mt-8">
+          {t("description")}
+        </p>
       </div>
 
-      <div className="flex flex-col gap-5 md:gap-6">
+      <div className="mt-12 flex flex-col gap-5 md:mt-16 md:gap-6">
         <MarqueeRow items={keys} speed={42} />
         <MarqueeRow items={[...keys].reverse()} reverse speed={48} />
       </div>

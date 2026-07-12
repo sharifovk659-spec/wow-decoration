@@ -26,7 +26,7 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex max-w-3xl flex-col gap-6",
+        "flex max-w-5xl flex-col gap-6",
         align === "center" && "mx-auto items-center text-center",
         className,
       )}
@@ -47,7 +47,7 @@ export function SectionHeading({
       <AnimatedText
         text={title}
         as="h2"
-        className={cn("text-h2 max-w-3xl text-balance text-bone max-sm:leading-tight", titleClassName)}
+        className={cn("section-title max-w-5xl text-balance max-sm:leading-snug", titleClassName)}
       />
 
       {description && (
@@ -58,7 +58,7 @@ export function SectionHeading({
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className={cn(
             "text-base text-bone-dim max-sm:leading-relaxed sm:text-lead",
-            descriptionClassName ?? "max-w-xl",
+            descriptionClassName ?? "max-w-4xl",
           )}
         >
           {description}

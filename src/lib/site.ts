@@ -22,7 +22,7 @@ export const siteConfig = {
 /** Primary navigation — labels resolved via the `nav` message namespace. */
 export const navLinks = [
   { key: "home", href: "/" },
-  { key: "about", href: "/about" },
+  { key: "about", href: "/#about" },
   { key: "services", href: "/services" },
   { key: "production", href: "/#production" },
   { key: "materials", href: "/#materials" },

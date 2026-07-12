@@ -35,19 +35,15 @@ export const galleryCategories: GalleryCategory[] = [
 
 /** User project photos only — «Дворец наци» and «2015 компания» live in About. */
 export const galleryItems: GalleryItem[] = [
-  { key: "walls-wood", src: "/images/materials/wood-grain.jpg", category: "walls" },
-  { key: "production-main", src: "/images/gallery/production.jpg", category: "production" },
   { key: "ceilings-kohi", src: "/images/projects/kohi-navruz.jpg", category: "ceilings" },
   { key: "daybeds-topchan", src: "/images/projects/walnut-daybed.jpg", category: "daybeds" },
   { key: "gazebo-royal", src: "/images/projects/royal-gazebo-14x8.jpg", category: "gazebo" },
   { key: "columns-botanical", src: "/images/projects/national-botanical-garden.jpg", category: "columns" },
   { key: "interiors-wyndham", src: "/images/projects/wyndham-grand-hotel.jpg", category: "interiors" },
   { key: "beforeAfter-qatar", src: "/images/projects/expo-qatar.jpg", category: "beforeAfter" },
-  { key: "installation-dubai", src: "/images/projects/expo-dubai.jpg", category: "installation" },
   { key: "islamic-main", src: "/images/gallery/islamic.jpg", category: "islamic" },
   { key: "furniture-tables", src: "/images/gallery/furniture.jpg", category: "furniture" },
   { key: "doors-parliament", src: "/images/projects/parliament-tajikistan.jpg", category: "doors" },
-  { key: "gazebo-main", src: "/images/gallery/gazebo.jpg", category: "gazebo" },
   { key: "interiors-villa", src: "/images/projects/private-villa-interior.jpg", category: "interiors" },
 ];
 

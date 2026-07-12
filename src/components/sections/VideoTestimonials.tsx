@@ -64,37 +64,29 @@ export function VideoTestimonials() {
                 type="button"
                 onClick={() => setActive(i % videoTestimonials.length)}
                 data-cursor="hover"
+                aria-label={t("watch")}
                 className="group relative block w-full overflow-hidden rounded-luxe-lg text-start shadow-image transition-shadow duration-500 hover:shadow-luxe focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"
               >
                 <div className="relative aspect-[9/16] w-full">
                   <Image
                     src={item.poster}
-                    alt={t(`items.${item.id}.author`)}
+                    alt=""
                     fill
                     sizes="200px"
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   />
 
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/5" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-ink/10" />
 
                   <span className="absolute end-2.5 top-2.5 rounded-full border border-bone/25 bg-ink/30 px-2 py-0.5 text-[0.6rem] uppercase tracking-[0.18em] text-bone backdrop-blur-sm">
                     {item.duration}
                   </span>
 
-                  <span className="absolute left-1/2 top-[36%] flex -translate-x-1/2 -translate-y-1/2">
+                  <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2">
                     <span className="flex h-11 w-11 items-center justify-center rounded-full border border-bone/40 bg-ink/25 text-bone backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:border-gold group-hover:bg-gold/15 group-hover:text-gold">
                       <HiPlay className="ms-0.5 text-lg" />
                     </span>
                   </span>
-
-                  <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4">
-                    <p className="text-[0.65rem] uppercase tracking-[0.18em] text-gold">
-                      {t(`items.${item.id}.project`)}
-                    </p>
-                    <p className="mt-1.5 truncate text-sm font-medium text-bone">
-                      {t(`items.${item.id}.author`)}
-                    </p>
-                  </div>
                 </div>
               </button>
             </SwiperSlide>
@@ -108,9 +100,6 @@ export function VideoTestimonials() {
         poster={current?.poster}
         onClose={() => setActive(null)}
         closeLabel={tc("close")}
-        caption={
-          current ? t(`items.${current.id}.author`) : undefined
-        }
       />
     </section>
   );

@@ -79,7 +79,7 @@ export function CallToAction() {
             <AnimatedText
               text={t("title")}
               as="h2"
-              className="text-h2 text-bone sm:text-h1"
+              className="section-title"
             />
             <motion.p
               initial={{ opacity: 0, y: 20 }}

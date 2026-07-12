@@ -52,11 +52,13 @@
     "scroll": "Scroll to explore",
     "scrollUp": "Back to top",
     "stat1Value": "10+",
-    "stat1Label": "Years of experience",
+    "stat1Label": "Years on the market",
     "stat2Value": "18",
     "stat2Label": "Countries worldwide",
     "stat3Value": "180+",
-    "stat3Label": "Completed projects"
+    "stat3Label": "Completed projects",
+    "stat4Value": "120",
+    "stat4Label": "Specialists on staff"
   },
   "philosophy": {
     "eyebrow": "Philosophy",
@@ -379,14 +381,16 @@
       "7": { "title": "Premium quality", "text": "Multi-stage quality control at every stage of production." }
     },
     "stats": {
-      "0": { "label": "Completed projects" },
-      "1": { "label": "Countries served" },
-      "2": { "label": "Years of experience" }
+      "0": { "label": "Years on the market" },
+      "1": { "label": "Countries worldwide" },
+      "2": { "label": "Completed projects" },
+      "3": { "label": "Specialists on staff" }
     }
   },
   "testimonials": {
     "eyebrow": "Confidential",
-    "title": "Trusted by those who commission rarely.",
+    "title": "Trust confirmed by quality",
+    "description": "Every completed project is a blend of craftsmanship, natural wood, and attention to detail. Our clients’ reviews confirm the quality, reliability, and professional approach.",
     "items": {
       "0": {
         "brand": "Royal Palace",

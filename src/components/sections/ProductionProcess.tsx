@@ -121,7 +121,7 @@ export function ProductionProcess() {
       <div ref={root} className="container-luxe">
         <div className="prod-head-wrap mx-auto mb-16 max-w-3xl text-center md:mb-24">
           <p className="prod-head eyebrow mb-5">{t("eyebrow")}</p>
-          <h2 className="prod-head text-h2 text-bone">{t("title")}</h2>
+          <h2 className="prod-head section-title">{t("title")}</h2>
           <p className="prod-head text-lead mx-auto mt-6 max-w-2xl text-bone-soft">
             {t("description")}
           </p>

@@ -141,7 +141,7 @@ export function About() {
 
   return (
     <section
-      id="about-company"
+      id="about"
       className="relative scroll-mt-28 overflow-hidden border-y border-line bg-ink-800 py-20 md:scroll-mt-32 md:py-32"
     >
       <div ref={root} className="container-luxe">
@@ -154,14 +154,14 @@ export function About() {
               </span>
             </div>
 
-            <h2 className="about-heading text-h2 max-w-xl text-bone max-sm:text-[1.6rem]">
-              <span className="block overflow-hidden pb-[0.15em] -mb-[0.15em]">
-                <span className="about-word inline-block will-change-transform max-sm:whitespace-nowrap">
+            <h2 className="about-heading section-title max-w-full">
+              <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+                <span className="about-word inline will-change-transform">
                   {t("about.sectionTitleLine1")}
                 </span>
               </span>
-              <span className="mt-1 block overflow-hidden text-gold pb-[0.15em] -mb-[0.15em]">
-                <span className="about-word inline-block will-change-transform">
+              <span className="mt-1 block overflow-hidden pb-[0.12em] -mb-[0.12em]" style={{ color: "#c8a46a" }}>
+                <span className="about-word inline will-change-transform">
                   {t("about.sectionTitleLine2")}
                 </span>
               </span>
@@ -222,19 +222,22 @@ export function About() {
           </div>
         </div>
 
-        <div className="about-stats mt-28 grid grid-cols-2 gap-y-14 border-t border-line pt-14 md:mt-36 md:grid-cols-4 md:pt-16">
+        <div className="about-stats mt-28 grid grid-cols-2 gap-x-4 gap-y-10 border-t border-line pt-14 md:mt-36 md:grid-cols-4 md:gap-y-0 md:pt-16">
           {stats.map((stat, i) => (
             <div
-              key={stat.value}
-              className="about-stat relative flex flex-col px-2 text-center md:px-8 md:text-start"
+              key={`${stat.value}-${i}`}
+              className="about-stat relative flex flex-col items-center px-3 text-center sm:px-4 md:px-6 md:text-start"
             >
               {i > 0 && (
-                <span className="about-stat-rule absolute inset-y-1 start-0 hidden w-px bg-line-strong md:block" />
+                <span
+                  className={`about-stat-rule absolute inset-y-1 start-0 w-px bg-line-strong ${i === 2 ? "max-md:hidden" : ""}`}
+                  aria-hidden
+                />
               )}
-              <span className="font-display text-5xl text-brass md:text-6xl lg:text-7xl">
+              <span className="font-display text-4xl text-[#c8a46a] sm:text-5xl md:text-6xl lg:text-7xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </span>
-              <span className="mt-4 text-xs uppercase tracking-[0.18em] text-bone-dim">
+              <span className="mt-3 max-w-[11rem] text-[0.65rem] uppercase leading-snug tracking-[0.14em] text-[#f2e9d8]/80 sm:mt-4 sm:text-xs sm:tracking-[0.18em]">
                 {t(`stats.items.${i}.label`)}
               </span>
             </div>

@@ -42,7 +42,7 @@ export function Philosophy() {
           <AnimatedText
             text={t("title")}
             as="h2"
-            className="text-h2 max-w-2xl text-bone"
+            className="section-title max-w-2xl"
           />
 
           <div className="mt-8 flex flex-col gap-6 text-lead text-bone-dim">

@@ -48,7 +48,7 @@ export function PageHeader({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.5, ease: easeLuxe }}
-          className="text-lead mt-8 max-w-2xl text-bone-dim"
+          className="text-lead mt-8 max-w-4xl text-bone-dim"
         >
           {description}
         </motion.p>

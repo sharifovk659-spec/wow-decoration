@@ -17,6 +17,7 @@ import {
 } from "react-icons/hi2";
 import { useGSAP } from "@/hooks/useGSAP";
 import { Counter } from "@/components/ui/Counter";
+import { cn } from "@/lib/utils";
 
 const ICONS: IconType[] = [
   HiOutlineBuildingOffice2,
@@ -32,9 +33,10 @@ const ICONS: IconType[] = [
 const reasonKeys = ["0", "1", "2", "3", "4", "5", "6", "7"] as const;
 
 const STATS = [
-  { value: 100, suffix: "+" },
   { value: 10, suffix: "+" },
-  { value: 20, suffix: "+" },
+  { value: 18, suffix: "" },
+  { value: 180, suffix: "+" },
+  { value: 120, suffix: "" },
 ] as const;
 
 export function WhyChooseUs() {
@@ -92,7 +94,7 @@ export function WhyChooseUs() {
             <span className="eyebrow">{t("eyebrow")}</span>
             <span className="h-px w-12 bg-gold/70" />
           </div>
-          <h2 className="why-head text-h2 text-bone">{t("title")}</h2>
+          <h2 className="why-head section-title">{t("title")}</h2>
           <p className="why-head text-lead mt-6 text-bone-dim">
             {t("description")}
           </p>
@@ -122,19 +124,25 @@ export function WhyChooseUs() {
           })}
         </div>
 
-        <div className="why-stats mt-20 grid grid-cols-1 gap-y-12 border-t border-line pt-14 sm:grid-cols-3 md:mt-28 md:pt-16">
+        <div className="why-stats mt-20 grid grid-cols-2 gap-x-4 gap-y-10 border-t border-line pt-14 md:mt-28 md:grid-cols-4 md:gap-y-0 md:pt-16">
           {STATS.map((stat, i) => (
             <div
-              key={stat.value}
-              className="why-stat relative flex flex-col items-center px-4 text-center"
+              key={`${stat.value}-${i}`}
+              className="why-stat relative flex flex-col items-center px-3 text-center sm:px-4 md:px-6"
             >
               {i > 0 && (
-                <span className="absolute inset-y-1 start-0 hidden w-px bg-line-strong sm:block" />
+                <span
+                  className={cn(
+                    "absolute inset-y-1 start-0 w-px bg-line-strong",
+                    i === 2 && "max-md:hidden",
+                  )}
+                  aria-hidden
+                />
               )}
-              <span className="font-display text-5xl text-brass md:text-6xl lg:text-7xl">
+              <span className="font-display text-4xl text-[#c8a46a] sm:text-5xl md:text-6xl lg:text-7xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </span>
-              <span className="mt-4 text-xs uppercase tracking-[0.18em] text-bone-dim">
+              <span className="mt-3 max-w-[11rem] text-[0.65rem] uppercase leading-snug tracking-[0.14em] text-[#f2e9d8]/80 sm:mt-4 sm:text-xs sm:tracking-[0.18em]">
                 {t(`stats.${i}.label`)}
               </span>
             </div>
