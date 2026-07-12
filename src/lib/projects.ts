@@ -328,6 +328,7 @@ export const projects: Project[] = [
     year: "2021",
     featured: true,
     cover: "/images/projects/expo-dubai-0101.jpg",
+    title: "Expo Dubai",
     location: "Дубай, ОАЭ",
     country: "ОАЭ",
     area: "4 800 м²",
