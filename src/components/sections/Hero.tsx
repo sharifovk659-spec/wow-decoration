@@ -216,21 +216,14 @@ export function Hero() {
 
         <h1
           ref={titleRef}
-          className="will-transform max-w-none text-balance font-display text-[clamp(1.85rem,1rem+4.8vw,4.75rem)] leading-[1.12] text-bone sm:max-w-[24ch] md:max-w-none md:text-nowrap md:leading-[1.08]"
+          className="will-transform max-w-none text-balance font-display text-[clamp(1.85rem,1rem+4.8vw,4.75rem)] leading-[1.12] text-bone sm:max-w-[24ch] md:leading-[1.08] lg:max-w-[28ch]"
         >
           {lines.map((line, i) => (
-            <span
-              key={line}
-              className={cn(
-                "clip-text-line pb-[0.14em]",
-                "block md:!inline md:!overflow-visible md:pb-0",
-              )}
-            >
+            <span key={line} className="clip-text-line block pb-[0.14em]">
               <span
                 className={cn(
-                  "hero-line-inner pb-[0.06em]",
-                  "block md:inline md:pb-0",
-                  i === 1 && "text-brass md:ms-[0.28em]",
+                  "hero-line-inner block pb-[0.06em]",
+                  i === 1 && "text-brass",
                 )}
               >
                 {line}
@@ -248,13 +241,13 @@ export function Hero() {
             {t("descriptionLead")}
           </p>
 
-          <div className="hero-cta flex flex-nowrap items-center gap-1.5 sm:gap-2 md:gap-4">
+          <div className="hero-cta flex shrink-0 flex-nowrap items-center gap-1.5 sm:gap-2 md:gap-4">
             <ButtonLink
               href="/contact"
               variant="primary"
               withArrow
               magnetic={false}
-              className="max-md:gap-1 max-md:px-2.5 max-md:py-2 max-md:text-[0.55rem] max-md:tracking-[0.06em] max-md:whitespace-nowrap"
+              className="shrink-0 whitespace-nowrap max-md:gap-1 max-md:px-2.5 max-md:py-2 max-md:text-[0.55rem] max-md:tracking-[0.06em]"
             >
               {t("cta")}
             </ButtonLink>
@@ -262,7 +255,7 @@ export function Hero() {
               href="/projects"
               variant="outline"
               magnetic={false}
-              className="max-md:gap-1 max-md:px-2.5 max-md:py-2 max-md:text-[0.55rem] max-md:tracking-[0.06em] max-md:whitespace-nowrap"
+              className="shrink-0 whitespace-nowrap max-md:gap-1 max-md:px-2.5 max-md:py-2 max-md:text-[0.55rem] max-md:tracking-[0.06em]"
             >
               {t("secondary")}
             </ButtonLink>

@@ -44,7 +44,7 @@ function Inner({
       {variant === "primary" && (
         <span className="absolute inset-0 -z-0 origin-bottom scale-y-0 bg-gold-soft transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100" />
       )}
-      <span className="relative z-10 inline-flex items-center gap-2.5">
+      <span className="relative z-10 inline-flex items-center gap-2.5 whitespace-nowrap">
         {children}
         {withArrow && (
           <HiArrowLongRight className="text-base transition-transform duration-500 ease-out group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
