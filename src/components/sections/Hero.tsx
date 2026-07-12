@@ -8,7 +8,6 @@ import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
 import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { ButtonLink } from "@/components/ui/Button";
-import { ScrollEdgeHint } from "@/components/ui/ScrollEdgeHint";
 import { photoUrl } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
@@ -217,14 +216,21 @@ export function Hero() {
 
         <h1
           ref={titleRef}
-          className="will-transform max-w-none text-balance font-display text-[clamp(1.85rem,1rem+4.8vw,4.75rem)] leading-[1.12] text-bone sm:max-w-[24ch] md:leading-[1.08] lg:max-w-[28ch]"
+          className="will-transform max-w-none text-balance font-display text-[clamp(1.85rem,1rem+4.8vw,4.75rem)] leading-[1.12] text-bone sm:max-w-[24ch] md:max-w-none md:text-nowrap md:leading-[1.08]"
         >
           {lines.map((line, i) => (
-            <span key={line} className="clip-text-line block pb-[0.14em]">
+            <span
+              key={line}
+              className={cn(
+                "clip-text-line pb-[0.14em]",
+                "block md:!inline md:!overflow-visible md:pb-0",
+              )}
+            >
               <span
                 className={cn(
-                  "hero-line-inner block pb-[0.06em]",
-                  i === 1 && "text-brass",
+                  "hero-line-inner pb-[0.06em]",
+                  "block md:inline md:pb-0",
+                  i === 1 && "text-brass md:ms-[0.28em]",
                 )}
               >
                 {line}
@@ -242,12 +248,13 @@ export function Hero() {
             {t("descriptionLead")}
           </p>
 
-          <div className="hero-cta flex flex-wrap items-center gap-2 md:gap-4">
+          <div className="hero-cta flex flex-nowrap items-center gap-1.5 sm:gap-2 md:gap-4">
             <ButtonLink
               href="/contact"
               variant="primary"
               withArrow
-              className="max-md:px-4 max-md:py-2 max-md:text-[0.65rem] max-md:tracking-[0.12em]"
+              magnetic={false}
+              className="max-md:gap-1 max-md:px-2.5 max-md:py-2 max-md:text-[0.55rem] max-md:tracking-[0.06em] max-md:whitespace-nowrap"
             >
               {t("cta")}
             </ButtonLink>
@@ -255,28 +262,26 @@ export function Hero() {
               href="/projects"
               variant="outline"
               magnetic={false}
-              className="max-md:px-4 max-md:py-2 max-md:text-[0.65rem] max-md:tracking-[0.12em]"
+              className="max-md:gap-1 max-md:px-2.5 max-md:py-2 max-md:text-[0.55rem] max-md:tracking-[0.06em] max-md:whitespace-nowrap"
             >
               {t("secondary")}
             </ButtonLink>
           </div>
         </div>
 
-        <div className="mt-16 grid max-w-2xl grid-cols-1 gap-6 border-t border-line pt-8 sm:grid-cols-3 sm:gap-8">
+        <div className="mt-16 grid max-w-2xl grid-cols-3 gap-2 border-t border-line pt-8 sm:gap-8">
           {stats.map((stat) => (
             <div key={stat.l} className="hero-stat min-w-0">
-              <p className="font-display text-3xl text-gold md:text-4xl">
+              <p className="font-display text-[1.35rem] leading-none text-gold sm:text-3xl md:text-4xl">
                 {stat.v}
               </p>
-              <p className="mt-1 text-xs uppercase tracking-[0.12em] text-bone-dim sm:tracking-[0.15em]">
+              <p className="mt-1 text-[0.58rem] uppercase leading-snug tracking-[0.06em] text-bone-dim sm:text-xs sm:tracking-[0.15em]">
                 {stat.l}
               </p>
             </div>
           ))}
         </div>
       </div>
-
-      <ScrollEdgeHint />
 
       <div className="hero-hint pointer-events-none absolute bottom-8 end-6 z-10 hidden flex-col items-center gap-3 md:flex">
         <span className="rotate-180 text-[0.65rem] uppercase tracking-[0.3em] text-bone-dim [writing-mode:vertical-lr]">

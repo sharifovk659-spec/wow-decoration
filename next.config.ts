@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   compress: true,
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [75, 85, 90, 92, 95],
+    qualities: [75, 85, 90, 92, 95, 100],
     remotePatterns: [
       {
         protocol: "https",

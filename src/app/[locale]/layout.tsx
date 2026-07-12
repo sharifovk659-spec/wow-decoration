@@ -10,6 +10,7 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingContact } from "@/components/layout/FloatingContact";
+import { ScrollEdgeHint } from "@/components/ui/ScrollEdgeHint";
 import { Cursor } from "@/components/ui/Cursor";
 import { JsonLd } from "@/components/seo/JsonLd";
 import "@/app/globals.css";
@@ -100,6 +101,7 @@ export default async function LocaleLayout({
             </main>
             <Footer />
             <FloatingContact />
+            <ScrollEdgeHint />
           </SmoothScroll>
         </NextIntlClientProvider>
       </body>
