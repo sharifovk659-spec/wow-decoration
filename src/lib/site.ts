@@ -33,6 +33,7 @@ export const navLinks = [
 
 export const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/kandakori.tjk", icon: "instagram" },
+  { label: "YouTube", href: "https://www.youtube.com/@worldofwooddecoration", icon: "youtube" },
   { label: "Facebook", href: "https://www.facebook.com/kandakori.tjk", icon: "facebook" },
   { label: "WhatsApp", href: "https://wa.me/992937074646", icon: "whatsapp" },
   { label: "Telegram", href: "https://t.me/+992937074646", icon: "telegram" },

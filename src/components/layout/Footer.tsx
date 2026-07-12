@@ -4,6 +4,7 @@ import {
   FaWhatsapp,
   FaTelegram,
   FaFacebook,
+  FaYoutube,
 } from "react-icons/fa6";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import type { IconType } from "react-icons";
@@ -13,6 +14,7 @@ import { Logo } from "./Logo";
 
 const icons: Record<string, IconType> = {
   instagram: FaInstagram,
+  youtube: FaYoutube,
   facebook: FaFacebook,
   whatsapp: FaWhatsapp,
   telegram: FaTelegram,
