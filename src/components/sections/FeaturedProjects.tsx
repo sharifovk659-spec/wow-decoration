@@ -93,29 +93,34 @@ export function FeaturedProjects() {
                       alt={project.title[locale]}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      quality={92}
-                      className="object-contain object-center"
+                      quality={95}
+                      className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+                    {/* Readable text scrim — stronger on mobile */}
+                    <div
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/25 max-md:via-ink/65 max-md:to-ink/35"
+                      aria-hidden
+                    />
+                    <div
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink/90 to-transparent md:h-1/2"
+                      aria-hidden
+                    />
                   </div>
 
-                  <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5 md:p-6">
-                    <span className="rounded-full border border-gold/30 bg-ink/50 px-3 py-1 text-[0.65rem] uppercase tracking-[0.14em] text-gold backdrop-blur-sm">
+                  <div className="absolute inset-x-0 top-0 flex items-center p-5 md:p-6">
+                    <span className="rounded-full border border-gold/30 bg-ink/60 px-3 py-1 text-[0.65rem] uppercase tracking-[0.14em] text-gold backdrop-blur-sm">
                       {t(`filters.${project.category}`)}
-                    </span>
-                    <span className="font-display text-lg text-bone/80">
-                      {project.year}
                     </span>
                   </div>
 
                   <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                    <h3 className="font-display text-2xl text-bone md:text-3xl">
+                    <h3 className="font-display text-2xl text-bone drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] md:text-3xl">
                       {project.title[locale]}
                     </h3>
-                    <p className="mt-2 line-clamp-2 max-w-xl text-[0.9375rem] leading-relaxed text-bone-dim md:text-base">
+                    <p className="mt-2 line-clamp-2 max-w-xl text-[0.9375rem] leading-relaxed text-bone-soft drop-shadow-[0_1px_8px_rgba(0,0,0,0.55)] md:text-base">
                       {project.summary[locale]}
                     </p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.16em] text-gold opacity-90 transition-all duration-500 group-hover:gap-3 group-hover:opacity-100">
+                    <span className="mt-4 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.16em] text-gold drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)] transition-all duration-500 group-hover:gap-3 group-hover:opacity-100">
                       {t("detail.cta")}
                       <HiArrowLongRight className="text-sm transition-transform group-hover:translate-x-1" />
                     </span>

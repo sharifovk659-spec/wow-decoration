@@ -119,10 +119,10 @@ function ProjectCard({
             sizes="(max-width: 768px) 100vw, 33vw"
             inLink
             className="aspect-[3/2] w-full"
-            imageClassName="bg-ink-900 object-contain object-center transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
+            imageClassName="bg-ink-900 object-cover object-center transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/10" />
 
           <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4 md:p-5">
             <span className="rounded-full border border-bone/25 bg-ink/30 px-3 py-1 text-[0.65rem] uppercase tracking-[0.18em] text-bone backdrop-blur-sm rtl:tracking-[0.1em]">
@@ -136,11 +136,8 @@ function ProjectCard({
           </div>
         </div>
 
-        <div className="mt-5 flex flex-1 items-start justify-between gap-4 px-0.5">
+          <div className="mt-5 flex flex-1 items-start justify-between gap-4 px-0.5">
           <div className="min-w-0">
-            <div className="mb-2 flex items-center gap-3 text-xs uppercase tracking-[0.15em] text-gold-soft">
-              <span>{project.year}</span>
-            </div>
             <h3 className="text-h3 text-bone transition-colors duration-300 group-hover:text-gold">
               {project.title[locale]}
             </h3>

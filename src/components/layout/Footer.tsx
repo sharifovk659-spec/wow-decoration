@@ -140,7 +140,7 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col gap-4 text-xs text-bone-faint md:flex-row md:items-center md:justify-between">
           <a
-            href="https://dushanbe.inovaauto.com/"
+            href="https://webdushanbe.tj/"
             target="_blank"
             rel="noopener noreferrer"
             className="order-1 transition-colors hover:text-gold md:order-none"

@@ -110,8 +110,6 @@ export function ProjectDetail({
             >
               <span>{project.country[locale]}</span>
               <span className="text-bone-faint">·</span>
-              <span>{project.year}</span>
-              <span className="text-bone-faint">·</span>
               <span>{t(`filters.${project.category}`)}</span>
             </motion.div>
             <motion.h1
