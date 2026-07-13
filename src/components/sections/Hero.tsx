@@ -8,11 +8,10 @@ import { useTranslations } from "next-intl";
 import { useGSAP } from "@/hooks/useGSAP";
 import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { ButtonLink } from "@/components/ui/Button";
-import { photoUrl } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
-/** Local still — original banner frame, bundled for reliable mobile load. */
-const HERO_POSTER = photoUrl("1616486338812-3dadae4b4ace");
+/** Local still — banner frame for poster / mobile load. Video unchanged. */
+const HERO_POSTER = "/images/hero/banner-01023.jpg";
 const HERO_VIDEO = "/videos/hero.mp4";
 
 const NOISE =
@@ -53,13 +52,16 @@ export function Hero() {
         return;
       }
 
-      gsap.set(mediaInnerRef.current, { scale: 1.18 });
+      const isMobileIntro = window.matchMedia("(max-width: 767px)").matches;
+      gsap.set(mediaInnerRef.current, {
+        scale: isMobileIntro ? 1.04 : 1.12,
+      });
 
       const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
       tl.set(contentRef.current, { autoAlpha: 1 })
         .to(
           mediaInnerRef.current,
-          { scale: 1, duration: 2, ease: "power3.out" },
+          { scale: 1, duration: isMobileIntro ? 1.4 : 2, ease: "power3.out" },
           0,
         )
         .from(
@@ -161,11 +163,12 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[42rem] min-h-svh w-full flex-col overflow-hidden pt-24 md:pt-28"
+      className="relative flex h-svh min-h-[100svh] w-full flex-col overflow-hidden pt-[4.5rem] md:pt-28"
     >
+      {/* Full-bleed media — edge to edge on phone & desktop */}
       <div
         ref={mediaRef}
-        className="will-transform pointer-events-none absolute -top-[8%] left-0 h-[116%] w-full"
+        className="will-transform pointer-events-none absolute inset-0 h-full w-full md:-top-[6%] md:h-[112%]"
       >
         <div ref={mediaInnerRef} className="will-transform relative h-full w-full">
           <Image
@@ -173,14 +176,15 @@ export function Hero() {
             alt=""
             fill
             priority
+            quality={95}
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-[center_42%] md:object-center"
           />
           <video
             ref={videoRef}
             src={HERO_VIDEO}
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out",
+              "absolute inset-0 h-full w-full object-cover object-[center_42%] transition-opacity duration-[1200ms] ease-out md:object-center",
               videoReady ? "opacity-100" : "opacity-0",
             )}
             poster={HERO_POSTER}
@@ -196,34 +200,36 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/30" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/35 to-transparent rtl:bg-gradient-to-l" />
-      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(125%_120%_at_50%_28%,transparent_32%,rgba(18,19,22,0.78)_100%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-ink/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/20 max-md:via-ink/50 max-md:to-ink/15" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/30 to-transparent max-md:from-ink/70 max-md:via-ink/20 rtl:bg-gradient-to-l" />
+      <div className="pointer-events-none absolute inset-0 [background:radial-gradient(125%_120%_at_50%_28%,transparent_38%,rgba(18,19,22,0.72)_100%)] max-md:[background:radial-gradient(140%_100%_at_50%_35%,transparent_45%,rgba(18,19,22,0.55)_100%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-ink/70 to-transparent md:h-44 md:from-ink/80" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 opacity-[0.04] mix-blend-overlay md:opacity-[0.06]"
         style={{ backgroundImage: NOISE }}
       />
 
       <div
         ref={contentRef}
-        className="container-luxe invisible relative z-10 flex min-h-0 flex-1 flex-col justify-end pb-12 pt-4 md:pb-20 md:pt-6"
+        className="container-luxe invisible relative z-10 flex min-h-0 flex-1 flex-col justify-end pb-6 pt-2 sm:pb-10 md:pb-20 md:pt-6"
       >
-        <div className="mb-8 flex items-center gap-4">
-          <span className="hero-eyebrow-line h-px w-14 bg-gold/70" />
-          <span className="hero-eyebrow eyebrow">{t("eyebrow")}</span>
+        <div className="mb-4 flex items-center gap-3 md:mb-8 md:gap-4">
+          <span className="hero-eyebrow-line h-px w-10 shrink-0 bg-gold/70 md:w-14" />
+          <span className="hero-eyebrow eyebrow max-md:text-[0.65rem] max-md:tracking-[0.12em]">
+            {t("eyebrow")}
+          </span>
         </div>
 
         <h1
           ref={titleRef}
-          className="will-transform max-w-none text-balance font-display text-[clamp(1.85rem,1rem+4.8vw,4.75rem)] leading-[1.12] text-bone sm:max-w-[24ch] md:leading-[1.08] lg:max-w-[28ch]"
+          className="will-transform max-w-[18ch] text-balance font-display text-[clamp(1.65rem,5.8vw+0.4rem,4.75rem)] leading-[1.15] text-bone sm:max-w-[24ch] md:leading-[1.08] lg:max-w-[28ch]"
         >
           {lines.map((line, i) => (
-            <span key={line} className="clip-text-line block pb-[0.14em]">
+            <span key={line} className="clip-text-line block pb-[0.1em]">
               <span
                 className={cn(
-                  "hero-line-inner block pb-[0.06em]",
+                  "hero-line-inner block pb-[0.04em]",
                   i === 1 && "text-brass",
                 )}
               >
@@ -233,8 +239,8 @@ export function Hero() {
           ))}
         </h1>
 
-        <div className="mt-10 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <p className="hero-desc max-w-3xl text-base leading-relaxed text-bone-soft md:text-lg lg:max-w-4xl">
+        <div className="mt-5 flex flex-col gap-5 sm:mt-8 sm:gap-8 md:mt-10 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+          <p className="hero-desc line-clamp-3 max-w-3xl text-[0.875rem] leading-relaxed text-bone-soft sm:line-clamp-none sm:text-base md:text-lg lg:max-w-4xl">
             <span className="font-medium text-gold-soft">
               World of Wood Decoration
             </span>
@@ -242,13 +248,13 @@ export function Hero() {
             {t("descriptionLead")}
           </p>
 
-          <div className="hero-cta flex shrink-0 flex-nowrap items-center gap-1.5 sm:gap-2 md:gap-4">
+          <div className="hero-cta flex w-full shrink-0 flex-nowrap items-center gap-2 sm:w-auto sm:gap-3 md:gap-4">
             <ButtonLink
               href="/contact"
               variant="primary"
               withArrow
               magnetic={false}
-              className="shrink-0 whitespace-nowrap max-md:gap-1 max-md:px-2.5 max-md:py-2 max-md:text-[0.55rem] max-md:tracking-[0.06em]"
+              className="min-w-0 flex-1 justify-center whitespace-nowrap px-3 py-2.5 text-[0.68rem] tracking-[0.08em] sm:flex-none sm:px-5 sm:py-3 sm:text-xs md:text-[0.7rem]"
             >
               {t("cta")}
             </ButtonLink>
@@ -256,14 +262,14 @@ export function Hero() {
               href="/projects"
               variant="outline"
               magnetic={false}
-              className="shrink-0 whitespace-nowrap max-md:gap-1 max-md:px-2.5 max-md:py-2 max-md:text-[0.55rem] max-md:tracking-[0.06em]"
+              className="min-w-0 flex-1 justify-center whitespace-nowrap px-3 py-2.5 text-[0.68rem] tracking-[0.08em] sm:flex-none sm:px-5 sm:py-3 sm:text-xs md:text-[0.7rem]"
             >
               {t("secondary")}
             </ButtonLink>
           </div>
         </div>
 
-        <div className="mt-16 grid max-w-4xl grid-cols-2 gap-x-4 gap-y-8 border-t border-line pt-8 md:grid-cols-4 md:gap-y-0 md:gap-x-6">
+        <div className="mt-6 grid max-w-4xl grid-cols-2 gap-x-3 gap-y-5 border-t border-line pt-5 sm:mt-10 sm:gap-y-8 sm:pt-8 md:mt-16 md:grid-cols-4 md:gap-x-6 md:gap-y-0">
           {stats.map((stat, i) => (
             <div
               key={stat.l}
@@ -275,10 +281,10 @@ export function Hero() {
                   aria-hidden
                 />
               )}
-              <p className="font-display text-[1.5rem] leading-none text-[#c8a46a] sm:text-3xl md:text-4xl">
+              <p className="font-display text-[1.35rem] leading-none text-[#c8a46a] sm:text-3xl md:text-4xl">
                 {stat.v}
               </p>
-              <p className="mt-2 text-[0.58rem] uppercase leading-snug tracking-[0.08em] text-[#f2e9d8]/75 sm:text-xs sm:tracking-[0.15em]">
+              <p className="mt-1.5 text-[0.62rem] uppercase leading-snug tracking-[0.06em] text-[#f2e9d8]/80 sm:mt-2 sm:text-xs sm:tracking-[0.15em]">
                 {stat.l}
               </p>
             </div>
