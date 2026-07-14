@@ -103,7 +103,7 @@ const PROJECT_GALLERY: Record<string, string[]> = {
     "/images/gallery/gazebo-royal.jpg",
   ],
   "royal-gazebo-14x8": [
-    projectPhoto("royal-gazebo-14x8"),
+    "/images/projects/royal-gazebo-010101.jpg",
     "/images/gallery/gazebo.jpg",
   ],
   "walnut-daybed": [
@@ -420,7 +420,7 @@ export const projects: Project[] = [
     countryKey: "uae",
     year: "2024",
     featured: true,
-    cover: projectPhoto("royal-gazebo-14x8"),
+    cover: "/images/projects/royal-gazebo-010101.jpg",
     title: "Королевская беседка 14×8",
     location: "Частный заказ",
     country: "ОАЭ",
