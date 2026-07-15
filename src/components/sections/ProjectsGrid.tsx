@@ -16,23 +16,28 @@ import { cn } from "@/lib/utils";
 import { easeLuxe, fadeUp } from "@/lib/motion";
 import { HoverVideo } from "@/components/ui/HoverVideo";
 import { ButtonLink } from "@/components/ui/Button";
+import { useCmsMedia } from "@/hooks/useCmsMedia";
 
 type Filter = ProjectCategory | "all";
 
 export function ProjectsGrid() {
   const t = useTranslations("projects");
   const locale = useLocale() as Locale;
+  const cms = useCmsMedia();
   const [filter, setFilter] = useState<Filter>("all");
 
   const filters: Filter[] = ["all", ...projectCategories];
 
-  const visible = useMemo(
-    () =>
+  const visible = useMemo(() => {
+    const list =
       filter === "all"
         ? projects
-        : projects.filter((p) => p.category === filter),
-    [filter],
-  );
+        : projects.filter((p) => p.category === filter);
+    return list.map((p) => ({
+      ...p,
+      cover: cms?.projectCovers?.[p.slug] || p.cover,
+    }));
+  }, [filter, cms]);
 
   return (
     <section className="container-luxe pb-[30px]">

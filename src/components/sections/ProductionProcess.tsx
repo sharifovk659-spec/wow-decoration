@@ -9,6 +9,7 @@ import { useGSAP } from "@/hooks/useGSAP";
 import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { siteVideos } from "@/lib/videos";
 import { productionStepImage } from "@/lib/media";
+import { useCmsMedia } from "@/hooks/useCmsMedia";
 import { cn } from "@/lib/utils";
 
 const NOISE =
@@ -18,6 +19,7 @@ const steps = ["0", "1", "2", "3", "4", "5", "6", "7"] as const;
 
 export function ProductionProcess() {
   const t = useTranslations("production");
+  const cms = useCmsMedia();
   const root = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -78,6 +80,12 @@ export function ProductionProcess() {
     setMotionOk(!reduce);
   }, []);
 
+  const stepSrc = (i: number) =>
+    cms?.productionSteps?.[String(i)] || productionStepImage(i);
+  const processMp4 = cms?.processVideo?.mp4 || siteVideos.process.mp4;
+  const processPoster =
+    cms?.processVideo?.poster || siteVideos.process.poster;
+
   return (
     <section
       id="production"
@@ -85,7 +93,7 @@ export function ProductionProcess() {
     >
       <div className="prod-bg absolute inset-x-0 -top-[6%] -z-10 h-[112%]">
         <Image
-          src={siteVideos.process.poster}
+          src={processPoster}
           alt=""
           fill
           sizes="100vw"
@@ -97,7 +105,7 @@ export function ProductionProcess() {
             "absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms]",
             videoReady ? "opacity-100" : "opacity-0",
           )}
-          poster={siteVideos.process.poster}
+          poster={processPoster}
           autoPlay
           muted
           loop
@@ -107,7 +115,7 @@ export function ProductionProcess() {
           onLoadedData={() => setVideoReady(true)}
           aria-hidden
         >
-          <source src={siteVideos.process.mp4} type="video/mp4" />
+          <source src={processMp4} type="video/mp4" />
         </video>
       </div>
 
@@ -148,7 +156,7 @@ export function ProductionProcess() {
                 <div className="overflow-hidden rounded-luxe-lg border border-line/80 bg-ink/70 backdrop-blur-sm transition-colors hover:border-gold/30">
                   <div className="relative aspect-[2/1] w-full md:aspect-[5/2]">
                     <Image
-                      src={productionStepImage(i)}
+                      src={stepSrc(i)}
                       alt={t(`steps.${key}.title`)}
                       fill
                       sizes="(max-width: 768px) 100vw, 800px"

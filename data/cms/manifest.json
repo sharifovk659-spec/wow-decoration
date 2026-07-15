@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "updatedAt": null,
+  "productionSteps": {},
+  "gallery": null,
+  "hero": {
+    "poster": null,
+    "video": null
+  },
+  "processVideo": {
+    "mp4": null,
+    "poster": null
+  },
+  "projectCovers": {},
+  "videoTestimonials": null
+}

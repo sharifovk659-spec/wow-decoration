@@ -11,6 +11,7 @@ import { rtlLocales, type Locale } from "@/i18n/routing";
 import { videoTestimonials } from "@/lib/videoTestimonials";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { VideoModal } from "@/components/ui/VideoModal";
+import { useCmsMedia } from "@/hooks/useCmsMedia";
 import "swiper/css";
 
 export function VideoTestimonials() {
@@ -18,11 +19,13 @@ export function VideoTestimonials() {
   const tc = useTranslations("common");
   const locale = useLocale() as Locale;
   const isRtl = rtlLocales.includes(locale);
+  const cms = useCmsMedia();
   const swiperRef = useRef<SwiperType | null>(null);
   const [active, setActive] = useState<number | null>(null);
 
-  const current = active !== null ? videoTestimonials[active] : null;
-  const loopItems = [...videoTestimonials, ...videoTestimonials];
+  const films = cms?.videoTestimonials ?? videoTestimonials;
+  const current = active !== null ? films[active] : null;
+  const loopItems = [...films, ...films];
 
   return (
     <section className="relative overflow-hidden border-t border-line bg-ink-800 py-16 md:py-24">
@@ -62,7 +65,7 @@ export function VideoTestimonials() {
             >
               <button
                 type="button"
-                onClick={() => setActive(i % videoTestimonials.length)}
+                onClick={() => setActive(i % films.length)}
                 data-cursor="hover"
                 aria-label={t("watch")}
                 className="group relative block w-full overflow-hidden rounded-luxe-lg text-start shadow-image transition-shadow duration-500 hover:shadow-luxe focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"

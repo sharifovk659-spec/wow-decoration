@@ -16,23 +16,28 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ButtonLink } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { easeLuxe, fadeUp, staggerContainer } from "@/lib/motion";
+import { useCmsMedia } from "@/hooks/useCmsMedia";
 
 type Filter = ProjectCategory | "all";
 
 export function FeaturedProjects() {
   const t = useTranslations("projects");
   const locale = useLocale() as Locale;
+  const cms = useCmsMedia();
   const [filter, setFilter] = useState<Filter>("all");
 
   const filters: Filter[] = ["all", ...projectCategories];
 
-  const visible = useMemo(
-    () =>
+  const visible = useMemo(() => {
+    const list =
       filter === "all"
         ? projects.filter((p) => p.featured)
-        : projects.filter((p) => p.featured && p.category === filter),
-    [filter],
-  );
+        : projects.filter((p) => p.featured && p.category === filter);
+    return list.map((p) => ({
+      ...p,
+      cover: cms?.projectCovers?.[p.slug] || p.cover,
+    }));
+  }, [filter, cms]);
 
   return (
     <section

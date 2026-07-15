@@ -18,6 +18,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { easeLuxe } from "@/lib/motion";
 import { cn } from "@/lib/utils";
+import { useCmsMedia } from "@/hooks/useCmsMedia";
 
 export function ProjectDetail({
   project,
@@ -30,6 +31,8 @@ export function ProjectDetail({
   const tc = useTranslations("common");
   const locale = useLocale() as Locale;
   const reduceMotion = useReducedMotion();
+  const cms = useCmsMedia();
+  const cover = cms?.projectCovers?.[project.slug] || project.cover;
 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [heroVideoReady, setHeroVideoReady] = useState(false);
@@ -63,7 +66,7 @@ export function ProjectDetail({
           className="absolute inset-0"
         >
           <Image
-            src={project.cover}
+            src={cover}
             alt={project.title[locale]}
             fill
             priority
@@ -193,7 +196,7 @@ export function ProjectDetail({
                 controls
                 playsInline
                 preload="metadata"
-                poster={project.cover}
+                poster={cover}
                 className="h-full w-full object-cover"
               >
                 <source src={project.processVideo} type="video/mp4" />

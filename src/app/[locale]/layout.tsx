@@ -5,7 +5,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, rtlLocales, type Locale } from "@/i18n/routing";
 import { siteConfig } from "@/lib/site";
 import { buildMetadata } from "@/lib/seo";
-import { cormorant, inter, elMessiri } from "@/app/fonts";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -13,7 +12,6 @@ import { FloatingContact } from "@/components/layout/FloatingContact";
 import { ScrollEdgeHint } from "@/components/ui/ScrollEdgeHint";
 import { Cursor } from "@/components/ui/Cursor";
 import { JsonLd } from "@/components/seo/JsonLd";
-import "@/app/globals.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -77,34 +75,32 @@ export default async function LocaleLayout({
   const t = await getTranslations({ locale, namespace: "common" });
 
   return (
-    <html
+    <div
       lang={locale}
       dir={dir}
-      className={`${cormorant.variable} ${inter.variable} ${elMessiri.variable}`}
+      className="min-h-screen"
       suppressHydrationWarning
     >
-      <body className="min-h-screen antialiased">
-        <NextIntlClientProvider>
-          <JsonLd locale={locale as Locale} />
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-gold focus:px-5 focus:py-2 focus:text-sm focus:text-ink"
-          >
-            {t("skipToContent")}
-          </a>
-          <div className="noise-overlay" aria-hidden />
-          <Cursor />
-          <SmoothScroll>
-            <Header />
-            <main id="main" className="overflow-x-clip">
-              {children}
-            </main>
-            <Footer />
-            <FloatingContact />
-            <ScrollEdgeHint />
-          </SmoothScroll>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+      <NextIntlClientProvider>
+        <JsonLd locale={locale as Locale} />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-gold focus:px-5 focus:py-2 focus:text-sm focus:text-ink"
+        >
+          {t("skipToContent")}
+        </a>
+        <div className="noise-overlay" aria-hidden />
+        <Cursor />
+        <SmoothScroll>
+          <Header />
+          <main id="main" className="overflow-x-clip">
+            {children}
+          </main>
+          <Footer />
+          <FloatingContact />
+          <ScrollEdgeHint />
+        </SmoothScroll>
+      </NextIntlClientProvider>
+    </div>
   );
 }

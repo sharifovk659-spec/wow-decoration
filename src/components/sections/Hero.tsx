@@ -9,16 +9,20 @@ import { useGSAP } from "@/hooks/useGSAP";
 import { useBackgroundVideo } from "@/hooks/useBackgroundVideo";
 import { ButtonLink } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { useCmsMedia } from "@/hooks/useCmsMedia";
 
 /** Local still — banner frame for poster / mobile load. Video unchanged. */
-const HERO_POSTER = "/images/hero/banner-01023.jpg";
-const HERO_VIDEO = "/videos/hero.mp4";
+const HERO_POSTER_DEFAULT = "/images/hero/banner-01023.jpg";
+const HERO_VIDEO_DEFAULT = "/videos/hero.mp4";
 
 const NOISE =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 export function Hero() {
   const t = useTranslations("hero");
+  const cms = useCmsMedia();
+  const HERO_POSTER = cms?.hero?.poster || HERO_POSTER_DEFAULT;
+  const HERO_VIDEO = cms?.hero?.video || HERO_VIDEO_DEFAULT;
 
   const sectionRef = useRef<HTMLElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);

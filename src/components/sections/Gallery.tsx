@@ -11,27 +11,32 @@ import {
   galleryThumb,
   galleryFull,
   type GalleryCategory,
+  type GalleryItem,
 } from "@/lib/gallery";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { cn } from "@/lib/utils";
 import { easeLuxe, fadeUp, staggerContainer } from "@/lib/motion";
+import { useCmsMedia } from "@/hooks/useCmsMedia";
 
 type Filter = GalleryCategory | "all";
 
 export function Gallery() {
   const t = useTranslations("gallery");
   const tc = useTranslations("common");
+  const cms = useCmsMedia();
   const [filter, setFilter] = useState<Filter>("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const filters: Filter[] = ["all", ...galleryCategories];
 
+  const items: GalleryItem[] = cms?.gallery ?? galleryItems;
+
   const visible = useMemo(
     () =>
       filter === "all"
-        ? galleryItems
-        : galleryItems.filter((item) => item.category === filter),
-    [filter],
+        ? items
+        : items.filter((item) => item.category === filter),
+    [filter, items],
   );
 
   const fullImages = useMemo(

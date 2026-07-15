@@ -47,7 +47,6 @@ export const galleryItems: GalleryItem[] = [
   { key: "interiors-villa", src: "/images/projects/private-villa-interior.jpg", category: "interiors" },
   { key: "ceilings-gallery-0101", src: "/images/gallery/gallery-0101.jpg", category: "ceilings" },
   { key: "interiors-gallery-0220", src: "/images/gallery/gallery-0220.jpg", category: "interiors" },
-  { key: "furniture-gallery-033", src: "/images/gallery/gallery-033.jpg", category: "furniture" },
 ];
 
 export function galleryThumb(item: GalleryItem): string {
