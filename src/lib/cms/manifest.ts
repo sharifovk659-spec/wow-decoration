@@ -59,7 +59,7 @@ export async function writeManifest(manifest: CmsManifest): Promise<CmsManifest>
   }
   if (isVercelRuntime()) {
     throw new Error(
-      "На Vercel нужен BLOB_READ_WRITE_TOKEN (Vercel Blob), иначе админ не сохранит изменения.",
+      "На Vercel нужен Blob Storage (BLOB_STORE_ID / Blob store), иначе админ не сохранит изменения.",
     );
   }
   return writeManifestToDisk(manifest);

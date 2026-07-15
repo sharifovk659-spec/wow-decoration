@@ -60,21 +60,40 @@ async function uploadViaBlobClient(file: File): Promise<string> {
 
 export async function uploadAdminFile(file: File): Promise<string> {
   const prepared = await prepareFile(file);
+  // Photos compress under ~4.5MB → server upload via OIDC works on Vercel.
+  // Larger files prefer direct Blob client upload (needs BLOB_READ_WRITE_TOKEN).
+  const preferServer = prepared.size <= 4 * 1024 * 1024;
 
-  // Prefer direct-to-Blob (no serverless body size limit).
-  try {
-    return await uploadViaBlobClient(prepared);
-  } catch (blobErr) {
-    // Local/VPS fallback (or Blob not configured).
+  const tryServer = () => uploadViaServer(prepared);
+  const tryClient = () => uploadViaBlobClient(prepared);
+
+  if (preferServer) {
     try {
-      return await uploadViaServer(prepared);
+      return await tryServer();
+    } catch (serverErr) {
+      try {
+        return await tryClient();
+      } catch (blobErr) {
+        const serverMsg =
+          serverErr instanceof Error ? serverErr.message : "Ошибка загрузки";
+        const blobMsg =
+          blobErr instanceof Error ? blobErr.message : "Blob upload failed";
+        throw new Error(serverMsg || blobMsg);
+      }
+    }
+  }
+
+  try {
+    return await tryClient();
+  } catch (blobErr) {
+    try {
+      return await tryServer();
     } catch (serverErr) {
       const blobMsg =
         blobErr instanceof Error ? blobErr.message : "Blob upload failed";
       const serverMsg =
         serverErr instanceof Error ? serverErr.message : "Server upload failed";
-      // Prefer the clearer server message when Blob is simply missing.
-      if (/BLOB_READ_WRITE_TOKEN|не настроен|not configured/i.test(blobMsg)) {
+      if (/BLOB_READ_WRITE_TOKEN|не настроен|не подключён|Blob/i.test(blobMsg)) {
         throw new Error(serverMsg);
       }
       throw new Error(serverMsg || blobMsg);

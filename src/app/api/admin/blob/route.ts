@@ -1,7 +1,10 @@
 import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/cms/auth";
-import { useBlobStorage } from "@/lib/cms/blob";
+import {
+  hasBlobReadWriteToken,
+  useBlobStorage,
+} from "@/lib/cms/blob";
 
 export const runtime = "nodejs";
 
@@ -28,7 +31,18 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "BLOB_READ_WRITE_TOKEN не настроен. Добавьте Storage → Blob в Vercel.",
+          "Blob не подключён. Vercel → Storage → Blob → Connect to Project.",
+      },
+      { status: 503 },
+    );
+  }
+
+  // Client token exchange still needs the static rw token (OIDC alone is not enough).
+  if (!hasBlobReadWriteToken()) {
+    return NextResponse.json(
+      {
+        error:
+          "Нужен BLOB_READ_WRITE_TOKEN для прямой загрузки. Используйте сжатие / серверный upload или добавьте токен в Environment Variables.",
       },
       { status: 503 },
     );

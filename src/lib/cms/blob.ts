@@ -4,8 +4,22 @@ import { EMPTY_MANIFEST } from "@/lib/cms/types";
 
 export const MANIFEST_BLOB_PATH = "cms/manifest.json";
 
+/** True when Blob is connected (OIDC via BLOB_STORE_ID, or legacy rw token). */
 export function useBlobStorage(): boolean {
+  return Boolean(
+    process.env.BLOB_STORE_ID?.trim() ||
+      process.env.BLOB_READ_WRITE_TOKEN?.trim(),
+  );
+}
+
+/** Needed for browser→Blob client uploads (`handleUpload`). */
+export function hasBlobReadWriteToken(): boolean {
   return Boolean(process.env.BLOB_READ_WRITE_TOKEN?.trim());
+}
+
+function blobAuthOptions(): { token?: string } {
+  const token = process.env.BLOB_READ_WRITE_TOKEN?.trim();
+  return token ? { token } : {};
 }
 
 export function isVercelRuntime(): boolean {
@@ -72,7 +86,7 @@ export async function writeManifestToBlob(
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: "application/json",
-    token: process.env.BLOB_READ_WRITE_TOKEN,
+    ...blobAuthOptions(),
   });
   return next;
 }
@@ -86,7 +100,7 @@ export async function uploadToBlob(
     access: "public",
     addRandomSuffix: false,
     contentType,
-    token: process.env.BLOB_READ_WRITE_TOKEN,
+    ...blobAuthOptions(),
   });
   return blob.url;
 }
