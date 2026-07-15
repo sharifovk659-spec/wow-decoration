@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import type { CmsManifest } from "@/lib/cms/types";
 import { EMPTY_MANIFEST } from "@/lib/cms/types";
+import { readApiJson } from "@/lib/cms/readApiJson";
 
 export function useAdminManifest() {
   const [manifest, setManifest] = useState<CmsManifest>(EMPTY_MANIFEST);
@@ -20,8 +21,11 @@ export function useAdminManifest() {
         window.location.href = "/admin/login";
         return;
       }
-      if (!res.ok) throw new Error("Не удалось загрузить манифест");
-      setManifest((await res.json()) as CmsManifest);
+      const parsed = await readApiJson<CmsManifest>(res);
+      if (!parsed.ok || !parsed.data) {
+        throw new Error(parsed.message || "Не удалось загрузить манифест");
+      }
+      setManifest(parsed.data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Ошибка");
     } finally {
@@ -33,38 +37,32 @@ export function useAdminManifest() {
     void reload();
   }, [reload]);
 
-  const save = useCallback(
-    async (next: CmsManifest) => {
-      setSaving(true);
-      setMessage(null);
-      setError(null);
-      try {
-        const res = await fetch("/api/admin/manifest", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(next),
-        });
-        if (res.status === 401) {
-          window.location.href = "/admin/login";
-          return;
-        }
-        if (!res.ok) {
-          const data = (await res.json().catch(() => ({}))) as {
-            error?: string;
-          };
-          throw new Error(data.error || "Не удалось сохранить");
-        }
-        const saved = (await res.json()) as CmsManifest;
-        setManifest(saved);
-        setMessage("Сохранено");
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Ошибка сохранения");
-      } finally {
-        setSaving(false);
+  const save = useCallback(async (next: CmsManifest) => {
+    setSaving(true);
+    setMessage(null);
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/manifest", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(next),
+      });
+      if (res.status === 401) {
+        window.location.href = "/admin/login";
+        return;
       }
-    },
-    [],
-  );
+      const parsed = await readApiJson<CmsManifest>(res);
+      if (!parsed.ok || !parsed.data) {
+        throw new Error(parsed.message || "Не удалось сохранить");
+      }
+      setManifest(parsed.data);
+      setMessage("Сохранено");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Ошибка сохранения");
+    } finally {
+      setSaving(false);
+    }
+  }, []);
 
   return {
     manifest,

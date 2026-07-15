@@ -1,16 +1,85 @@
 "use client";
 
 import { useState } from "react";
+import { upload } from "@vercel/blob/client";
+import { readApiJson } from "@/lib/cms/readApiJson";
 
-export async function uploadAdminFile(file: File): Promise<string> {
+/** Compress large photos in-browser before upload (avoids Vercel limits). */
+async function prepareFile(file: File): Promise<File> {
+  if (!file.type.startsWith("image/") || file.size <= 1.8 * 1024 * 1024) {
+    return file;
+  }
+
+  try {
+    const bitmap = await createImageBitmap(file);
+    const maxEdge = 2200;
+    const scale = Math.min(1, maxEdge / Math.max(bitmap.width, bitmap.height));
+    const w = Math.max(1, Math.round(bitmap.width * scale));
+    const h = Math.max(1, Math.round(bitmap.height * scale));
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return file;
+    ctx.drawImage(bitmap, 0, 0, w, h);
+    bitmap.close();
+
+    const blob: Blob | null = await new Promise((resolve) =>
+      canvas.toBlob((b) => resolve(b), "image/jpeg", 0.86),
+    );
+    if (!blob || blob.size >= file.size) return file;
+
+    const name = file.name.replace(/\.\w+$/i, ".jpg");
+    return new File([blob], name, { type: "image/jpeg" });
+  } catch {
+    return file;
+  }
+}
+
+async function uploadViaServer(file: File): Promise<string> {
   const body = new FormData();
   body.append("file", file);
   const res = await fetch("/api/admin/upload", { method: "POST", body });
-  const data = (await res.json()) as { url?: string; error?: string };
-  if (!res.ok || !data.url) {
-    throw new Error(data.error || "Ошибка загрузки");
+  const parsed = await readApiJson<{ url?: string; error?: string }>(res);
+  if (!parsed.ok || !parsed.data?.url) {
+    throw new Error(parsed.message || parsed.data?.error || "Ошибка загрузки");
   }
-  return data.url;
+  return parsed.data.url;
+}
+
+async function uploadViaBlobClient(file: File): Promise<string> {
+  const safeName = file.name.replace(/[^\w.\-]+/g, "_");
+  const pathname = `uploads/${Date.now()}-${safeName}`;
+  const blob = await upload(pathname, file, {
+    access: "public",
+    handleUploadUrl: "/api/admin/blob",
+    multipart: file.size > 4 * 1024 * 1024,
+  });
+  return blob.url;
+}
+
+export async function uploadAdminFile(file: File): Promise<string> {
+  const prepared = await prepareFile(file);
+
+  // Prefer direct-to-Blob (no serverless body size limit).
+  try {
+    return await uploadViaBlobClient(prepared);
+  } catch (blobErr) {
+    // Local/VPS fallback (or Blob not configured).
+    try {
+      return await uploadViaServer(prepared);
+    } catch (serverErr) {
+      const blobMsg =
+        blobErr instanceof Error ? blobErr.message : "Blob upload failed";
+      const serverMsg =
+        serverErr instanceof Error ? serverErr.message : "Server upload failed";
+      // Prefer the clearer server message when Blob is simply missing.
+      if (/BLOB_READ_WRITE_TOKEN|не настроен|not configured/i.test(blobMsg)) {
+        throw new Error(serverMsg);
+      }
+      throw new Error(serverMsg || blobMsg);
+    }
+  }
 }
 
 export function UploadButton({
