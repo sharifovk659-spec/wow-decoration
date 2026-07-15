@@ -40,8 +40,9 @@ export function siteImage(relativePath: string): string {
   return `/images/${relativePath.replace(/^\/+/, "")}`;
 }
 
-/** Production step photography (v2 paths bust long-lived image cache). */
+/** Production step photography (v3 for cache-bust on updated steps). */
 export function productionStepImage(index: number): string {
+  if (index === 3) return `/images/production/v3/step-3.jpg`;
   return `/images/production/v2/step-${index}.jpg`;
 }
 

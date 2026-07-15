@@ -11,7 +11,7 @@ const STEPS = [
   {
     file: "step-3.jpg",
     label: "04 Сборка",
-    url: "https://images.pexels.com/photos/15016509/pexels-photo-15016509.jpeg?auto=format&fit=crop&w=1600&h=800&q=92",
+    url: "https://images.unsplash.com/photo-1497219055242-93359eeed651?auto=format&fit=crop&w=1600&h=800&q=92",
   },
   {
     file: "step-4.jpg",

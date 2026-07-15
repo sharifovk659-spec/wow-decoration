@@ -67,9 +67,18 @@
     "paragraph2": "Every commission begins with one question: what will endure a century? From that answer we source rare timber, engineer it to serve generations, and finish every surface entirely by hand.",
     "signature": "Founded in 2015 — International production company",
     "pillars": {
-      "0": { "title": "Rarity", "text": "Single-origin timber, selected board by board from sustainable estates and heritage reserves." },
-      "1": { "title": "Precision", "text": "Joinery engineered to micron tolerances, designed from within and assembled without visible fixings." },
-      "2": { "title": "Longevity", "text": "Interiors built to be inherited — restored, not replaced, from generation to generation." }
+      "0": {
+        "title": "Rarity",
+        "text": "Single-origin timber, selected board by board from sustainable estates and heritage reserves."
+      },
+      "1": {
+        "title": "Precision",
+        "text": "Joinery engineered to micron tolerances, designed from within and assembled without visible fixings."
+      },
+      "2": {
+        "title": "Longevity",
+        "text": "Interiors built to be inherited — restored, not replaced, from generation to generation."
+      }
     }
   },
   "services": {
@@ -229,56 +238,56 @@
   "videoTestimonials": {
     "eyebrow": "Client films",
     "title": "In their own words.",
-    "description": "Clients, architects, and estate managers on what it means to build with our company.",
+    "description": "Real video from completed projects — authentic impressions, not staged quotes.",
     "watch": "Watch film",
     "items": {
       "0": {
-        "author": "Khalid Al-Mansouri",
-        "role": "Director, Royal Court",
-        "project": "Royal Palace",
-        "quote": "They transformed a vision we could barely articulate into a hall that silences everyone who enters."
+        "author": "Client film",
+        "role": "Completed project",
+        "project": "Project footage",
+        "quote": "Real video from a completed project."
       },
       "1": {
-        "author": "Isabelle Laurent",
-        "role": "Laurent Architects",
-        "project": "Alpine Residence",
-        "quote": "Every joint and every grain is considered — the finest joinery I have seen in twenty years."
+        "author": "Client film",
+        "role": "Completed project",
+        "project": "Project footage",
+        "quote": "Real video from a completed project."
       },
       "2": {
-        "author": "Markus Feld",
-        "role": "Design Director",
-        "project": "Five-Star Hotel",
-        "quote": "Guests pause at the entrance. The reception wall became the signature of the entire hotel."
+        "author": "Client film",
+        "role": "Completed project",
+        "project": "Project footage",
+        "quote": "Real video from a completed project."
       },
       "3": {
-        "author": "Dr. Amina Sharif",
-        "role": "Board of Trustees",
-        "project": "Grand Mosque",
-        "quote": "The craftsmanship honours tradition yet feels alive. It moved our entire community."
+        "author": "Client film",
+        "role": "Completed project",
+        "project": "Project footage",
+        "quote": "Real video from a completed project."
       },
       "4": {
-        "author": "Private client",
-        "role": "Coastal estate",
-        "project": "Seaside Villa",
-        "quote": "From the first sketch to installation, everything felt effortless and deeply personal."
+        "author": "Client film",
+        "role": "Completed project",
+        "project": "Project footage",
+        "quote": "Real video from a completed project."
       },
       "5": {
-        "author": "Rashid Al-Hamad",
-        "role": "Residence owner",
-        "project": "Private Villa",
-        "quote": "The execution exceeded expectations — every detail was considered to perfection."
+        "author": "Client film",
+        "role": "Completed project",
+        "project": "Project footage",
+        "quote": "Real video from a completed project."
       },
       "6": {
-        "author": "Sara Mahmoud",
-        "role": "Interior designer",
-        "project": "Restaurant",
-        "quote": "Woodwork at this level is a rarity in contemporary architecture."
+        "author": "Client film",
+        "role": "Completed project",
+        "project": "Project footage",
+        "quote": "Real video from a completed project."
       },
       "7": {
-        "author": "Omar Ben Ali",
-        "role": "Hotel manager",
-        "project": "Boutique Hotel",
-        "quote": "The wood panels became the centrepiece — guests never stop admiring them."
+        "author": "Client film",
+        "role": "Completed project",
+        "project": "Project footage",
+        "quote": "Real video from a completed project."
       }
     }
   },
@@ -287,13 +296,41 @@
     "title": "From first conversation to final installation.",
     "description": "Seven stages that carry a commission from idea to a fully installed interior.",
     "steps": {
-      "0": { "number": "01", "title": "Client enquiry", "text": "We listen to your architecture, intent, and vision." },
-      "1": { "number": "02", "title": "Concept", "text": "Directors shape the concept and material palette." },
-      "2": { "number": "03", "title": "3D design", "text": "Photorealistic 3D models make every detail tangible." },
-      "3": { "number": "04", "title": "Production", "text": "Master joiners craft the commission in our workshops." },
-      "4": { "number": "05", "title": "Quality control", "text": "Every surface is inspected to the strictest standards." },
-      "5": { "number": "06", "title": "Delivery", "text": "Flawless logistics deliver the commission safely to site." },
-      "6": { "number": "07", "title": "Installation", "text": "Our teams install and complete the interior on site." }
+      "0": {
+        "number": "01",
+        "title": "Client enquiry",
+        "text": "We listen to your architecture, intent, and vision."
+      },
+      "1": {
+        "number": "02",
+        "title": "Concept",
+        "text": "Directors shape the concept and material palette."
+      },
+      "2": {
+        "number": "03",
+        "title": "3D design",
+        "text": "Photorealistic 3D models make every detail tangible."
+      },
+      "3": {
+        "number": "04",
+        "title": "Production",
+        "text": "Master joiners craft the commission in our workshops."
+      },
+      "4": {
+        "number": "05",
+        "title": "Quality control",
+        "text": "Every surface is inspected to the strictest standards."
+      },
+      "5": {
+        "number": "06",
+        "title": "Delivery",
+        "text": "Flawless logistics deliver the commission safely to site."
+      },
+      "6": {
+        "number": "07",
+        "title": "Installation",
+        "text": "Our teams install and complete the interior on site."
+      }
     }
   },
   "production": {
@@ -302,14 +339,46 @@
     "description": "From the workshop floor to on-site installation — every stage is executed by our team at our own facilities.",
     "tagline": "We are not just designers. We produce and oversee every stage ourselves.",
     "steps": {
-      "0": { "number": "01", "title": "Machining", "text": "Calibrated machines saw and mill solid timber to micron precision." },
-      "1": { "number": "02", "title": "Hand carving", "text": "Master carvers create ornament, reliefs, and decorative elements by hand." },
-      "2": { "number": "03", "title": "Sanding", "text": "Multi-stage sanding reveals the grain and prepares surfaces for finishing." },
-      "3": { "number": "04", "title": "Assembly", "text": "Structures are assembled in the workshop with geometry and joint quality checks." },
-      "4": { "number": "05", "title": "Lacquering", "text": "Oils and lacquers are applied by hand, layer by layer, for protection and depth of colour." },
-      "5": { "number": "06", "title": "Packaging", "text": "Each element is individually packed for safe transport." },
-      "6": { "number": "07", "title": "Container loading", "text": "We organise loading and international logistics to the client's site." },
-      "7": { "number": "08", "title": "Installation", "text": "Our teams carry out installation and turnkey handover on site." }
+      "0": {
+        "number": "01",
+        "title": "Machining",
+        "text": "Calibrated machines saw and mill solid timber to micron precision."
+      },
+      "1": {
+        "number": "02",
+        "title": "Hand carving",
+        "text": "Master carvers create ornament, reliefs, and decorative elements by hand."
+      },
+      "2": {
+        "number": "03",
+        "title": "Sanding",
+        "text": "Multi-stage sanding reveals the grain and prepares surfaces for finishing."
+      },
+      "3": {
+        "number": "04",
+        "title": "Assembly",
+        "text": "Structures are assembled in the workshop with geometry and joint quality checks."
+      },
+      "4": {
+        "number": "05",
+        "title": "Lacquering",
+        "text": "Oils and lacquers are applied by hand, layer by layer, for protection and depth of colour."
+      },
+      "5": {
+        "number": "06",
+        "title": "Packaging",
+        "text": "Each element is individually packed for safe transport."
+      },
+      "6": {
+        "number": "07",
+        "title": "Container loading",
+        "text": "We organise loading and international logistics to the client's site."
+      },
+      "7": {
+        "number": "08",
+        "title": "Installation",
+        "text": "Our teams carry out installation and turnkey handover on site."
+      }
     }
   },
   "process": {
@@ -317,13 +386,41 @@
     "title": "From idea to completed project",
     "description": "The full cycle — from first enquiry to on-site installation. Every stage is overseen by our team.",
     "steps": {
-      "0": { "number": "01", "title": "Client enquiry", "text": "You submit an enquiry — we record the brief, site, and timeline." },
-      "1": { "number": "02", "title": "Consultation", "text": "We hold a consultation to clarify requirements and technical specifications." },
-      "2": { "number": "03", "title": "3D visualization", "text": "We develop 3D visualization and project documentation for approval." },
-      "3": { "number": "04", "title": "Production", "text": "We manufacture at our own facility from selected natural timber." },
-      "4": { "number": "05", "title": "Quality control", "text": "We conduct multi-stage quality control at every step of production." },
-      "5": { "number": "06", "title": "Delivery", "text": "We arrange safe delivery to any location worldwide." },
-      "6": { "number": "07", "title": "Installation", "text": "We perform professional installation and turnkey handover on site." }
+      "0": {
+        "number": "01",
+        "title": "Client enquiry",
+        "text": "You submit an enquiry — we record the brief, site, and timeline."
+      },
+      "1": {
+        "number": "02",
+        "title": "Consultation",
+        "text": "We hold a consultation to clarify requirements and technical specifications."
+      },
+      "2": {
+        "number": "03",
+        "title": "3D visualization",
+        "text": "We develop 3D visualization and project documentation for approval."
+      },
+      "3": {
+        "number": "04",
+        "title": "Production",
+        "text": "We manufacture at our own facility from selected natural timber."
+      },
+      "4": {
+        "number": "05",
+        "title": "Quality control",
+        "text": "We conduct multi-stage quality control at every step of production."
+      },
+      "5": {
+        "number": "06",
+        "title": "Delivery",
+        "text": "We arrange safe delivery to any location worldwide."
+      },
+      "6": {
+        "number": "07",
+        "title": "Installation",
+        "text": "We perform professional installation and turnkey handover on site."
+      }
     }
   },
   "woods": {
@@ -332,13 +429,41 @@
     "description": "We work only with selected species — for interiors, façades, gazebos, and architectural elements built to last decades.",
     "cta": "Request a proposal",
     "items": {
-      "0": { "name": "Oak", "origin": "Premium species", "note": "Strength, monumentality, and noble medullary rays." },
-      "1": { "name": "Walnut", "origin": "Premium species", "note": "Deep chocolate tone and expressive grain — for luxury interiors and furniture." },
-      "2": { "name": "Beech", "origin": "Premium species", "note": "Even grain and uniform warm tone for clean architectural forms." },
-      "3": { "name": "Ash", "origin": "Premium species", "note": "Light warm hue, resilience, and a lively texture pattern." },
-      "4": { "name": "Pine", "origin": "Premium species", "note": "Light timber with distinctive texture — for pavilions and structures." },
-      "5": { "name": "Cedar", "origin": "Premium species", "note": "Aromatic, warm texture with natural resistance." },
-      "6": { "name": "Abachi", "origin": "Premium species", "note": "Light, low-density timber — ideal for décor and Eastern interiors." }
+      "0": {
+        "name": "Oak",
+        "origin": "Premium species",
+        "note": "Strength, monumentality, and noble medullary rays."
+      },
+      "1": {
+        "name": "Walnut",
+        "origin": "Premium species",
+        "note": "Deep chocolate tone and expressive grain — for luxury interiors and furniture."
+      },
+      "2": {
+        "name": "Beech",
+        "origin": "Premium species",
+        "note": "Even grain and uniform warm tone for clean architectural forms."
+      },
+      "3": {
+        "name": "Ash",
+        "origin": "Premium species",
+        "note": "Light warm hue, resilience, and a lively texture pattern."
+      },
+      "4": {
+        "name": "Pine",
+        "origin": "Premium species",
+        "note": "Light timber with distinctive texture — for pavilions and structures."
+      },
+      "5": {
+        "name": "Cedar",
+        "origin": "Premium species",
+        "note": "Aromatic, warm texture with natural resistance."
+      },
+      "6": {
+        "name": "Abachi",
+        "origin": "Premium species",
+        "note": "Light, low-density timber — ideal for décor and Eastern interiors."
+      }
     }
   },
   "materials": {
@@ -347,23 +472,60 @@
     "description": "We work only with selected species — for interiors, façades, gazebos, and architectural elements built to last decades.",
     "cta": "Request a proposal",
     "items": {
-      "0": { "name": "Oak", "note": "Strength, monumentality, and noble medullary rays." },
-      "1": { "name": "Walnut", "note": "Deep chocolate tone and expressive grain — for luxury interiors and furniture." },
-      "2": { "name": "Beech", "note": "Even grain and uniform warm tone for clean architectural forms." },
-      "3": { "name": "Ash", "note": "Light warm hue, resilience, and a lively texture pattern." },
-      "4": { "name": "Pine", "note": "Light timber with distinctive texture — for pavilions and structures." },
-      "5": { "name": "Cedar", "note": "Aromatic, warm texture with natural resistance." },
-      "6": { "name": "Abachi", "note": "Light, low-density timber — ideal for décor and Eastern interiors." }
+      "0": {
+        "name": "Oak",
+        "note": "Strength, monumentality, and noble medullary rays."
+      },
+      "1": {
+        "name": "Walnut",
+        "note": "Deep chocolate tone and expressive grain — for luxury interiors and furniture."
+      },
+      "2": {
+        "name": "Beech",
+        "note": "Even grain and uniform warm tone for clean architectural forms."
+      },
+      "3": {
+        "name": "Ash",
+        "note": "Light warm hue, resilience, and a lively texture pattern."
+      },
+      "4": {
+        "name": "Pine",
+        "note": "Light timber with distinctive texture — for pavilions and structures."
+      },
+      "5": {
+        "name": "Cedar",
+        "note": "Aromatic, warm texture with natural resistance."
+      },
+      "6": {
+        "name": "Abachi",
+        "note": "Light, low-density timber — ideal for décor and Eastern interiors."
+      }
     }
   },
   "stats": {
     "eyebrow": "Company in numbers",
     "title": "Ten years of international experience.",
     "items": {
-      "0": { "value": 10, "suffix": "+", "label": "Years in business" },
-      "1": { "value": 18, "suffix": "", "label": "Countries worldwide" },
-      "2": { "value": 180, "suffix": "+", "label": "Completed projects" },
-      "3": { "value": 120, "suffix": "", "label": "Specialists on staff" }
+      "0": {
+        "value": 10,
+        "suffix": "+",
+        "label": "Years in business"
+      },
+      "1": {
+        "value": 18,
+        "suffix": "",
+        "label": "Countries worldwide"
+      },
+      "2": {
+        "value": 180,
+        "suffix": "+",
+        "label": "Completed projects"
+      },
+      "3": {
+        "value": 120,
+        "suffix": "",
+        "label": "Specialists on staff"
+      }
     }
   },
   "whyChooseUs": {
@@ -371,50 +533,82 @@
     "title": "Why clients trust us",
     "description": "An international production company with full-cycle capability — from concept to on-site installation.",
     "reasons": {
-      "0": { "title": "Over 100 completed projects", "text": "A portfolio of government, commercial, and private buildings worldwide." },
-      "1": { "title": "International delivery & installation", "text": "We organise logistics and installation anywhere in the world." },
-      "2": { "title": "Work in more than 10 countries", "text": "Experience delivering projects across diverse climates and cultures." },
-      "3": { "title": "Full-cycle production", "text": "Design, production, delivery, and installation — under one roof." },
-      "4": { "title": "Natural timber only", "text": "We work exclusively with selected solid-wood species." },
-      "5": { "title": "In-house team of masters", "text": "120+ specialists — joiners, carvers, and finishers." },
-      "6": { "title": "Hand artistic carving", "text": "Decorative elements are created by master craftsmen by hand." },
-      "7": { "title": "Premium quality", "text": "Multi-stage quality control at every stage of production." }
+      "0": {
+        "title": "Over 100 completed projects",
+        "text": "A portfolio of government, commercial, and private buildings worldwide."
+      },
+      "1": {
+        "title": "International delivery & installation",
+        "text": "We organise logistics and installation anywhere in the world."
+      },
+      "2": {
+        "title": "Work in more than 10 countries",
+        "text": "Experience delivering projects across diverse climates and cultures."
+      },
+      "3": {
+        "title": "Full-cycle production",
+        "text": "Design, production, delivery, and installation — under one roof."
+      },
+      "4": {
+        "title": "Natural timber only",
+        "text": "We work exclusively with selected solid-wood species."
+      },
+      "5": {
+        "title": "In-house team of masters",
+        "text": "120+ specialists — joiners, carvers, and finishers."
+      },
+      "6": {
+        "title": "Hand artistic carving",
+        "text": "Decorative elements are created by master craftsmen by hand."
+      },
+      "7": {
+        "title": "Premium quality",
+        "text": "Multi-stage quality control at every stage of production."
+      }
     },
     "stats": {
-      "0": { "label": "Years on the market" },
-      "1": { "label": "Countries worldwide" },
-      "2": { "label": "Completed projects" },
-      "3": { "label": "Specialists on staff" }
+      "0": {
+        "label": "Years on the market"
+      },
+      "1": {
+        "label": "Countries worldwide"
+      },
+      "2": {
+        "label": "Completed projects"
+      },
+      "3": {
+        "label": "Specialists on staff"
+      }
     }
   },
   "testimonials": {
-    "eyebrow": "Confidential",
-    "title": "Trust confirmed by quality",
-    "description": "Every completed project is a blend of craftsmanship, natural wood, and attention to detail. Our clients’ reviews confirm the quality, reliability, and professional approach.",
+    "eyebrow": "Client stories",
+    "title": "Real voices, real projects",
+    "description": "We publish only confirmed client feedback. For authentic impressions, see Client films — real videos from completed projects.",
     "items": {
       "0": {
-        "brand": "Royal Palace",
-        "quote": "They did not deliver joinery. They delivered a heirloom our family will cherish for a century.",
-        "author": "His Excellency, Head of the Royal Court",
-        "role": "Royal palace project, Gulf"
+        "brand": "Client film",
+        "quote": "Watch real client videos in the Client films section.",
+        "author": "World of Wood Decoration",
+        "role": "Verified footage only"
       },
       "1": {
-        "brand": "Grand Mosque",
-        "quote": "The mihrab they carved became the soul of the mosque. Craft of this level is almost lost to the world.",
-        "author": "Board of the Grand Mosque Waqf",
-        "role": "Sacred project, North Africa"
+        "brand": "Client film",
+        "quote": "Watch real client videos in the Client films section.",
+        "author": "World of Wood Decoration",
+        "role": "Verified footage only"
       },
       "2": {
-        "brand": "Five-star hotel group",
-        "quote": "Our guests touch the walls. In luxury hospitality, that is the highest praise a material can receive.",
-        "author": "Managing Director",
-        "role": "Five-star hotel, Europe"
+        "brand": "Client film",
+        "quote": "Watch real client videos in the Client films section.",
+        "author": "World of Wood Decoration",
+        "role": "Verified footage only"
       },
       "3": {
-        "brand": "Private residence",
-        "quote": "World of Wood Decoration turned our home into a work of art — wood lives in every room.",
-        "author": "Private client",
-        "role": "Coastal villa, Mediterranean"
+        "brand": "Client film",
+        "quote": "Watch real client videos in the Client films section.",
+        "author": "World of Wood Decoration",
+        "role": "Verified footage only"
       }
     }
   },
@@ -472,20 +666,44 @@
       "eyebrow": "What we uphold",
       "title": "Principles beneath every project.",
       "items": {
-        "0": { "title": "Craftsmanship", "text": "We hire for a lifetime of craft and give masters the time to reach perfection." },
-        "1": { "title": "Provenance", "text": "Every board is traced to a sustainable, responsibly managed source." },
-        "2": { "title": "Discretion", "text": "Our clients value privacy above all. Most projects are never named publicly." },
-        "3": { "title": "Longevity", "text": "We build to restore and inherit — not to discard." }
+        "0": {
+          "title": "Craftsmanship",
+          "text": "We hire for a lifetime of craft and give masters the time to reach perfection."
+        },
+        "1": {
+          "title": "Provenance",
+          "text": "Every board is traced to a sustainable, responsibly managed source."
+        },
+        "2": {
+          "title": "Discretion",
+          "text": "Our clients value privacy above all. Most projects are never named publicly."
+        },
+        "3": {
+          "title": "Longevity",
+          "text": "We build to restore and inherit — not to discard."
+        }
       }
     },
     "team": {
       "eyebrow": "Masters",
       "title": "The hands behind the house.",
       "members": {
-        "0": { "name": "Karim Haddad", "role": "Founder & Design Director" },
-        "1": { "name": "Elena Moro", "role": "Head of Architectural Design" },
-        "2": { "name": "Tomás Ribeiro", "role": "Master Carver" },
-        "3": { "name": "Aya Nakamura", "role": "Head of Finishing" }
+        "0": {
+          "name": "Karim Haddad",
+          "role": "Founder & Design Director"
+        },
+        "1": {
+          "name": "Elena Moro",
+          "role": "Head of Architectural Design"
+        },
+        "2": {
+          "name": "Tomás Ribeiro",
+          "role": "Master Carver"
+        },
+        "3": {
+          "name": "Aya Nakamura",
+          "role": "Head of Finishing"
+        }
       }
     }
   },
@@ -494,11 +712,26 @@
       "eyebrow": "Connect",
       "title": "Choose your preferred channel",
       "description": "We are available on messengers, email, and social media.",
-      "whatsapp": { "label": "WhatsApp", "hint": "Quick chat with a project manager" },
-      "telegram": { "label": "Telegram", "hint": "Message us instantly" },
-      "email": { "label": "Email", "hint": "Official correspondence" },
-      "instagram": { "label": "Instagram", "hint": "Projects and behind the scenes" },
-      "facebook": { "label": "Facebook", "hint": "Projects and updates on Facebook" }
+      "whatsapp": {
+        "label": "WhatsApp",
+        "hint": "Quick chat with a project manager"
+      },
+      "telegram": {
+        "label": "Telegram",
+        "hint": "Message us instantly"
+      },
+      "email": {
+        "label": "Email",
+        "hint": "Official correspondence"
+      },
+      "instagram": {
+        "label": "Instagram",
+        "hint": "Projects and behind the scenes"
+      },
+      "facebook": {
+        "label": "Facebook",
+        "hint": "Projects and updates on Facebook"
+      }
     },
     "map": {
       "eyebrow": "Office",
@@ -561,9 +794,21 @@
       "eyebrow": "Contact",
       "title": "How to reach us",
       "studios": {
-        "0": { "city": "Dubai", "role": "Head office", "address": "DIFC, Gate Precinct, Dubai, UAE" },
-        "1": { "city": "Dushanbe", "role": "Production", "address": "Tajikistan" },
-        "2": { "city": "Moscow", "role": "Representative office", "address": "Russia" }
+        "0": {
+          "city": "Dubai",
+          "role": "Head office",
+          "address": "DIFC, Gate Precinct, Dubai, UAE"
+        },
+        "1": {
+          "city": "Dushanbe",
+          "role": "Production",
+          "address": "Tajikistan"
+        },
+        "2": {
+          "city": "Moscow",
+          "role": "Representative office",
+          "address": "Russia"
+        }
       },
       "emailLabel": "Email",
       "phoneLabel": "Phone",
@@ -572,7 +817,14 @@
     }
   },
   "marquee": {
-    "items": ["Palaces", "Villas", "Grand mosques", "Hotels", "Private residences", "Gazebos"]
+    "items": [
+      "Palaces",
+      "Villas",
+      "Grand mosques",
+      "Hotels",
+      "Private residences",
+      "Gazebos"
+    ]
   },
   "notFound": {
     "title": "This page has not been carved yet.",

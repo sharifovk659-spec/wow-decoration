@@ -644,109 +644,133 @@
       "ar": "المظلة الملكية 14×8"
     },
     "location": {
-      "en": "Private commission",
-      "tg": "Фармоиши хусусӣ",
-      "ar": "طلب خاص"
+      "en": "Iram National Garden",
+      "tg": "Боғи миллии «Ирам»",
+      "ar": "حديقة إرام الوطنية"
     },
     "country": {
-      "en": "UAE",
-      "tg": "Аморати Муттаҳидаи Араб",
-      "ar": "الإمارات"
+      "en": "Tajikistan",
+      "tg": "Тоҷикистон",
+      "ar": "طاجيكستان"
     },
     "area": {
-      "en": "112 m²",
-      "tg": "112 м²",
-      "ar": "112 م²"
+      "en": "14 × 8 m",
+      "tg": "14 × 8 м",
+      "ar": "14 × 8 م"
     },
     "duration": {
-      "en": "5 months",
-      "tg": "5 моҳ",
-      "ar": "5 أشهر"
+      "en": "Full production and installation cycle",
+      "tg": "Сикли пурраи истеҳсол ва насб",
+      "ar": "دورة إنتاج وتركيب كاملة"
     },
     "summary": {
-      "en": "A monumental 14×8 metre gazebo in noble hardwoods with artistic hand carving.",
-      "tg": "Беседкаи монументалии 14×8 метр аз намудҳои шарифи чӯб бо резьбаи ҳунармандонаи дастӣ.",
-      "ar": "مظلة ضخمة بأبعاد 14×8 أمتار من أخشاب نبيلة مع نحت يدوي فني."
+      "en": "A monumental 14×8 m gazebo at Iram National Garden — primarily ash, with artistic hand carving and turnkey installation.",
+      "tg": "Беседкаи монументалии 14×8 м дар Боғи миллии «Ирам»: асосан аз ясень, бо резьбаи ҳунармандона ва насби пурра.",
+      "ar": "مظلة ضخمة بأبعاد 14×8 م في حديقة إرام الوطنية — أساساً من خشب الرماد مع نحت يدوي فني وتركيب متكامل."
     },
     "overview": {
-      "en": "The Royal Gazebo 14×8 is a bespoke project with monumental proportions, hand carving, and a structure built to endure for generations.",
-      "tg": "Беседкаи шоҳона 14×8 — лоиҳаи авторӣ бо андозаҳои монументалӣ, резьбаи дастӣ ва конструксияе, ки барои асрҳо сохта шудааст.",
-      "ar": "المظلة الملكية 14×8 مشروع مخصص بأبعاد ضخمة ونحت يدوي وهيكل مصمم ليدوم أجيالاً."
+      "en": "The 14×8 m gazebo for Iram National Garden in Tajikistan: design, ash manufacture, CNC machining, hand finishing, artistic carving, assembly and installation.",
+      "tg": "Беседкаи 14×8 м барои Боғи миллии «Ирам» дар Тоҷикистон: тарҳрезӣ, истеҳсол аз ясень, коркарди станокӣ, таҳрири дастӣ, резьбаи ҳунармандона, ҷамъоварӣ ва насб.",
+      "ar": "مظلة 14×8 م لحديقة إرام الوطنية في طاجيكستان: التصميم، الإنتاج من خشب الرماد، التشغيل الآلي، التشطيب اليدوي، النحت الفني، التجميع والتركيب."
     },
     "result": {
-      "en": "The gazebo became the centrepiece of a private residence — monumental, functional, and aesthetically flawless.",
-      "tg": "Беседка ба маркази резиденсияи хусусӣ табдил ёфт — монументалӣ, функсионалӣ ва аз лиҳози эстетикӣ беайб.",
-      "ar": "أصبحت المظلة العنصر المحوري للقصر الخاص — ضخمة وعملية وخالية من العيوب الجمالية."
+      "en": "The gazebo became an architectural landmark of Iram Garden — a monumental ash structure with artistic carving.",
+      "tg": "Объект ба акценти меъмории Боғи «Ирам» табдил ёфт — конструксияи монументалӣ аз ясень бо резьбаи ҳунармандона.",
+      "ar": "أصبحت المظلة معلماً معمارياً في حديقة إرام — هيكلاً ضخماً من خشب الرماد مع نحت فني."
     },
     "scope": {
-      "en": ["Design", "Manufacturing", "Delivery and installation"],
-      "tg": ["Тарҳрезӣ", "Истеҳсол", "Расонидан ва насб"],
-      "ar": ["التصميم", "الإنتاج", "التوصيل والتركيب"]
+      "en": [
+        "Design",
+        "Manufacturing",
+        "CNC machining",
+        "Hand finishing",
+        "Artistic carving",
+        "Assembly and installation"
+      ],
+      "tg": [
+        "Тарҳрезӣ",
+        "Истеҳсол",
+        "Коркарди станокӣ",
+        "Таҳрири дастӣ",
+        "Резьбаи ҳунармандона",
+        "Ҷамъоварӣ ва насб"
+      ],
+      "ar": [
+        "التصميم",
+        "الإنتاج",
+        "التشغيل الآلي",
+        "التشطيب اليدوي",
+        "النحت الفني",
+        "التجميع والتركيب"
+      ]
     },
     "completedWorks": {
       "en": [
-        "Gazebo frame",
-        "Roofing",
-        "Carved columns",
-        "Decorative elements"
+        "14×8 m gazebo frame",
+        "CNC machining",
+        "Hand finishing",
+        "Artistic carving",
+        "On-site assembly and installation"
       ],
       "tg": [
-        "Каркаси беседка",
-        "Сақф",
-        "Сутунҳои резьбашуда",
-        "Элементҳои ороишӣ"
+        "Каркаси беседка 14×8 м",
+        "Коркарди станокӣ",
+        "Таҳрири дастӣ",
+        "Резьбаи ҳунармандона",
+        "Ҷамъоварӣ ва насб дар объект"
       ],
       "ar": [
-        "هيكل المظلة",
-        "السقف",
-        "أعمدة منحوتة",
-        "عناصر زخرفية"
+        "هيكل المظلة 14×8 م",
+        "التشغيل الآلي",
+        "التشطيب اليدوي",
+        "النحت الفني",
+        "التجميع والتركيب في الموقع"
       ]
     },
     "productionSteps": {
       "en": [
         "CNC machining",
-        "Column carving",
-        "Assembly",
-        "Lacquering"
+        "Hand finishing",
+        "Artistic carving",
+        "Assembly"
       ],
       "tg": [
         "Коркарди станокӣ",
-        "Резьбаи сутунҳо",
-        "Ҷамъоварӣ",
-        "Лаккунӣ"
+        "Таҳрири дастӣ",
+        "Резьбаи ҳунармандона",
+        "Ҷамъоварӣ"
       ],
       "ar": [
         "التشغيل الآلي",
-        "نحت الأعمدة",
-        "التجميع",
-        "الطلاء اللاكي"
+        "التشطيب اليدوي",
+        "النحت الفني",
+        "التجميع"
       ]
     },
     "installationSteps": {
       "en": [
         "Delivery",
-        "Frame installation",
-        "Roof fitting",
+        "On-site assembly",
+        "Installation",
         "Finishing"
       ],
       "tg": [
         "Расонидан",
-        "Насби каркас",
-        "Насби сақф",
+        "Ҷамъоварӣ дар майдонча",
+        "Насб",
         "Ороиши ниҳоӣ"
       ],
       "ar": [
         "التوصيل",
-        "تركيب الهيكل",
-        "تركيب السقف",
+        "التجميع في الموقع",
+        "التركيب",
         "التشطيب النهائي"
       ]
     },
     "materials": {
-      "en": ["Walnut", "Oak", "Cedar"],
-      "tg": ["Грецка", "Балут", "Арча"],
-      "ar": ["الجوز", "البلوط", "الأرز"]
+      "en": ["Ash"],
+      "tg": ["Ясень"],
+      "ar": ["الرماد"]
     }
   },
   "walnut-daybed": {
