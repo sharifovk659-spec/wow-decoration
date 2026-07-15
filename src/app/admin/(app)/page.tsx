@@ -59,6 +59,12 @@ export default function AdminDashboardPage() {
             ? new Date(manifest.updatedAt).toLocaleString("ru-RU")
             : "ещё не было"}
       </p>
+      <p className="mt-4 max-w-2xl rounded-luxe border border-line/80 bg-ink-800/50 px-4 py-3 text-xs leading-relaxed text-bone-dim">
+        На Vercel для загрузки нужен{" "}
+        <span className="text-gold">BLOB_READ_WRITE_TOKEN</span> (Storage →
+        Blob) + <span className="text-gold">ADMIN_PASSWORD=admin123</span> в
+        Environment Variables.
+      </p>
 
       <div className="mt-10 grid gap-5 sm:grid-cols-2">
         {cards.map((card) => (

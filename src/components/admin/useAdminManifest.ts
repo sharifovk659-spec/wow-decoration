@@ -48,7 +48,12 @@ export function useAdminManifest() {
           window.location.href = "/admin/login";
           return;
         }
-        if (!res.ok) throw new Error("Не удалось сохранить");
+        if (!res.ok) {
+          const data = (await res.json().catch(() => ({}))) as {
+            error?: string;
+          };
+          throw new Error(data.error || "Не удалось сохранить");
+        }
         const saved = (await res.json()) as CmsManifest;
         setManifest(saved);
         setMessage("Сохранено");

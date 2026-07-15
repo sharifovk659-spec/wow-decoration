@@ -3,7 +3,10 @@ import fs from "fs/promises";
 import path from "path";
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/cms/auth";
+import { isVercelRuntime, uploadToBlob, useBlobStorage } from "@/lib/cms/blob";
 import { UPLOADS_DIR, UPLOADS_PUBLIC_PREFIX } from "@/lib/cms/paths";
+
+export const runtime = "nodejs";
 
 const MAX_BYTES = 80 * 1024 * 1024; // 80 MB
 const ALLOWED = new Set([
@@ -37,14 +40,20 @@ export async function POST(request: Request) {
   if (!(file instanceof File)) {
     return NextResponse.json({ error: "Файл не передан" }, { status: 400 });
   }
-  if (!ALLOWED.has(file.type) && !file.name.match(/\.(jpe?g|png|webp|avif|mp4|webm)$/i)) {
+  if (
+    !ALLOWED.has(file.type) &&
+    !file.name.match(/\.(jpe?g|png|webp|avif|mp4|webm)$/i)
+  ) {
     return NextResponse.json(
       { error: "Допустимы изображения и видео (jpg/png/webp/mp4)" },
       { status: 400 },
     );
   }
   if (file.size > MAX_BYTES) {
-    return NextResponse.json({ error: "Файл слишком большой (макс. 80 МБ)" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Файл слишком большой (макс. 80 МБ)" },
+      { status: 400 },
+    );
   }
 
   const buf = Buffer.from(await file.arrayBuffer());
@@ -53,11 +62,35 @@ export async function POST(request: Request) {
   const ext = extFor(file.type, file.name);
   const folder = file.type.startsWith("video/") ? "videos" : "images";
   const rel = `${folder}/${stamp}-${rand}${ext}`;
-  const abs = path.join(UPLOADS_DIR, rel);
 
-  await fs.mkdir(path.dirname(abs), { recursive: true });
-  await fs.writeFile(abs, buf);
+  try {
+    if (useBlobStorage()) {
+      const url = await uploadToBlob(
+        `uploads/${rel}`,
+        buf,
+        file.type || "application/octet-stream",
+      );
+      return NextResponse.json({ url, size: file.size, type: file.type });
+    }
 
-  const url = `${UPLOADS_PUBLIC_PREFIX}/${rel.replace(/\\/g, "/")}`;
-  return NextResponse.json({ url, size: file.size, type: file.type });
+    if (isVercelRuntime()) {
+      return NextResponse.json(
+        {
+          error:
+            "На Vercel добавьте BLOB_READ_WRITE_TOKEN (Storage → Blob), иначе загрузка невозможна.",
+        },
+        { status: 503 },
+      );
+    }
+
+    const abs = path.join(UPLOADS_DIR, rel);
+    await fs.mkdir(path.dirname(abs), { recursive: true });
+    await fs.writeFile(abs, buf);
+    const url = `${UPLOADS_PUBLIC_PREFIX}/${rel.replace(/\\/g, "/")}`;
+    return NextResponse.json({ url, size: file.size, type: file.type });
+  } catch (err) {
+    const message =
+      err instanceof Error ? err.message : "Ошибка загрузки файла";
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 }
