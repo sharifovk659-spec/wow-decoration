@@ -55,12 +55,7 @@ export default function AdminLoginPage() {
         <p className="mt-3 text-sm leading-relaxed text-bone-dim">
           Управление фото, видео, обложками и галереей сайта.
         </p>
-        <p className="mt-4 rounded-luxe border border-gold/25 bg-gold/10 px-3 py-2 text-xs leading-relaxed text-gold-soft">
-          Пароль по умолчанию: <span className="font-medium text-gold">admin</span>
-          <br />
-          (или значение ADMIN_PASSWORD из .env)
-        </p>
-        <label className="mt-6 block text-xs uppercase tracking-[0.18em] text-bone-soft">
+        <label className="mt-8 block text-xs uppercase tracking-[0.18em] text-bone-soft">
           Пароль
           <input
             type="password"

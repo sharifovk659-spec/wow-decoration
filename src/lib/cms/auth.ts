@@ -13,7 +13,7 @@ function secret(): string {
 }
 
 function expectedPassword(): string {
-  return process.env.ADMIN_PASSWORD?.trim() || "admin";
+  return process.env.ADMIN_PASSWORD?.trim() || "admin123";
 }
 
 function sign(payload: string): string {
