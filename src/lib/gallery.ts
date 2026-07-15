@@ -33,8 +33,40 @@ export const galleryCategories: GalleryCategory[] = [
   "beforeAfter",
 ];
 
-/** User project photos only — «Дворец наци» and «2015 компания» live in About. */
+/** New project photos from camera (DSC) + established works. */
 export const galleryItems: GalleryItem[] = [
+  // DSC set (user selection — all 29)
+  { key: "dsc-05641", src: "/images/gallery/dsc-05641.jpg", category: "ceilings" },
+  { key: "dsc-05640", src: "/images/gallery/dsc-05640.jpg", category: "ceilings" },
+  { key: "dsc-05622", src: "/images/gallery/dsc-05622.jpg", category: "ceilings" },
+  { key: "dsc-05621", src: "/images/gallery/dsc-05621.jpg", category: "ceilings" },
+  { key: "dsc-05596", src: "/images/gallery/dsc-05596.jpg", category: "interiors" },
+  { key: "dsc-05595", src: "/images/gallery/dsc-05595.jpg", category: "interiors" },
+  { key: "dsc-05557", src: "/images/gallery/dsc-05557.jpg", category: "walls" },
+  { key: "dsc-05556", src: "/images/gallery/dsc-05556.jpg", category: "walls" },
+  { key: "dsc-05548", src: "/images/gallery/dsc-05548.jpg", category: "walls" },
+  { key: "dsc-05545", src: "/images/gallery/dsc-05545.jpg", category: "walls" },
+  { key: "dsc-05423", src: "/images/gallery/dsc-05423.jpg", category: "furniture" },
+  { key: "dsc-05422", src: "/images/gallery/dsc-05422.jpg", category: "furniture" },
+  { key: "dsc-05399", src: "/images/gallery/dsc-05399.jpg", category: "interiors" },
+  { key: "dsc-05394", src: "/images/gallery/dsc-05394.jpg", category: "interiors" },
+  { key: "dsc-05347", src: "/images/gallery/dsc-05347.jpg", category: "interiors" },
+  { key: "dsc-05343", src: "/images/gallery/dsc-05343.jpg", category: "interiors" },
+  { key: "dsc-05341", src: "/images/gallery/dsc-05341.jpg", category: "interiors" },
+  { key: "dsc-05335", src: "/images/gallery/dsc-05335.jpg", category: "interiors" },
+  { key: "dsc-05334", src: "/images/gallery/dsc-05334.jpg", category: "interiors" },
+  { key: "dsc-05332", src: "/images/gallery/dsc-05332.jpg", category: "interiors" },
+  { key: "dsc-05323", src: "/images/gallery/dsc-05323.jpg", category: "interiors" },
+  { key: "dsc-05304", src: "/images/gallery/dsc-05304.jpg", category: "interiors" },
+  { key: "dsc-05257", src: "/images/gallery/dsc-05257.jpg", category: "gazebo" },
+  { key: "dsc-05256", src: "/images/gallery/dsc-05256.jpg", category: "gazebo" },
+  { key: "dsc-05249", src: "/images/gallery/dsc-05249.jpg", category: "gazebo" },
+  { key: "dsc-05247", src: "/images/gallery/dsc-05247.jpg", category: "gazebo" },
+  { key: "dsc-05211", src: "/images/gallery/dsc-05211.jpg", category: "columns" },
+  { key: "dsc-05210", src: "/images/gallery/dsc-05210.jpg", category: "columns" },
+  { key: "dsc-05209", src: "/images/gallery/dsc-05209.jpg", category: "columns" },
+
+  // Established works
   { key: "ceilings-kohi", src: "/images/projects/kohi-navruz.jpg", category: "ceilings" },
   { key: "daybeds-topchan", src: "/images/projects/walnut-daybed.jpg", category: "daybeds" },
   { key: "gazebo-royal", src: "/images/projects/royal-gazebo-14x8.jpg", category: "gazebo" },
