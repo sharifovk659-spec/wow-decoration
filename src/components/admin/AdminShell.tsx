@@ -42,12 +42,12 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
             </h1>
           </div>
           <div className="flex items-center gap-3">
-            <Link
+            <a
               href="/ru"
               className="hidden text-xs uppercase tracking-[0.18em] text-bone-dim transition hover:text-gold sm:inline"
             >
               На сайт
-            </Link>
+            </a>
             <button
               type="button"
               onClick={() => void logout()}

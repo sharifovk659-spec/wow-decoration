@@ -4,29 +4,28 @@ import path from "path";
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/cms/auth";
 import { isVercelRuntime, uploadToBlob, useBlobStorage } from "@/lib/cms/blob";
+import { isAllowedUpload } from "@/lib/cms/mediaTypes";
 import { UPLOADS_DIR, UPLOADS_PUBLIC_PREFIX } from "@/lib/cms/paths";
 
 export const runtime = "nodejs";
 
-const MAX_BYTES = 80 * 1024 * 1024; // 80 MB
-const ALLOWED = new Set([
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-  "image/avif",
-  "video/mp4",
-  "video/webm",
-]);
+const MAX_BYTES = 200 * 1024 * 1024; // 200 MB — large client films
 
 function extFor(type: string, original: string): string {
   const fromName = path.extname(original).toLowerCase();
-  if (fromName && fromName.length <= 5) return fromName;
+  if (fromName && fromName.length <= 6) return fromName;
   if (type.includes("png")) return ".png";
   if (type.includes("webp")) return ".webp";
   if (type.includes("avif")) return ".avif";
   if (type.includes("webm")) return ".webm";
-  if (type.includes("mp4")) return ".mp4";
+  if (type.includes("quicktime")) return ".mov";
+  if (type.includes("ogg")) return ".ogg";
+  if (type.includes("mpeg")) return ".mpeg";
+  if (type.includes("3gpp")) return ".3gp";
+  if (type.includes("matroska")) return ".mkv";
+  if (type.includes("msvideo") || type.includes("avi")) return ".avi";
+  if (type.includes("mp4") || type.includes("m4v")) return ".mp4";
+  if (type.startsWith("video/")) return ".mp4";
   return ".jpg";
 }
 
@@ -40,18 +39,18 @@ export async function POST(request: Request) {
   if (!(file instanceof File)) {
     return NextResponse.json({ error: "Файл не передан" }, { status: 400 });
   }
-  if (
-    !ALLOWED.has(file.type) &&
-    !file.name.match(/\.(jpe?g|png|webp|avif|mp4|webm)$/i)
-  ) {
+  if (!isAllowedUpload(file)) {
     return NextResponse.json(
-      { error: "Допустимы изображения и видео (jpg/png/webp/mp4)" },
+      {
+        error:
+          "Допустимы изображения и видео (mp4, webm, mov, m4v, ogg, mpeg, avi, mkv, 3gp…)",
+      },
       { status: 400 },
     );
   }
   if (file.size > MAX_BYTES) {
     return NextResponse.json(
-      { error: "Файл слишком большой (макс. 80 МБ)" },
+      { error: "Файл слишком большой (макс. 200 МБ)" },
       { status: 400 },
     );
   }
@@ -60,7 +59,11 @@ export async function POST(request: Request) {
   const stamp = Date.now();
   const rand = randomBytes(4).toString("hex");
   const ext = extFor(file.type, file.name);
-  const folder = file.type.startsWith("video/") ? "videos" : "images";
+  const folder =
+    file.type.startsWith("video/") ||
+    /\.(mp4|webm|mov|m4v|ogg|ogv|mpeg|mpg|3gp|avi|mkv)$/i.test(file.name)
+      ? "videos"
+      : "images";
   const rel = `${folder}/${stamp}-${rand}${ext}`;
 
   try {
@@ -77,7 +80,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "На Vercel добавьте BLOB_READ_WRITE_TOKEN (Storage → Blob), иначе загрузка невозможна.",
+            "На Vercel добавьте Blob Storage, иначе загрузка невозможна.",
         },
         { status: 503 },
       );

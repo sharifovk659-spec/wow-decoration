@@ -3,6 +3,8 @@ export interface VideoTestimonial {
   poster: string;
   youtubeId: string;
   duration: string;
+  /** Local / Blob uploaded video — preferred over YouTube when set. */
+  src?: string | null;
 }
 
 /** YouTube Shorts embed — autoplay when modal opens. */

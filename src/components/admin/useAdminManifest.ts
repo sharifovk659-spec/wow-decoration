@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { CmsManifest } from "@/lib/cms/types";
 import { EMPTY_MANIFEST } from "@/lib/cms/types";
 import { readApiJson } from "@/lib/cms/readApiJson";
+import { invalidateCmsMediaCache } from "@/hooks/useCmsMedia";
 
 export function useAdminManifest() {
   const [manifest, setManifest] = useState<CmsManifest>(EMPTY_MANIFEST);
@@ -56,7 +57,8 @@ export function useAdminManifest() {
         throw new Error(parsed.message || "Не удалось сохранить");
       }
       setManifest(parsed.data);
-      setMessage("Сохранено");
+      invalidateCmsMediaCache();
+      setMessage("Сохранено — видно на сайте");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Ошибка сохранения");
     } finally {

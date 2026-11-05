@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { upload } from "@vercel/blob/client";
 import { readApiJson } from "@/lib/cms/readApiJson";
+import { cn } from "@/lib/utils";
 
 /** Compress large photos in-browser before upload (avoids Vercel limits). */
 async function prepareFile(file: File): Promise<File> {
@@ -103,20 +104,25 @@ export async function uploadAdminFile(file: File): Promise<string> {
 
 export function UploadButton({
   label = "Загрузить",
-  accept = "image/jpeg,image/png,image/webp,video/mp4",
+  accept = "image/jpeg,image/png,image/webp,image/avif,video/*,.mp4,.webm,.mov,.m4v,.ogg,.avi,.mkv",
   onUploaded,
+  className,
 }: {
   label?: string;
   accept?: string;
   onUploaded: (url: string) => void | Promise<void>;
+  className?: string;
 }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className={cn("flex min-w-0 flex-col gap-1", className)}>
       <label
-        className={`inline-flex cursor-pointer items-center justify-center rounded-luxe border border-gold/40 bg-gold/10 px-4 py-2 text-xs uppercase tracking-[0.18em] text-gold transition hover:bg-gold/20 ${busy ? "opacity-60" : ""}`}
+        className={cn(
+          "inline-flex w-full cursor-pointer items-center justify-center rounded-luxe border border-gold/40 bg-gold/10 px-3 py-2 text-center text-[0.65rem] uppercase tracking-[0.14em] text-gold transition hover:bg-gold/20 sm:text-xs sm:tracking-[0.18em]",
+          busy && "opacity-60",
+        )}
       >
         {busy ? "Загрузка…" : label}
         <input

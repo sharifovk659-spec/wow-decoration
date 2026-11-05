@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { HiXMark } from "react-icons/hi2";
 import { useLenis } from "@/components/layout/SmoothScroll";
 import { easeLuxe } from "@/lib/motion";
+import { mimeFromVideoUrl } from "@/lib/cms/mediaTypes";
 
 /** Client-only flag without setState-in-effect (portal-safe hydration). */
 const emptySubscribe = () => () => {};
@@ -35,7 +36,9 @@ export function VideoModal({
 }: VideoModalProps) {
   const lenisRef = useLenis();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isYoutube = Boolean(youtubeId);
+  // Uploaded file wins over YouTube when both are present.
+  const isYoutube = Boolean(youtubeId) && !src;
+  const videoMime = src ? mimeFromVideoUrl(src) : undefined;
 
   const mounted = useSyncExternalStore(
     emptySubscribe,
@@ -127,6 +130,7 @@ export function VideoModal({
               ) : (
                 <video
                   ref={videoRef}
+                  key={src ?? "file"}
                   poster={poster}
                   controls
                   autoPlay
@@ -134,7 +138,11 @@ export function VideoModal({
                   preload="metadata"
                   className="aspect-video max-h-[72dvh] w-full bg-ink object-contain sm:max-h-none"
                 >
-                  <source src={src!} type="video/mp4" />
+                  {videoMime ? (
+                    <source src={src!} type={videoMime} />
+                  ) : (
+                    <source src={src!} />
+                  )}
                 </video>
               )}
             </motion.div>

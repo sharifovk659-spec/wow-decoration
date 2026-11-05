@@ -76,6 +76,12 @@ export function VideoTestimonials() {
                     alt=""
                     fill
                     sizes="200px"
+                    unoptimized={
+                      item.poster.startsWith("/uploads/") ||
+                      item.poster.includes("blob.vercel-storage.com") ||
+                      item.poster.includes("img.youtube.com") ||
+                      item.poster.includes("ytimg.com")
+                    }
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   />
 
@@ -99,7 +105,8 @@ export function VideoTestimonials() {
 
       <VideoModal
         open={active !== null}
-        youtubeId={current?.youtubeId ?? null}
+        src={current?.src ?? null}
+        youtubeId={current?.src ? null : (current?.youtubeId ?? null)}
         poster={current?.poster}
         onClose={() => setActive(null)}
         closeLabel={tc("close")}

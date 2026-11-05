@@ -13,8 +13,11 @@ export interface CmsProcessVideo {
 export interface CmsVideoTestimonial {
   id: string;
   poster: string;
+  /** YouTube video / Shorts ID (optional if `src` is set). */
   youtubeId: string;
   duration: string;
+  /** Uploaded file URL (mp4/webm/mov/…) — plays on site when set. */
+  src?: string | null;
 }
 
 export interface CmsManifest {

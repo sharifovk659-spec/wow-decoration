@@ -17,8 +17,9 @@ type PublicMedia = Pick<
 let cache: PublicMedia | null = null;
 let inflight: Promise<PublicMedia | null> | null = null;
 
-async function fetchPublicMedia(): Promise<PublicMedia | null> {
-  if (cache) return cache;
+async function fetchPublicMedia(force = false): Promise<PublicMedia | null> {
+  if (!force && cache) return cache;
+  if (force) cache = null;
   if (!inflight) {
     inflight = fetch("/api/cms/media", { cache: "no-store" })
       .then(async (res) => {
@@ -40,7 +41,8 @@ export function useCmsMedia() {
 
   useEffect(() => {
     let alive = true;
-    void fetchPublicMedia().then((data) => {
+    // Always re-fetch on mount so admin creates/edits appear after "На сайт".
+    void fetchPublicMedia(true).then((data) => {
       if (alive) setMedia(data);
     });
     return () => {
@@ -53,4 +55,5 @@ export function useCmsMedia() {
 
 export function invalidateCmsMediaCache() {
   cache = null;
+  inflight = null;
 }

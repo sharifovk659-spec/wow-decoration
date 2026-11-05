@@ -1,5 +1,5 @@
 import { list, put } from "@vercel/blob";
-import type { CmsManifest } from "@/lib/cms/types";
+import type { CmsManifest, CmsVideoTestimonial } from "@/lib/cms/types";
 import { EMPTY_MANIFEST } from "@/lib/cms/types";
 
 export const MANIFEST_BLOB_PATH = "cms/manifest.json";
@@ -51,7 +51,16 @@ export function normalizeManifest(raw: unknown): CmsManifest {
         ? { ...data.projectCovers }
         : {},
     videoTestimonials: Array.isArray(data.videoTestimonials)
-      ? data.videoTestimonials
+      ? data.videoTestimonials.map((raw): CmsVideoTestimonial => {
+          const item = raw as Partial<CmsVideoTestimonial>;
+          return {
+            id: String(item.id ?? `film-${Date.now()}`),
+            poster: String(item.poster ?? "/images/hero/banner-01023.jpg"),
+            youtubeId: String(item.youtubeId ?? ""),
+            duration: String(item.duration ?? "0:00"),
+            src: item.src ? String(item.src) : null,
+          };
+        })
       : null,
   };
 }

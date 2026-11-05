@@ -85,6 +85,8 @@ export function ProductionProcess() {
   const processMp4 = cms?.processVideo?.mp4 || siteVideos.process.mp4;
   const processPoster =
     cms?.processVideo?.poster || siteVideos.process.poster;
+  const isCmsSrc = (src: string) =>
+    src.startsWith("/uploads/") || src.includes("blob.vercel-storage.com");
 
   return (
     <section
@@ -115,7 +117,7 @@ export function ProductionProcess() {
           onLoadedData={() => setVideoReady(true)}
           aria-hidden
         >
-          <source src={processMp4} type="video/mp4" />
+          <source src={processMp4} />
         </video>
       </div>
 
@@ -161,6 +163,7 @@ export function ProductionProcess() {
                       fill
                       sizes="(max-width: 768px) 100vw, 800px"
                       quality={92}
+                      unoptimized={isCmsSrc(stepSrc(i))}
                       className="object-cover object-center"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/55 to-ink/15" />

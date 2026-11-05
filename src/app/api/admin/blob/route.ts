@@ -5,18 +5,11 @@ import {
   hasBlobReadWriteToken,
   useBlobStorage,
 } from "@/lib/cms/blob";
+import { UPLOAD_MIME } from "@/lib/cms/mediaTypes";
 
 export const runtime = "nodejs";
 
-const ALLOWED = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-  "image/avif",
-  "video/mp4",
-  "video/webm",
-] as const;
+const ALLOWED = [...UPLOAD_MIME];
 
 /**
  * Client-side Vercel Blob upload handshake.
@@ -61,7 +54,7 @@ export async function POST(request: Request) {
       request,
       onBeforeGenerateToken: async () => ({
         allowedContentTypes: [...ALLOWED],
-        maximumSizeInBytes: 100 * 1024 * 1024,
+        maximumSizeInBytes: 200 * 1024 * 1024,
         addRandomSuffix: true,
         tokenPayload: JSON.stringify({ role: "admin" }),
       }),

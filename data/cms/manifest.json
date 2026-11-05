@@ -1,8 +1,219 @@
 {
   "version": 1,
-  "updatedAt": null,
+  "updatedAt": "2026-11-05T14:52:52.995Z",
   "productionSteps": {},
-  "gallery": null,
+  "gallery": [
+    {
+      "key": "dsc-05641",
+      "src": "/images/gallery/dsc-05641.jpg",
+      "category": "ceilings"
+    },
+    {
+      "key": "dsc-05640",
+      "src": "/images/gallery/dsc-05640.jpg",
+      "category": "ceilings"
+    },
+    {
+      "key": "dsc-05622",
+      "src": "/images/gallery/dsc-05622.jpg",
+      "category": "ceilings"
+    },
+    {
+      "key": "dsc-05621",
+      "src": "/images/gallery/dsc-05621.jpg",
+      "category": "ceilings"
+    },
+    {
+      "key": "dsc-05596",
+      "src": "/images/gallery/dsc-05596.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05595",
+      "src": "/images/gallery/dsc-05595.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05557",
+      "src": "/images/gallery/dsc-05557.jpg",
+      "category": "walls"
+    },
+    {
+      "key": "dsc-05556",
+      "src": "/images/gallery/dsc-05556.jpg",
+      "category": "walls"
+    },
+    {
+      "key": "dsc-05548",
+      "src": "/images/gallery/dsc-05548.jpg",
+      "category": "walls"
+    },
+    {
+      "key": "dsc-05545",
+      "src": "/images/gallery/dsc-05545.jpg",
+      "category": "walls"
+    },
+    {
+      "key": "dsc-05423",
+      "src": "/images/gallery/dsc-05423.jpg",
+      "category": "furniture"
+    },
+    {
+      "key": "dsc-05422",
+      "src": "/images/gallery/dsc-05422.jpg",
+      "category": "furniture"
+    },
+    {
+      "key": "dsc-05399",
+      "src": "/images/gallery/dsc-05399.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05394",
+      "src": "/images/gallery/dsc-05394.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05347",
+      "src": "/images/gallery/dsc-05347.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05343",
+      "src": "/images/gallery/dsc-05343.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05341",
+      "src": "/images/gallery/dsc-05341.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05335",
+      "src": "/images/gallery/dsc-05335.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05334",
+      "src": "/images/gallery/dsc-05334.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05332",
+      "src": "/images/gallery/dsc-05332.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05323",
+      "src": "/images/gallery/dsc-05323.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05304",
+      "src": "/images/gallery/dsc-05304.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "dsc-05257",
+      "src": "/images/gallery/dsc-05257.jpg",
+      "category": "gazebo"
+    },
+    {
+      "key": "dsc-05256",
+      "src": "/images/gallery/dsc-05256.jpg",
+      "category": "gazebo"
+    },
+    {
+      "key": "dsc-05249",
+      "src": "/images/gallery/dsc-05249.jpg",
+      "category": "gazebo"
+    },
+    {
+      "key": "dsc-05247",
+      "src": "/images/gallery/dsc-05247.jpg",
+      "category": "gazebo"
+    },
+    {
+      "key": "dsc-05211",
+      "src": "/images/gallery/dsc-05211.jpg",
+      "category": "columns"
+    },
+    {
+      "key": "dsc-05210",
+      "src": "/images/gallery/dsc-05210.jpg",
+      "category": "columns"
+    },
+    {
+      "key": "dsc-05209",
+      "src": "/images/gallery/dsc-05209.jpg",
+      "category": "columns"
+    },
+    {
+      "key": "ceilings-kohi",
+      "src": "/images/projects/kohi-navruz.jpg",
+      "category": "ceilings"
+    },
+    {
+      "key": "daybeds-topchan",
+      "src": "/images/projects/walnut-daybed.jpg",
+      "category": "daybeds"
+    },
+    {
+      "key": "gazebo-royal",
+      "src": "/images/projects/royal-gazebo-14x8.jpg",
+      "category": "gazebo"
+    },
+    {
+      "key": "columns-botanical",
+      "src": "/images/projects/national-botanical-garden.jpg",
+      "category": "columns"
+    },
+    {
+      "key": "interiors-wyndham",
+      "src": "/images/projects/wyndham-grand-hotel.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "beforeAfter-qatar",
+      "src": "/images/projects/expo-qatar.jpg",
+      "category": "beforeAfter"
+    },
+    {
+      "key": "islamic-main",
+      "src": "/images/gallery/islamic.jpg",
+      "category": "islamic"
+    },
+    {
+      "key": "furniture-tables",
+      "src": "/images/gallery/furniture.jpg",
+      "category": "furniture"
+    },
+    {
+      "key": "doors-parliament",
+      "src": "/images/projects/parliament-tajikistan.jpg",
+      "category": "doors"
+    },
+    {
+      "key": "interiors-villa",
+      "src": "/images/projects/private-villa-interior.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "ceilings-gallery-0101",
+      "src": "/images/gallery/gallery-0101.jpg",
+      "category": "ceilings"
+    },
+    {
+      "key": "interiors-gallery-0220",
+      "src": "/images/gallery/gallery-0220.jpg",
+      "category": "interiors"
+    },
+    {
+      "key": "upload-1793881302749",
+      "src": "/uploads/images/1793881302743-023c778b.png",
+      "category": "interiors"
+    }
+  ],
   "hero": {
     "poster": null,
     "video": null
@@ -12,5 +223,62 @@
     "poster": null
   },
   "projectCovers": {},
-  "videoTestimonials": null
+  "videoTestimonials": [
+    {
+      "id": "0",
+      "poster": "/images/testimonials/0.jpg",
+      "youtubeId": "Ka697QCAe5s",
+      "duration": "0:45",
+      "src": null
+    },
+    {
+      "id": "1",
+      "poster": "/images/testimonials/1.jpg",
+      "youtubeId": "-B6JMuL6dKA",
+      "duration": "0:52",
+      "src": null
+    },
+    {
+      "id": "2",
+      "poster": "/images/testimonials/2.jpg",
+      "youtubeId": "vqlolLqhMa8",
+      "duration": "1:03",
+      "src": null
+    },
+    {
+      "id": "3",
+      "poster": "/images/testimonials/3.jpg",
+      "youtubeId": "boJ6XNyzuGA",
+      "duration": "0:48",
+      "src": null
+    },
+    {
+      "id": "4",
+      "poster": "/images/testimonials/4.jpg",
+      "youtubeId": "_9xkhgfp0VI",
+      "duration": "0:56",
+      "src": null
+    },
+    {
+      "id": "5",
+      "poster": "/images/testimonials/5.jpg",
+      "youtubeId": "lV9M2mOh_io",
+      "duration": "1:08",
+      "src": null
+    },
+    {
+      "id": "6",
+      "poster": "/images/testimonials/6.jpg",
+      "youtubeId": "F14wyhzLMpU",
+      "duration": "0:41",
+      "src": null
+    },
+    {
+      "id": "7",
+      "poster": "/images/testimonials/7.jpg",
+      "youtubeId": "8sM5lDu1EwM",
+      "duration": "0:59",
+      "src": null
+    }
+  ]
 }
