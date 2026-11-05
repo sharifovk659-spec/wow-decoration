@@ -9,6 +9,10 @@ import { useLocale, useTranslations } from "next-intl";
 import { HiPlay } from "react-icons/hi2";
 import { rtlLocales, type Locale } from "@/i18n/routing";
 import { videoTestimonials } from "@/lib/videoTestimonials";
+import {
+  resolveFilmPlayback,
+  slidePosterForFilm,
+} from "@/lib/cms/externalVideo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { useCmsMedia } from "@/hooks/useCmsMedia";
@@ -25,6 +29,7 @@ export function VideoTestimonials() {
 
   const films = cms?.videoTestimonials ?? videoTestimonials;
   const current = active !== null ? films[active] : null;
+  const playback = current ? resolveFilmPlayback(current) : null;
   const loopItems = [...films, ...films];
 
   return (
@@ -47,18 +52,22 @@ export function VideoTestimonials() {
           onSwiper={(s) => (swiperRef.current = s)}
           keyboard={{ enabled: true }}
           loop
-          speed={6000}
+          speed={1000}
           spaceBetween={14}
           slidesPerView="auto"
           allowTouchMove
           grabCursor
           autoplay={{
-            delay: 0,
+            delay: 4500,
             disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
           className="video-marquee !px-4 sm:!px-6"
         >
-          {loopItems.map((item, i) => (
+          {loopItems.map((item, i) => {
+            const posterSrc = slidePosterForFilm(item);
+            const isInstagram = Boolean(item.instagramId);
+            return (
             <SwiperSlide
               key={`${item.id}-${i}`}
               className="!h-auto !w-[11.5rem] sm:!w-[12.5rem]"
@@ -72,18 +81,26 @@ export function VideoTestimonials() {
               >
                 <div className="relative aspect-[9/16] w-full">
                   <Image
-                    src={item.poster}
+                    src={posterSrc}
                     alt=""
                     fill
                     sizes="200px"
                     unoptimized={
+                      posterSrc.startsWith("/api/cms/instagram-poster") ||
                       item.poster.startsWith("/uploads/") ||
                       item.poster.includes("blob.vercel-storage.com") ||
                       item.poster.includes("img.youtube.com") ||
-                      item.poster.includes("ytimg.com")
+                      item.poster.includes("ytimg.com") ||
+                      item.poster.includes("cdninstagram.com")
                     }
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   />
+
+                  {isInstagram ? (
+                    <span className="absolute start-2.5 top-2.5 rounded-full border border-bone/25 bg-ink/40 px-2 py-0.5 text-[0.55rem] uppercase tracking-[0.14em] text-bone backdrop-blur-sm">
+                      IG
+                    </span>
+                  ) : null}
 
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-ink/10" />
 
@@ -99,24 +116,17 @@ export function VideoTestimonials() {
                 </div>
               </button>
             </SwiperSlide>
-          ))}
+            );
+          })}
         </Swiper>
       </div>
 
       <VideoModal
         open={active !== null}
-        src={current?.src ?? null}
-        youtubeId={
-          current?.src || current?.instagramId
-            ? null
-            : (current?.youtubeId ?? null)
-        }
-        instagramId={
-          current?.src || current?.youtubeId
-            ? null
-            : (current?.instagramId ?? null)
-        }
-        instagramKind={current?.instagramKind ?? null}
+        src={playback?.src ?? null}
+        youtubeId={playback?.youtubeId ?? null}
+        instagramId={playback?.instagramId ?? null}
+        instagramKind={playback?.instagramKind ?? null}
         poster={current?.poster}
         onClose={() => setActive(null)}
         closeLabel={tc("close")}

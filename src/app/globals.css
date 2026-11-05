@@ -427,7 +427,7 @@
 }
 
 .video-marquee .swiper-wrapper {
-  transition-timing-function: linear !important;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 @keyframes scroll-hint {

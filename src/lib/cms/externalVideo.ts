@@ -112,11 +112,70 @@ export function instagramEmbedUrl(
   kind: InstagramPostKind = "reel",
 ): string {
   const segment = kind === "p" ? "p" : "reel";
-  return `https://www.instagram.com/${segment}/${shortcode}/embed`;
+  return `https://www.instagram.com/${segment}/${shortcode}/embed/captioned/?cr=1&v=14`;
 }
 
 export function defaultFilmPoster(): string {
   return DEFAULT_FILM_POSTER;
+}
+
+export function isGenericFilmPoster(poster: string): boolean {
+  const generic = DEFAULT_FILM_POSTER;
+  return (
+    poster === generic ||
+    poster.endsWith("/images/hero/banner-01023.jpg") ||
+    poster.includes("/images/hero/banner")
+  );
+}
+
+export function slidePosterForFilm(film: {
+  poster: string;
+  instagramId?: string | null;
+  instagramKind?: InstagramPostKind | null;
+}): string {
+  if (film.instagramId && isGenericFilmPoster(film.poster)) {
+    const kind = film.instagramKind === "p" ? "p" : "reel";
+    return `/api/cms/instagram-poster?shortcode=${encodeURIComponent(film.instagramId)}&kind=${kind}`;
+  }
+  return film.poster;
+}
+
+export function resolveFilmPlayback(film: {
+  src?: string | null;
+  youtubeId?: string;
+  instagramId?: string | null;
+  instagramKind?: InstagramPostKind | null;
+}) {
+  if (film.src) {
+    return {
+      src: film.src,
+      youtubeId: null as string | null,
+      instagramId: null as string | null,
+      instagramKind: null as InstagramPostKind | null,
+    };
+  }
+  if (film.instagramId) {
+    return {
+      src: null,
+      youtubeId: null,
+      instagramId: film.instagramId,
+      instagramKind: (film.instagramKind ?? "reel") as InstagramPostKind,
+    };
+  }
+  if (film.youtubeId) {
+    return {
+      src: null,
+      youtubeId: film.youtubeId,
+      instagramId: null,
+      instagramKind: null as InstagramPostKind | null,
+    };
+  }
+  return {
+    src: null,
+    youtubeId: null,
+    instagramId: null,
+    instagramKind: null as InstagramPostKind | null,
+  };
 }
 
 export function posterForExternalVideo(parsed: ParsedExternalVideo): string {

@@ -14,6 +14,7 @@ import {
   externalLinkDisplay,
   parseExternalVideoInput,
   posterForExternalVideo,
+  slidePosterForFilm,
 } from "@/lib/cms/externalVideo";
 
 const HERO_POSTER_DEFAULT = "/images/hero/banner-01023.jpg";
@@ -123,7 +124,7 @@ export default function AdminVideosPage() {
     }
   }
 
-  function addFromLink() {
+  async function addFromLink() {
     const patch = patchFromExternalLink(linkInput);
     if (!patch) {
       setAddError(
@@ -131,9 +132,27 @@ export default function AdminVideosPage() {
       );
       return;
     }
+    let poster = patch.poster ?? HERO_POSTER_DEFAULT;
+    if (patch.instagramId) {
+      setAddBusy(true);
+      try {
+        const kind = patch.instagramKind ?? "reel";
+        const res = await fetch(
+          `/api/cms/instagram-poster?shortcode=${encodeURIComponent(patch.instagramId)}&kind=${kind}&format=json`,
+        );
+        if (res.ok) {
+          const data = (await res.json()) as { poster?: string };
+          if (data.poster) poster = data.poster;
+        }
+      } catch {
+        /* keep default poster */
+      } finally {
+        setAddBusy(false);
+      }
+    }
     commitFilm({
       id: `film-${Date.now()}`,
-      poster: patch.poster ?? HERO_POSTER_DEFAULT,
+      poster,
       youtubeId: patch.youtubeId ?? "",
       instagramId: patch.instagramId ?? null,
       instagramKind: patch.instagramKind ?? null,
@@ -339,7 +358,7 @@ export default function AdminVideosPage() {
                       />
                       <button
                         type="button"
-                        onClick={addFromLink}
+                        onClick={() => void addFromLink()}
                         className="rounded-luxe border border-gold/40 bg-gold/10 px-4 py-2 text-xs uppercase tracking-[0.18em] text-gold transition hover:bg-gold/20"
                       >
                         Добавить
@@ -381,7 +400,7 @@ export default function AdminVideosPage() {
                     ) : (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        src={film.poster}
+                        src={slidePosterForFilm(film)}
                         alt=""
                         className="h-full w-full object-cover"
                       />
