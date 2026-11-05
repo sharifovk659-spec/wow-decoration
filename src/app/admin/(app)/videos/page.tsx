@@ -11,10 +11,10 @@ import {
 } from "@/components/admin/UploadButton";
 import { useAdminManifest } from "@/components/admin/useAdminManifest";
 import {
+  instagramEmbedUrl,
   externalLinkDisplay,
   parseExternalVideoInput,
   posterForExternalVideo,
-  slidePosterForFilm,
 } from "@/lib/cms/externalVideo";
 
 const HERO_POSTER_DEFAULT = "/images/hero/banner-01023.jpg";
@@ -397,10 +397,19 @@ export default function AdminVideosPage() {
                         controls
                         className="h-full w-full object-cover"
                       />
+                    ) : film.instagramId ? (
+                      <iframe
+                        src={instagramEmbedUrl(
+                          film.instagramId,
+                          film.instagramKind ?? "reel",
+                        )}
+                        title=""
+                        className="pointer-events-none h-full w-full border-0"
+                      />
                     ) : (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
-                        src={slidePosterForFilm(film)}
+                        src={film.poster}
                         alt=""
                         className="h-full w-full object-cover"
                       />

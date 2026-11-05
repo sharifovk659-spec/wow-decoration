@@ -10,6 +10,7 @@ import { HiPlay } from "react-icons/hi2";
 import { rtlLocales, type Locale } from "@/i18n/routing";
 import { videoTestimonials } from "@/lib/videoTestimonials";
 import {
+  instagramEmbedUrl,
   resolveFilmPlayback,
   slidePosterForFilm,
 } from "@/lib/cms/externalVideo";
@@ -66,7 +67,7 @@ export function VideoTestimonials() {
         >
           {loopItems.map((item, i) => {
             const posterSrc = slidePosterForFilm(item);
-            const isInstagram = Boolean(item.instagramId);
+            const isInstagram = Boolean(item.instagramId) && !item.src;
             return (
             <SwiperSlide
               key={`${item.id}-${i}`}
@@ -80,6 +81,18 @@ export function VideoTestimonials() {
                 className="group relative block w-full overflow-hidden rounded-luxe-lg text-start shadow-image transition-shadow duration-500 hover:shadow-luxe focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"
               >
                 <div className="relative aspect-[9/16] w-full">
+                  {isInstagram && item.instagramId ? (
+                    <iframe
+                      src={instagramEmbedUrl(
+                        item.instagramId,
+                        item.instagramKind ?? "reel",
+                      )}
+                      title=""
+                      tabIndex={-1}
+                      loading="lazy"
+                      className="pointer-events-none absolute inset-0 h-full w-full border-0"
+                    />
+                  ) : (
                   <Image
                     src={posterSrc}
                     alt=""
@@ -95,6 +108,7 @@ export function VideoTestimonials() {
                     }
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                   />
+                  )}
 
                   {isInstagram ? (
                     <span className="absolute start-2.5 top-2.5 rounded-full border border-bone/25 bg-ink/40 px-2 py-0.5 text-[0.55rem] uppercase tracking-[0.14em] text-bone backdrop-blur-sm">
