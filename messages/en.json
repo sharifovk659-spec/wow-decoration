@@ -642,6 +642,20 @@
     "sectionTitleLine1": "Premium production",
     "sectionTitleLine2": "and installation",
     "sectionText": "We design, produce, and install gazebos, interior solutions, doors, ceilings, columns, furniture, and architectural elements of premium quality for private residences, hotels, restaurants, palaces, mosques, and public buildings.",
+    "legal": {
+      "eyebrow": "Legal information",
+      "company": "Olami Kandakor Limited Liability Company",
+      "address": "Rahmon Nabiev Street, 210, Sino district, Dushanbe, 734001, Tajikistan",
+      "inn": "020057079",
+      "phone": "+992 900 074646",
+      "email": "info@worldofwooddecoration.com",
+      "labels": {
+        "address": "Legal address:",
+        "inn": "TIN:",
+        "phone": "Phone:",
+        "email": "Email:"
+      }
+    },
     "sectionCta": "Request a proposal",
     "advantages": {
       "0": "International projects",

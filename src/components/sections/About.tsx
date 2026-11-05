@@ -171,6 +171,49 @@ export function About() {
               {t("about.sectionText")}
             </p>
 
+            <div className="about-fade mt-10 space-y-4 border-t border-line/70 pt-8">
+              <p className="eyebrow text-gold">{t("about.legal.eyebrow")}</p>
+              <p className="text-sm font-medium leading-relaxed text-bone">
+                {t("about.legal.company")}
+              </p>
+              <dl className="space-y-3 text-sm">
+                {(
+                  [
+                    ["address", "about.legal.address"],
+                    ["inn", "about.legal.inn"],
+                    ["phone", "about.legal.phone"],
+                    ["email", "about.legal.email"],
+                  ] as const
+                ).map(([key, valueKey]) => (
+                  <div
+                    key={key}
+                    className="grid gap-1 sm:grid-cols-[9.5rem_minmax(0,1fr)] sm:gap-4"
+                  >
+                    <dt className="text-bone-dim">{t(`about.legal.labels.${key}`)}</dt>
+                    <dd className="text-bone" dir={key === "phone" || key === "email" ? "ltr" : undefined}>
+                      {key === "phone" ? (
+                        <a
+                          href={`tel:${siteConfig.phoneHref}`}
+                          className="transition-colors hover:text-gold"
+                        >
+                          {t(valueKey)}
+                        </a>
+                      ) : key === "email" ? (
+                        <a
+                          href={`mailto:${siteConfig.email}`}
+                          className="transition-colors hover:text-gold"
+                        >
+                          {t(valueKey)}
+                        </a>
+                      ) : (
+                        t(valueKey)
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
             <ul className="about-advantages about-fade mt-10 grid gap-4 sm:grid-cols-2">
               {advantageKeys.map((key) => (
                 <li

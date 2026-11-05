@@ -150,8 +150,8 @@ export function Footer() {
           >
             {t("developedBy")}
           </a>
-          <p className="order-2 text-center md:order-none">
-            © {year} {siteConfig.name}. {t("rights")}
+          <p className="order-2 max-w-xl text-center md:order-none md:max-w-none">
+            © {year} {t("companyTitle")}. {t("rights")}
           </p>
           <div className="order-3 flex flex-wrap items-center justify-center gap-5 md:order-none md:justify-end">
             {legalLinks.map((item) => (
