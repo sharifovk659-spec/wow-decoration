@@ -57,6 +57,11 @@ export function normalizeManifest(raw: unknown): CmsManifest {
             id: String(item.id ?? `film-${Date.now()}`),
             poster: String(item.poster ?? "/images/hero/banner-01023.jpg"),
             youtubeId: String(item.youtubeId ?? ""),
+            instagramId: item.instagramId ? String(item.instagramId) : null,
+            instagramKind:
+              item.instagramKind === "p" || item.instagramKind === "reel"
+                ? item.instagramKind
+                : null,
             duration: String(item.duration ?? "0:00"),
             src: item.src ? String(item.src) : null,
           };

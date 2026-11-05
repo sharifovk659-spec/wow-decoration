@@ -7,6 +7,10 @@ import { HiXMark } from "react-icons/hi2";
 import { useLenis } from "@/components/layout/SmoothScroll";
 import { easeLuxe } from "@/lib/motion";
 import { mimeFromVideoUrl } from "@/lib/cms/mediaTypes";
+import {
+  instagramEmbedUrl,
+  type InstagramPostKind,
+} from "@/lib/cms/externalVideo";
 
 /** Client-only flag without setState-in-effect (portal-safe hydration). */
 const emptySubscribe = () => () => {};
@@ -14,6 +18,8 @@ const emptySubscribe = () => () => {};
 interface VideoModalProps {
   src?: string | null;
   youtubeId?: string | null;
+  instagramId?: string | null;
+  instagramKind?: InstagramPostKind | null;
   poster?: string;
   open: boolean;
   onClose: () => void;
@@ -28,6 +34,8 @@ interface VideoModalProps {
 export function VideoModal({
   src,
   youtubeId,
+  instagramId,
+  instagramKind,
   poster,
   open,
   onClose,
@@ -36,8 +44,10 @@ export function VideoModal({
 }: VideoModalProps) {
   const lenisRef = useLenis();
   const videoRef = useRef<HTMLVideoElement>(null);
-  // Uploaded file wins over YouTube when both are present.
-  const isYoutube = Boolean(youtubeId) && !src;
+  // Uploaded file wins over embeds when both are present.
+  const isYoutube = Boolean(youtubeId) && !src && !instagramId;
+  const isInstagram = Boolean(instagramId) && !src && !youtubeId;
+  const isEmbed = isYoutube || isInstagram;
   const videoMime = src ? mimeFromVideoUrl(src) : undefined;
 
   const mounted = useSyncExternalStore(
@@ -68,13 +78,19 @@ export function VideoModal({
   }, [open, onClose]);
 
   useEffect(() => {
-    if (!open || !src || isYoutube) return;
+    if (!open || !src || isEmbed) return;
     videoRef.current?.play().catch(() => {});
-  }, [open, src, isYoutube]);
+  }, [open, src, isEmbed]);
 
   if (!mounted) return null;
 
-  const hasMedia = isYoutube ? Boolean(youtubeId) : Boolean(src);
+  const hasMedia = src
+    ? Boolean(src)
+    : isYoutube
+      ? Boolean(youtubeId)
+      : isInstagram
+        ? Boolean(instagramId)
+        : false;
 
   return createPortal(
     <AnimatePresence>
@@ -113,7 +129,7 @@ export function VideoModal({
               transition={{ duration: 0.55, ease: easeLuxe }}
               onClick={(e) => e.stopPropagation()}
               className={
-                isYoutube
+                isEmbed
                   ? "aspect-[9/16] w-full max-w-[min(100%,22rem)] overflow-hidden rounded-luxe-lg shadow-luxe-lg sm:max-w-sm"
                   : "w-full max-w-5xl overflow-hidden rounded-luxe-lg shadow-luxe-lg"
               }
@@ -124,6 +140,18 @@ export function VideoModal({
                   title={caption ?? "YouTube video"}
                   src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="h-full w-full border-0 bg-ink"
+                />
+              ) : isInstagram && instagramId ? (
+                <iframe
+                  key={instagramId}
+                  title={caption ?? "Instagram video"}
+                  src={instagramEmbedUrl(
+                    instagramId,
+                    instagramKind ?? "reel",
+                  )}
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                   allowFullScreen
                   className="h-full w-full border-0 bg-ink"
                 />

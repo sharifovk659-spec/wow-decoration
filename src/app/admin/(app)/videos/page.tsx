@@ -10,6 +10,11 @@ import {
   uploadAdminFile,
 } from "@/components/admin/UploadButton";
 import { useAdminManifest } from "@/components/admin/useAdminManifest";
+import {
+  externalLinkDisplay,
+  parseExternalVideoInput,
+  posterForExternalVideo,
+} from "@/lib/cms/externalVideo";
 
 const HERO_POSTER_DEFAULT = "/images/hero/banner-01023.jpg";
 const HERO_VIDEO_DEFAULT = "/videos/hero.mp4";
@@ -21,6 +26,8 @@ function cloneFilms(
     id: f.id,
     poster: f.poster,
     youtubeId: f.youtubeId,
+    instagramId: f.instagramId ?? null,
+    instagramKind: f.instagramKind ?? null,
     duration: f.duration,
     src: f.src ?? null,
   }));
@@ -38,33 +45,25 @@ function patchFilmAt(
   return next;
 }
 
-/** Accepts raw ID or full YouTube / Shorts / youtu.be URL. */
-function parseYoutubeId(input: string): string | null {
-  const raw = input.trim();
-  if (!raw) return null;
-  if (/^[\w-]{11}$/.test(raw)) return raw;
-  try {
-    const url = new URL(raw);
-    const host = url.hostname.replace(/^www\./, "");
-    if (host === "youtu.be") {
-      const id = url.pathname.split("/").filter(Boolean)[0];
-      return id && /^[\w-]{11}$/.test(id) ? id : null;
-    }
-    if (host === "youtube.com" || host === "m.youtube.com") {
-      const v = url.searchParams.get("v");
-      if (v && /^[\w-]{11}$/.test(v)) return v;
-      const parts = url.pathname.split("/").filter(Boolean);
-      const marker = parts.findIndex((p) => p === "shorts" || p === "embed");
-      const shortId = marker >= 0 ? parts[marker + 1] : undefined;
-      if (shortId && /^[\w-]{11}$/.test(shortId)) {
-        return shortId;
-      }
-    }
-  } catch {
-    /* not a URL */
+function patchFromExternalLink(
+  raw: string,
+): Partial<CmsVideoTestimonial> | null {
+  const parsed = parseExternalVideoInput(raw);
+  if (!parsed) return null;
+  if (parsed.provider === "youtube") {
+    return {
+      youtubeId: parsed.id,
+      instagramId: null,
+      instagramKind: null,
+      poster: posterForExternalVideo(parsed),
+    };
   }
-  const m = raw.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/);
-  return m?.[1] ?? null;
+  return {
+    youtubeId: "",
+    instagramId: parsed.id,
+    instagramKind: parsed.instagramKind ?? "reel",
+    poster: posterForExternalVideo(parsed),
+  };
 }
 
 export default function AdminVideosPage() {
@@ -72,8 +71,8 @@ export default function AdminVideosPage() {
     useAdminManifest();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [addOpen, setAddOpen] = useState(false);
-  const [addMode, setAddMode] = useState<"choose" | "youtube">("choose");
-  const [youtubeInput, setYoutubeInput] = useState("");
+  const [addMode, setAddMode] = useState<"choose" | "link">("choose");
+  const [linkInput, setLinkInput] = useState("");
   const [addBusy, setAddBusy] = useState(false);
   const [addError, setAddError] = useState<string | null>(null);
 
@@ -93,7 +92,7 @@ export default function AdminVideosPage() {
   function closeAdd() {
     setAddOpen(false);
     setAddMode("choose");
-    setYoutubeInput("");
+    setLinkInput("");
     setAddError(null);
     setAddBusy(false);
   }
@@ -124,16 +123,20 @@ export default function AdminVideosPage() {
     }
   }
 
-  function addFromYoutube() {
-    const id = parseYoutubeId(youtubeInput);
-    if (!id) {
-      setAddError("Вставьте ссылку YouTube или ID видео");
+  function addFromLink() {
+    const patch = patchFromExternalLink(linkInput);
+    if (!patch) {
+      setAddError(
+        "Вставьте ссылку YouTube, Instagram (Reel) или ID видео",
+      );
       return;
     }
     commitFilm({
       id: `film-${Date.now()}`,
-      poster: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
-      youtubeId: id,
+      poster: patch.poster ?? HERO_POSTER_DEFAULT,
+      youtubeId: patch.youtubeId ?? "",
+      instagramId: patch.instagramId ?? null,
+      instagramKind: patch.instagramKind ?? null,
       duration: "0:00",
       src: null,
     });
@@ -294,12 +297,12 @@ export default function AdminVideosPage() {
                         type="button"
                         disabled={addBusy}
                         onClick={() => {
-                          setAddMode("youtube");
+                          setAddMode("link");
                           setAddError(null);
                         }}
                         className="rounded-luxe border border-gold/40 bg-gold/10 px-4 py-2 text-xs uppercase tracking-[0.18em] text-gold transition hover:bg-gold/20 disabled:opacity-60"
                       >
-                        Из YouTube
+                        YouTube / Instagram
                       </button>
                       <button
                         type="button"
@@ -325,18 +328,18 @@ export default function AdminVideosPage() {
                 ) : (
                   <>
                     <p className="text-sm text-bone-soft">
-                      Ссылка YouTube или ID
+                      Ссылка YouTube, Instagram Reel или ID
                     </p>
                     <div className="mt-3 flex flex-wrap gap-3">
                       <input
-                        value={youtubeInput}
-                        onChange={(e) => setYoutubeInput(e.target.value)}
-                        placeholder="https://youtube.com/shorts/… или ID"
+                        value={linkInput}
+                        onChange={(e) => setLinkInput(e.target.value)}
+                        placeholder="YouTube, instagram.com/reel/…"
                         className="min-w-[16rem] flex-1 rounded-luxe border border-line bg-ink px-3 py-2 text-sm text-bone"
                       />
                       <button
                         type="button"
-                        onClick={addFromYoutube}
+                        onClick={addFromLink}
                         className="rounded-luxe border border-gold/40 bg-gold/10 px-4 py-2 text-xs uppercase tracking-[0.18em] text-gold transition hover:bg-gold/20"
                       >
                         Добавить
@@ -386,16 +389,18 @@ export default function AdminVideosPage() {
                   </div>
                   <div className="space-y-2 p-3">
                     <input
-                      defaultValue={film.youtubeId}
-                      key={`${film.id}-yt-${film.youtubeId}`}
+                      defaultValue={externalLinkDisplay(film)}
+                      key={`${film.id}-link-${film.youtubeId}-${film.instagramId}`}
                       onBlur={(e) => {
-                        const youtubeId = e.target.value.trim();
-                        void persistFilms(
-                          patchFilmAt(films, index, { youtubeId }),
-                        );
+                        const raw = e.target.value.trim();
+                        if (!raw) return;
+                        const patch = patchFromExternalLink(raw);
+                        if (patch) {
+                          void persistFilms(patchFilmAt(films, index, patch));
+                        }
                       }}
                       className="w-full rounded-luxe border border-line bg-ink px-2 py-1.5 text-xs text-bone"
-                      placeholder="YouTube ID"
+                      placeholder="YouTube или Instagram ссылка"
                     />
                     <input
                       defaultValue={film.duration}

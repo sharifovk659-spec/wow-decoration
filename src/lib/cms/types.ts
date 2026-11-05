@@ -13,8 +13,12 @@ export interface CmsProcessVideo {
 export interface CmsVideoTestimonial {
   id: string;
   poster: string;
-  /** YouTube video / Shorts ID (optional if `src` is set). */
+  /** YouTube video / Shorts ID (optional if `src` or Instagram is set). */
   youtubeId: string;
+  /** Instagram reel / post shortcode (optional if `src` or YouTube is set). */
+  instagramId?: string | null;
+  /** Instagram embed path: reel (default) or p. */
+  instagramKind?: "reel" | "p" | null;
   duration: string;
   /** Uploaded file URL (mp4/webm/mov/…) — plays on site when set. */
   src?: string | null;

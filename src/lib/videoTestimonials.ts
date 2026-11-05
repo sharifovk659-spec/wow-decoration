@@ -2,6 +2,8 @@ export interface VideoTestimonial {
   id: string;
   poster: string;
   youtubeId: string;
+  instagramId?: string | null;
+  instagramKind?: "reel" | "p" | null;
   duration: string;
   /** Local / Blob uploaded video — preferred over YouTube when set. */
   src?: string | null;

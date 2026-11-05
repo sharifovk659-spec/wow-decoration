@@ -106,7 +106,17 @@ export function VideoTestimonials() {
       <VideoModal
         open={active !== null}
         src={current?.src ?? null}
-        youtubeId={current?.src ? null : (current?.youtubeId ?? null)}
+        youtubeId={
+          current?.src || current?.instagramId
+            ? null
+            : (current?.youtubeId ?? null)
+        }
+        instagramId={
+          current?.src || current?.youtubeId
+            ? null
+            : (current?.instagramId ?? null)
+        }
+        instagramKind={current?.instagramKind ?? null}
         poster={current?.poster}
         onClose={() => setActive(null)}
         closeLabel={tc("close")}
