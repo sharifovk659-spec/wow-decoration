@@ -53,15 +53,15 @@ export function VideoTestimonials() {
           onSwiper={(s) => (swiperRef.current = s)}
           keyboard={{ enabled: true }}
           loop
-          speed={1000}
+          speed={6000}
           spaceBetween={14}
           slidesPerView="auto"
           allowTouchMove
           grabCursor
           autoplay={{
-            delay: 4500,
+            delay: 0,
             disableOnInteraction: false,
-            pauseOnMouseEnter: true,
+            pauseOnMouseEnter: false,
           }}
           className="video-marquee !px-4 sm:!px-6"
         >

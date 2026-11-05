@@ -427,7 +427,7 @@
 }
 
 .video-marquee .swiper-wrapper {
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition-timing-function: linear !important;
 }
 
 @keyframes scroll-hint {
@@ -551,11 +551,11 @@
   }
 }
 
-/* Reduced motion — respect user preference */
+/* Reduced motion — respect user preference (except essential contact FAB cues) */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *:not(.keep-motion):not(.keep-motion *),
+  *:not(.keep-motion):not(.keep-motion *)::before,
+  *:not(.keep-motion):not(.keep-motion *)::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;

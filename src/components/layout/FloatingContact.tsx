@@ -26,7 +26,7 @@ const channels = [
 export function FloatingContact() {
   return (
     <div
-      className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] end-[calc(1rem+env(safe-area-inset-right,0px))] z-[45] flex flex-col gap-3 md:bottom-6 md:end-6"
+      className="keep-motion fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] end-[calc(1rem+env(safe-area-inset-right,0px))] z-[45] flex flex-col gap-3 md:bottom-6 md:end-6"
       aria-label="Быстрый контакт"
     >
       {channels.map(({ key, href, label, Icon, ringClass, glowClass }) => (
