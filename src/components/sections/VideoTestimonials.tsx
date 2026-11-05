@@ -53,14 +53,14 @@ export function VideoTestimonials() {
           keyboard={{ enabled: true }}
           loop
           loopAdditionalSlides={2}
-          speed={1600}
+          speed={2200}
           spaceBetween={14}
           slidesPerView="auto"
           slidesPerGroup={1}
           allowTouchMove
           grabCursor
           autoplay={{
-            delay: 5200,
+            delay: 6800,
             disableOnInteraction: false,
             pauseOnMouseEnter: false,
             waitForTransition: true,
