@@ -31,7 +31,6 @@ export function VideoTestimonials() {
   const films = cms?.videoTestimonials ?? videoTestimonials;
   const current = active !== null ? films[active] : null;
   const playback = current ? resolveFilmPlayback(current) : null;
-  const loopItems = [...films, ...films];
 
   return (
     <section className="relative overflow-hidden border-t border-line bg-ink-800 py-16 md:py-24">
@@ -53,29 +52,32 @@ export function VideoTestimonials() {
           onSwiper={(s) => (swiperRef.current = s)}
           keyboard={{ enabled: true }}
           loop
-          speed={6000}
+          loopAdditionalSlides={2}
+          speed={1600}
           spaceBetween={14}
           slidesPerView="auto"
+          slidesPerGroup={1}
           allowTouchMove
           grabCursor
           autoplay={{
-            delay: 0,
+            delay: 5200,
             disableOnInteraction: false,
             pauseOnMouseEnter: false,
+            waitForTransition: true,
           }}
           className="video-marquee !px-4 sm:!px-6"
         >
-          {loopItems.map((item, i) => {
+          {films.map((item, i) => {
             const posterSrc = slidePosterForFilm(item);
             const isInstagram = Boolean(item.instagramId) && !item.src;
             return (
             <SwiperSlide
-              key={`${item.id}-${i}`}
+              key={item.id}
               className="!h-auto !w-[11.5rem] sm:!w-[12.5rem]"
             >
               <button
                 type="button"
-                onClick={() => setActive(i % films.length)}
+                onClick={() => setActive(i)}
                 data-cursor="hover"
                 aria-label={t("watch")}
                 className="group relative block w-full overflow-hidden rounded-luxe-lg text-start shadow-image transition-shadow duration-500 hover:shadow-luxe focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/70"
