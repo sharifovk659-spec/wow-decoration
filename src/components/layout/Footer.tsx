@@ -36,7 +36,10 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="flex flex-col gap-4 lg:col-span-4">
             <Logo size="footer" />
-            <p className="max-w-sm text-sm leading-relaxed text-bone-dim">
+            <p className="max-w-md font-display text-base font-medium leading-snug text-bone sm:text-[1.05rem]">
+              {t("companyTitle")}
+            </p>
+            <p className="max-w-md text-sm leading-relaxed text-bone-dim">
               {t("description")}
             </p>
           </div>
